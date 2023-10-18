@@ -1,10 +1,6 @@
 // Send hits
 
-function sendData(full_endpoint, secret_key, payload, data) {
-  console.log(full_endpoint);
-  console.log('data: ' + data.enable_logs);
-  console.log(payload);
-  
+function sendData(full_endpoint, secret_key, payload, data) {  
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.device = detectDevice();

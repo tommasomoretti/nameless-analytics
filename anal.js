@@ -1,9 +1,10 @@
 // Send hits
 
-function sendData(full_endpoint, secret_key, payload, tracker, data) {
+function sendData(full_endpoint, secret_key, payload, data) {
   console.log(full_endpoint);
   console.log('data: ' + data.enable_logs);
   console.log(payload);
+  
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.device = detectDevice();
@@ -72,77 +73,4 @@ function detectDevice(){
 
 function detectOS(){
   return null
-}
-
-// --------------------------------------------------------------------------------------------------------------------------------------------------------
-  
-// User data
-function setUserInfo(){
-  info = [];
-  if (localStorage.getItem("user_info") === null){
-    sessionStorage.removeItem('session_info');
-    sessionStorage.removeItem('event_info');
-    var client_id = Math.floor(Math.random() * Math.pow(10, 10));
-    var user_info = {
-      client_id: client_id,
-      user_source: document.referrer || window.location.protocol + "//" + window.location.host,
-      total_sessions: 0
-    }
-    localStorage.setItem("user_info", JSON.stringify(user_info));
-    setSessionInfo(user_info);
-    info.push(JSON.parse(localStorage.getItem("user_info")));
-    info.push(JSON.parse(sessionStorage.getItem("session_info")));
-    return info
-  } else {
-    var user_info = JSON.parse(localStorage.getItem("user_info"))
-    setSessionInfo(user_info);
-    info.push(JSON.parse(localStorage.getItem("user_info")));
-    info.push(JSON.parse(sessionStorage.getItem("session_info")));
-    return info
-  }
-}
-
-// Session data
-function setSessionInfo(user_info){
-  if (sessionStorage.getItem("session_info") === null){
-    sessionStorage.removeItem('event_info');
-    var session_id = user_info.client_id + "_" + Date.now()
-    var session_info = {
-      session_id: session_id,
-      session_source: document.referrer || window.location.protocol + "//" + window.location.host,
-      total_requests: 0
-    }
-    sessionStorage.setItem("session_info", JSON.stringify(session_info));
-    user_info.total_sessions = user_info.total_sessions + 1
-    localStorage.setItem("user_info", JSON.stringify(user_info));
-  }
-}
-
-// Event data
-function setRequestInfo(full_endpoint, payload, tracker){
-  var actual_event_info = JSON.parse(sessionStorage.getItem("event_info"));
-  var event_sent = {
-    endpoint_name: full_endpoint,
-    event_info: payload
-  }
-  if (actual_event_info == null){
-    var event_info = {}
-    event_info[tracker] = [];
-    event_info[tracker].push(event_sent);
-    sessionStorage.setItem("event_info", JSON.stringify(event_info));
-    var session_info = JSON.parse(sessionStorage.getItem("session_info"));
-    session_info.total_requests = session_info.total_requests + 1 
-    sessionStorage.setItem("session_info", JSON.stringify(session_info));
-  } else {
-    if(actual_event_info[tracker] == undefined){
-        actual_event_info[tracker] = []
-        actual_event_info[tracker].push(event_sent) 
-    } else {
-        actual_event_info[tracker].push(event_sent);
-    }
-    sessionStorage.setItem("event_info", JSON.stringify(actual_event_info));
-    var session_info = JSON.parse(sessionStorage.getItem("session_info"));
-    session_info.total_requests = session_info.total_requests + 1 
-    sessionStorage.setItem("session_info", JSON.stringify(session_info));
-  }
 }

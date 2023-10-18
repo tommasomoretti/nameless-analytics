@@ -1,6 +1,7 @@
 // Send hits
 
 function sendData(full_endpoint, secret_key, payload, tracker, data) {
+  console.log(full_endpoint);
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.device = detectDevice();

@@ -1,0 +1,229 @@
+const claimRequest = require('claimRequest');
+const getRequestHeader = require('getRequestHeader');
+const getRequestBody = require('getRequestBody');
+const getRequestMethod = require('getRequestMethod');
+const getRequestPath = require('getRequestPath');
+const setResponseHeader = require('setResponseHeader');
+const setResponseBody = require('setResponseBody');
+const setResponseStatus = require('setResponseStatus');
+const returnResponse = require('returnResponse');
+const runContainer = require('runContainer');
+const log = require('logToConsole');
+const JSON = require('JSON');
+const Object = require('Object');
+const getRequestQueryParameters = require('getRequestQueryParameters');
+const BigQuery = require('BigQuery');
+const getTimestampMillis = require('getTimestampMillis');
+const getType = require('getType');
+
+
+const timestamp = getTimestampMillis();
+const origin = getRequestHeader('Origin');
+const endpoint = data.custom_endpoint;
+const request_method = getRequestMethod();
+const allowed_request_method = data.request_method;
+const accept_requests_from = data.accept_requests_from;
+const allowed_domains_list = data.allowed_domains_list;
+
+if(data.enable_logs){log('SERVER-SIDE GTM CLIENT TAG: TAG CONFIGURATION');}
+if(data.enable_logs){log('👉 Accepted origins:', data.accept_requests_from + ' origins ', data.allowed_domains_list);}
+if(data.enable_logs){log('👉 Endpoint:', endpoint);}
+
+// Claim the request
+if (checkOrigin()){
+  if(data.enable_logs){log('👉 Request endpoint:', getRequestPath().slice(1));}
+  if(getRequestPath() === '/' + endpoint){
+    if(data.enable_logs){log('👍 Request endpoint correct');}
+    if(request_method === 'POST'){
+      const event_data = JSON.parse(getRequestBody());
+
+      if(event_data && Object.keys(event_data).length > 0){
+        claim_request(event_data);
+      }
+    } // else {
+    //   if(data.enable_logs){log('🔴 401 The request method is not POST');}
+    //   setResponseStatus(401);
+    //   setResponseHeader('Access-Control-Allow-Headers', 'content-type');
+    //   setResponseHeader('Access-Control-Allow-Credentials', 'true');
+    //   setResponseHeader('Access-Control-Allow-Origin', origin);
+    //   setResponseBody(JSON.stringify({
+    //     status_code: 401,
+    //     response: '🔴 401 The request method is not POST'
+    //   }));
+    //   returnResponse();
+    // }
+  } else {
+    if(data.enable_logs){log('🔴 500 The request endpoint is not correct');}
+    setResponseStatus(500);
+    setResponseHeader('Access-Control-Allow-Headers', 'content-type');
+    setResponseHeader('Access-Control-Allow-Credentials', 'true');
+    setResponseHeader('Access-Control-Allow-Origin', origin);
+    setResponseBody(JSON.stringify({
+      status_code: 500,
+      response: '🔴 500 The request endpoint is not correct'
+    }));
+    returnResponse();
+  }
+} else {
+  if(data.enable_logs){log('🔴 500 The request origin is not allow');}
+  setResponseStatus(500);
+  setResponseHeader('Access-Control-Allow-Headers', 'content-type');
+  setResponseHeader('Access-Control-Allow-Credentials', 'true');
+  setResponseHeader('Access-Control-Allow-Origin', origin);
+  setResponseBody(JSON.stringify({
+    status_code: 500,
+    response: '🔴 500 The request origin is not allow'
+  }));
+  returnResponse();
+}
+
+
+//Check origin
+function checkOrigin(){
+  if(data.enable_logs){log('REQUEST DATA');}
+  if (accept_requests_from === 'any'){
+    if(data.enable_logs){log('👉 Request origin:', origin);}
+    if(data.enable_logs){log('👍 Request origin allowed');}
+    return true;
+  } else {
+    for(let i = 0; i < allowed_domains_list.length; i++){
+      if(allowed_domains_list[i].allowed_domain === origin){
+        if(data.enable_logs){log('👉 Request origin:', allowed_domains_list[i].allowed_domain);}
+        if(data.enable_logs){log('👍 Request origin allowed');}
+        return true;
+      }
+    }
+  }
+}
+
+
+// Claim requests
+function claim_request(event_data) {
+  claimRequest();
+  runContainer(event_data, () => {
+    setResponseStatus(200);
+    setResponseHeader('Access-Control-Allow-Headers', 'content-type');
+    setResponseHeader('Access-Control-Allow-Credentials', 'true');
+    setResponseHeader('Access-Control-Allow-Origin', origin);
+    setResponseHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    setResponseHeader('cache-control', 'no-cache');
+    setResponseBody(JSON.stringify({
+      status_code: 200,
+      response: '🟢 200 Request claimed succesfully',
+      data: event_data
+    }));
+    returnResponse();
+  });
+  if(data.enable_logs){log('🟢 200 Ok: Request claimed succesfully');}
+  if(data.log_requests_to_bq){sendToBigQuery(event_data);}
+  // if(data.log_requests_to_bq){sendToFirestore(event_data);}
+}
+
+
+// Send data to Google BigQuery
+function sendToBigQuery(event_data){
+  // Google BigQuery project settings
+  const project = {
+    projectId: data.bq_project_id,
+    datasetId: data.bq_dataset_id,
+    tableId: data.bq_table_id
+  };
+
+  // Cloning event_data
+  const bq_event_data = JSON.parse(JSON.stringify(event_data));
+
+  // Encode data in GA4 style
+  encodeData(bq_event_data, "user_data");
+  encodeData(bq_event_data, "session_data");
+  encodeData(bq_event_data, "page_data");
+  encodeData(bq_event_data, "event_data");
+
+  // Build the payload
+  const payload = [{
+    timestamp: timestamp,
+    host: getRequestHeader('Host'),
+    origin: getRequestHeader('Origin'),
+    user_agent: getRequestHeader('User-Agent'),
+    browser: getRequestHeader('Sec-Ch-Ua'),
+    device: getRequestHeader('Sec-Ch-Ua-Mobile'),
+    platform: getRequestHeader('Sec-Ch-Ua-Platform'),
+    country: getRequestHeader('X-Appengine-Country'),
+    city: getRequestHeader('X-Appengine-City'),
+    latitude: getRequestHeader('X-Appengine-Citylatlong').split(',')[0],
+    longitude: getRequestHeader('X-Appengine-Citylatlong').split(',')[1],
+    ip: getRequestHeader('X-Appengine-User-Ip'),
+    event_name: bq_event_data.event_name,
+    user_data: bq_event_data.user_data,
+    session_data: bq_event_data.session_data,
+    page_data: bq_event_data.page_data,
+    event_data: bq_event_data.event_data
+  }];
+
+  if(data.enable_logs){log('SEND EVENT DATA TO GOOGLE BIGQUERY');}
+  if(data.enable_logs){log('👉 Payload data: ', payload);}
+
+  // Write options
+  const options = {
+    'ignoreUnknownValues': data.skip_invalid_rows,
+    'skipInvalidRows': data.ignore_unknown_values
+  };
+
+  // Write to Google BigQuery
+  BigQuery.insert(project, payload, options,
+    () => {
+      if(data.enable_logs){log('🟢 Request logged successfully to ' +  project.projectId + "." + project.datasetId + "." + project.tableId);}
+    },
+    () => {
+      if(data.enable_logs){log('🔴 Request not logged to ' +  project.projectId + "." + project.datasetId + "." + project.tableId);}
+    }
+  );
+}
+
+
+// Encode data for BQ
+function encodeData(bq_event_data, prop){
+  if(bq_event_data[prop] && Object.keys(bq_event_data[prop]).length > 0){
+    var mapped_data = [];
+    Object.keys(bq_event_data[prop]).forEach((key) => {
+      // log(getType(bq_event_data[prop][key]));
+      var temp_data = {};
+      // Is string
+      if (getType(bq_event_data[prop][key]) == 'string'){
+        temp_data.name = key;
+        temp_data.value = {string: bq_event_data[prop][key] || null};
+      // Is number (integer or float)
+      } else if (getType(bq_event_data[prop][key]) == 'number'){
+        if(bq_event_data[prop][key] % 1 != 0){
+          temp_data.name = key;
+          temp_data.value = {float: bq_event_data[prop][key]};
+        } else {
+          temp_data.name = key;
+          temp_data.value = {int: bq_event_data[prop][key]};
+        }
+      // Is JSON (object or array)
+    } else if (getType(bq_event_data[prop][key]) == 'object' | getType(bq_event_data[prop][key]) == 'array') {
+      temp_data.name = key;
+      temp_data.value = {json: bq_event_data[prop][key]};
+      // is null or undefined
+      } else if (getType(bq_event_data[prop][key]) == 'null' || getType(bq_event_data[prop][key]) == 'undefined'){
+        temp_data.name = key;
+        temp_data.value = null;
+      }
+      mapped_data.push(temp_data);
+    });
+    bq_event_data[prop] = mapped_data;
+  }
+}
+
+
+// Send data to Google Firestore
+function sendToFirestore(event_data){
+  const project = {
+    projectId: data.bq_project_id,
+    datasetId: data.bq_dataset_id,
+    tableId: data.bq_table_id
+  };
+
+  // Cloning event_data
+  const fs_event_data = JSON.parse(JSON.stringify(event_data));
+}

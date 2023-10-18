@@ -25,7 +25,6 @@ function sendData(full_endpoint, secret_key, payload, data) {
   })
   .then((response) => response.json())
   .then((response_json) => {
-    setRequestInfo(full_endpoint, payload, tracker);
     if(data.enable_logs){console.log(response_json.response)}
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()

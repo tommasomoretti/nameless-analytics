@@ -2,6 +2,7 @@
 
 function sendData(full_endpoint, secret_key, payload, tracker, data) {
   console.log(full_endpoint);
+  console.log('data: ' + data.enable_logs);
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.device = detectDevice();

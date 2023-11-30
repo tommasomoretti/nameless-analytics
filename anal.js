@@ -1,7 +1,9 @@
 // Send hits
 
 function sendData(full_endpoint, secret_key, payload, data) {
-  payload.event_date = new Date(payload.event_timestamp).toUTCString();
+  var date = new Date(payload.event_timestamp);
+ 
+  payload.event_timestamp = date.getFullYear() + '/' + ("0" + (date.getMonth() + 1)).slice(-2) + '/' + ("0" + date.getDate()).slice(-2);
   payload.user_agent = navigator.userAgent;
   payload.browser = detectBrowser();
   payload.device = detectDevice();

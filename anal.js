@@ -35,6 +35,8 @@ function sendData(full_endpoint, secret_key, payload, data) {
   })
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 function detectBrowser(){
   let userAgent = navigator.userAgent;

@@ -1,7 +1,7 @@
 // Send hits
 
 function sendData(full_endpoint, secret_key, payload, data) {
-  payload.date = formatDatetime(payload.timestamp).split(" ")[0];
+  payload.date = formatDatetime(payload.timestamp).split("T")[0];
   payload.date_time = formatDatetime(payload.timestamp);
   payload.user_agent = navigator.userAgent;
   payload.device_brand = getDeviceBrand();
@@ -49,7 +49,7 @@ function formatDatetime(timestamp) {
   const seconds = String(date.getUTCSeconds()).padStart(2, '0');
   const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
 
-  const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}.${milliseconds}000 UTC`;
+  const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}000`;
 
   return formattedDate;
 }

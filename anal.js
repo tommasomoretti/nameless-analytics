@@ -1,7 +1,7 @@
 // Send hits
 
 function sendData(full_endpoint, secret_key, payload, data) {
-
+  aaa
   payload.date = formatDate(payload.timestamp).split("T")[0];
   payload.date_time = formatDatetime(payload.timestamp);
   payload.user_agent = navigator.userAgent;

@@ -38,24 +38,24 @@ function sendData(full_endpoint, secret_key, payload, data) {
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-function detectBrowser(){
-  let userAgent = navigator.userAgent;
-  let browserName;
+function getBrowser() {
+  const userAgent = navigator.userAgent;
 
-  if(userAgent.match(/chrome|chromium|crios/i)){
-      browserName = "chrome";
-    }else if(userAgent.match(/firefox|fxios/i)){
-      browserName = "firefox";
-    }  else if(userAgent.match(/safari/i)){
-      browserName = "safari";
-    }else if(userAgent.match(/opr\//i)){
-      browserName = "opera";
-    } else if(userAgent.match(/edg/i)){
-      browserName = "edge";
-    } else{
-      browserName="unknown";
-    }
-  return browserName;
+  if (userAgent.indexOf("Firefox") !== -1) {
+    return "Mozilla Firefox";
+  } else if (userAgent.indexOf("Chrome") !== -1) {
+    return "Google Chrome";
+  } else if (userAgent.indexOf("Safari") !== -1) {
+    return "Apple Safari";
+  } else if (userAgent.indexOf("Edge") !== -1) {
+    return "Microsoft Edge";
+  } else if (userAgent.indexOf("Opera") !== -1 || userAgent.indexOf("OPR") !== -1) {
+    return "Opera";
+  } else if (userAgent.indexOf("Trident") !== -1) {
+    return "Internet Explorer";
+  } else {
+    return "Browser sconosciuto";
+  }
 }
 
 

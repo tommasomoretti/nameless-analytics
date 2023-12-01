@@ -2,8 +2,11 @@
 
 function sendData(full_endpoint, secret_key, payload, data) {
   var date = new Date(payload.timestamp);
- 
-  payload.date = date.getFullYear() + '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + ("0" + date.getDate()).slice(-2);
+  date.getFullYear() + 
+ '-' + ("0" + (date.getMonth() + 1)).slice(-2) + '-' + ("0" + date.getDate()).slice(-2)
+
+  payload.date = formatDate(timestamp).split("T")[1];
+  payload.date_time = formatDatetime(timestamp);
   payload.user_agent = navigator.userAgent;
   payload.device_brand = getDeviceBrand();
   payload.device_type = getDeviceType();
@@ -38,6 +41,22 @@ function sendData(full_endpoint, secret_key, payload, data) {
 }
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
+
+function formatDatetime(timestamp) {
+  const date = new Date(timestamp);
+
+  const year = date.getUTCFullYear();
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Mese è basato su zero
+  const day = String(date.getUTCDate()).padStart(2, '0');
+  const hours = String(date.getUTCHours()).padStart(2, '0');
+  const minutes = String(date.getUTCMinutes()).padStart(2, '0');
+  const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+  const milliseconds = String(date.getUTCMilliseconds()).padStart(3, '0');
+
+  const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}.${milliseconds}`;
+
+  return formattedDate;
+}
 
 
 function getDeviceBrand() {

@@ -12,6 +12,8 @@ function sendData(full_endpoint, secret_key, payload, data) {
   payload.device_type = parseUa().device.type || "desktop";
   payload.os_name = parseUa().os.name;
   payload.os_version = parseUa().os.version;
+  payload.screen_size = window.screen.width + "x" + window.screen.height;
+  payload.wiewport_size = window.innerWidth + "x" + window.innerHeight;
   
   if(data.enable_logs){console.log('👉 Request payload: ', payload);}
   if(data.enable_logs){console.log('🟢 Analytics consent granted. Sending request...');}

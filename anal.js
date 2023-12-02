@@ -8,9 +8,9 @@ function sendData(full_endpoint, secret_key, payload, data) {
   payload.browser_name = parseUa().browser.name;
   payload.browser_version = parseUa().browser.version;
   payload.browser_language = navigator.language || navigator.userLanguage; 
+  payload.device_type = parseUa().device.type || "desktop";
   payload.device_vendor = parseUa().device.vendor;
   payload.device_model = parseUa().device.model;
-  payload.device_type = parseUa().device.type || "desktop";
   payload.os_name = parseUa().os.name;
   payload.os_version = parseUa().os.version;
   payload.screen_size = window.screen.width + "x" + window.screen.height;

@@ -7,6 +7,7 @@ function sendData(full_endpoint, secret_key, payload, data) {
   payload.user_agent = parseUa().ua;
   payload.browser_name = parseUa().browser.name;
   payload.browser_version = parseUa().browser.version;
+  payload.browser_language = navigator.language || navigator.userLanguage; 
   payload.device_vendor = parseUa().device.vendor;
   payload.device_model = parseUa().device.model;
   payload.device_type = parseUa().device.type || "desktop";

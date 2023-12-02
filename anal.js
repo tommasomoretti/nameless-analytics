@@ -9,7 +9,7 @@ function sendData(full_endpoint, secret_key, payload, data) {
   payload.browser_version = parseUa().browser.version;
   payload.device_vendor = parseUa().device.vendor;
   payload.device_model = parseUa().device.model;
-  payload.device_type = parseUa().device.type;
+  payload.device_type = parseUa().device.type || "desktop";
   payload.os_name = parseUa().os.name;
   payload.os_version = parseUa().os.version;
   

@@ -3,16 +3,17 @@
 function sendData(full_endpoint, secret_key, payload, data) {
   payload.date = formatDatetime(payload.timestamp).split("T")[0];
   payload.date_time = formatDatetime(payload.timestamp);
-  
-  payload.session_data.user_agent = parseUa().ua;
-  payload.session_data.browser_name = parseUa().browser.name;
-  payload.session_data.browser_version = parseUa().browser.version;
+
+  ua_info = parseUa();
+  payload.session_data.user_agent = ua_info.ua;
+  payload.session_data.browser_name = ua_info.browser.name;
+  payload.session_data.browser_version = ua_info.browser.version;
   payload.session_data.browser_language = navigator.language || navigator.userLanguage; 
-  payload.session_data.device_type = parseUa().device.type || "desktop";
-  payload.session_data.device_vendor = parseUa().device.vendor;
-  payload.session_data.device_model = parseUa().device.model;
-  payload.session_data.os_name = parseUa().os.name;
-  payload.session_data.os_version = parseUa().os.version;
+  payload.session_data.device_type = ua_info.device.type || "desktop";
+  payload.session_data.device_vendor = ua_info.device.vendor;
+  payload.session_data.device_model = ua_info.device.model;
+  payload.session_data.os_name = ua_info.os.name;
+  payload.session_data.os_version = ua_info.os.version;
   payload.page_data.screen_size = window.screen.width + "x" + window.screen.height;
   payload.page_data.wiewport_size = window.innerWidth + "x" + window.innerHeight;
   

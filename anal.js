@@ -4,17 +4,17 @@ function sendData(full_endpoint, secret_key, payload, data) {
   payload.date = formatDatetime(payload.timestamp).split("T")[0];
   payload.date_time = formatDatetime(payload.timestamp);
   
-  payload.user_agent = parseUa().ua;
-  payload.browser_name = parseUa().browser.name;
-  payload.browser_version = parseUa().browser.version;
-  payload.browser_language = navigator.language || navigator.userLanguage; 
-  payload.device_type = parseUa().device.type || "desktop";
-  payload.device_vendor = parseUa().device.vendor;
-  payload.device_model = parseUa().device.model;
-  payload.os_name = parseUa().os.name;
-  payload.os_version = parseUa().os.version;
-  payload.screen_size = window.screen.width + "x" + window.screen.height;
-  payload.wiewport_size = window.innerWidth + "x" + window.innerHeight;
+  payload.session_data.user_agent = parseUa().ua;
+  payload.session_data.browser_name = parseUa().browser.name;
+  payload.session_data.browser_version = parseUa().browser.version;
+  payload.session_data.browser_language = navigator.language || navigator.userLanguage; 
+  payload.session_data.device_type = parseUa().device.type || "desktop";
+  payload.session_data.device_vendor = parseUa().device.vendor;
+  payload.session_data.device_model = parseUa().device.model;
+  payload.session_data.os_name = parseUa().os.name;
+  payload.session_data.os_version = parseUa().os.version;
+  payload.page_data.screen_size = window.screen.width + "x" + window.screen.height;
+  payload.page_data.wiewport_size = window.innerWidth + "x" + window.innerHeight;
   
   if(data.enable_logs){console.log('👉 Request payload: ', payload);}
   if(data.enable_logs){console.log('🟢 Analytics consent granted. Sending request...');}
@@ -48,7 +48,7 @@ function formatDatetime(timestamp) {
   const date = new Date(timestamp);
 
   const year = date.getUTCFullYear();
-  const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // Mese è basato su zero
+  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
   const day = String(date.getUTCDate()).padStart(2, '0');
   const hours = String(date.getUTCHours()).padStart(2, '0');
   const minutes = String(date.getUTCMinutes()).padStart(2, '0');

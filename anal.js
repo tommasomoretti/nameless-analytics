@@ -14,8 +14,8 @@ function sendData(full_endpoint, secret_key, payload, data) {
   payload.session_data.device_model = ua_info.device.model;
   payload.session_data.os_name = ua_info.os.name;
   payload.session_data.os_version = ua_info.os.version;
-  payload.page_data.screen_size = window.screen.width + "x" + window.screen.height;
-  payload.page_data.wiewport_size = window.innerWidth + "x" + window.innerHeight;
+  payload.event_data.screen_size = window.screen.width + "x" + window.screen.height;
+  payload.event_data.wiewport_size = window.innerWidth + "x" + window.innerHeight;
   
   if(data.enable_logs){console.log('👉 Request payload: ', payload);}
   if(data.enable_logs){console.log('🟢 Analytics consent granted. Sending request...');}

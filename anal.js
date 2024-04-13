@@ -17,8 +17,7 @@ function sendData(full_endpoint, secret_key, payload, data) {
   payload.event_data.screen_size = window.screen.width + "x" + window.screen.height;
   payload.event_data.wiewport_size = window.innerWidth + "x" + window.innerHeight;
   
-  if(data.enable_logs){console.log('👉 Request payload: ', payload);}
-  if(data.enable_logs){console.log('🟢 Analytics consent granted. Sending request...');}
+  if(data.config_variable.enable_logs){console.log('👉 Request payload: ', payload);}
 
   fetch(full_endpoint, {
     // headers: new Headers({

@@ -40,6 +40,7 @@ function sendData(full_endpoint, secret_key, payload, data) {
     else return data.gtmOnFailure()
   })
   .catch((error) => {
+    if(data.config_variable.enable_logs){console.log('Request response';}
     if(data.config_variable.enable_logs){console.log(error)}
     return data.gtmOnFailure()
   })

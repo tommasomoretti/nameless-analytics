@@ -16,8 +16,10 @@ function sendData(full_endpoint, secret_key, payload, data) {
   payload.session_data.os_version = ua_info.os.version;
   payload.event_data.screen_size = window.screen.width + "x" + window.screen.height;
   payload.event_data.wiewport_size = window.innerWidth + "x" + window.innerHeight;
-  
-  if(data.config_variable.enable_logs){console.log('👉 Request payload: ', payload);}
+
+  if(data.config_variable.enable_logs){log('  Event data);}
+  if(data.config_variable.enable_logs){log('    👉 Event name: ' + payload.event_name);}
+  if(data.config_variable.enable_logs){console.log('    👉 Request payload: ', payload);}
 
   fetch(full_endpoint, {
     // headers: new Headers({
@@ -31,6 +33,7 @@ function sendData(full_endpoint, secret_key, payload, data) {
   })
   .then((response) => response.json())
   .then((response_json) => {
+    if(data.config_variable.enable_logs){console.log('Request response';}
     if(data.config_variable.enable_logs){console.log(response_json.response)}
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()

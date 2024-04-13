@@ -30,7 +30,7 @@ function sendData(full_endpoint, payload, data) {
   .then((response) => response.json())
   .then((response_json) => {
     if(data.config_variable.enable_logs){console.log('  Request response');}
-    if(data.config_variable.enable_logs){console.log('  ' + response_json.response)}
+    if(data.config_variable.enable_logs){console.log(response_json.response)}
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()
     else return data.gtmOnFailure()

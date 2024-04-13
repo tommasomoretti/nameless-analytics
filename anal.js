@@ -1,6 +1,6 @@
 // Send hits
 
-function sendData(full_endpoint, secret_key, payload, data) {
+function sendData(full_endpoint, payload, data) {
   payload.date = formatDatetime(payload.timestamp).split("T")[0];
   payload.date_time = formatDatetime(payload.timestamp);
 
@@ -16,16 +16,12 @@ function sendData(full_endpoint, secret_key, payload, data) {
   payload.session_data.os_version = ua_info.os.version;
   payload.event_data.screen_size = window.screen.width + "x" + window.screen.height;
   payload.event_data.wiewport_size = window.innerWidth + "x" + window.innerHeight;
-
-  if(data.config_variable.enable_logs){log('  Event data');}
-  if(data.config_variable.enable_logs){log('    👉 Event name: ' + payload.event_name);}
+  
+  if(data.config_variable.enable_logs){console.log('  Event data');}
+  if(data.config_variable.enable_logs){console.log('    👉 Event name: ' + payload.event_name);}
   if(data.config_variable.enable_logs){console.log('    👉 Request payload: ', payload);}
 
   fetch(full_endpoint, {
-    // headers: new Headers({
-    //   'Authorization': 'Bearer ' + btoa('secret_key'),
-    //   'Content-Type': 'application/json'
-    // }),
     method: 'POST',
     credentials: 'include',
     mode: 'cors',

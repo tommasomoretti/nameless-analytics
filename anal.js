@@ -71,6 +71,9 @@ function parseUa(){
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 function getMedium(source, campaign) {
+
+  console.log(source)
+  console.log(campaign)
   const search_engine = new RegExp('.*google.*|.*bing.*|.*yahoo.*|.*baidu.*|.*yandex.*|.*duckduckgo.*|.*ask.*|.*aol.*|.*ecosia.*')
   const social_network = new RegExp('.*facebook.*|.*messenger.*|.*instagram.*|.* tiktok.*|.*t\.com\.*|.*twitter.*|.*linkedin.*|.*pinterest.*|.*youtube.*|.*whatsapp.*|.*wechat.*')
 

@@ -78,13 +78,13 @@ function getMedium(source, campaign) {
     medium = null
   } else if (source == 'direct') {
     medium = 'none'
-  } else if (search_engine.test(source) && campaign == '') {
+  } else if (search_engine.test(source) && campaign == null) {
     medium = 'organic_search'
-  } else if (search_engine.test(source) && campaign != '') {
+  } else if (search_engine.test(source) && campaign != null) {
     medium = 'paid_search'
-  } else if (social_network.test(source) && campaign == '') {
+  } else if (social_network.test(source) && campaign == null) {
       medium = 'organic_social'
-  } else if (social_network.test(source) && campaign != '') {
+  } else if (social_network.test(source) && campaign != null) {
       medium = 'paid_social'
   } else {
     medium = 'unknown'

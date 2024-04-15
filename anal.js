@@ -93,5 +93,6 @@ function getMedium(source, campaign) {
     medium = 'unknown'
   }
 
+  console.log(medium)
   return medium
 }

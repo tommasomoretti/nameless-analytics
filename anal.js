@@ -110,7 +110,9 @@ function getCampaign(source, campaign) {
   const search_engine = new RegExp('.*google.*|.*bing.*|.*yahoo.*|.*baidu.*|.*yandex.*|.*duckduckgo.*|.*ask.*|.*aol.*|.*ecosia.*')
   const social_network = new RegExp('.*facebook.*|.*messenger.*|.*instagram.*|.* tiktok.*|.*t\.com\.*|.*twitter.*|.*linkedin.*|.*pinterest.*|.*youtube.*|.*whatsapp.*|.*wechat.*')
 
-  if (source == null) {
+  if (source == 'tagassistant.google.com'){
+    medium = 'debug'
+  } else if (source == null) {
     medium = null
   } else if (source == 'direct') {
     medium = 'none'

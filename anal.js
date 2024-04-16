@@ -84,7 +84,7 @@ function getSource(domain, referrer) {
 
 
 function getMedium(source, campaign) {
-  const search_engine = new RegExp('.*google.*|.*bing.*|.*yahoo.*|.*baidu.*|.*yandex.*|.*duckduckgo.*|.*ask.*|.*aol.*|.*ecosia.*')
+  const search_engine = new RegExp('www\.google.*|.*bing.*|.*yahoo.*|.*baidu.*|.*yandex.*|.*duckduckgo.*|.*ask.*|.*aol.*|.*ecosia.*')
   const social_network = new RegExp('.*facebook.*|.*messenger.*|.*instagram.*|.* tiktok.*|.*t\.com\.*|.*twitter.*|.*linkedin.*|.*pinterest.*|.*youtube.*|.*whatsapp.*|.*wechat.*')
 
   if (source == null) {

@@ -94,5 +94,5 @@ function getMedium(source, campaign) {
   // }
 
   // console.log(medium)
-  // return medium
+  return 'DIOCAN'
 }

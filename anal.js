@@ -107,13 +107,3 @@ function getMedium(source, campaign) {
 
   return medium
 }
-
-function getCampaign(gclid, dclid) {
-  if (gclid) {
-    campaign = gclid
-  }
-  if (dclid) {
-    campaign = dclid
-  }
-  return campaign
-}

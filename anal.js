@@ -71,28 +71,24 @@ function parseUa(){
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 function getMedium(source, campaign) {
+  const search_engine = new RegExp('.*google.*|.*bing.*|.*yahoo.*|.*baidu.*|.*yandex.*|.*duckduckgo.*|.*ask.*|.*aol.*|.*ecosia.*')
+  const social_network = new RegExp('.*facebook.*|.*messenger.*|.*instagram.*|.* tiktok.*|.*t\.com\.*|.*twitter.*|.*linkedin.*|.*pinterest.*|.*youtube.*|.*whatsapp.*|.*wechat.*')
 
-  console.log(source)
-  console.log(campaign)
-  // const search_engine = new RegExp('.*google.*|.*bing.*|.*yahoo.*|.*baidu.*|.*yandex.*|.*duckduckgo.*|.*ask.*|.*aol.*|.*ecosia.*')
-  // const social_network = new RegExp('.*facebook.*|.*messenger.*|.*instagram.*|.* tiktok.*|.*t\.com\.*|.*twitter.*|.*linkedin.*|.*pinterest.*|.*youtube.*|.*whatsapp.*|.*wechat.*')
+  if (source == null) {
+    medium = null
+  } else if (source == 'direct') {
+    medium = 'none'
+  } else if (search_engine.test(source) && campaign == null) {
+    medium = 'organic_search'
+  } else if (search_engine.test(source) && campaign != null) {
+    medium = 'paid_search'
+  } else if (social_network.test(source) && campaign == null) {
+    medium = 'organic_social'
+  } else if (social_network.test(source) && campaign != null) {
+    medium = 'paid_social'
+  } else {
+    medium = 'unknown'
+  }
 
-  // if (source == null) {
-  //   medium = null
-  // } else if (source == 'direct') {
-  //   medium = 'none'
-  // } else if (search_engine.test(source) && campaign == null) {
-  //   medium = 'organic_search'
-  // } else if (search_engine.test(source) && campaign != null) {
-  //   medium = 'paid_search'
-  // } else if (social_network.test(source) && campaign == null) {
-  //   medium = 'organic_social'
-  // } else if (social_network.test(source) && campaign != null) {
-  //   medium = 'paid_social'
-  // } else {
-  //   medium = 'unknown'
-  // }
-
-  // console.log(medium)
-  return 'DIOCAN'
+  return medium
 }

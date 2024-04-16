@@ -1,7 +1,7 @@
 // Send hits
 
 function sendData(full_endpoint, payload, data) {
-  log('send data ok')
+  console.log('send data ok')
   // payload.date = formatDatetime(payload.timestamp).split("T")[0]
   // payload.date_time = formatDatetime(payload.timestamp)
 // 

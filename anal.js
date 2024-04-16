@@ -70,11 +70,9 @@ function parseUa(){
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-function getSource(utm_source, domain, referrer) {
+function getSource(domain, referrer) {
   if (referrer == domain) {
     source = null
-  } else if (utm_source != null) {
-    source = utm_source
   } else if (referrer == '') {
     source = 'direct'
   } else {

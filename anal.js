@@ -62,8 +62,40 @@ function formatDatetime(timestamp) {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-function parseUa(){
+function parseUa() {
   var uap = new UAParser()
   var uap_res = uap.getResult()
   return uap_res
+}
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+function getChannelGroup(referrer, source, campaign) {
+  const organic_search_source = new RegExp('google|bing|yahoo|baidu|yandex|duckduckgo|ask|aol|ecosia')
+  const organic_social_source = new RegExp('facebook|messenger|instagram|tiktok|t\.co|twitter|linkedin|pinterest|youtube|whatsapp|wechat')
+  const email_source = new RegExp('email')
+    
+  if (source == null) {
+    return 'internal_traffic'
+  } else if (source == 'direct' && campaign == null) {
+    return 'direct'
+  } else if (source == 'tagassistant.google.com'){
+    return 'gtm_debugger'
+  } else if (organic_search_source.test(source) && campaign == null) {
+    return 'organic_search'
+  } else if (organic_social_source.test(source) && campaign == null) {
+    return 'organic_social'
+  } else if (organic_search_source.test(source) && campaign !== null) {
+    return 'paid_search'
+  } else if (organic_social_source.test(source) && campaign != null) {
+    return 'paid_social'
+  } else if (email_source.test(source) && campaign != null) {
+    return 'email'
+  } else if (referrer != null && campaign == null) {
+    return 'referral'
+  } else if (referrer != null && campaign != null) {
+    return 'affiliate'
+  } else {
+    return 'undefined'
+  }
 }

@@ -6,7 +6,6 @@ function sendData(full_endpoint, payload, data) {
   payload.date_time = formatDatetime(timestamp)
   
   ua_info = parseUa()
-  payload.session_data.user_agent = ua_info.ua
   payload.session_data.browser_name = ua_info.browser.name
   payload.session_data.browser_version = ua_info.browser.version
   payload.session_data.browser_language = navigator.language || navigator.userLanguage 

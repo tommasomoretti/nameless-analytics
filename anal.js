@@ -2,8 +2,8 @@
 
 function sendData(full_endpoint, payload, data) {
   const timestamp = payload.event_data.event_timestamp
-  payload.date = formatDatetime(timestamp).split("T")[0]
-  payload.date_time = formatDatetime(timestamp)
+  payload.event_date = formatDatetime(timestamp).split("T")[0]
+  payload.event_timestamp = timestamp
   
   ua_info = parseUa()
   payload.session_data.browser_name = ua_info.browser.name

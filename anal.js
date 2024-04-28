@@ -98,3 +98,12 @@ function getChannelGroup(referrer_hostname, source, campaign) {
     return 'undefined'
   }
 }
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------
+
+window.addEventListener('beforeunload', function (event) {
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'page_closed'
+  });
+}, true);

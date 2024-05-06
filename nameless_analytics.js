@@ -101,9 +101,7 @@ function getChannelGroup(referrer_hostname, source, campaign) {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-window.addEventListener('beforeunload', function (event) {
-  setTimeout(self.close(), 1000);
-  
+window.addEventListener('beforeunload', function (event) {  
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({
     event: 'page_closed'

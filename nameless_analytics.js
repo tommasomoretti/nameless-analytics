@@ -24,6 +24,7 @@ function sendData(full_endpoint, payload, data) {
     method: 'POST',
     credentials: 'include',
     mode: 'cors',
+    keepalive: true,
     body: JSON.stringify(payload)
   })
   .then((response) => response.json())

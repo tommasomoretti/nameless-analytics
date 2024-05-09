@@ -3,9 +3,8 @@
 function sendData(full_endpoint, payload, data) {
   const timestamp = payload.event_data.event_timestamp
   payload.event_date = formatDatetime(timestamp).split("T")[0]
-
-  uap_res.browser.screen_size = window.screen.width + "x" + window.screen.height
-  uap_res.browser.wiewport_size = window.innerWidth + "x" + window.innerHeight
+  payload.event_data.screen_size = window.screen.width + "x" + window.screen.height
+  payload.event_data.wiewport_size = window.innerWidth + "x" + window.innerHeight
   
   if(data.config_variable.enable_logs){console.log('  Event data')}
   if(data.config_variable.enable_logs){console.log('    👉 Event name: ' + payload.event_name)}

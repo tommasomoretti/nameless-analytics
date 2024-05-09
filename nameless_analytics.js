@@ -4,18 +4,6 @@ function sendData(full_endpoint, payload, data) {
   const timestamp = payload.event_data.event_timestamp
   payload.event_date = formatDatetime(timestamp).split("T")[0]
   
-  ua_info = parseUa()
-  payload.session_data.browser_name = ua_info.browser.name
-  payload.session_data.browser_version = ua_info.browser.version
-  payload.session_data.browser_language = navigator.language || navigator.userLanguage 
-  payload.session_data.device_type = ua_info.device.type || "desktop"
-  payload.session_data.device_vendor = ua_info.device.vendor
-  payload.session_data.device_model = ua_info.device.model
-  payload.session_data.os_name = ua_info.os.name
-  payload.session_data.os_version = ua_info.os.version
-  payload.event_data.screen_size = window.screen.width + "x" + window.screen.height
-  payload.event_data.wiewport_size = window.innerWidth + "x" + window.innerHeight
-  
   if(data.config_variable.enable_logs){console.log('  Event data')}
   if(data.config_variable.enable_logs){console.log('    👉 Event name: ' + payload.event_name)}
   if(data.config_variable.enable_logs){console.log('    👉 Request payload: ', payload)}
@@ -62,9 +50,14 @@ function formatDatetime(timestamp) {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-function parseUa() {
+function parseUserAgent() {
   var uap = new UAParser()
   var uap_res = uap.getResult()
+  
+  uap_res.browser.language = navigator.language
+  uap_res.browser.screen_size = window.screen.width + "x" + window.screen.height
+  uap_res.browser.wiewport_size = window.innerWidth + "x" + window.innerHeight
+  
   return uap_res
 }
 

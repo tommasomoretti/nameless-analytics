@@ -8,6 +8,8 @@ function sendData(full_endpoint, payload, data) {
   
   if(data.config_variable.enable_logs){console.log('    👉 Event name: ' + payload.event_name)}
   if(data.config_variable.enable_logs){console.log('    👉 Request payload: ', payload)}
+
+  if(data.config_variable.enable_logs){console.log('  Sending request...)}  
   
   fetch(full_endpoint, {
     method: 'POST',
@@ -18,14 +20,12 @@ function sendData(full_endpoint, payload, data) {
   })
   .then((response) => response.json())
   .then((response_json) => {
-    if(data.config_variable.enable_logs){console.log('  Request response')}
     if(data.config_variable.enable_logs){console.log('    ' + response_json.response)}
     if (response_json.status_code === 200)
       return data.gtmOnSuccess()
     else return data.gtmOnFailure()
   })
   .catch((error) => {
-    if(data.config_variable.enable_logs){console.log('Request response')}
     if(data.config_variable.enable_logs){console.log(error)}
     return data.gtmOnFailure()
   })

@@ -9,7 +9,7 @@ function sendData(full_endpoint, payload, data) {
   if(data.config_variable.enable_logs){console.log('    👉 Event name: ' + payload.event_name)}
   if(data.config_variable.enable_logs){console.log('    👉 Request payload: ', payload)}
 
-  if(data.config_variable.enable_logs){console.log('  Sending request...)}  
+  if(data.config_variable.enable_logs){console.log('  Sending request...'}  
   
   fetch(full_endpoint, {
     method: 'POST',

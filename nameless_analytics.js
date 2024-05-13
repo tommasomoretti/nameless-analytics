@@ -8,7 +8,7 @@ function sendData(full_endpoint, payload, data) {
 
   if(data.config_variable.enable_logs){console.log('EVENT DATA')}
   if(data.config_variable.enable_logs){console.log('  Event name: ' + payload.event_name)}
-  if(data.config_variable.enable_logs){console.log('  Request payload: ', payload)}
+  if(data.config_variable.enable_logs){console.log('  Request payload: ', JSON.parse(payload))}
 
   if(data.config_variable.enable_logs){console.log('SENDING REQUEST...')} 
   

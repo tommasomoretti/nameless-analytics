@@ -1,7 +1,7 @@
 // Send hits
 
 function sendData(full_endpoint, payload, data) {
-  const timestamp = payload.event_data.event_timestamp
+  const timestamp = payload.event_timestamp
   payload.event_date = formatDatetime(timestamp).split("T")[0]
   payload.event_data.screen_size = window.screen.width + "x" + window.screen.height
   payload.event_data.wiewport_size = window.innerWidth + "x" + window.innerHeight

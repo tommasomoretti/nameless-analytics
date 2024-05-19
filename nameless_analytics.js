@@ -3,7 +3,14 @@
 function sendData(full_endpoint, payload, data) {
   const timestamp = payload.event_timestamp
   payload.event_date = formatDatetime(timestamp).split("T")[0]
-  payload.event_data.browser_language = navigator.language || navigator.userLanguage
+  payload.event_data.browser_name = parseUserAgent().browser.name,
+  payload.event_data.browser_language = parseUserAgent().browser.language,
+  payload.event_data.browser_version = parseUserAgent().browser.version,
+  payload.event_data.device_type = parseUserAgent().device.type || "desktop",
+  payload.event_data.device_vendor = parseUserAgent().device.vendor,
+  payload.event_data.device_model = parseUserAgent().device.model,
+  payload.event_data.os_name = parseUserAgent().os.name,
+  payload.event_data.os_version = parseUserAgent().os.version,
   payload.event_data.screen_size = window.screen.width + "x" + window.screen.height
   payload.event_data.wiewport_size = window.innerWidth + "x" + window.innerHeight
 

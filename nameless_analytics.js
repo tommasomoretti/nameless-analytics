@@ -111,22 +111,32 @@ function get_channel_grouping(referrer_hostname, source, campaign) {
 function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
   const saved_full_endpoint = full_endpoint;
   const saved_cross_domain_domains = cross_domain_domains;
-  console.log('Setting listener...')
+  console.log('Setting listener...');
+  
   document.addEventListener('click', async function(event) {
     const target = event.target;
-    console.log('saved_cross_domain_domains: ', saved_cross_domain_domains)
-    if (target.tagName === 'A' && new URL(target.href).hostname.includes(saved_cross_domain_domains)) {
-      event.preventDefault();
-      console.log('Cross-domain ok')
-      const decorated_url = await send_data_for_cross_domain(saved_full_endpoint, { event_name: 'get_user_data' }, target.href);
-      console.log('Url decorato: ', decorated_url)
+    console.log('saved_cross_domain_domains: ', saved_cross_domain_domains);
+
+    if (target.tagName === 'A') {
+      const link_url = new URL(target.href);
+      const domain_matches = saved_cross_domain_domains.some(domain => link_url.hostname.includes(domain));
       
-      if (decorated_url) {
-        target.href = decorated_url;
-        const newWindow = window.open(decorated_url, '_blank');
-        if (newWindow) {
-          newWindow.opener = null;
+      if (domain_matches) {
+        event.preventDefault();
+        console.log('Cross-domain ok');
+        
+        const decorated_url = await send_data_for_cross_domain(saved_full_endpoint, { event_name: 'get_user_data' }, target.href);
+        console.log('Url decorato: ', decorated_url);
+        
+        if (decorated_url) {
+          target.href = decorated_url;
+          const newWindow = window.open(decorated_url, '_blank');
+          if (newWindow) {
+            newWindow.opener = null;
+          }
         }
+      } else {
+        console.log('Cross-domain not needed');
       }
     }
   });
@@ -162,4 +172,3 @@ async function send_data_for_cross_domain(saved_full_endpoint, payload, linkUrl)
     return "";
   }
 }
-

@@ -122,10 +122,10 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
       
       if (domain_matches) {
         event.preventDefault();
-        console.log('Cross-domain ok');
+        console.log('Cross-domain:');
         
         const decorated_url = await send_data_for_cross_domain(saved_full_endpoint, { event_name: 'get_user_data' }, target.href);
-        console.log('Url decorato: ', decorated_url);
+        console.log('  Redirect to: ', decorated_url);
         
         if (decorated_url) {
           target.href = decorated_url;
@@ -155,15 +155,13 @@ async function send_data_for_cross_domain(saved_full_endpoint, payload, linkUrl)
 
     if (response_json.status_code === 200) {
       const session_id = response_json.data.session_id;
-      console.log('Session id: ' + session_id);
+      console.log('  Current session id: ' + session_id);
 
       const url = new URL(linkUrl);
       url.searchParams.set('na_id', session_id);
 
-      console.log(url.toString());
       return url.toString();
     } else {
-      console.log('DC');
       return "";
     }
   } catch (error) {

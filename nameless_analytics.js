@@ -111,11 +111,14 @@ function get_channel_grouping(referrer_hostname, source, campaign) {
 function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
   const full_endpoint = full_endpoint;
   const cross_domain_domains;
+  console.log('Setting listener...')
   document.addEventListener('click', async function(event) {
     const target = event.target;
     if (target.tagName === 'A' && new URL(target.href).hostname.includes(cross_domain_domains)) {
       event.preventDefault();
+      console.log('Cross-domain ok')
       const decorated_url = await send_request(full_endpoint, { event_name: 'get_user_data' }, target.href);
+      console.log('Url decorato: ', decorated_url)
       
       if (decorated_url) {
         target.href = decorated_url;
@@ -124,6 +127,8 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
           newWindow.opener = null;
         }
       }
+    } else {
+      console.log('Cross-domain not needed')
     }
   });
 }

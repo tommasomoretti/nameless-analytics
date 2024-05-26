@@ -128,8 +128,6 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
           newWindow.opener = null;
         }
       }
-    } else {
-      console.log('Cross-domain not needed')
     }
   });
 }

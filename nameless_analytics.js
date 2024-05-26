@@ -160,4 +160,6 @@ async function send_request(full_endpoint, payload, linkUrl) {
     return "";
   }
 }
+  }
+}
 

@@ -1,16 +1,16 @@
 // Send hits
 
-function sendData(full_endpoint, payload, data) {
+function send_data(full_endpoint, payload, data) {
   const timestamp = payload.event_timestamp
-  payload.event_date = formatDatetime(timestamp).split("T")[0]
-  payload.event_data.browser_name = parseUserAgent().browser.name,
-  payload.event_data.browser_language = parseUserAgent().browser.language,
-  payload.event_data.browser_version = parseUserAgent().browser.version,
-  payload.event_data.device_type = parseUserAgent().device.type || "desktop",
-  payload.event_data.device_vendor = parseUserAgent().device.vendor,
-  payload.event_data.device_model = parseUserAgent().device.model,
-  payload.event_data.os_name = parseUserAgent().os.name,
-  payload.event_data.os_version = parseUserAgent().os.version,
+  payload.event_date = format_datetime(timestamp).split("T")[0]
+  payload.event_data.browser_name = parse_user_agent().browser.name,
+  payload.event_data.browser_language = parse_user_agent().browser.language,
+  payload.event_data.browser_version = parse_user_agent().browser.version,
+  payload.event_data.device_type = parse_user_agent().device.type || "desktop",
+  payload.event_data.device_vendor = parse_user_agent().device.vendor,
+  payload.event_data.device_model = parse_user_agent().device.model,
+  payload.event_data.os_name = parse_user_agent().os.name,
+  payload.event_data.os_version = parse_user_agent().os.version,
   payload.event_data.screen_size = window.screen.width + "x" + window.screen.height
   payload.event_data.wiewport_size = window.innerWidth + "x" + window.innerHeight
 
@@ -44,7 +44,7 @@ function sendData(full_endpoint, payload, data) {
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Format timestamp into date 
-function formatDatetime(timestamp) {
+function format_datetime(timestamp) {
   const date = new Date(timestamp)
 
   const year = date.getUTCFullYear()
@@ -63,7 +63,7 @@ function formatDatetime(timestamp) {
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Parse user agent
-function parseUserAgent() {
+function parse_user_agent() {
   var uap = new UAParser()
   var uap_res = uap.getResult()
   
@@ -75,7 +75,7 @@ function parseUserAgent() {
 
 
 // Channel grouping
-function getChannelGrouping(referrer_hostname, source, campaign) {
+function get_channel_grouping(referrer_hostname, source, campaign) {
   const organic_search_source = new RegExp('google|bing|yahoo|baidu|yandex|duckduckgo|ask|aol|ecosia')
   const organic_social_source = new RegExp('facebook|messenger|instagram|tiktok|t\.co|twitter|linkedin|pinterest|youtube|whatsapp|wechat')
   const email_source = new RegExp('email')

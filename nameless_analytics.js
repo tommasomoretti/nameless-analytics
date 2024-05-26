@@ -114,10 +114,10 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
   console.log('Setting listener...')
   document.addEventListener('click', async function(event) {
     const target = event.target;
-    if (target.tagName === 'A' && new URL(target.href).hostname.includes(cross_domain_domains)) {
+    if (target.tagName === 'A' && new URL(target.href).hostname.includes(saved_cross_domain_domains)) {
       event.preventDefault();
       console.log('Cross-domain ok')
-      const decorated_url = await send_request(full_endpoint, { event_name: 'get_user_data' }, target.href);
+      const decorated_url = await send_data_for_cross_domain(saved_full_endpoint, { event_name: 'get_user_data' }, target.href);
       console.log('Url decorato: ', decorated_url)
       
       if (decorated_url) {
@@ -133,9 +133,9 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
   });
 }
 
-async function send_request(full_endpoint, payload, linkUrl) {
+async function send_data_for_cross_domain(saved_full_endpoint, payload, linkUrl) {
   try {
-    const response = await fetch(full_endpoint, {
+    const response = await fetch(saved_full_endpoint, {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',

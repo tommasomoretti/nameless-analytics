@@ -108,10 +108,12 @@ function get_channel_grouping(referrer_hostname, source, campaign) {
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Cross-domain
-function set_cross_domain_listener(full_endpoint, cross_domain_domain) {
+function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
+  const full_endpoint = full_endpoint;
+  const cross_domain_domains
   document.addEventListener('click', async function(event) {
     const target = event.target;
-    if (target.tagName === 'A' && new URL(target.href).hostname.includes(cross_domain_domain)) {
+    if (target.tagName === 'A' && new URL(target.href).hostname.includes(cross_domain_domains)) {
       event.preventDefault();
       const decorated_url = await send_request(full_endpoint, { event_name: 'get_user_data' }, target.href);
       

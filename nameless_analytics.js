@@ -109,8 +109,8 @@ function get_channel_grouping(referrer_hostname, source, campaign) {
 
 // Cross-domain
 function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
-  const full_endpoint = full_endpoint;
-  const cross_domain_domains;
+  const saved_full_endpoint = full_endpoint;
+  const saved_cross_domain_domains = cross_domain_domains;
   console.log('Setting listener...')
   document.addEventListener('click', async function(event) {
     const target = event.target;

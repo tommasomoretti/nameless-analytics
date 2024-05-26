@@ -110,7 +110,7 @@ function get_channel_grouping(referrer_hostname, source, campaign) {
 // Cross-domain
 function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
   const full_endpoint = full_endpoint;
-  const cross_domain_domains
+  const cross_domain_domains;
   document.addEventListener('click', async function(event) {
     const target = event.target;
     if (target.tagName === 'A' && new URL(target.href).hostname.includes(cross_domain_domains)) {

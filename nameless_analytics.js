@@ -114,6 +114,7 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
   console.log('Setting listener...')
   document.addEventListener('click', async function(event) {
     const target = event.target;
+    console.log('saved_cross_domain_domains: ', saved_cross_domain_domains)
     if (target.tagName === 'A' && new URL(target.href).hostname.includes(saved_cross_domain_domains)) {
       event.preventDefault();
       console.log('Cross-domain ok')

@@ -115,7 +115,6 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
   
   document.addEventListener('click', async function(event) {
     const target = event.target;
-    console.log('saved_cross_domain_domains: ', saved_cross_domain_domains);
 
     if (target.tagName === 'A') {
       const link_url = new URL(target.href);

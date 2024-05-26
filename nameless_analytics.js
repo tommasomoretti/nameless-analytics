@@ -108,22 +108,18 @@ function get_channel_grouping(referrer_hostname, source, campaign) {
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Cross-domain
-function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
+function set_cross_domain_listener(full_endpoint, cross_domain_domain) {
   document.addEventListener('click', async function(event) {
     const target = event.target;
-    if (target.tagName === 'A') {
-      const link_url = new URL(target.href);
-
-      if (cross_domain_domains.some(domain => link_url.hostname.includes(domain))) {
-        event.preventDefault();
-        const decorated_url = await send_request(full_endpoint, { event_name: 'get_user_data' }, link_url);
-
-        if (decorated_url) {
-          target.href = decorated_url;
-          const newWindow = window.open(decorated_url, '_blank');
-          if (newWindow) {
-            newWindow.opener = null;
-          }
+    if (target.tagName === 'A' && new URL(target.href).hostname.includes(cross_domain_domain)) {
+      event.preventDefault();
+      const decorated_url = await send_request(full_endpoint, { event_name: 'get_user_data' }, target.href);
+      
+      if (decorated_url) {
+        target.href = decorated_url;
+        const newWindow = window.open(decorated_url, '_blank');
+        if (newWindow) {
+          newWindow.opener = null;
         }
       }
     }
@@ -158,8 +154,6 @@ async function send_request(full_endpoint, payload, linkUrl) {
   } catch (error) {
     console.error('Error during fetch:', error);
     return "";
-  }
-}
   }
 }
 

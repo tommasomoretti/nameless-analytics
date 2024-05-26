@@ -43,6 +43,7 @@ function sendData(full_endpoint, payload, data) {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
+// Format timestamp into date 
 function formatDatetime(timestamp) {
   const date = new Date(timestamp)
 
@@ -61,6 +62,7 @@ function formatDatetime(timestamp) {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
+// Parse user agent
 function parseUserAgent() {
   var uap = new UAParser()
   var uap_res = uap.getResult()
@@ -71,7 +73,9 @@ function parseUserAgent() {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-function getChannelGroup(referrer_hostname, source, campaign) {
+
+// Channel grouping
+function getChannelGrouping(referrer_hostname, source, campaign) {
   const organic_search_source = new RegExp('google|bing|yahoo|baidu|yandex|duckduckgo|ask|aol|ecosia')
   const organic_social_source = new RegExp('facebook|messenger|instagram|tiktok|t\.co|twitter|linkedin|pinterest|youtube|whatsapp|wechat')
   const email_source = new RegExp('email')
@@ -103,9 +107,52 @@ function getChannelGroup(referrer_hostname, source, campaign) {
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
-// window.addEventListener('beforeunload', function (event) {  
-//   window.dataLayer = window.dataLayer || [];
-//   window.dataLayer.push({
-//     event: 'page_closed'
-//   });
-// }, true);
+// Cross-domain
+function set_cross_domain_listener(full_endpoint, cross_domain_domain) {
+  document.addEventListener('click', async function(event) {
+    const target = event.target;
+    if (target.tagName === 'A' && new URL(target.href).hostname.includes(cross_domain_domain)) {
+      event.preventDefault();
+      const decorated_url = await send_request(full_endpoint, { event_name: 'get_user_data' }, target.href);
+      
+      if (decorated_url) {
+        target.href = decorated_url;
+        const newWindow = window.open(decorated_url, '_blank');
+        if (newWindow) {
+          newWindow.opener = null;
+        }
+      }
+    }
+  });
+}
+
+async function send_request(full_endpoint, payload, linkUrl) {
+  try {
+    const response = await fetch(full_endpoint, {
+      method: 'POST',
+      credentials: 'include',
+      mode: 'cors',
+      keepalive: true,
+      body: JSON.stringify(payload)
+    });
+
+    const response_json = await response.json();
+
+    if (response_json.status_code === 200) {
+      const session_id = response_json.data.session_id;
+      console.log('Session id: ' + session_id);
+
+      const url = new URL(linkUrl);
+      url.searchParams.set('na_id', session_id);
+
+      console.log(url.toString());
+      return url.toString();
+    } else {
+      console.log('DC');
+      return "";
+    }
+  } catch (error) {
+    console.error('Error during fetch:', error);
+    return "";
+  }
+}

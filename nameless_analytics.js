@@ -127,9 +127,10 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
                 console.log('  Redirect to: ', decorated_url);
                 if (decorated_url) {
                     target.href = decorated_url;
-                    const newWindow = window.open(decorated_url, target_param);
-                    if (newWindow) {
-                        newWindow.opener = null;
+                    if(target_param) {
+                        window.open(decorated_url, target_param)
+                    } else {
+                        window.open(decorated_url, '_self')
                     }
                 }
             } else {

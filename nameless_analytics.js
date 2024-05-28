@@ -108,11 +108,12 @@ function get_channel_grouping(referrer_hostname, source, campaign) {
 //----------------------------------------------------------------------------------------------------------------------------------------------------
 
 // Cross-domain
+let listener
 function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
     const saved_full_endpoint = full_endpoint;
     const saved_cross_domain_domains = cross_domain_domains;
     console.log('Setting listener...');
-    document.addEventListener('click', async function(event) {
+    listener = async function(event) {
         const target = event.target;
         const target_param = target.getAttribute("target");
         if (target.tagName === 'A') {
@@ -137,7 +138,11 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
                 console.log('Cross-domain not needed');
             }
         }
-    });
+    }
+    document.addEventListener('click', listener);
+}
+function remove_cross_domain_listener(){
+  document.removeEventListener('click', listener);
 }
 async function send_data_for_cross_domain(saved_full_endpoint, payload, linkUrl) {
     try {

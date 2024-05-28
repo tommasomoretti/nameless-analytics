@@ -142,6 +142,7 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
     document.addEventListener('click', listener);
 }
 function remove_cross_domain_listener(){
+  console.log('Listener removed')
   document.removeEventListener('click', listener);
 }
 async function send_data_for_cross_domain(saved_full_endpoint, payload, linkUrl) {

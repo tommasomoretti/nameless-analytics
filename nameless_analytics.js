@@ -109,57 +109,56 @@ function get_channel_grouping(referrer_hostname, source, campaign) {
 
 // Cross-domain
 function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
-  const saved_full_endpoint = full_endpoint;
-  const saved_cross_domain_domains = cross_domain_domains;
-  console.log('Setting listener...');
-
-  document.addEventListener('click', async function(event) {
-    const target = event.target;
-    if (target.tagName === 'A') {
-      const link_url = new URL(target.href);
-      const domain_matches = saved_cross_domain_domains.some(domain => link_url.hostname.includes(domain));
-
-      if (domain_matches) {
-        event.preventDefault();
-        console.log('Cross-domain:');
-
-        const decorated_url = await send_data_for_cross_domain(saved_full_endpoint, { event_name: 'get_user_data' }, target.href);
-        console.log('  Redirect to: ', decorated_url);
-        
-        if (decorated_url) {
-          target.href = decorated_url;
-          const newWindow = window.open(decorated_url, '_blank');
-          if (newWindow) {
-            newWindow.opener = null;
-          }
+    const saved_full_endpoint = full_endpoint;
+    const saved_cross_domain_domains = cross_domain_domains;
+    console.log('Setting listener...');
+    document.addEventListener('click', async function(event) {
+        const target = event.target;
+        const target_param = target.getAttribute("target");
+        if (target.tagName === 'A') {
+            const link_url = new URL(target.href);
+            const domain_matches = saved_cross_domain_domains.some(domain=>link_url.hostname.includes(domain));
+            if (domain_matches) {
+                event.preventDefault();
+                console.log('Cross-domain:');
+                const decorated_url = await send_data_for_cross_domain(saved_full_endpoint, {
+                    event_name: 'get_user_data'
+                }, target.href);
+                console.log('  Redirect to: ', decorated_url);
+                if (decorated_url) {
+                    target.href = decorated_url;
+                    const newWindow = window.open(decorated_url, target_param);
+                    if (newWindow) {
+                        newWindow.opener = null;
+                    }
+                }
+            } else {
+                console.log('Cross-domain not needed');
+            }
         }
-      } else {
-        console.log('Cross-domain not needed');
-      }
-    }
-  });
+    });
 }
 async function send_data_for_cross_domain(saved_full_endpoint, payload, linkUrl) {
-  try {
-    const response = await fetch(saved_full_endpoint, {
-      method: 'POST',
-      credentials: 'include',
-      mode: 'cors',
-      keepalive: true,
-      body: JSON.stringify(payload)
-    });
-    const response_json = await response.json();
-    if (response_json.status_code === 200) {
-      const session_id = response_json.data.session_id;
-      console.log('  Current session id: ' + session_id);
-      const url = new URL(linkUrl);
-      url.searchParams.set('na_id', session_id);
-      return url.toString();
-    } else {
-      return "";
+    try {
+        const response = await fetch(saved_full_endpoint, {
+            method: 'POST',
+            credentials: 'include',
+            mode: 'cors',
+            keepalive: true,
+            body: JSON.stringify(payload)
+        });
+        const response_json = await response.json();
+        if (response_json.status_code === 200) {
+            const session_id = response_json.data.session_id;
+            console.log('  Current session id: ' + session_id);
+            const url = new URL(linkUrl);
+            url.searchParams.set('na_id', session_id);
+            return url.toString();
+        } else {
+            return "";
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+        return "";
     }
-  } catch (error) {
-    console.error('Error during fetch:', error);
-    return "";
-  }
 }

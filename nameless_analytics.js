@@ -119,7 +119,7 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
         if (target.tagName === 'A') {
             const link_url = new URL(target.href);
             const domain_matches = saved_cross_domain_domains.some(domain=>link_url.hostname.includes(domain));
-            if (domain_matches) {
+            if (domain_matches && get_analytics_storage_value()) {
                 event.preventDefault();
                 console.log('Cross-domain:');
                 const decorated_url = await send_data_for_cross_domain(saved_full_endpoint, {
@@ -135,16 +135,47 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
                     }
                 }
             } else {
-                console.log('Cross-domain not needed');
+                console.log('Cross-domain not needed or not consented');
             }
         }
     }
     document.addEventListener('click', listener);
 }
-function remove_cross_domain_listener(){
-  console.log('Listener removed')
-  document.removeEventListener('click', listener);
+
+function get_analytics_storage_value(dataLayer) {
+  let consent_values = {
+    // ad_personalization: null,
+    // ad_storage: null,
+    // ad_user_data: null,
+    analytics_storage: null,
+    // functionality_storage: null,
+    // personalization_storage: null,
+    // security_storage: null
+  }
+  for (let i = dataLayer.length - 1; i >= 0; i--) {
+    const item = dataLayer[i];
+    if (item[0] === "consent" && (item[1] === "default" || item[1] === "update")) {
+      const consent_data = item[2];
+      if (consent_data) {
+        // consent_values.ad_personalization = consentData.ad_personalization !== undefined ? consentData.ad_personalization : consentValues.ad_personalization;
+        // consent_values.ad_storage = consentData.ad_storage !== undefined ? consentData.ad_storage : consentValues.ad_storage;
+        // consent_values.ad_user_data = consentData.ad_user_data !== undefined ? consentData.ad_user_data : consentValues.ad_user_data;
+        consent_values.analytics_storage = consent_data.analytics_storage !== undefined ? consent_data.analytics_storage : consent_values.analytics_storage;
+        // consent_values.functionality_storage = consentData.functionality_storage !== undefined ? consentData.functionality_storage : consentValues.functionality_storage;
+        // consent_values.personalization_storage = consentData.personalization_storage !== undefined ? consentData.personalization_storage : consentValues.personalization_storage;
+        // consent_values.security_storage = consentData.security_storage !== undefined ? consentData.security_storage : consentValues.security_storage;
+
+        break;
+      }
+    }
+  }
+  if (consent_values.analytics_storage === 'granted') {
+    return true;
+  } else {
+    return false
+  }
 }
+
 async function send_data_for_cross_domain(saved_full_endpoint, payload, linkUrl) {
     try {
         const response = await fetch(saved_full_endpoint, {

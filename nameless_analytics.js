@@ -119,7 +119,7 @@ function set_cross_domain_listener(full_endpoint, cross_domain_domains) {
         if (target.tagName === 'A') {
             const link_url = new URL(target.href);
             const domain_matches = saved_cross_domain_domains.some(domain=>link_url.hostname.includes(domain));
-            if (domain_matches && get_analytics_storage_value()) {
+            if (domain_matches && get_analytics_storage_value(window.dataLayer)) {
                 event.preventDefault();
                 console.log('Cross-domain:');
                 const decorated_url = await send_data_for_cross_domain(saved_full_endpoint, {

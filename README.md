@@ -10,7 +10,7 @@ Collect, analyze and activate your website data with a flexible analytics suite 
 ## Main features
 - **1° party data storage:** Cookies are released in a first-party context, in a secure and inaccessible mode to third parties.
 - **Privacy-focused:** Data is saved in BigQuery, Google's SQL data warehouse, and is proprietary. By default, no IP or personal user data is tracked and it automatically respects user consent.
-- **Real-time:** L'inserimento dei dati in Google Big Query è pressochè instantaneo e gli eventi sono disponibili dopo un paio di secondi
+- **Real-time:** Data insertion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds
 - **Light-weight:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 - **Client-side tracking:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 - **Server-side tracking:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.

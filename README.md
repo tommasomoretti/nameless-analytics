@@ -1,32 +1,22 @@
-# TO DO:
+# Nameless Analytics (Beta 1.0)
+ 
+## An open source analytics platform for power users
 
-## Add event number
-💩
+Collect, analyze and activate your website data with a flexible analytics suite that lets you respect user privacy, for free.
 
-## Timing data su page_info
-Time to DOM Interactive
-<pre><code>console.log(performance.timing.responseStart)</pre></code>
+### Main features
+- 1° party data storage 
+- Privacy-focused
+- Real-time
+- Light-weight
+- Client-side tracking
+- Server-side tracking
 
-Time to DOM Complete
-<pre><code>console.log(performance.timing.responseStart)</pre></code>
+### How it works
+Nameless Analytics è un tracker per siti web basato su Google Tag Manager (sia client-side sia server-side) e su Google Big Query. 
 
-Page Render Time
-<pre><code>console.log(performance.timing.domLoading)</pre></code>
+- [Tag client side]()
+- [Tag server side]()
+- [Procedura per creare la tabella in Google Big Query]()
 
-Total Page Load Time
-<pre><code>console.log(performance.timing.navigationStart)</pre></code>
-
-Event listener
-<pre><code>window.addEventListener('DOMContentLoaded', (event) => {
-  // Send timing data
-})</pre></code>
-
-
-## Session start event
-Quando crea il sessionStorage con i dati della sessione
-
-## Session end event
-Event listener
-<pre><code>window.addEventListener('beforeunload', (event) => {
-  // Send timing data
-})</pre></code>
+- 

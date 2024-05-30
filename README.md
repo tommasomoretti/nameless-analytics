@@ -4,6 +4,9 @@ An open source analytics platform for power users.
 
 Collect, analyze and activate your website data with a flexible analytics suite that lets you respect user privacy, for free.
 
+> [!WARNING]
+> Nameless Analytics is still in beta
+
 ## Main features
 - 1° party data storage: I cookie vengono rilasciati in un contesto di prima parte, in modalità sicura e inaccessibile a terzi 
 - Privacy-focused: I dati vengono salvati in BigQuery, la datawarehouse SQL di Google Cloud e sono proprietari. Di default non viene tracciato nessun ip o dato personale degli utenti. Rispetta i consensi dell'utente in automatico

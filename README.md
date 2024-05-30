@@ -8,16 +8,12 @@ Collect, analyze and activate your website data with a flexible analytics suite 
 > Nameless Analytics is still in beta
 
 ## Main features
-- 1° party data storage: I cookie vengono rilasciati in un contesto di prima parte, in modalità sicura e inaccessibile a terzi 
-- Privacy-focused: I dati vengono salvati in BigQuery, la datawarehouse SQL di Google Cloud e sono proprietari. Di default non viene tracciato nessun ip o dato personale degli utenti. Rispetta i consensi dell'utente in automatico
-
-- Real-time: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget. 
-
-- Light-weight: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget. 
-
-- Client-side tracking: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget. 
-
-- Server-side tracking: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget. 
+- **1° party data storage:** Cookies are released in a first-party context, in a secure and inaccessible mode to third parties.
+- **Privacy-focused:** Data is saved in BigQuery, Google's SQL data warehouse, and is proprietary. By default, no IP or personal user data is tracked and it automatically respects user consent.
+- **Real-time:** L'inserimento dei dati in Google Big Query è pressochè instantaneo e gli eventi sono disponibili dopo un paio di secondi
+- **Light-weight:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+- **Client-side tracking:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+- **Server-side tracking:** Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 
 ## How it works

@@ -36,6 +36,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 
 ## Start from here
 Read how to setup 
-- [GTM client side tag]()
-- [GTM server side tag]()
+- [GTM client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
+- [GTM server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
 - [Google Big Query main table]()

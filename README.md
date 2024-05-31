@@ -26,6 +26,9 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 
+## How it works
+![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/74141824-9ef9-4ea5-88f0-1e9cd275e791)
+
 
 ## Get started
 Read how to setup 

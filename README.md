@@ -27,9 +27,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 
 
 ## How it works
+Requisiti di base
+- Google client-side Tag Manager
+- Google server-side Tag Manager, hostato su app engine o su cloud run (da testare se funziona anche su Stape.io)
+
+See [Get started section](https://github.com/tommasomoretti/nameless-analytics/edit/main/README.md#get-started) for more details
+
 ![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/6a065dfe-1511-4d2c-ad27-ec6d0be8b248)
 
-Do you want to see a live demo? visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) and open the developer console.
+Do you want to see a live demo? Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) and open the developer console.
 
 <img width="1263" alt="Nameless Analytics logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/bca94adf-cdf5-4bf3-bb41-e69461ba9b38">
 
@@ -37,9 +43,11 @@ Do you want to see a live demo? visit [namelessanalytics.com](https://namelessan
 
 ## Get started
 Read how to setup 
-1. [GTM client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
-2. [GTM server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
-3. [Google Big Query main table]()
+1. [Google App Engine for server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup)
+2. [Google Cloud Run for server-dise Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
+3. [GTM client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
+4. [GTM server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
+5. [Google Big Query main table]()
 
 ---
 

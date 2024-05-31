@@ -7,31 +7,31 @@ Collect, analyze and activate your website data with a flexible analytics suite 
 
 
 ## Main features
-**1° party data storage:** 
+- **1° party data storage**\
 Event data is saved in a own Google Cloud project. Cookies are released in a first-party context, in a secure and inaccessible mode to third parties.
 
-**Privacy-focused:**
+- **Privacy-focused**\
 By default, no IP or PII data is tracked, but you can add it, if your users consent. You can choose if track all events possibile or automatically respects user consent.
 
-**Real-time:** 
+- **Real-time**\
 Data insertion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
-**Light-weight:** 
+- **Light-weight**\ 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
-**Client-side tracking:**
+- **Client-side tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
-**Server-side tracking:** 
+- **Server-side tracking**\ 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 
 
-## Start from here
+## Get started
 Read how to setup 
-- [GTM client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
-- [GTM server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
-- [Google Big Query main table]()
+1. [GTM client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
+2. [GTM server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
+3. [Google Big Query main table]()
 
 ---
 

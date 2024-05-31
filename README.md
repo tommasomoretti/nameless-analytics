@@ -29,6 +29,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 ## How it works
 ![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/6a065dfe-1511-4d2c-ad27-ec6d0be8b248)
 
+Do you want to see a live demo? visit namelessanalytics.com or tommasomoretti.com and open the developer console.
+
+<img width="1263" alt="Nameless Analytics logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/bca94adf-cdf5-4bf3-bb41-e69461ba9b38">
+
+
 
 ## Get started
 Read how to setup 

@@ -31,7 +31,7 @@ Requisiti di base
 - Google client-side Tag Manager
 - Google server-side Tag Manager, hostato su app engine o su cloud run (da testare se funziona anche su Stape.io)
 
-See [Get started section](https://github.com/tommasomoretti/nameless-analytics/blob/main/README.md#get-started) for more details
+See [Get started section](https://github.com/tommasomoretti/nameless-analytics/blob/main/README.md#get-started) for details about how to setup server-side Google Tag Manager and the whole environment.
 
 ![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/6a065dfe-1511-4d2c-ad27-ec6d0be8b248)
 

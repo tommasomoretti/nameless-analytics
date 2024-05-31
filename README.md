@@ -4,9 +4,6 @@ An open source analytics platform for power users based on [Google Tag Manager](
 
 Collect, analyze and activate your website data with a flexible analytics suite that lets you respect user privacy, for free.
 
-> [!WARNING]
-> Nameless Analytics is still in beta
-
 
 
 ## Main features
@@ -27,10 +24,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 
 **Server-side tracking:** 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
-
-
-
-## How it works
 
 
 

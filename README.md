@@ -39,3 +39,7 @@ Read how to setup
 - [GTM client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
 - [GTM server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
 - [Google Big Query main table]()
+
+---
+
+Reach me at: [Email](mailto:hello@tommasomoretti.com) | [Website](https://tommasomoretti.com/?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) | [Twitter](https://twitter.com/tommoretti88) | [Linkedin](https://www.linkedin.com/in/tommasomoretti/)

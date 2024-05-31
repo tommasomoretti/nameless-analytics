@@ -27,7 +27,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 
 
 ## How it works
-![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/74141824-9ef9-4ea5-88f0-1e9cd275e791)
+![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/6a065dfe-1511-4d2c-ad27-ec6d0be8b248)
 
 
 ## Get started

@@ -1,4 +1,4 @@
-![Nameless analytics](https://namelessanalytics.com/img/Logo.svg)
+![Na logo beta](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/7d4ded5e-4b79-46a2-b089-03997724fd10)
 
 An open source analytics platform for power users based on [Google Tag Manager](https://marketingplatform.google.com/intl/it/about/tag-manager/) (both client-side and server-side) and [Google BigQuery](https://cloud.google.com/bigquery). 
 

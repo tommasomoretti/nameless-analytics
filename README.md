@@ -5,7 +5,6 @@ An open source analytics platform for power users based on [Google Tag Manager](
 Collect, analyze and activate your website data with a flexible analytics suite that lets you respect user privacy, for free.
 
 
-
 ## Main features
 - **1° party data storage**\
 Event data is saved in a own Google Cloud project. Cookies are released in a first-party context, in a secure and inaccessible mode to third parties.
@@ -25,6 +24,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 - **Server-side tracking**\ 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
+
 ## Basic requirements
 - Google client-side Tag Manager installed on a website
 - Google server-side Tag Manager hosting on app engine or cloud run (Stape.io da testare)
@@ -34,6 +34,7 @@ See [Get started section](https://github.com/tommasomoretti/nameless-analytics/b
 
 
 ## How it works
+
 
 ![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/6a065dfe-1511-4d2c-ad27-ec6d0be8b248)
 
@@ -48,11 +49,10 @@ In server-side Google Tag Manager you will see something like this:
 
 ## Get started
 Read how to setup 
-1. [Google App Engine for server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup)
-2. [Google Cloud Run for server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
-3. [GTM client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
-4. [GTM server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
-5. [Google Big Query main table]()
+1. Server-side Tag Manager  with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
+2. [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
+3. [Nameless Analytics server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
+4. [Nameless Analytics main table]() in Google Big Query
 
 ---
 

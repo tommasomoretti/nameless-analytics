@@ -34,9 +34,9 @@ See [Get started section](https://github.com/tommasomoretti/nameless-analytics/b
 
 
 ## How it works
+When a user land on your site, the first tag that fire checks the analytics_consent status. If it's denied, the tag waits until the consent is granted. If the consent is granted the tag fires, it loads the required libraries, set an event listener if cross-domain is enabled and sends the event to server-side Google Tag Manager's endpoint. 
 
-
-![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/6a065dfe-1511-4d2c-ad27-ec6d0be8b248)
+When the server-side Tag Manager client tag receives the request, it checks if there are any cookies. If they are not set, the client tag generates 2 valius (one is the client id for nameless_analytics_user cookie and the other is the session id for nameless_analytics_session cookie). If the client_cookie is sets but there is no session_cookie 
 
 Do you want to see a live demo? Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) and open the developer console.
 

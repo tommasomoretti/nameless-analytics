@@ -16,7 +16,7 @@ By default, no PII data is tracked, but you can add it, if your users consent. Y
 - **Real-time**\
 Data insertion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
-- **Light-weight**\ 
+- **Light-weight**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 - **Client-side tracking**\
@@ -49,7 +49,7 @@ In server-side Google Tag Manager you will see something like this:
 ## Get started
 Read how to setup 
 1. [Google App Engine for server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup)
-2. [Google Cloud Run for server-dise Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
+2. [Google Cloud Run for server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
 3. [GTM client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
 4. [GTM server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
 5. [Google Big Query main table]()

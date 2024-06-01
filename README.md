@@ -41,7 +41,7 @@ Do you want to see a live demo? Visit [namelessanalytics.com](https://namelessan
 
 <img width="1263" alt="Nameless Analytics client-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/bca94adf-cdf5-4bf3-bb41-e69461ba9b38">
 
-In server-side Google Tag Manager you will see something like that:
+In server-side Google Tag Manager you will see something like this:
 
 <img width="1512" alt="Nameless Analytics server-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/776e0527-0b20-46d0-90d1-cac8064e6b10">
 

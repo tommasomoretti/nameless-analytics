@@ -11,7 +11,7 @@ Collect, analyze and activate your website data with a flexible analytics suite 
 Event data is saved in a own Google Cloud project. Cookies are released in a first-party context, in a secure and inaccessible mode to third parties.
 
 - **Privacy-focused**\
-By default, no PII data is tracked, but you can add it, if your users consent. You can choose if track all events possibile or automatically respects user consent.
+By default, no PII data is tracked, but you can add it, if your users consent. You can choose if track every event or automatically respects user consent.
 
 - **Real-time**\
 Data insertion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
@@ -25,10 +25,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 - **Server-side tracking**\ 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
-## Requisiti di base
-- Google client-side Tag Manager
-- Google server-side Tag Manager, hostato su app engine o su cloud run (da testare se funziona anche su Stape.io)
-- Google BigQuery
+## Basic requirements
+- Google client-side Tag Manager installed on a website
+- Google server-side Tag Manager hosting on app engine or cloud run (Stape.io da testare)
+- Google BigQuery dataset with write permissions
 
 See [Get started section](https://github.com/tommasomoretti/nameless-analytics/blob/main/README.md#get-started) for details about how to setup server-side Google Tag Manager, the BigQuery main table and the whole environment.
 

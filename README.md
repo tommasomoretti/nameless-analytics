@@ -26,17 +26,20 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 
 
 ## Basic requirements
-- Google client-side Tag Manager installed on a website
-- Google server-side Tag Manager hosting on app engine or cloud run (Stape.io da testare)
+- Client-side Google Tag Manager installed on a website
+- Server-side Google Tag Manager hosted on app engine or cloud run (Stape.io da testare)
 - Google BigQuery dataset with write permissions
 
 See [Get started section](https://github.com/tommasomoretti/nameless-analytics/blob/main/README.md#get-started) for details about how to setup server-side Google Tag Manager, the BigQuery main table and the whole environment.
 
 
 ## How it works
-When a user land on your site, the first tag that fire checks the analytics_consent status. If it's denied, the tag waits until the consent is granted. If the consent is granted the tag fires, it loads the required libraries, set an event listener if cross-domain is enabled and sends the event to server-side Google Tag Manager's endpoint. 
+When a user land on your site, the first tag that fire checks the analytics_consent status. If it's denied, the tag waits until the consent is granted. If the consent is granted the tag fires, loads the required libraries, sets an event listener if cross-domain is enabled and sends the event to server-side Google Tag Manager's endpoint. 
 
-When the server-side Tag Manager client tag receives the request, it checks if there are any cookies. If they are not set, the client tag generates 2 valius (one is the client id for nameless_analytics_user cookie and the other is the session id for nameless_analytics_session cookie). If the client_cookie is sets but there is no session_cookie 
+When the server-side Tag Manager client tag receives the request, it checkss if there are any cookies. If them are not set, the client tag generates 2 valius (one is the client id for nameless_analytics_user cookie and the other is the session id for nameless_analytics_session cookie) and add the values to the hit. If the nameless_analytics_user cookie is sets but there is no nameless_analytics_session cookie, the client tag creates the nameless_analytics_session cookie and add the values to the hit. If both cookies are present, the tag does not create any cookies but add the values to the hit.
+
+If you enable the cross-domain feature, the one of the 2 libraries sets a click listener on the configured domains, send a request 'get_user_data' event to the server, the server respond with the 2 cookie values, the same listener decorates the url, and the user is redirected to the destination website. 
+When the user lands on the destination website, the first tag that fire check if there is a na_id parameter in the url. If it's presents, the hit and the cookie values sets by the server, will be contains the values of the na_id url parameter.
 
 Do you want to see a live demo? Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) and open the developer console.
 

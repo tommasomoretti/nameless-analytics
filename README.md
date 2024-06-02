@@ -41,7 +41,7 @@ Here a basic schema and explanation of how Nameless Analytics works.
 
 ### Client Side
 If the respect_consent_mode is enabled, when a page is loaded, the first tag that fires checks the analytics_consent status.
-- If consent is granted, the tag fires, loads the required libraries and sends the hit to the server-side Google Tag Manager endpoint, with the event name and event parameters configured in the tag.
+- If consent is granted, the tag loads the required libraries and sends the hit to the server-side Google Tag Manager endpoint, with the event name and event parameters configured in the tag.
 - If consent is denied, the tag waits until consent is granted.
 
 If the respect_consent_mode is disabled, the tag fires regardless of the user's consent.

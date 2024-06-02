@@ -80,7 +80,8 @@ Read how to setup
 1. [Server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
 2. [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
 3. [Nameless Analytics server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
-4. [Nameless Analytics main table](https://github.com/tommasomoretti/nameless-analytics-reporting-queries) in Google Big Query
+4. [Nameless Analytics main table and reporting queries](https://github.com/tommasomoretti/nameless-analytics-reporting-queries) in Google Big Query
+5. [Google Looker Studio Dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 
 ---
 

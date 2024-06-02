@@ -1,4 +1,4 @@
-![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/ea414fc8-3243-487e-8be5-d6cb1ac8772c)![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/fa490c69-dd83-46fa-94e5-4c88f9a1307e)![Na logo beta](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/7d4ded5e-4b79-46a2-b089-03997724fd10)
+![Na logo beta](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/7d4ded5e-4b79-46a2-b089-03997724fd10)
 
 An open source analytics platform for power users based on [Google Tag Manager](https://marketingplatform.google.com/intl/it/about/tag-manager/) and [Google BigQuery](https://cloud.google.com/bigquery). 
 
@@ -36,6 +36,7 @@ See [Get started section](https://github.com/tommasomoretti/nameless-analytics/b
 ## How it works
 Here is a basic schema and explanation of how Nameless Analytics works.
 
+![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/ea414fc8-3243-487e-8be5-d6cb1ac8772c)
 
 
 ### Client Side

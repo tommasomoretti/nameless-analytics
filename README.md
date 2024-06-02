@@ -55,12 +55,12 @@ When the server-side Tag Manager client tag receives the request, it checks if a
 After that the hit will be logged in a BigQuery event-date partitioned table.
 
 ### Cross Domain
-If cross-domain tracking is enabled and respect_consent_mode is enable, the client-side tag will set a listener on every link click after the consent is granted. with subsequent hits, the tag will enable or disable cross-domain functionality, as per the user's consent.  
+If cross-domain tracking is enabled and respect_consent_mode is enable, the client-side tag will set a listener on every link click after the consent is granted. With subsequent hits, the tag will enable or disable cross-domain functionality, as per the user's consent.  
 
 If cross-domain tracking is enabled and respect_consent_mode is disabled, the client-side tag will set a listener on every link click regardless of the user's consent.
 
-- When a user clicks on a cross-domain link, the listener sends a get_user_data request to the server. The server responds with the two cookie values, the listener decorates the URL with a parameter named na_id, and the user is redirected to the destination website.
-- When the user lands on the destination website, the first tag that fires checks if there is an na_id parameter in the URL. If it is present, the hit will contain a cross_domain_id parameter, and the server-side Client Tag will set the cookie with that value.
+- When a user clicks on a cross-domain link, the listener sends a get_user_data request to the server. The server responds with the two cookie values, the listener decorates the URL with a parameter named na_id and the user is redirected to the destination website.
+- When the user lands on the destination website, the first tag that fires checks if there is an na_id parameter in the URL. If it is present, the hit will contain a cross_domain_id parameter, and the server-side Client Tag will add it to the request and set the cookies with that values.
 
 If cross-domain tracking is disabled, the client-side tag will not set any listener.
 

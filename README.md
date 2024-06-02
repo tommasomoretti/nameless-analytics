@@ -21,7 +21,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 - **Client-side tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
-- **Server-side tracking**\ 
+- **Server-side tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 

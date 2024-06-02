@@ -34,13 +34,30 @@ See [Get started section](https://github.com/tommasomoretti/nameless-analytics/b
 
 
 ## How it works
-When a user land on your site, the first tag that fire checks the analytics_consent status. If it's denied, the tag waits until the consent is granted. If the consent is granted the tag fires, loads the required libraries, sets an event listener if cross-domain is enabled and sends the event to server-side Google Tag Manager's endpoint. 
+### Client Side
+If the respect_consent_mode option is enabled, when a user lands on your site, the first tag that fires checks the analytics_consent status.
+- If consent is denied, the tag waits until consent is granted.
+- If consent is granted, the tag fires, loads the required libraries, and sends the event to the server-side Google Tag Manager endpoint.
+- If the respect_consent_mode option is disabled, the tag fires regardless of the user's consent.
 
-When the server-side Tag Manager client tag receives the request, it checkss if there are any cookies. If them are not set, the client tag generates 2 valius (one is the client id for nameless_analytics_user cookie and the other is the session id for nameless_analytics_session cookie) and add the values to the hit. If the nameless_analytics_user cookie is sets but there is no nameless_analytics_session cookie, the client tag creates the nameless_analytics_session cookie and add the values to the hit. If both cookies are present, the tag does not create any cookies but add the values to the hit.
+### Server Side
+When the server-side Tag Manager client tag receives the request, it checks if any cookies are present.
 
-If you enable the cross-domain feature, the one of the 2 libraries sets a click listener on the configured domains, send a request 'get_user_data' event to the server, the server respond with the 2 cookie values, the same listener decorates the url, and the user is redirected to the destination website. 
-When the user lands on the destination website, the first tag that fire check if there is a na_id parameter in the url. If it's presents, the hit and the cookie values sets by the server, will be contains the values of the na_id url parameter.
+- If no cookies are present in the request, the client tag generates two values (one for the nameless_analytics_user cookie and one for the nameless_analytics_session cookie), adds these values to the hit, and sets the two cookies in the response.
+- If the nameless_analytics_user cookie is set but the nameless_analytics_session cookie is not, the client tag creates the nameless_analytics_session cookie, adds its value to the hit, and sets the cookie in the response.
+- If both cookies are present, the tag does not create any new cookies but adds their values to the hit.
 
+### Cross Domain
+If cross-domain tracking is enabled and respect_consent_mode is enable, the client-side tag will set a listener on every link click after the consent is granted. with subsequent hits, the tag will enable or disable cross-domain functionality, as per the user's consent.  
+
+If cross-domain tracking is enabled and respect_consent_mode is disabled, the client-side tag will set a listener on every link click regardless of the user's consent.
+
+- When a user clicks on a cross-domain link, the listener sends a get_user_data request to the server. The server responds with the two cookie values, the listener decorates the URL with a parameter named na_id, and the user is redirected to the destination website.
+- When the user lands on the destination website, the first tag that fires checks if there is an na_id parameter in the URL. If it is present, the hit will contain a cross_domain_id parameter, and the server-side Client Tag will set the cookie with that value.
+
+If cross-domain tracking is disabled, the client-side tag will not set listener on every link click.
+
+## In action
 Do you want to see a live demo? Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) and open the developer console.
 
 <img width="1263" alt="Nameless Analytics client-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/bca94adf-cdf5-4bf3-bb41-e69461ba9b38">

@@ -35,15 +35,15 @@ See [Get started section](https://github.com/tommasomoretti/nameless-analytics/b
 
 ## How it works
 ### Client Side
-If the respect_consent_mode is enabled, when a user lands on your site, the first tag that fires checks the analytics_consent status.
+If the respect_consent_mode is enabled, when a is loaded, the first tag that fires checks the analytics_consent status.
+- If consent is granted, the tag fires, loads the required libraries and sends the hit to the server-side Google Tag Manager endpoint, with the event name and event parameters configured in the tag.
 - If consent is denied, the tag waits until consent is granted.
-- If consent is granted, the tag fires, loads the required libraries, and sends the hit to the server-side Google Tag Manager endpoint, with the event name and event parameters configured in the tag.
 
 If the respect_consent_mode is disabled, the tag fires regardless of the user's consent.
 
 ### Server Side
 When the server-side Tag Manager client tag receives the request, it checks if any cookies are present.
-- If no cookies are present in the request, or nameless_analytics_user cookie is not, the client tag generates two values (one for nameless_analytics_user cookie and one for nameless_analytics_session cookie), adds these values to the hit and sets two cookies with the response.
+- If no nameless_analytics_* cookies are present in the request, the client tag generates two values (one for nameless_analytics_user cookie and one for nameless_analytics_session cookie), adds these values to the hit and sets two cookies with the response.
 - If the nameless_analytics_user cookie is set but nameless_analytics_session cookie is not, the client tag generates one values (for nameless_analytics_session cookie), adds that value to the hit and set one cookies with the response.
 - If both cookies are present, the tag does not create any new cookies but adds their values to the hit.
 

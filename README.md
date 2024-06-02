@@ -34,7 +34,7 @@ See [Get started section](https://github.com/tommasomoretti/nameless-analytics/b
 
 
 ## How it works
-Here is a basic schema and explanation of how Nameless Analytics works.
+Here a basic schema and explanation of how Nameless Analytics works.
 
 ![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/ea414fc8-3243-487e-8be5-d6cb1ac8772c)
 

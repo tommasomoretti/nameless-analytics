@@ -15,7 +15,7 @@ By default, no PII data is tracked, but you can add it, if your users consent. Y
 - **Real-time**\
 Data insertion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
-- **Light-weight**\
+- **Lightweight and blazing fast**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 - **Client-side tracking**\

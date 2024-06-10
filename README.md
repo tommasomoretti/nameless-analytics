@@ -10,7 +10,7 @@ Collect, analyze and activate your website data with a flexible analytics suite 
 Event data is saved in a own Google Cloud project. Cookies are released in a first-party context, in a secure and inaccessible mode to third parties.
 
 - **Privacy-focused**\
-By default, no PII data is tracked, but you can add it, if your users consent. You can choose if track every event or automatically respects user consent.
+By default, no PII data is tracked, but you can add it, if your users consent. You can choose to track every event or automatically respects user consent.
 
 - **Real-time**\
 Data insertion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.

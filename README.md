@@ -86,7 +86,7 @@ When cross-domain is enabled and analytics_consent is granted and you click on i
 
  <img width="1262" alt="Screenshot 2024-06-25 alle 13 48 01" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/e5152e8f-c757-4718-8e94-5dd28df19564">
 
-When cross-domain is disabled or cross-domain is enabled and analytics_consent not granted and you click on any link, no cross-domain link decoration happen. 
+When cross-domain is disabled or cross-domain is enabled and analytics_consent not granted and you click on any link, no cross-domain link decoration happens. 
 
 
 ## Get started

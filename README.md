@@ -74,6 +74,20 @@ In server-side Google Tag Manager you will see something like this:
 
 <img width="1512" alt="Nameless Analytics server-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/776e0527-0b20-46d0-90d1-cac8064e6b10">
 
+When you enable cross-domain and analytics_consent is granted and you click on an authorized link:
+
+<img width="1264" alt="Screenshot 2024-06-25 alle 13 44 37" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/7f966853-9e95-4638-b831-03f6c9506267">
+
+When cross-domain is enabled and analytics_consent is granted and you click on not autorized link:
+
+<img width="1263" alt="Screenshot 2024-06-25 alle 13 45 43" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/207ce2cf-5a09-4e5f-a0c0-1450e4065631">
+
+When cross-domain is enabled and analytics_consent is granted and you click on internal link:
+
+ <img width="1262" alt="Screenshot 2024-06-25 alle 13 48 01" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/e5152e8f-c757-4718-8e94-5dd28df19564">
+
+When cross-domain is disabled or cross-domain is enabled and analytics_consent not granted and you click on any link, no cross-domain link decoration happen. 
+
 
 ## Get started
 Read how to setup 

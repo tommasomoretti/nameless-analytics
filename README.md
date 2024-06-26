@@ -5,6 +5,7 @@ An open source analytics platform for power users based on [Google Tag Manager](
 Collect, analyze and activate your website data with a flexible analytics suite that lets you respect user privacy, for free.
 
 
+
 ## Main features
 - **1° party data storage**\
 Event data is saved in a own Google Cloud project. Cookies are released in a first-party context, in a secure and inaccessible mode to third parties.
@@ -25,6 +26,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 
+
 ## Basic requirements
 - Client-side Google Tag Manager installed on a website
 - Server-side Google Tag Manager hosted on app engine or cloud run (Stape.io to be tested)
@@ -33,18 +35,23 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 See [Get started section](https://github.com/tommasomoretti/nameless-analytics/blob/main/README.md#get-started) for details about how to setup server-side Google Tag Manager, the BigQuery main table and the whole environment.
 
 
+
 ## How it works
 Here a basic schema and explanation of how Nameless Analytics works.
 
-![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/3bcf0a3e-d6be-48fb-a225-af1b8440d42d)
+![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/50ef3f09-88ea-44c5-857a-a9da92d0b7ea)
 
 
 ### Client Side
 If the respect_consent_mode is enabled, when a page is loaded, the first tag that fires checks the analytics_consent status.
 - If consent is granted, the tag loads the required libraries and sends the hit to the server-side Google Tag Manager endpoint, with the event name and event parameters configured in the tag.
-- If consent is denied, the tag waits until consent is granted.
+<img width="1263" alt="Nameless Analytics client-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/bca94adf-cdf5-4bf3-bb41-e69461ba9b38">
+
+- If consent is denied, the tag waits until consent is granted. If consent is granted (in the context of the same page), all pending tags will be fired.
+<img width="1265" alt="Screenshot 2024-06-26 alle 15 35 47" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/f5c8174c-3acb-44f4-8a84-33c03c794af8">
 
 If the respect_consent_mode is disabled, the tag fires regardless of the user's consent.
+
 
 ### Server Side
 When the server-side Tag Manager client tag receives the request, it checks if any cookies are present.
@@ -53,6 +60,9 @@ When the server-side Tag Manager client tag receives the request, it checks if a
 - If both cookies are present, the tag does not create any new cookies but adds their values to the hit.
 
 After that the hit will be logged in a BigQuery event-date partitioned table.
+
+<img width="1512" alt="Nameless Analytics server-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/776e0527-0b20-46d0-90d1-cac8064e6b10">
+
 
 ### Cross Domain
 If cross-domain tracking is enabled and respect_consent_mode is enable, the client-side tag will set a listener on every link click after the consent is granted. With subsequent hits, the tag will enable or disable cross-domain functionality, as per the user's consent.  
@@ -64,16 +74,6 @@ If cross-domain tracking is enabled and respect_consent_mode is disabled, the cl
 
 If cross-domain tracking is disabled, the client-side tag will not set any listener.
 
-
-## Do you want to see a live demo? 
-Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) and open the developer console.
-
-<img width="1263" alt="Nameless Analytics client-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/bca94adf-cdf5-4bf3-bb41-e69461ba9b38">
-
-In server-side Google Tag Manager you will see something like this:
-
-<img width="1512" alt="Nameless Analytics server-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/776e0527-0b20-46d0-90d1-cac8064e6b10">
-
 When you enable cross-domain and analytics_consent is granted and you click on an authorized link:
 
 <img width="1264" alt="Screenshot 2024-06-25 alle 13 44 37" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/7f966853-9e95-4638-b831-03f6c9506267">
@@ -84,9 +84,16 @@ When cross-domain is enabled and analytics_consent is granted and you click on n
 
 When cross-domain is enabled and analytics_consent is granted and you click on internal link:
 
- <img width="1262" alt="Screenshot 2024-06-25 alle 13 48 01" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/e5152e8f-c757-4718-8e94-5dd28df19564">
+<img width="1262" alt="Screenshot 2024-06-25 alle 13 48 01" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/e5152e8f-c757-4718-8e94-5dd28df19564">
 
-When cross-domain is disabled or cross-domain is enabled and analytics_consent not granted and you click on any link, no cross-domain link decoration happens. 
+When cross-domain is enabled and analytics_consent is not granted and you click on any link, no link decoration happens but it cross-domain logs values in console, like above. 
+
+<img width="1263" alt="Screenshot 2024-06-26 alle 15 41 31" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/1ee8a621-cf00-47b9-9c3a-dff38ac77e2a">
+<img width="1264" alt="Screenshot 2024-06-26 alle 15 42 51" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/2d59516f-c8dc-4c20-8e41-8f2fc505b0e7">
+<img width="1264" alt="Screenshot 2024-06-26 alle 15 43 42" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/e32d530a-bdb5-479c-9da9-7ec669a03cf5">
+
+When cross-domain is disabled none of the things above happens. 
+
 
 
 ## Get started
@@ -96,6 +103,9 @@ Read how to setup
 3. [Nameless Analytics server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
 4. [Nameless Analytics main table and reporting queries](https://github.com/tommasomoretti/nameless-analytics-reporting-queries) in Google Big Query
 5. [Google Looker Studio Dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
+
+### Do you want to see a live demo? 
+Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) and open the developer console.
 
 ---
 

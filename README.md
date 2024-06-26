@@ -14,7 +14,7 @@ Event data is saved in a own Google Cloud project. Cookies are released in a fir
 By default, no PII data are tracked. You can choose to track every event or automatically respects user consent.
 
 - **Real-time**\
-Data insertion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
+Data ingestion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
 - **Lightweight and blazing fast**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.

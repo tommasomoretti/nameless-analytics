@@ -28,8 +28,8 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 
 
 ## Basic requirements
-- A Client-side Google Tag Manager container installed on a website
-- A Server-side Google Tag Manager container hosted on App Engine or Cloud Run (Stape.io to be tested)
+- A client-side Google Tag Manager container installed on a website
+- A server-side Google Tag Manager container hosted on App Engine or Cloud Run (Stape.io to be tested)
 - A Google BigQuery dataset with write permissions
 
 See [Get started section](https://github.com/tommasomoretti/nameless-analytics/blob/main/README.md#get-started) for details about how to setup server-side Google Tag Manager, the BigQuery main table and the whole environment.

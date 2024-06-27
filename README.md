@@ -65,7 +65,9 @@ After that the hit will be logged in a BigQuery event-date partitioned table.
 
 
 ### Cross Domain
-If cross-domain tracking is enabled and respect_consent_mode is enable, the client-side tag will set a listener on every link click after the consent is granted. With subsequent hits, the tag will enable or disable cross-domain functionality, as per the user's consent.  
+If cross-domain tracking is enabled and respect_consent_mode is enable, the client-side tag will set a listener on every link click after the consent is granted. 
+
+With subsequent hits, the tag will enable or disable cross-domain functionality, as per the user's consent.  
 
 If cross-domain tracking is enabled and respect_consent_mode is disabled, the client-side tag will set a listener on every link click regardless of the user's consent.
 

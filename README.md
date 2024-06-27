@@ -55,8 +55,8 @@ If the respect_consent_mode is disabled, the tag fires regardless of the user's 
 
 ### Server Side
 When the server-side Tag Manager client tag receives the request, it checks if any cookies are present.
-- If no nameless_analytics_* cookies are present in the request, the client tag generates two values (one for nameless_analytics_user cookie and one for nameless_analytics_session cookie), adds these values to the hit and sets two cookies with the response.
-- If the nameless_analytics_user cookie is set but nameless_analytics_session cookie is not, the client tag generates one values (for nameless_analytics_session cookie), adds that value to the hit and set one cookies with the response.
+- If no nameless_analytics_user cookie or nameless_analytics_session are present in the request, the client tag generates two values (one for nameless_analytics_user cookie and one for nameless_analytics_session cookie), adds these values to the hit and sets two cookies with the response.
+- If the nameless_analytics_user cookie is set but nameless_analytics_session cookie is not, the client tag generates one values (for nameless_analytics_session cookie), it adds that value to the hit and it set one cookies with the response.
 - If both cookies are present, the tag does not create any new cookies but adds their values to the hit.
 
 After that the hit will be logged in a BigQuery event-date partitioned table.

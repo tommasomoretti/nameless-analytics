@@ -7,7 +7,7 @@ Collect, analyze and activate your website data with a real-time analytics suite
 
 
 ## Main features
-- **1° party data storage**\
+- **1° party data context**\
 Event data is saved in your own Google BigQuery dataset. Cookies are released in a first-party context, in a secure and inaccessible mode to third parties.
 
 - **Privacy-focused**\
@@ -17,6 +17,12 @@ By default, no PII data are tracked. You can choose to track every event or auto
 Data ingestion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
 - **Lightweight and blazing fast**\
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+
+- **Cross-domain tracking**\
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+
+- **Ecommerce tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 - **Client-side tracking**\

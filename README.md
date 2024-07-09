@@ -8,16 +8,16 @@ Collect, analyze and activate your website data with a real-time analytics suite
 
 ## Main features
 - **1° party data context**\
-Event data is saved in your own Google BigQuery dataset. Cookies are released in a first-party context, in a secure and inaccessible mode to third parties.
+Cookies are released in a first-party context, and event data is saved in your own Google BigQuery dataset.
 
 - **Privacy-focused**\
-By default, no PII data are tracked. You can choose to track every event or automatically respects user consent.
+You can choose to track every event regards users consents or automatically respects users choises. By default, no PII data are tracked.
 
 - **Real-time**\
 Data ingestion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
 - **Lightweight and blazing fast**\
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+The main library only weighs 2.9 kB and it's served via CloudFlare CDN. The hits are sent via HTTP POST request.
 
 - **Cross-domain tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.

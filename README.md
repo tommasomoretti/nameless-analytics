@@ -17,7 +17,7 @@ You can choose to track every event regards users consents or automatically resp
 Data ingestion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
 - **Lightweight and blazing fast**\
-The main library only weighs 2.9 kB and it's served via CloudFlare CDN. The hits are sent via HTTP POST request.
+The main library only weighs 2.9 kB and it's served via CloudFlare CDN. All hits are sent via HTTP POST request.
 
 - **Cross-domain tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.

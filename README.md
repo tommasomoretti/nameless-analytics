@@ -11,7 +11,7 @@ Collect, analyze and activate your website data with a real-time analytics suite
 Cookies are released in a first-party context, and event data is saved in your own Google BigQuery dataset.
 
 - **Privacy by design**\
-You can choose to track every event regards users consents or automatically respects users choises. By default, no PII data are tracked.
+You can automatically respects users choises or you can choose to track every event regards users consents. By default, no PII data are tracked.
 
 - **Real-time**\
 Data ingestion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
@@ -28,7 +28,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 - **Single Page App ready**\
 Track single page application pageviews easily, you can customize the tracker depending on your needs.
 
-- **Server-side tracking by default**\
+- **Server-side tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 

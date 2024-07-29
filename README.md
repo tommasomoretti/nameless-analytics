@@ -34,6 +34,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 
 
 ## Basic requirements
+- Google Consent Mode installed
 - A client-side Google Tag Manager container installed on a website
 - A server-side Google Tag Manager container hosted on App Engine or Cloud Run (Stape.io to be tested)
 - A Google BigQuery dataset with write permissions
@@ -80,19 +81,19 @@ If ```enable_cross_domain_tracking``` option is enabled, the client-side tag wil
   - When a user clicks on a link with a authorized domain for cross-domain, a javascript event listener sends a ```get_user_data``` request to the server. The server responds with the two cookie values and the javascript event listener decorates the URL with a parameter named ```na_id```. After that, the user is redirected to the destination website.
   - When the user lands on the destination website, the first tag that fires checks if there is a ```na_id``` parameter in the URL. If it is present, the hit will contain a ```cross_domain_id``` parameter, the server-side Client Tag will add it to the request and set back the cookies with those values.
 
-When ```enable_cross_domain_tracking```option is enabled, ```analytics_storage``` is granted and a user clicks on an authorized link:
+When ```enable_cross_domain_tracking``` option is enabled, ```analytics_storage``` is granted and a user clicks on an authorized link:
 
 <img width="1264" alt="Screenshot 2024-06-25 alle 13 44 37" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/7f966853-9e95-4638-b831-03f6c9506267">
 
-When ```enable_cross_domain_tracking```option is enabled, ```analytics_storage``` is granted and a user clicks on not autorized link:
+When ```enable_cross_domain_tracking``` option is enabled, ```analytics_storage``` is granted and a user clicks on not autorized link:
 
 <img width="1263" alt="Screenshot 2024-06-25 alle 13 45 43" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/207ce2cf-5a09-4e5f-a0c0-1450e4065631">
 
-When ```enable_cross_domain_tracking```option is enabled, ```analytics_storage``` is granted and a user clicks on internal link:
+When ```enable_cross_domain_tracking``` option is enabled, ```analytics_storage``` is granted and a user clicks on internal link:
 
 <img width="1262" alt="Screenshot 2024-06-25 alle 13 48 01" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/e5152e8f-c757-4718-8e94-5dd28df19564">
 
-When ```enable_cross_domain_tracking```option is enabled, ```analytics_storage``` is not granted and a user clicks on any link, no link decoration happens but the logs are still present in the console like above. 
+When ```enable_cross_domain_tracking``` option is enabled, ```analytics_storage``` is not granted and a user clicks on any link, no link decoration happens but the logs are still present in the console like above. 
 
 <img width="1263" alt="Screenshot 2024-06-26 alle 15 41 31" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/1ee8a621-cf00-47b9-9c3a-dff38ac77e2a">
 <img width="1264" alt="Screenshot 2024-06-26 alle 15 42 51" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/2d59516f-c8dc-4c20-8e41-8f2fc505b0e7">
@@ -104,11 +105,12 @@ If ```enable_cross_domain_tracking``` option is disabled, the client-side tag wi
 
 ## Get started
 Read how to setup 
-1. [Server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
-2. [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
-3. [Nameless Analytics server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
-4. [Nameless Analytics main table and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-reporting-queries) in Google Big Query
-5. [Google Looker Studio Dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
+1. [Google Consent Mode installed](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
+2. [Server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
+3. [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
+4. [Nameless Analytics server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
+5. [Nameless Analytics main table and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-reporting-queries) in Google Big Query
+6. [Google Looker Studio Dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 
 
 ### Do you want to see a live demo? 

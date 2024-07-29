@@ -50,10 +50,10 @@ Here a basic schema and explanation of how Nameless Analytics works.
 
 ### Client Side
 If the ```respect_consent_mode``` option is enabled, when a page is loaded, the first tag that should be fired, checks the ```analytics_storage``` status.
-- If consent is granted, the tag sends the hit to the server-side Google Tag Manager endpoint, with the event name and event parameters configured in the tag.
+- If ```analytics_storage``` = granted, the tag sends the hit to the server-side Google Tag Manager endpoint, with the event name and event parameters configured in the tag.
 <img width="1263" alt="Nameless Analytics client-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/bca94adf-cdf5-4bf3-bb41-e69461ba9b38">
 
-- If consent is denied, the tag waits until consent is granted. If consent is granted (in the context of the same page), all pending tags will be fired.
+- If ```analytics_storage``` = denied, the tag waits until consent is granted. If consent is granted (in the context of the same page), all pending tags will be fired.
 <img width="1265" alt="Screenshot 2024-06-26 alle 15 35 47" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/f5c8174c-3acb-44f4-8a84-33c03c794af8">
 
 If the ```respect_consent_mode``` option is disabled, the tag fires regardless of the user's consent.
@@ -61,9 +61,12 @@ If the ```respect_consent_mode``` option is disabled, the tag fires regardless o
 
 ### Server Side
 When the server-side Tag Manager client tag receives the request, it checks if any cookies are present.
-- If no ```nameless_analytics_user``` cookie or ```nameless_analytics_session``` cookie are present in the request, the client tag generates two values (one for ```nameless_analytics_user``` cookie and one for ```nameless_analytics_session``` cookie), adds these values as event parameters and sets two cookies with the response.
 
-- If the ```nameless_analytics_user``` cookie is set but ```nameless_analytics_session cookie``` is not, the client tag generates only one value (for nameless_analytics_session cookie), it adds that value to the hit, as well as the nameless_analytics_user cookie value, and it set one cookies with the response.
+- If no cookies are present, the client tag generates generates two values, one for ```nameless_analytics_user``` cookie and one for ```nameless_analytics_session``` cookie).
+
+- If the ```nameless_analytics_user``` cookie is set and ```nameless_analytics_session cookie``` is set, the client tag generates two values, one for ```nameless_analytics_user``` cookie and one for ```nameless_analytics_session``` cookie, adds these values as event parameters and sets two cookies with the response.
+
+- If the ```nameless_analytics_user``` cookie is set but ```nameless_analytics_session cookie``` is not, the client tag generates generates only one value for ```nameless_analytics_session``` cookie, adds that value to the hit, as event parameters, set again the same ```nameless_analytics_user``` cookie and set the ```nameless_analytics_session``` cookie with the response.
 
 - If both cookies are present, the tag does not create any new cookies but adds their values to the hit.
 
@@ -73,16 +76,18 @@ After that the hit will be logged in a BigQuery event-date partitioned table.
 
 
 ### Cross Domain
-If ```cross-domain tracking``` is enabled, the client-side tag will set a listener on every link click. 
+If ```Google Consent Mode```is present
+- If ```cross-domain tracking``` is enabled, the client-side tag will set a listener on every link click. 
 
-- When a user clicks on a cross-domain link, the listener sends a get_user_data request to the server. The server responds with the two cookie values, the listener decorates the URL with a parameter named na_id and the user is redirected to the destination website.
-- When the user lands on the destination website, the first tag that fires checks if there is an na_id parameter in the URL. If it is present, the hit will contain a cross_domain_id parameter, and the server-side Client Tag will add it to the request and set the cookies with that values.
+  - When a user clicks on a cross-domain link, the listener sends a get_user_data request to the server. The server responds with the two cookie values, the listener decorates the URL with a parameter named na_id and the user is redirected to the destination website.
+  - When the user lands on the destination website, the first tag that fires checks if there is an na_id parameter in the URL. If it is present, the hit will contain a cross_domain_id parameter, and the server-side Client Tag will add it to the request and set the cookies with that values.
 
-With subsequent hits, the tag will enable or disable cross-domain functionality, as per the user's consent.  
+  With subsequent hits, the tag will enable or disable cross-domain functionality, as per the user's consent.  
 
-If cross-domain tracking is disabled, the client-side tag will not set any listener.
+If ```enable_cross_domain_tracking```option is disabled, the client-side tag will not set any listener.
 
-When you enable cross-domain and ```analytics_storage``` is granted and you click on an authorized link:
+
+When ```enable_cross_domain_tracking```option is enabled and ```analytics_storage``` is granted and you click on an authorized link:
 
 <img width="1264" alt="Screenshot 2024-06-25 alle 13 44 37" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/7f966853-9e95-4638-b831-03f6c9506267">
 

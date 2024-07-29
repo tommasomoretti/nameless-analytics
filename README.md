@@ -102,6 +102,21 @@ When ```enable_cross_domain_tracking``` option is enabled, ```analytics_storage`
 If ```enable_cross_domain_tracking``` option is disabled, the client-side tag will not set any listener.
 
 
+### Cookie values
+| Cookie name                |Cookie values          |Description                                    |
+|----------------------------|-----------------------|-----------------------------------------------|
+| nameless_analytics_user    | 3135061696            | Random number                                 |
+| nameless_analytics_session | 3135061696_3983471069 | nameless_analytics_user value + Random number |
+
+id values
+| Cookie name | Values                | Description               |
+|-------------|-----------------------|---------------------------|
+| client_id   | 3135061696            | Random number             |
+| session_id  | 3135061696_3983471069 | client_id + Random number |
+| page_id     | 1829619334            | Random number             |
+| event_id    | 1829619334_8166792081 | page_id + Random number   |
+
+
 
 ## Get started
 Read how to setup 

@@ -103,12 +103,12 @@ If ```enable_cross_domain_tracking``` option is disabled, the client-side tag wi
 
 
 ### Cookie values
-| Cookie name                |Cookie values          |Description                                    |
+| Cookie name                | Cookie values         | Description                                   |
 |----------------------------|-----------------------|-----------------------------------------------|
 | nameless_analytics_user    | 3135061696            | Random number                                 |
 | nameless_analytics_session | 3135061696_3983471069 | nameless_analytics_user value + Random number |
 
-id values
+### Id values
 | Cookie name | Values                | Description               |
 |-------------|-----------------------|---------------------------|
 | client_id   | 3135061696            | Random number             |

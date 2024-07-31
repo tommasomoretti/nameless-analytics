@@ -98,7 +98,12 @@ If ```enable_cross_domain_tracking``` option is disabled, the client-side tag wi
 
 
 ### Server Side
-When the server-side Tag Manager client tag receives a request, it checks if any cookies in there.
+When the server-side Tag Manager client tag receives the request, it checks if any cookies in there.
+
+| Cookie name                | Example value         | Default expiration | Description                                                               |
+|----------------------------|-----------------------|--------------------|---------------------------------------------------------------------------|
+| nameless_analytics_user    | 3135061696            | 400 days           | Random number between 1000000000 and 9999999999                           |
+| nameless_analytics_session | 3135061696_3983471069 | 30 minutes         | nameless_analytics_user + Random number between 1000000000 and 9999999999 |
 
 - If no cookies are present or the ```nameless_analytics_user``` cookie is not set but ```nameless_analytics_session cookie``` is set, the client tag generates generates two values, one for ```nameless_analytics_user``` cookie and one for ```nameless_analytics_session``` cookie), adds these values as event parameters and sets two cookies with the response.
 
@@ -111,13 +116,6 @@ After that, the hit will be logged in a BigQuery event date partitioned table.
 <img width="1512" alt="Nameless Analytics server-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/776e0527-0b20-46d0-90d1-cac8064e6b10">
 
 For more details, see [Nameless Analytics server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
-
-
-### Cookie values
-| Cookie name                | Example value         | Description                                                                     |
-|----------------------------|-----------------------|---------------------------------------------------------------------------------|
-| nameless_analytics_user    | 3135061696            | Random number between 1000000000 and 9999999999                                 |
-| nameless_analytics_session | 3135061696_3983471069 | nameless_analytics_user value + Random number between 1000000000 and 9999999999 |
 
 
 

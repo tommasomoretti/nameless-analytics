@@ -59,21 +59,16 @@ If the ```respect_consent_mode``` option is enabled, when a page is loaded, the 
   
 If the ```respect_consent_mode``` option is disabled, the tag fires regardless of the user's consent.
 
+For more details, see [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
 
-### Server Side
-When the server-side Tag Manager client tag receives the request, it checks if any cookies are present.
 
-- If no cookies are present, the client tag generates generates two values, one for ```nameless_analytics_user``` cookie and one for ```nameless_analytics_session``` cookie).
-
-- If the ```nameless_analytics_user``` cookie is set and ```nameless_analytics_session cookie``` is set, the client tag generates two values, one for ```nameless_analytics_user``` cookie and one for ```nameless_analytics_session``` cookie, adds these values as event parameters and sets two cookies with the response.
-
-- If the ```nameless_analytics_user``` cookie is set but ```nameless_analytics_session cookie``` is not, the client tag generates generates only one value for ```nameless_analytics_session``` cookie, adds that value to the hit, as event parameters, set again the same ```nameless_analytics_user``` cookie and set the ```nameless_analytics_session``` cookie with the response.
-
-- If both cookies are present, the tag does not create any new cookies but adds their values to the hit.
-
-After that the hit will be logged in a BigQuery event-date partitioned table.
-
-<img width="1512" alt="Nameless Analytics server-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/776e0527-0b20-46d0-90d1-cac8064e6b10">
+#### Id values
+| Event parameters | Values                | Description               |
+|------------------|-----------------------|---------------------------|
+| client_id        | 3135061696            | Random number             |
+| session_id       | 3135061696_3983471069 | client_id + Random number |
+| page_id          | 1829619334            | Random number             |
+| event_id         | 1829619334_8166792081 | page_id + Random number   |
 
 
 ### Cross Domain
@@ -102,19 +97,27 @@ When ```enable_cross_domain_tracking``` option is enabled, ```analytics_storage`
 If ```enable_cross_domain_tracking``` option is disabled, the client-side tag will not set any listener.
 
 
+### Server Side
+When the server-side Tag Manager client tag receives a request, it checks if any cookies in there.
+
+- If no cookies are present or the ```nameless_analytics_user``` cookie is not set but ```nameless_analytics_session cookie``` is set, the client tag generates generates two values, one for ```nameless_analytics_user``` cookie and one for ```nameless_analytics_session``` cookie), adds these values as event parameters and sets two cookies with the response.
+
+- If the ```nameless_analytics_user``` cookie is set but ```nameless_analytics_session cookie``` is not (session expires), the client tag generates generates only one value for ```nameless_analytics_session``` cookie, adds that value to the hit, as event parameters, set again the same ```nameless_analytics_user``` cookie and set the ```nameless_analytics_session``` cookie with the response.
+
+- If both cookies are present, the tag does not create any new cookies but adds their values to the hit.
+
+After that, the hit will be logged in a BigQuery event date partitioned table.
+
+<img width="1512" alt="Nameless Analytics server-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/776e0527-0b20-46d0-90d1-cac8064e6b10">
+
+For more details, see [Nameless Analytics server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
+
+
 ### Cookie values
 | Cookie name                | Cookie values         | Description                                   |
 |----------------------------|-----------------------|-----------------------------------------------|
 | nameless_analytics_user    | 3135061696            | Random number                                 |
 | nameless_analytics_session | 3135061696_3983471069 | nameless_analytics_user value + Random number |
-
-### Id values
-| Cookie name | Values                | Description               |
-|-------------|-----------------------|---------------------------|
-| client_id   | 3135061696            | Random number             |
-| session_id  | 3135061696_3983471069 | client_id + Random number |
-| page_id     | 1829619334            | Random number             |
-| event_id    | 1829619334_8166792081 | page_id + Random number   |
 
 
 

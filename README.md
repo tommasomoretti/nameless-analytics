@@ -34,7 +34,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 
 
 ## Basic requirements
-- Google Consent Mode installed
+- Google Consent Mode installed on a website
 - A client-side Google Tag Manager container installed on a website
 - A server-side Google Tag Manager container hosted on App Engine or Cloud Run (Stape.io to be tested)
 - A Google BigQuery dataset with write permissions
@@ -51,10 +51,10 @@ Here a basic schema and explanation of how Nameless Analytics works.
 
 ### Client Side
 If the ```respect_consent_mode``` option is enabled, when a page is loaded, the first tag that should be fired, checks the ```analytics_storage``` status.
-- If ```analytics_storage``` = granted, the tag sends the hit to the server-side Google Tag Manager endpoint, with the event name and event parameters configured in the tag.
+- If ```analytics_storage``` is equal to granted, the tag sends the hit to the server-side Google Tag Manager endpoint, with the event name and event parameters configured in the tag.
   <img width="1263" alt="Nameless Analytics client-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/bca94adf-cdf5-4bf3-bb41-e69461ba9b38">
   
-- If ```analytics_storage``` = denied, the tag waits until consent is granted. If consent is granted (in the context of the same page), all pending tags will be fired.
+- If ```analytics_storage``` is equal to denied, the tag waits until consent is granted. If consent is granted (in the context of the same page), all pending tags will be fired.
 <img width="1265" alt="Screenshot 2024-06-26 alle 15 35 47" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/f5c8174c-3acb-44f4-8a84-33c03c794af8">
   
 If the ```respect_consent_mode``` option is disabled, the tag fires regardless of the user's consent.

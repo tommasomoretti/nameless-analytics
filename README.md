@@ -63,12 +63,12 @@ For more details, see [Nameless Analytics client side tag](https://github.com/to
 
 
 #### Id values
-| Event parameter | Example value         | Description                                                     |
-|-----------------|-----------------------|-----------------------------------------------------------------|
-| client_id       | 3135061696            | Random number between 1000000000 and 9999999999                 |
-| session_id      | 3135061696_3983471069 | client_id + Random number between 1000000000 and 9999999999     |
-| page_id         | 1829619334            | Random number between 1000000000 and 9999999999                 |
-| event_id        | 1829619334_8166792081 | page_id value + Random number between 1000000000 and 9999999999 |
+| Event parameter | Example value         | Description                                                                              |
+|-----------------|-----------------------|------------------------------------------------------------------------------------------|
+| client_id       | 3135061696            | Random number between 1000000000 and 9999999999                                          |
+| session_id      | 3135061696_3983471069 | client_id + Random number between 1000000000 and 9999999999                              |
+| page_id         | 1829619334            | client_id + session_id + Random number between 1000000000 and 9999999999                 |
+| event_id        | 1829619334_8166792081 | client_id + session_id + page_id value + Random number between 1000000000 and 9999999999 |
 
 
 ### Cross Domain

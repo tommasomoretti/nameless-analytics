@@ -53,8 +53,8 @@ Here a basic schema and explanation of how Nameless Analytics works.
 
 
 
-### Client Side
-If the ```respect_consent_mode``` option is enabled, when a page is loaded, the first tag that should be fired, checks the ```analytics_storage``` status.
+### Client-side Tracker Tag
+When the Client-side Tracker Tag is loaded, if the ```respect_consent_mode``` option is enabled, the first tag that should be fired, checks the ```analytics_storage``` status.
 - If ```analytics_storage``` is equal to granted, the tag sends the hit to the server-side Google Tag Manager endpoint, with the event name and event parameters configured in the tag.
   <img width="1263" alt="Nameless Analytics client-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/bca94adf-cdf5-4bf3-bb41-e69461ba9b38">
   
@@ -66,7 +66,7 @@ If the ```respect_consent_mode``` option is disabled, the tag fires regardless o
 For more details, see [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
 
 
-### Cross Domain
+#### Cross Domain
 If ```enable_cross_domain_tracking``` option is enabled, the client-side tag will set a javascript event listener on every link click. 
   - When a user clicks on a link with a authorized domain for cross-domain, a javascript event listener sends a ```get_user_data``` request to the server. The server responds with the two cookie values and the javascript event listener decorates the URL with a parameter named ```na_id```. After that, the user is redirected to the destination website.
   - When the user lands on the destination website, the first tag that fires checks if there is a ```na_id``` parameter in the URL. If it is present, the hit will contain a ```cross_domain_id``` parameter, the server-side Client Tag will add it to the request and set back the cookies with those values.
@@ -92,8 +92,8 @@ If ```enable_cross_domain_tracking``` option is enabled, the client-side tag wil
 If ```enable_cross_domain_tracking``` option is disabled, the client-side tag will not set any listener.
 
 
-### Server Side
-When the server-side Tag Manager client tag receives the request, it checks if any cookies in there.
+### Server-side Client Tag
+When the Server-side Tag Manager Client Tag receives the request, it checks if any cookies in there.
 
 | Cookie name                | Example value                       | Default expiration | Description                                                                                     |
 |----------------------------|-------------------------------------|--------------------|-------------------------------------------------------------------------------------------------|
@@ -118,8 +118,8 @@ For more details, see [Nameless Analytics server side tag](https://github.com/to
 Read how to setup 
 1. [Google Consent Mode installed](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
 2. [Server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
-3. [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
-4. [Nameless Analytics server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
+3. [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
+4. [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
 5. [Nameless Analytics main table and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-reporting-queries) in Google Big Query
 6. [Google Looker Studio Dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 

@@ -104,10 +104,10 @@ If ```enable_cross_domain_tracking``` option is disabled, the client-side tag wi
 ### Server Side
 When the server-side Tag Manager client tag receives the request, it checks if any cookies in there.
 
-| Cookie name                | Example value         | Default expiration | Description                                                               |
-|----------------------------|-----------------------|--------------------|---------------------------------------------------------------------------|
-| nameless_analytics_user    | 3135061696            | 400 days           | Random number between 1000000000 and 9999999999                           |
-| nameless_analytics_session | 3135061696_3983471069 | 30 minutes         | nameless_analytics_user + Random number between 1000000000 and 9999999999 |
+| Cookie name                | Example value                       | Default expiration | Description                                                                                     |
+|----------------------------|-------------------------------------|--------------------|-------------------------------------------------------------------------------------------------|
+| nameless_analytics_user    | 3135061696                          | 400 days           | Random number between 1000000000 and 9999999999                                                 |
+| nameless_analytics_session | 3135061696_3983471069-1722607958646 | 30 minutes         | nameless_analytics_user + Random number between 1000000000 and 9999999999 + Last event timestamp|
 
 - If no cookies are present or the ```nameless_analytics_user``` cookie is not set but ```nameless_analytics_session cookie``` is set, the client tag generates generates two values, one for ```nameless_analytics_user``` cookie and one for ```nameless_analytics_session``` cookie), adds these values as event parameters and sets two cookies with the response.
 

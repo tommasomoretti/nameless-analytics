@@ -31,6 +31,9 @@ Track single page application pageviews easily, you can customize the tracker de
 - **Server-side tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
+- **Multiple data type**\
+Send integer, float, string or JSON formatted values. 
+
 
 
 ## Basic requirements
@@ -46,7 +49,8 @@ See [Get started section](https://github.com/tommasomoretti/nameless-analytics/b
 ## How it works
 Here a basic schema and explanation of how Nameless Analytics works.
 
-![nameless_analytics_schema](https://github.com/tommasomoretti/nameless-analytics/assets/29273232/50ef3f09-88ea-44c5-857a-a9da92d0b7ea)
+![Nameless Analytics Schema](https://github.com/user-attachments/assets/cc837ffe-d3bf-4168-a87f-077f9f2ea847)
+
 
 
 ### Client Side

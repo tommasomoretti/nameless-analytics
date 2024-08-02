@@ -66,15 +66,6 @@ If the ```respect_consent_mode``` option is disabled, the tag fires regardless o
 For more details, see [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
 
 
-#### Id values
-| Event parameter | Example value         | Description                                                                              |
-|-----------------|-----------------------|------------------------------------------------------------------------------------------|
-| client_id       | 3135061696            | Random number between 1000000000 and 9999999999                                          |
-| session_id      | 3135061696_3983471069 | client_id + Random number between 1000000000 and 9999999999                              |
-| page_id         | 1829619334            | client_id + session_id + Random number between 1000000000 and 9999999999                 |
-| event_id        | 1829619334_8166792081 | client_id + session_id + page_id value + Random number between 1000000000 and 9999999999 |
-
-
 ### Cross Domain
 If ```enable_cross_domain_tracking``` option is enabled, the client-side tag will set a javascript event listener on every link click. 
   - When a user clicks on a link with a authorized domain for cross-domain, a javascript event listener sends a ```get_user_data``` request to the server. The server responds with the two cookie values and the javascript event listener decorates the URL with a parameter named ```na_id```. After that, the user is redirected to the destination website.

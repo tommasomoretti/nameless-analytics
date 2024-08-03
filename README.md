@@ -63,9 +63,6 @@ When the Client-side Tracker Tag is loaded, if the ```respect_consent_mode``` op
   
 If the ```respect_consent_mode``` option is disabled, the tag fires regardless of the user's consent.
 
-For more details, see [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
-
-
 #### Cross Domain
 If ```enable_cross_domain_tracking``` option is enabled, the client-side tag will set a javascript event listener on every link click. 
   - When a user clicks on a link with a authorized domain for cross-domain, a javascript event listener sends a ```get_user_data``` request to the server. The server responds with the two cookie values and the javascript event listener decorates the URL with a parameter named ```na_id```. After that, the user is redirected to the destination website.
@@ -90,6 +87,8 @@ If ```enable_cross_domain_tracking``` option is enabled, the client-side tag wil
     <img width="1264" alt="Screenshot 2024-06-26 alle 15 43 42" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/e32d530a-bdb5-479c-9da9-7ec669a03cf5">
 
 If ```enable_cross_domain_tracking``` option is disabled, the client-side tag will not set any listener.
+
+For more details, see [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
 
 
 ### Server-side Client Tag

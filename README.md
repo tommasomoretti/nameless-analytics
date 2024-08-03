@@ -8,7 +8,7 @@ Collect, analyze and activate your website data with a real-time analytics suite
 
 ## Main features
 - **1° party data context**\
-Cookies are released in a first-party context and events data are saved in your own Google BigQuery dataset.
+Cookies are released from server, in a first-party context and events data are saved in your own Google BigQuery dataset.
 
 - **Privacy by design**\
 You can automatically respects users choises or you can choose to track every event regards users consents. By default, no PII data are tracked.

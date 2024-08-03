@@ -62,6 +62,8 @@ When the Client-side Tracker Tag is loaded, if the ```respect_consent_mode``` op
   
 If the ```respect_consent_mode``` option is disabled, the tag fires regardless of the user's consent.
 
+For more details, see [Nameless Analytics client side tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
+
 
 ### Server-side Client Tag
 When the Server-side Tag Manager Client Tag receives the request, it checks if any cookies in there.

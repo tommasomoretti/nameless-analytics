@@ -32,7 +32,7 @@ Track single page application page views easily, you can customize the tracker d
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 - **Measurement Protocol**\
-Enhance data tracked from website with custom requests made from server or other sources.  
+Enhance data tracked from website with custom requests made from a server or other sources.  
 
 
 ## Basic requirements

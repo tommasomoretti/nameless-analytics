@@ -78,10 +78,10 @@ For more details, see [Nameless Analytics client side tag](https://github.com/to
 ### Server-side Client Tag
 When the Server-side Tag Manager Client Tag receives the request, it checks if any cookies in there.
 
-| Cookie name                | Example value                       | Default expiration | Description                                                                                     |
-|----------------------------|-------------------------------------|--------------------|-------------------------------------------------------------------------------------------------|
-| nameless_analytics_user    | 3135061696                          | 400 days           | Random number between 1000000000 and 9999999999                                                 |
-| nameless_analytics_session | 3135061696_3983471069-1722607958646 | 30 minutes         | nameless_analytics_user + Random number between 1000000000 and 9999999999 + Last event timestamp|
+| Cookie name                | Example value                                   | Default expiration | Description                                                                                     |
+|----------------------------|-------------------------------------------------|--------------------|-------------------------------------------------------------------------------------------------|
+| nameless_analytics_user    | pLQQFjUv7IBJuDA                                 | 400 days           | 15 chars random string                                                                          |
+| nameless_analytics_session | pLQQFjUv7IBJuDA_BxEtSZuKR71XL7K-fEErCpUjYPgbVqd | 30 minutes         | nameless_analytics_user + 15 chars random string + current page_id                              |
 
 - If no cookies are present or the ```nameless_analytics_user``` cookie is not set but ```nameless_analytics_session cookie``` is set, the client tag generates generates two values, one for ```nameless_analytics_user``` cookie and one for ```nameless_analytics_session``` cookie), adds these values as event parameters and sets two cookies with the response.
 

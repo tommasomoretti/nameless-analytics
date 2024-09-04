@@ -4,33 +4,44 @@ An open source web analytics platform for power users based on [Google Tag Manag
 
 Collect, analyze and activate your website data with a real-time web analytics suite that respects users privacy, for free.
 
-
-
-## Main features
-- **1° party data context**\
+## Features
+### Privacy
+- **First-party data context**\
 Cookies are released from GTM Server-side, in a first-party context and events data are saved in your own Google BigQuery dataset.
 
 - **Privacy by design**\
 You can automatically respects users choises or you can choose to track every event regards users consents. By default, no PII data are tracked.
 
+
+### Performance features
 - **Real-time**\
 Data ingestion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
 - **Lightweight and blazing fast**\
-The main JavaScript library only weighs 3 kB and it's served via CloudFlare CDN. All hits are sent via HTTP POST request.
+The main JavaScript library only weighs a fiew kB and it's served via CloudFlare CDN. All hits are sent via HTTP POST requests.
 
-- **Cross-domain tracking**\
+
+### Event tracking features
+- **Custom event tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
-- **Ecommerce tracking**\
+- **Ecommerce event tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
-
-- **Single Page App ready**\
-Track single page application page views easily, you can customize the tracker depending on your needs.
 
 - **Server-side tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
+- **Cross-domain tracking (🚧 alfa feature)**\
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+
+- **Single Page App tracking**\
+Track single page application page views easily, you can customize the tracker depending on your needs.
+
+- **Auto pushes for custom event tracking**\
+Push Page closed or Page load timing events for .
+
+
+### Send events from everywhere
 - **Measurement Protocol**\
 Enhance data tracked from website with custom requests made from a server or other sources.  
 
@@ -88,7 +99,7 @@ For more details, see [Nameless Analytics server side tag](https://github.com/to
 
 ## Get started
 Read how to setup 
-1. [Google Consent Mode installed](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
+1. [Install Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
 2. [Server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
 3. [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
 4. [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)

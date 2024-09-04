@@ -4,8 +4,8 @@ An open source web analytics platform for power users based on [Google Tag Manag
 
 Collect, analyze and activate your website data with a real-time web analytics suite that respects users privacy, for free.
 
-## Features
-### Privacy
+## TL;DR
+### 🕵🏻‍♂️ - Privacy focused
 - **First-party data context**\
 Cookies are released from GTM Server-side, in a first-party context and events data are saved in your own Google BigQuery dataset.
 
@@ -13,7 +13,7 @@ Cookies are released from GTM Server-side, in a first-party context and events d
 You can automatically respects users choises or you can choose to track every event regards users consents. By default, no PII data are tracked.
 
 
-### Performance features
+### ⚡️ - Performance features
 - **Real-time**\
 Data ingestion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
@@ -21,7 +21,7 @@ Data ingestion into Google BigQuery is nearly instantaneous and events are avail
 The main JavaScript library only weighs a fiew kB and it's served via CloudFlare CDN. All hits are sent via HTTP POST requests.
 
 
-### Event tracking features
+### ⚙ - Event tracking features
 - **Custom event tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
@@ -41,7 +41,7 @@ Track single page application page views easily, you can customize the tracker d
 Push Page closed or Page load timing events for .
 
 
-### Send events from everywhere
+### 💾 - Send events from (almost) everywhere
 - **Measurement Protocol**\
 Enhance data tracked from website with custom requests made from a server or other sources.  
 

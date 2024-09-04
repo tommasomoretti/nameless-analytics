@@ -50,7 +50,7 @@ Enhance data tracked from website with custom requests made from a server or oth
 - Google Consent Mode installed on a website
 - A client-side Google Tag Manager container installed on a website
 - A server-side Google Tag Manager container hosted on App Engine or Cloud Run (Stape.io to be tested)
-- A Google BigQuery dataset with write permissions
+- A Google BigQuery project
 
 See [Get started section](https://github.com/tommasomoretti/nameless-analytics/blob/main/README.md#get-started) for details about how to setup server-side Google Tag Manager, the BigQuery main table and the whole environment.
 

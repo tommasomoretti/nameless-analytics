@@ -17,7 +17,7 @@ You can automatically respects users choises or you can choose to track every ev
 - **Real-time**\
 Data ingestion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
-- **Lightweight and blazing fast**\
+- **Lightweight and fast**\
 The main JavaScript library only weighs a fiew kB and it's served via CloudFlare CDN. All hits are sent via HTTP POST requests.
 
 

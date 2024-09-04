@@ -41,7 +41,7 @@ Track single page application page views easily, you can customize the tracker d
 Push Page closed or Page load timing events for .
 
 
-### 💾 - Send events from (almost) everywhere
+### 🥳 - Send events from (almost) everywhere
 - **Measurement Protocol**\
 Enhance data tracked from website with custom requests made from a server or other sources.  
 

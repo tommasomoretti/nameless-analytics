@@ -2,7 +2,7 @@
 
 An open source web analytics platform for power users based on [Google Tag Manager](https://marketingplatform.google.com/intl/it/about/tag-manager/) and [Google BigQuery](https://cloud.google.com/bigquery). 
 
-Collect, analyze and activate your website data with a real-time web analytics suite that respects users privacy, for free.
+Collect, analyze and activate your website data with a free* real-time web analytics suite that respects users privacy.
 
 ## TL;DR
 ### 🕵🏻‍♂️ - Privacy focused
@@ -46,6 +46,7 @@ Push Page closed (🚧 alfa feature) or Page load timing events for .
 Enhance data tracked from website with custom requests made from a server or other sources.  
 
 
+
 ## Basic requirements
 - Google Consent Mode installed on a website
 - A client-side Google Tag Manager container installed on a website
@@ -76,7 +77,7 @@ For more details, see [Nameless Analytics client side tag](https://github.com/to
 
 
 ### Server-side Client Tag
-When the Server-side Tag Manager Client Tag receives the request, it checks if any cookies in there.
+When the server-side Google Tag Manager Client Tag receives the request, it checks if any cookies in there.
 
 | Cookie name                | Example value                                   | Default expiration | Description                                                                                     |
 |----------------------------|-------------------------------------------------|--------------------|-------------------------------------------------------------------------------------------------|
@@ -100,7 +101,7 @@ For more details, see [Nameless Analytics server side tag](https://github.com/to
 ## Get started
 Read how to setup 
 1. [Install Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
-2. [Server-side Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
+2. [Server-side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
 3. [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
 4. [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
 5. [Nameless Analytics main table and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-queries) in Google Big Query

@@ -37,9 +37,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 - **Single Page App tracking**\
 Track single page application page views easily, you can customize the tracker depending on your needs.
 
-- **Auto pushes for custom event tracking**\
-Push Page closed (🚧 alfa feature) or Page load timing events for .
-
 
 ### 🚀 - Send events from (almost) everywhere
 - **Measurement Protocol**\

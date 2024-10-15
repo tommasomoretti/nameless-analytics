@@ -10,7 +10,7 @@ Collect, analyze and activate your website data with a free* real-time web analy
 Cookies are released from GTM Server-side, in a first-party context and events data are saved in your own Google BigQuery dataset.
 
 - **Privacy by design**\
-You can automatically choose to respects users consents, track all events with redacted client_id, session_id and user_id when a user doesn't consent to analytics tracking or track all events regardless users consents. By default, no PII data are tracked.
+3 consent tracking modes. Choose between respects users consents, track all events with redacted client_id, session_id and user_id when a user doesn't consent to analytics tracking or track all events regardless user consents. By default, no PII data are tracked.
 
 
 ### ⚡️ - Performance features
@@ -22,13 +22,16 @@ The main JavaScript library only weighs a fiew kB and it's served via CloudFlare
 
 
 ### ⚙ - Event tracking features
-- **Custom event tracking**\
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
-
-- **Ecommerce event tracking**\
+- **Client-side tracking with custom events**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 - **Server-side tracking**\
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+
+- **Customizable acquisition parameters (source, medium and campaigns url parameters)**\
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+
+- **Ecommerce event tracking**\
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
 
 - **Cross-domain tracking (🚧 alfa feature)**\
@@ -38,9 +41,11 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsu
 Track single page application page views easily, you can customize the tracker depending on your needs.
 
 
-### 🚀 - Send events from (almost) everywhere
+### 🚀 - Send events from (almost) everywhere and log them all
 - **Measurement Protocol**\
 Enhance data tracked from website with custom requests made from a server or other sources.  
+- **Event logging**\
+Enhance data tracked from website with custom requests made from a server or other sources. 
 
 
 

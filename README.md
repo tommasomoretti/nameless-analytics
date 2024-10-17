@@ -45,7 +45,7 @@ Track single page application page views easily, you can customize the tracker d
 - **Measurement Protocol**\
 Enhance data tracked from website with custom requests made from a server or other sources.  
 - **Event logging**\
-See event details from Javascript Console and from server-side Google Tag Manager debug view.
+Simplified debugging with event details from the Javascript console and from server-side Google Tag Manager debug view.
 
 
 

@@ -62,7 +62,7 @@ See [Get started section](https://github.com/tommasomoretti/nameless-analytics/b
 ## How it works
 Here a basic schema and a brief explanation of how Nameless Analytics works.
 
-![nameless_analytics_schema](https://github.com/user-attachments/assets/c8653386-e137-4461-9b8a-fd398832a18a)
+![nameless_analytics_schema](https://github.com/user-attachments/assets/bb68193d-9dc8-4532-b287-d052002d353d)
 
 
 ### Client-side Tracker Tag

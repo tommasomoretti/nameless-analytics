@@ -18,7 +18,7 @@ Cookies are released from GTM Server-side, in a first-party context and events d
 Data ingestion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
 - **Lightweight and fast**\
-The main JavaScript library only weighs a fiew kB and it's served via CloudFlare CDN. All hits are sent via HTTP POST requests.
+The main JavaScript library only weighs a few kB and it's served via CloudFlare CDN. All hits are sent via HTTP POST requests.
 
 
 ### ⚙ - Event tracking features
@@ -113,6 +113,10 @@ Read how to setup
 
 ### Do you want to see a live demo? 
 Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) and open the developer console.
+
+---
+
+\* Nameless Analytics is free, but you have to pay the Google Cloud resources that you'll use.
 
 ---
 

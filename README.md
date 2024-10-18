@@ -60,11 +60,6 @@ See [Get started section](https://github.com/tommasomoretti/nameless-analytics/b
 
 
 ## How it works
-Here a basic schema and a brief explanation of how Nameless Analytics works.
-
-![nameless_analytics_schema](https://github.com/user-attachments/assets/bb68193d-9dc8-4532-b287-d052002d353d)
-
-
 ### Client-side Tracker Tag
 When the Client-side Tracker Tag is fired, if the ```respect_consent_mode``` option is enabled, it checks the ```analytics_storage``` status.
 - If ```analytics_storage``` is equal to denied, the tag waits until consent is granted. If consent is granted (in the context of the same page), all pending tags will be fired.
@@ -81,20 +76,21 @@ For more details, see [Nameless Analytics client side tag](https://github.com/to
 ### Server-side Client Tag
 When the server-side Google Tag Manager Client Tag receives the request, it checks if any cookies in there.
 
-| Cookie name                | Example value                                   | Default expiration | Description                                                                                     |
-|----------------------------|-------------------------------------------------|--------------------|-------------------------------------------------------------------------------------------------|
-| nameless_analytics_user    | pLQQFjUv7IBJuDA                                 | 400 days           | 15 chars random string                                                                          |
-| nameless_analytics_session | pLQQFjUv7IBJuDA_BxEtSZuKR71XL7K-fEErCpUjYPgbVqd | 30 minutes         | nameless_analytics_user + 15 chars random string + current page_id                              |
-
 - If no cookies are present or the ```nameless_analytics_user``` cookie is not set but ```nameless_analytics_session cookie``` is set, the client tag generates generates two values, one for ```nameless_analytics_user``` cookie and one for ```nameless_analytics_session``` cookie), adds these values as event parameters and sets two cookies with the response.
 
 - If the ```nameless_analytics_user``` cookie is set but ```nameless_analytics_session cookie``` is not (session expires), the client tag generates generates only one value for ```nameless_analytics_session``` cookie, adds that value to the hit, as event parameters, set again the same ```nameless_analytics_user``` cookie and set the ```nameless_analytics_session``` cookie with the response.
 
 - If both cookies are present, the tag does not create any new cookies but adds their values to the hit.
 
+#### Cookie values
+| Cookie name                | Example value                                   | Default expiration | Description                                                                                     |
+|----------------------------|-------------------------------------------------|--------------------|-------------------------------------------------------------------------------------------------|
+| nameless_analytics_user    | pLQQFjUv7IBJuDA                                 | 400 days           | 15 chars random string                                                                          |
+| nameless_analytics_session | pLQQFjUv7IBJuDA_BxEtSZuKR71XL7K-fEErCpUjYPgbVqd | 30 minutes         | nameless_analytics_user + 15 chars random string + current page_id                              |
+
 After that, the hit will be logged in a BigQuery event date partitioned table.
 
-<img width="1512" alt="Nameless Analytics server-side logs" src="https://github.com/tommasomoretti/nameless-analytics/assets/29273232/776e0527-0b20-46d0-90d1-cac8064e6b10">
+<img width="1512" alt="Nameless Analytics server-side logs" src="https://github.com/user-attachments/assets/225ae759-b4d8-4632-9ee8-b608fb5e4a12">
 
 For more details, see [Nameless Analytics server side tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
 

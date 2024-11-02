@@ -24,24 +24,20 @@ By default, no PII data are tracked.
 Data ingestion into Google BigQuery is nearly instantaneous and events are available within a couple of seconds.
 
 - **Lightweight and fast**\
-The main JavaScript library only weighs a few kB and it's served via CloudFlare CDN. All hits are sent via HTTP POST requests.
-
+Main JavaScript library only weighs a few kB and it's served via CloudFlare CDN. All hits are sent via HTTP POST requests.
 
 ### ⚙ - Event tracking features
 - **Client-side tracking with custom events**\
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+Flexible and highly customizable Client-side Tracker Tag that supports various field types (string, integer, double, and JSON) and accepts custom acquisition url parameters (it's not mandatory to use UTM parameters).
 
 - **Server-side tracking**\
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
-
-- **Customizable acquisition parameters (source, medium and campaigns url parameters)**\
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+All data is written directly to Google BigQuery by the Server-side Client Tag, which processes requests from the Client-side Tracker Tag and enriches the content.
 
 - **Ecommerce event tracking**\
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+Flexible ecommerce data structure that supports custom formats or GA4 ecommerce data structure.  
 
 - **Cross-domain tracking (🚧 beta feature)**\
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras luctus libero ipsum, vestibulum egestas orci ullamcorper eget.
+Track users and sessions across multiple websites.
 
 - **Single Page App tracking**\
 Track single page application page views easily, you can customize the tracker depending on your needs.

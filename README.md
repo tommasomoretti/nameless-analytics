@@ -16,7 +16,7 @@ Choose between three consent tracking modes:
   - Full Tracking Mode when (respect_consent_mode is disabled): track all events regardless analytics_storage value
   - Anonymous Tracking Mode (when respect_consent_mode is disabled): track all events with redacted user_id, client_id and session_id when analytics_storage is denied
 
-By default, no PII data are tracked.
+  By default, no PII data are tracked.
 
 
 ### ⚡️ - Performance features

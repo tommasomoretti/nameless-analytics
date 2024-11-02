@@ -13,9 +13,9 @@ Cookies are released from GTM Server-side, in a first-party context and events d
 
 - **Privacy by design**\
 Choose between three consent tracking modes:
-  - Limited Tracking Mode when respect_consent_mode is enabled: track events only when analytics_storage is granted,
-  - Full Tracking Mode when respect_consent_mode is disabled: track all events regardless analytics_storage value
-  - Anonymous Tracking Mode respect_consent_mode is disabled: track all events with redacted user_id, client_id and session_id when analytics_storage is denied
+  - Limited Tracking Mode (when respect_consent_mode is enabled): track events when analytics_storage is granted
+  - Full Tracking Mode when (respect_consent_mode is disabled): track all events regardless analytics_storage value
+  - Anonymous Tracking Mode (when respect_consent_mode is disabled): track all events with redacted user_id, client_id and session_id when analytics_storage is denied
 By default, no PII data are tracked.
 
 
@@ -61,19 +61,20 @@ Simplified debugging with event details from the Javascript console and from ser
 - A server-side Google Tag Manager container hosted on App Engine or Cloud Run (Stape.io to be tested)
 - A Google BigQuery project
 
-See [Get started section](https://github.com/tommasomoretti/nameless-analytics/blob/main/README.md#get-started) for details about how to setup server-side Google Tag Manager, the BigQuery main table and the whole environment.
+See [Get started section](https://github.com/tommasomoretti/nameless-analytics/blob/main/README.md#get-started) for details about how to setup the whole environment.
 
 
 
 ## Get started
-Read how to setup 
-1. [Install Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
-2. [Server-side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
-3. [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
-4. [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
-5. [Nameless Analytics main table and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-queries) in Google Big Query
-6. [Google Looker Studio Dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
-7. [Measurement protocol and utility functions](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol-and-utility-functions)
+Read how to setup:
+1. [Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
+2. [Client-side Google Tag Manager](https://support.google.com/tagmanager/answer/14842164)
+3. [Server-side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
+4. [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-tag)
+5. [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-tag)
+6. [Nameless Analytics main table and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-queries) in Google Big Query
+7. [Google Looker Studio Dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
+8. [Measurement protocol and utility functions](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol-and-utility-functions)
 
 
 ### Do you want to see a live demo? 

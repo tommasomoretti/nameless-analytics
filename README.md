@@ -31,7 +31,7 @@ Main JavaScript library only weighs a few kB and it's served via CloudFlare CDN.
 Highly customizable Client-side Tracker Tag that supports various field types (string, integer, double, and JSON) and accepts custom acquisition url parameters (it's not mandatory to use UTM parameters).
 
 - **Server-side tracking**\
-All data is written directly to Google BigQuery by the Server-side Client Tag, which processes requests from the Client-side Tracker Tag and enriches the content.
+All data is written directly to Google BigQuery by the Server-side Client Tag, which processes requests from the Client-side Tracker Tag, enriches the content and store browser cookies.
 
 - **Ecommerce event tracking**\
 Flexible ecommerce data structure that supports custom formats or GA4 ecommerce data structure.  

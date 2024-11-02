@@ -4,7 +4,9 @@ An open source web analytics platform for power users based on [Google Tag Manag
 
 Collect, analyze and activate your website data with a free* real-time web analytics suite that respects users privacy.
 
-[Schema di base]
+Here a basic schema of how Nameless Analytics works:
+
+![Nameless Analytics schema](https://github.com/user-attachments/assets/f3cb9bd6-57f4-47aa-b680-43be1c9a6793)
 
 
 

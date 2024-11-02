@@ -5,7 +5,6 @@ An open source web analytics platform for power users based on [Google Tag Manag
 Collect, analyze and activate your website data with a free* real-time web analytics suite that respects users privacy.
 
 
-
 ## TL;DR
 ### 🕵🏻‍♂️ - Privacy focused
 - **First-party data context**\
@@ -26,12 +25,13 @@ Data ingestion into Google BigQuery is nearly instantaneous and events are avail
 - **Lightweight and fast**\
 Main JavaScript library only weighs a few kB and it's served via CloudFlare CDN. All hits are sent via HTTP POST requests.
 
+
 ### ⚙ - Event tracking features
 - **Client-side tracking with custom events**\
 Highly customizable Client-side Tracker Tag that supports various field types (string, integer, double, and JSON) and accepts custom acquisition url parameters (it's not mandatory to use UTM parameters).
 
 - **Server-side tracking**\
-All data is written directly to Google BigQuery by the Server-side Client Tag, which processes requests from the Client-side Tracker Tag, enriches the content and store browser cookies.
+All data are written directly to Google BigQuery by Server-side Client Tag, which processes requests from the Client-side Tracker Tag, enriches the content and store browser cookies.
 
 - **Ecommerce event tracking**\
 Flexible ecommerce data structure that supports custom formats or GA4 ecommerce data structure.  
@@ -45,24 +45,21 @@ Track single page application page views easily, you can customize the tracker d
 
 ### 🚀 - Send events from (almost) everywhere and log them all
 - **Measurement Protocol**\
-Enhance data tracked from website with custom requests made from a server or other sources.  
+Enhance data tracked from website with custom requests made from a server or other sources.
+
 - **Event logging**\
 Simplified debugging with event details from the Javascript console and from server-side Google Tag Manager debug view.
 
 
 
-## Basic requirements
+## Get started
+Basic requirements:
 - Google Consent Mode installed on a website
 - A client-side Google Tag Manager container installed on a website
 - A server-side Google Tag Manager container hosted on App Engine or Cloud Run (Stape.io to be tested)
 - A Google BigQuery project
 
-See [Get started section](https://github.com/tommasomoretti/nameless-analytics/blob/main/README.md#get-started) for details about how to setup the whole environment.
-
-
-
-## Get started
-Read how to setup:
+How to setup:
 1. [Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
 2. [Client-side Google Tag Manager](https://support.google.com/tagmanager/answer/14842164)
 3. [Server-side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)

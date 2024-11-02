@@ -13,8 +13,9 @@ Cookies are released from GTM Server-side, in a first-party context and events d
 
 - **Privacy by design**\
 Choose between three consent tracking modes:
-  - Respect consent mode: Track events only when analytics_storage is granted,
-  - Do not respect consent mode: Track all events regardless analytics_storage value or track all events with redacted user_id, client_id and session_id when analytics_storage is denied.
+  - Limited Tracking Mode when respect_consent_mode is enabled: track events only when analytics_storage is granted,
+  - Full Tracking Mode when respect_consent_mode is disabled: track all events regardless analytics_storage value
+  - Anonymous Tracking Mode respect_consent_mode is disabled: track all events with redacted user_id, client_id and session_id when analytics_storage is denied
 By default, no PII data are tracked.
 
 

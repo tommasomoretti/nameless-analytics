@@ -12,7 +12,10 @@ Collect, analyze and activate your website data with a free* real-time web analy
 Cookies are released from GTM Server-side, in a first-party context and events data are saved in your own Google BigQuery dataset.
 
 - **Privacy by design**\
-3 consent tracking modes. Choose between respects users consents, track all events with redacted client_id, session_id and user_id when a user doesn't consent to analytics tracking or track all events regardless user consents. By default, no PII data are tracked.
+Choose between three consent tracking modes:
+  - Respect consent mode: Track events only when analytics_storage is granted,
+  - Do not respect consent mode: Track all events regardless analytics_storage value or track all events with redacted user_id, client_id and session_id when analytics_storage is denied.
+By default, no PII data are tracked.
 
 
 ### ⚡️ - Performance features

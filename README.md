@@ -4,6 +4,9 @@ An open source web analytics platform for power users based on [Google Tag Manag
 
 Collect, analyze and activate your website data with a free* real-time web analytics suite that respects users privacy.
 
+[Schema di base]
+
+
 
 ## TL;DR
 ### 🕵🏻‍♂️ - Privacy focused

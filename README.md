@@ -6,8 +6,7 @@ Collect, analyze and activate your website data with a free* real-time web analy
 
 Here a basic schema of how Nameless Analytics works:
 
-![Nameless Analytics schema](https://github.com/user-attachments/assets/28701f44-346f-4c41-be62-1a3afe994364)
-
+![Nameless Analytics schema](https://github.com/user-attachments/assets/1edb98e7-e29b-48d8-8e1a-4c67213c7669)
 
 
 ## TL;DR

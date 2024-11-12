@@ -32,7 +32,7 @@ Main JavaScript library only weighs a few kB and it's served via CloudFlare CDN.
 
 
 ### ⚙ - Event tracking features
-- **Client-side tracking with custom events**\
+- **Client-side tracking**\
 Highly customizable Client-side Tracker Tag that supports various field types (string, integer, double, and JSON) and accepts custom acquisition url parameters (it's not mandatory to use UTM parameters).
 
 - **Server-side tracking**\
@@ -45,7 +45,7 @@ Flexible ecommerce data structure that supports custom formats or GA4 ecommerce 
 Track users and sessions across multiple websites.
 
 - **Single Page App tracking**\
-Track single page application page views easily, you can customize the tracker depending on your needs.
+Easily track single-page application page views by customizing the tracker settings.
 
 
 ### 🚀 - Send events from (almost) everywhere and log them all

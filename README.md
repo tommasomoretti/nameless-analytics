@@ -4,11 +4,13 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 
 Collect, analyze, and activate your website data with a free* real-time web analytics suite that respects user privacy.
 
+
+
+## TL;DR
 Here is a basic schema of how Nameless Analytics works:
 
 ![Nameless Analytics schema](https://github.com/user-attachments/assets/1489c365-ce6e-4109-97e2-91b0debdc91e)
 
-## TL;DR
 
 ### 🕵🏻‍♂️ Privacy focused
 
@@ -23,6 +25,7 @@ Here is a basic schema of how Nameless Analytics works:
 
   By default, no PII data are tracked.
 
+
 ### ⚡️ Performance features
 
 - **Real-time**\
@@ -30,6 +33,7 @@ Here is a basic schema of how Nameless Analytics works:
 
 - **Lightweight and fast**\
   The main JavaScript library only weighs a few kB and is served via CloudFlare CDN. All hits are sent via HTTP POST requests.
+
 
 ### ⚙ Event tracking features
 
@@ -48,6 +52,7 @@ Here is a basic schema of how Nameless Analytics works:
 - **Single Page App tracking**\
   Easily track single-page application page views by customizing the tracker settings.
 
+
 ### 🚀 Send Events from (almost) everywhere and log 'em all
 
 - **Measurement protocol**\
@@ -55,6 +60,8 @@ Here is a basic schema of how Nameless Analytics works:
 
 - **Event logging**\
   Simplified debugging with event details from the JavaScript console and from Server-Side Google Tag Manager debug view.
+
+
 
 ## Get Started
 
@@ -64,6 +71,7 @@ Here is a basic schema of how Nameless Analytics works:
 - A Client-Side Google Tag Manager container installed on a website
 - A Server-Side Google Tag Manager container hosted on App Engine or Cloud Run
 - A Google BigQuery project
+
 
 ### How to Set Up:
 
@@ -75,6 +83,7 @@ Here is a basic schema of how Nameless Analytics works:
 6. [Nameless Analytics main table and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-queries) in Google BigQuery
 7. [Google Looker Studio Dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 8. [Measurement Protocol and Utility Functions](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol-and-utility-functions)
+
 
 ### Do You Want to See a Live Demo?
 

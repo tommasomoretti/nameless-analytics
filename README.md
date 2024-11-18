@@ -10,12 +10,12 @@ Here is a basic schema of how Nameless Analytics works:
 
 ## TL;DR
 
-### 🕵🏻‍♂️ Privacy-Focused
+### 🕵🏻‍♂️ Privacy focused
 
-- **First-Party Data Context**\
+- **First-party data context**\
   Cookies are released from GTM Server-side in a first-party context, and event data are saved in your own Google BigQuery dataset.
 
-- **Privacy by Design**\
+- **Privacy by design**\
   Choose between three consent tracking modes:
   - **Limited Tracking Mode** (when `respect_consent_mode` is enabled): Track events when `analytics_storage` is granted.
   - **Full Tracking Mode** (when `respect_consent_mode` is disabled): Track all events regardless of `analytics_storage` value.
@@ -23,49 +23,49 @@ Here is a basic schema of how Nameless Analytics works:
 
   By default, no PII data are tracked.
 
-### ⚡️ Performance Features
+### ⚡️ Performance features
 
-- **Real-Time**\
+- **Real-time**\
   Data ingestion into Google BigQuery is nearly instantaneous, and events are available within a couple of seconds.
 
-- **Lightweight and Fast**\
+- **Lightweight and fast**\
   The main JavaScript library only weighs a few kB and is served via CloudFlare CDN. All hits are sent via HTTP POST requests.
 
-### ⚙ Event Tracking Features
+### ⚙ Event tracking features
 
-- **Client-Side Tracking**\
+- **Client-side tracking**\
   Highly customizable Client-Side Tracker Tag that supports various field types (string, integer, double, and JSON) and accepts custom acquisition URL parameters (it's not mandatory to use UTM parameters).
 
-- **Server-Side Tracking**\
+- **Server-side tracking**\
   All data are written directly to Google BigQuery by the Server-Side Client Tag, which processes requests from the Client-Side Tracker Tag, enriches the content, and stores browser cookies.
 
-- **E-commerce Event Tracking**\
+- **E-commerce event tracking**\
   Flexible e-commerce data structure that supports custom formats or GA4 e-commerce data structure.
 
-- **Cross-Domain Tracking** (🚧 beta feature)\
+- **Cross-domain tracking** (🚧 beta feature)\
   Track users and sessions across multiple websites.
 
-- **Single Page App Tracking**\
+- **Single Page App tracking**\
   Easily track single-page application page views by customizing the tracker settings.
 
 ### 🚀 Send Events from (almost) everywhere and log 'em all
 
-- **Measurement Protocol**\
+- **Measurement protocol**\
   Enhance data tracked from the website with custom requests made from a server or other sources.
 
-- **Event Logging**\
+- **Event logging**\
   Simplified debugging with event details from the JavaScript console and from Server-Side Google Tag Manager debug view.
 
 ## Get Started
 
-**Basic Requirements:**
+### Basic Requirements:
 
 - Google Consent Mode installed on a website
 - A Client-Side Google Tag Manager container installed on a website
 - A Server-Side Google Tag Manager container hosted on App Engine or Cloud Run (Stape.io to be tested)
 - A Google BigQuery project
 
-**How to Set Up:**
+### How to Set Up:
 
 1. [Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
 2. [Client-Side Google Tag Manager](https://support.google.com/tagmanager/answer/14842164)

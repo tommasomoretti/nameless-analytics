@@ -48,7 +48,7 @@ Here is a basic schema of how Nameless Analytics works:
 - **Single Page App Tracking**\
   Easily track single-page application page views by customizing the tracker settings.
 
-### 🚀 Send Events from (Almost) Everywhere and Log Them All
+### 🚀 Send Events from (almost) everywhere and log 'em all
 
 - **Measurement Protocol**\
   Enhance data tracked from the website with custom requests made from a server or other sources.

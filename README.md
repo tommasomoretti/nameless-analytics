@@ -62,7 +62,7 @@ Here is a basic schema of how Nameless Analytics works:
 
 - Google Consent Mode installed on a website
 - A Client-Side Google Tag Manager container installed on a website
-- A Server-Side Google Tag Manager container hosted on App Engine or Cloud Run (Stape.io to be tested)
+- A Server-Side Google Tag Manager container hosted on App Engine or Cloud Run
 - A Google BigQuery project
 
 ### How to Set Up:

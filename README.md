@@ -2,7 +2,7 @@
 
 An open-source web analytics platform for power users, based on [Google Tag Manager](https://marketingplatform.google.com/intl/it/about/tag-manager/) and [Google BigQuery](https://cloud.google.com/bigquery).
 
-Collect, analyze, and activate your website data with a free* real-time web analytics suite that respects user privacy.
+Collect, analyze, and activate your website data with a free[^1] real-time web analytics suite that respects user privacy.
 
 
 
@@ -91,7 +91,7 @@ Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.co
 
 ---
 
-\* Nameless Analytics is free, but you have to pay for the Google Cloud resources that you'll use.
+[^1]: Nameless Analytics is free, but you have to pay for the Google Cloud resources that you'll use.
 
 ---
 

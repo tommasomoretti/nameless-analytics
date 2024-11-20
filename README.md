@@ -19,7 +19,7 @@ Here is a basic schema of how Nameless Analytics works:
 
 - **Privacy by design**\
   Choose between three consent tracking modes:
-  - **Limited Tracking Mode** (when `respect_consent_mode` is enabled): Track events when `analytics_storage` is granted.
+  - **Limited Tracking Mode** (when `respect_consent_mode` is enabled): Track events only when `analytics_storage` is granted.
   - **Full Tracking Mode** (when `respect_consent_mode` is disabled): Track all events regardless of `analytics_storage` value.
   - **Anonymous Tracking Mode** (when `respect_consent_mode` is disabled): Track all events with redacted `user_id`, `client_id`, and `session_id` when `analytics_storage` is denied.
 

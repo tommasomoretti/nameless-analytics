@@ -44,7 +44,7 @@ Here is a basic schema of how Nameless Analytics works:
   All data are written directly to Google BigQuery by the Server-Side Client Tag, which processes requests from the Client-Side Tracker Tag, enriches the content, and stores browser cookies.
 
 - **E-commerce event tracking**\
-  Flexible e-commerce data structure that supports custom formats or GA4 e-commerce data structure.
+  Flexible e-commerce data structure that supports ga4 or custom objects.
 
 - **Cross-domain tracking** (🚧 beta feature)\
   Track users and sessions across multiple websites.

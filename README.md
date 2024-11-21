@@ -6,7 +6,7 @@ Collect, analyze, and activate your website data with a free[^1] real-time web a
 
 Read more about:
 - [TL;DR](#tldr)
-  - [Privacy focused](#privacy-focused)
+  - [Privacy focused](#%EF%B8%8F-privacy-focused)
   - [Performance features](#performance-features)
   - [Event tracking features](#event-tracking-features)
   - [Send events from (almost) everywhere and log 'em all](#Send-events-from-almost-everywhere-and-log-em-all)

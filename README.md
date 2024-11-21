@@ -4,6 +4,18 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 
 Collect, analyze, and activate your website data with a free[^1] real-time web analytics suite that respects user privacy.
 
+Read more about:
+- [TL;DR](#tl-dr)
+  - [Privacy focused](#privacy-focused)
+  - [Performance features](#performance-features)
+  - [Event tracking features](#event-tracking-features)
+  - [Send events from (almost) everywhere and log 'em all](#Send-events-from-almost-everywhere-and-log-em-all)
+
+- [Get Started](#event-parameters)
+  - [Basic requirements](#advanced-settings)
+  - [How to set up](#console-log)
+  - [Do You Want to See a Live Demo?](#troubleshooting-and-things-to-keep-in-mind)
+
 
 
 ## TL;DR
@@ -53,7 +65,7 @@ Here is a basic schema of how Nameless Analytics works:
   Easily track single-page application page views by customizing the tracker settings.
 
 
-### 🚀 Send Events from (almost) everywhere and log 'em all
+### 🚀 Send events from (almost) everywhere and log 'em all
 
 - **Measurement protocol**\
   Enhance data tracked from the website with custom requests made from a server or other sources.
@@ -64,17 +76,14 @@ Here is a basic schema of how Nameless Analytics works:
 
 
 ## Get Started
-
-### Basic Requirements:
-
+### Basic requirements
 - Google Consent Mode installed on a website
 - A Client-Side Google Tag Manager container installed on a website
 - A Server-Side Google Tag Manager container hosted on App Engine or Cloud Run
 - A Google BigQuery project
 
 
-### How to Set Up:
-
+### How to set up
 1. [Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
 2. [Client-Side Google Tag Manager](https://support.google.com/tagmanager/answer/14842164)
 3. [Server-Side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)

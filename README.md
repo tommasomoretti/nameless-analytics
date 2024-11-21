@@ -2,7 +2,7 @@
 
 An open-source web analytics platform for power users, based on [Google Tag Manager](https://marketingplatform.google.com/intl/it/about/tag-manager/) and [Google BigQuery](https://cloud.google.com/bigquery).
 
-Collect, analyze, and activate your website data with a free[^1] real-time web analytics suite that respects user privacy.
+Collect, analyze, and activate your website data with a free[^1] real-time digital analytics suite that respects user privacy.
 
 Start from here:
 - [Main features](#main-features)

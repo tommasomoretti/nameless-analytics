@@ -12,7 +12,7 @@ Start from here:
   - [Send events from (almost) everywhere and log 'em all](#-send-events-from-almost-everywhere-and-log-em-all)
 - [Get Started](#get-started)
   - [Basic requirements](#basic-requirements)
-  - [How to set up](#ow-to-set-up)
+  - [How to set up](#how-to-set-up)
   - [Do you want to see a live demo?](#do-you-want-to-see-a-live-demo)
  
 

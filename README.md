@@ -5,10 +5,10 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 Collect, analyze, and activate your website data with a free[^1] real-time web analytics suite that respects user privacy.
 
 Start from here:
-- [TL;DR](#tldr)
-  - [Privacy focused](#%EF%B8%8F-privacy-focused)
-  - [Performance features](#%EF%B8%8F-performance-features)
-  - [Event tracking features](#-event-tracking-features)
+- [Main features](#tldr)
+  - [Privacy](#%EF%B8%8F-privacy)
+  - [Performances](#%EF%B8%8F-performance)
+  - [Event tracking](#-event-tracking)
   - [Send events from (almost) everywhere and log 'em all](#-send-events-from-almost-everywhere-and-log-em-all)
 - [Get Started](#get-started)
   - [Basic requirements](#basic-requirements)
@@ -23,7 +23,7 @@ Here is a basic schema of how Nameless Analytics works:
 ![Nameless Analytics schema](https://github.com/user-attachments/assets/1489c365-ce6e-4109-97e2-91b0debdc91e)
 
 
-### 🕵🏻‍♂️ Privacy focused
+### 🕵🏻‍♂️ Privacy
 
 - **First-party data context**\
   Cookies are released from GTM Server-side in a first-party context, and event data are saved in your own Google BigQuery dataset.
@@ -37,7 +37,7 @@ Here is a basic schema of how Nameless Analytics works:
   By default, no PII data are tracked.
 
 
-### ⚡️ Performance features
+### ⚡️ Performance
 
 - **Real-time**\
   Data ingestion into Google BigQuery is nearly instantaneous, and events are available within a couple of seconds.
@@ -46,7 +46,7 @@ Here is a basic schema of how Nameless Analytics works:
   The main JavaScript library only weighs a few kB and is served via CloudFlare CDN. All hits are sent via HTTP POST requests.
 
 
-### ⚙ Event tracking features
+### ⚙ Event tracking
 
 - **Client-side tracking**\
   Highly customizable Client-Side Tracker Tag that supports various field types (string, integer, double, and JSON) and accepts custom acquisition URL parameters (it's not mandatory to use UTM parameters).

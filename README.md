@@ -86,8 +86,8 @@ Here is a basic schema of how Nameless Analytics works:
 1. [Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
 2. [Client-Side Google Tag Manager](https://support.google.com/tagmanager/answer/14842164)
 3. [Server-Side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
-4. [Nameless Analytics Client-Side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag) and [Nameless Analytics Client-Side Config Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable)
-5. [Nameless Analytics Server-Side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag)
+4. [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable)
+5. [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag)
 6. [Nameless Analytics main table and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-queries) in Google BigQuery
 7. [Google Looker Studio Dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 8. [Measurement Protocol and Utility Functions](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol-and-utility-functions)

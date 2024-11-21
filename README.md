@@ -13,7 +13,7 @@ Read more about:
 - [Get Started](#get-started)
   - [Basic requirements](#basic-requirements)
   - [How to set up](#ow-to-set-up)
-  - [Do You Want to See a Live Demo?](#do-you-want-to-see-a-live-demo)
+  - [Do you want to see a live demo?](#do-you-want-to-see-a-live-demo)
  
 
 
@@ -93,7 +93,7 @@ Here is a basic schema of how Nameless Analytics works:
 8. [Measurement Protocol and Utility Functions](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol-and-utility-functions)
 
 
-### Do You Want to See a Live Demo?
+### Do you want to see a live demo?
 
 Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) and open the developer console.
 

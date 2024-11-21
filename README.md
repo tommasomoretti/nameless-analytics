@@ -5,12 +5,11 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 Collect, analyze, and activate your website data with a free[^1] real-time web analytics suite that respects user privacy.
 
 Read more about:
-- [TL;DR](#tl-dr)
-  - [Privacy focused](#🕵🏻‍♂️-privacy-focused)
+- [TL;DR](#tl-;-dr)
+  - [Privacy focused](#privacy-focused)
   - [Performance features](#performance-features)
   - [Event tracking features](#event-tracking-features)
   - [Send events from (almost) everywhere and log 'em all](#Send-events-from-almost-everywhere-and-log-em-all)
-
 - [Get Started](#event-parameters)
   - [Basic requirements](#advanced-settings)
   - [How to set up](#console-log)

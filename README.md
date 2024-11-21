@@ -5,7 +5,7 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 Collect, analyze, and activate your website data with a free[^1] real-time web analytics suite that respects user privacy.
 
 Start from here:
-- [Main features](#tldr)
+- [Main features](#main-features)
   - [Privacy](#%EF%B8%8F-privacy)
   - [Performances](#%EF%B8%8F-performances)
   - [Event tracking](#-event-tracking)
@@ -17,7 +17,7 @@ Start from here:
  
 
 
-## TL;DR
+## Main features
 Here is a basic schema of how Nameless Analytics works:
 
 ![Nameless Analytics schema](https://github.com/user-attachments/assets/1489c365-ce6e-4109-97e2-91b0debdc91e)

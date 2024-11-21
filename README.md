@@ -7,7 +7,7 @@ Collect, analyze, and activate your website data with a free[^1] real-time web a
 Start from here:
 - [Main features](#tldr)
   - [Privacy](#%EF%B8%8F-privacy)
-  - [Performances](#%EF%B8%8F-performance)
+  - [Performances](#%EF%B8%8F-performances)
   - [Event tracking](#-event-tracking)
   - [Send events from (almost) everywhere and log 'em all](#-send-events-from-almost-everywhere-and-log-em-all)
 - [Get Started](#get-started)
@@ -37,7 +37,7 @@ Here is a basic schema of how Nameless Analytics works:
   By default, no PII data are tracked.
 
 
-### ⚡️ Performance
+### ⚡️ Performances
 
 - **Real-time**\
   Data ingestion into Google BigQuery is nearly instantaneous, and events are available within a couple of seconds.

@@ -7,14 +7,14 @@ Collect, analyze, and activate your website data with a free[^1] real-time web a
 Read more about:
 - [TL;DR](#tldr)
   - [Privacy focused](#%EF%B8%8F-privacy-focused)
-  - [Performance features](#performance-features)
-  - [Event tracking features](#event-tracking-features)
-  - [Send events from (almost) everywhere and log 'em all](#Send-events-from-almost-everywhere-and-log-em-all)
-- [Get Started](#event-parameters)
-  - [Basic requirements](#advanced-settings)
-  - [How to set up](#console-log)
-  - [Do You Want to See a Live Demo?](#troubleshooting-and-things-to-keep-in-mind)
-
+  - [Performance features](#%EF%B8%8F-performance-features)
+  - [Event tracking features](#-event-tracking-features)
+  - [Send events from (almost) everywhere and log 'em all](#-send-events-from-almost-everywhere-and-log-em-all)
+- [Get Started](#get-started)
+  - [Basic requirements](#basic-requirements)
+  - [How to set up](#ow-to-set-up)
+  - [Do You Want to See a Live Demo?](#do-you-want-to-see-a-live-demo)
+ 
 
 
 ## TL;DR

@@ -99,8 +99,7 @@ Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.co
 
 ---
 
-[^1]: Nameless Analytics is free, but you have to pay for the Google Cloud resources that you'll use.
-
----
 
 **Reach me at:** [Email](mailto:hello@tommasomoretti.com) | [Website](https://tommasomoretti.com/?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) | [Twitter](https://twitter.com/tommoretti88) | [LinkedIn](https://www.linkedin.com/in/tommasomoretti/)
+
+[^1]: Nameless Analytics is free, but you have to pay for the Google Cloud resources that you'll use.

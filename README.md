@@ -26,7 +26,7 @@ Here is a basic schema of how Nameless Analytics works:
 ### 🕵🏻‍♂️ Privacy
 
 - **First-party data context**\
-  Cookies are released from GTM Server-side in a first-party context, and event data are saved in your own Google BigQuery dataset.
+  Cookies are served from GTM Server-side in a first-party context, and event data are saved in your own Google BigQuery dataset.
 
 - **Privacy by design**\
   Choose between three consent tracking modes:

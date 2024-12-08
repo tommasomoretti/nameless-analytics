@@ -10,6 +10,7 @@ Start from here:
   - [Performances](#%EF%B8%8F-performances)
   - [Event tracking](#-event-tracking)
   - [Send events from (almost) everywhere and log 'em all](#-send-events-from-almost-everywhere-and-log-em-all)
+- [How it works](#how-it-works)
 - [Get Started](#get-started)
   - [Basic requirements](#basic-requirements)
   - [How to set up](#how-to-set-up)
@@ -18,11 +19,6 @@ Start from here:
 
 
 ## Main features
-Here is a basic schema of how Nameless Analytics works:
-
-![Nameless Analytics schema](https://github.com/user-attachments/assets/1489c365-ce6e-4109-97e2-91b0debdc91e)
-
-
 ### 🕵🏻‍♂️ Privacy
 
 - **First-party data context**\
@@ -30,9 +26,9 @@ Here is a basic schema of how Nameless Analytics works:
 
 - **Privacy by design**\
   Fully integrated with Google Consent Mode with three tracking modes:
-  - **Limited Tracking Mode** (when `respect_consent_mode` is enabled): Track events only when `analytics_storage` is granted.
-  - **Full Tracking Mode** (when `respect_consent_mode` is disabled): Track all events regardless of `analytics_storage` value.
-  - **Anonymous Tracking Mode** (when `respect_consent_mode` is disabled): Track all events with redacted `user_id`, `client_id`, and `session_id` when `analytics_storage` is denied.
+  - **Limited Tracking Mode** (with `respect_consent_mode` enabled): Track events only when `analytics_storage` is granted.
+  - **Full Tracking Mode** (with `respect_consent_mode` disabled): Track all events regardless of `analytics_storage` value.
+  - **Anonymous Tracking Mode** (with `respect_consent_mode` disabled): Track all events with redacted `user_id`, `client_id`, and `session_id` when `analytics_storage` is denied.
 
   By default, no PII data are tracked.
 
@@ -71,6 +67,12 @@ Here is a basic schema of how Nameless Analytics works:
 
 - **Event logging**\
   Simplified debugging with event details from the JavaScript console and from Server-Side Google Tag Manager debug view.
+
+
+## How it works
+Here is a basic schema of how Nameless Analytics works:
+
+![Nameless Analytics schema](https://github.com/user-attachments/assets/1489c365-ce6e-4109-97e2-91b0debdc91e)
 
 
 

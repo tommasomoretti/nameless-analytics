@@ -26,10 +26,10 @@ Here is a basic schema of how Nameless Analytics works:
 ### 🕵🏻‍♂️ Privacy
 
 - **First-party data context**\
-  Cookies are served from GTM Server-side in a first-party context, and event data are saved in your own Google BigQuery dataset.
+  Cookies are served from GTM Server-side in a first-party context, and user data are saved in your own Google BigQuery dataset.
 
 - **Privacy by design**\
-  Choose between three consent tracking modes:
+  Fully integrated with Google Consent Mode with three tracking modes:
   - **Limited Tracking Mode** (when `respect_consent_mode` is enabled): Track events only when `analytics_storage` is granted.
   - **Full Tracking Mode** (when `respect_consent_mode` is disabled): Track all events regardless of `analytics_storage` value.
   - **Anonymous Tracking Mode** (when `respect_consent_mode` is disabled): Track all events with redacted `user_id`, `client_id`, and `session_id` when `analytics_storage` is denied.

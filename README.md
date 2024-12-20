@@ -72,6 +72,7 @@ Start from here:
   Simplified debugging with event details from the JavaScript console and from Server-Side Google Tag Manager debug view.
 
 
+
 ## How it works
 Here is a basic schema of how Nameless Analytics works:
 

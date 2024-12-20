@@ -9,7 +9,7 @@ Start from here:
   - [Privacy](#%EF%B8%8F-privacy)
   - [Performances](#%EF%B8%8F-performances)
   - [Event tracking](#-event-tracking)
-  - [Send events from (almost) everywhere and log 'em all](#-send-events-from-almost-everywhere-and-log-em-all)
+  - [Send and load events from (almost) everywhere and log 'em all](#-send-and-load-events-from-almost-everywhere-and-log-em-all) 
 - [How it works](#how-it-works)
 - [Get Started](#get-started)
   - [Basic requirements](#basic-requirements)
@@ -19,7 +19,7 @@ Start from here:
 
 
 ## Main features
-### 🕵🏻‍♂️ Privacy
+### 🕵🏻‍♂️ Privacy 
 
 - **First-party data context**\
   Cookies are served from GTM Server-side in a first-party context, and user data are saved in your own Google BigQuery dataset.
@@ -60,10 +60,13 @@ Start from here:
   Easily track single-page application page views by customizing the tracker settings.
 
 
-### 🚀 Send events from (almost) everywhere and log 'em all
+### 🚀 Send and load events from (almost) everywhere and log 'em all
 
 - **Measurement protocol**\
   Enhance data tracked from the website with custom requests made from a server or other sources.
+
+- **Offline data import**\
+  Load data from a structured CSV into the main table effortlessly.
 
 - **Event logging**\
   Simplified debugging with event details from the JavaScript console and from Server-Side Google Tag Manager debug view.

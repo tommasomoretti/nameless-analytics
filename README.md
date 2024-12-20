@@ -21,9 +21,6 @@ Start from here:
 ## Main features
 ### 🕵🏻‍♂️ Privacy 
 
-- **First-party data context**\
-  Cookies are served from GTM Server-side in a first-party context, and user data are saved in your own Google BigQuery dataset.
-
 - **Privacy by design**\
   Fully integrated with Google Consent Mode with three tracking modes:
   - **Limited Tracking Mode** (with `respect_consent_mode` enabled): Track events only when `analytics_storage` is granted.
@@ -31,6 +28,9 @@ Start from here:
   - **Anonymous Tracking Mode** (with `respect_consent_mode` disabled): Track all events with redacted `user_id`, `client_id`, and `session_id` when `analytics_storage` is denied.
 
   By default, no PII data are tracked.
+
+- **First-party data context**\
+  Cookies are served from GTM Server-side in a first-party context, and user data are saved in your own Google BigQuery dataset.
 
 
 ### ⚡️ Performances

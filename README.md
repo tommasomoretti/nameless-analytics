@@ -7,6 +7,7 @@ Collect, analyze, and activate your website data with a free[^1] real-time digit
 Start from here:
 - [Main features](#main-features)
   - [Privacy](#%EF%B8%8F-privacy)
+  - [Data governance](#-data-governance)
   - [Performances](#%EF%B8%8F-performances)
   - [Event tracking](#-event-tracking)
   - [Send and load events from (almost) everywhere and log 'em all](#-send-and-load-events-from-almost-everywhere-and-log-em-all) 
@@ -31,6 +32,11 @@ Start from here:
 
 - **First-party data context**\
   Cookies are served from GTM Server-side in a first-party context, and user data are saved in your own Google BigQuery dataset.
+
+
+### 💾 Data governance
+- All data is stored in its raw form, exactly as sent from the browser or via the Measurement Protocol, or inserted through the Data Loader script. No pre-processing is applied.
+- Easily delete data if a user makes a deletion request.
 
 
 ### ⚡️ Performances

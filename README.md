@@ -6,7 +6,6 @@ Collect, analyze, and activate your website data with a free[^1] real-time digit
 
 Start from here:
 - [Main features](#main-features)
-  - [Privacy](#%EF%B8%8F-privacy)
   - [Data governance](#-data-governance)
   - [Performances](#%EF%B8%8F-performances)
   - [Event tracking](#-event-tracking)

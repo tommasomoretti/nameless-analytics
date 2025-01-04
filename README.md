@@ -23,6 +23,9 @@ Start from here:
 - **Cloud hosted data**\
   All data is stored in its raw form, exactly as sent from the browser or via the Measurement Protocol, or inserted through the Data Loader script. No pre-processing is applied.
 
+- **First-party data context**\
+  Cookies are served from GTM Server-side in a first-party context, and user data are saved in your own Google BigQuery dataset.
+
 - **Privacy by design**\
   Fully integrated with Google Consent Mode with three tracking modes:
   - **Limited Tracking Mode** (with `respect_consent_mode` enabled): Track events only when `analytics_storage` is granted.
@@ -33,9 +36,6 @@ Start from here:
 
 - **Respect user rights**\
   Easily delete data if a user makes a deletion request.
-
-- **First-party data context**\
-  Cookies are served from GTM Server-side in a first-party context, and user data are saved in your own Google BigQuery dataset.
   
 
 ### ⚡️ Performances

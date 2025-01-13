@@ -21,10 +21,10 @@ Start from here:
 ## Main features
 ### 💾 Data governance
 - **Cloud hosted data**\
-  All data is stored in its raw form, exactly as sent from the browser or via the Measurement Protocol, or inserted through the Data Loader script. No pre-processing is applied.
+  All data is stored in its raw form in a Google BigQuery dataset, exactly as sent from the browser or via the Measurement Protocol, or inserted through the Data Loader script. No pre-processing is applied.
 
 - **First-party data context**\
-  Cookies are served from GTM Server-side in a first-party context, and user data are saved in your own Google BigQuery dataset.
+  Cookies are served from GTM Server-side in a first-party context.
 
 - **Privacy by design**\
   Fully integrated with Google Consent Mode with three tracking modes:

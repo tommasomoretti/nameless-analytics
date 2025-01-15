@@ -26,6 +26,9 @@ Start from here:
 - **First-party data context**\
   Cookies are served from GTM Server-side in a first-party context.
 
+- **Respect user rights**\
+  Easily delete data if a user makes a deletion request.
+
 - **Privacy by design**\
   Fully integrated with Google Consent Mode with three tracking modes:
   - **Limited Tracking Mode** (with `respect_consent_mode` enabled): Track events only when `analytics_storage` is granted.
@@ -34,8 +37,6 @@ Start from here:
 
   By default, no PII data are tracked.
 
-- **Respect user rights**\
-  Easily delete data if a user makes a deletion request.
   
 
 ### ⚡️ Performances
@@ -50,7 +51,7 @@ Start from here:
 ### ⚙ Event tracking
 
 - **Client-side tracking**\
-  Highly customizable Client-Side Tracker Tag that supports various field types (string, integer, double, and JSON) and accepts custom acquisition URL parameters (it's not mandatory to use UTM parameters).
+  Highly customizable Client-Side Tracker Tag that supports various field types (string, integer, double, and JSON) and accepts custom acquisition URL parameters (it's not mandatory to use UTM parameters). Easily track single-page application page views by customizing the tracker settings.
 
 - **Server-side tracking**\
   All data are written directly to Google BigQuery by the Server-Side Client Tag, which processes requests from the Client-Side Tracker Tag, enriches the content, and stores browser cookies.
@@ -61,13 +62,7 @@ Start from here:
 - **Cross-domain tracking** (🚧 beta feature)\
   Track users and sessions across multiple websites.
 
-- **Single Page App tracking**\
-  Easily track single-page application page views by customizing the tracker settings.
-
-
-### 🚀 Send and load events from (almost) everywhere and log 'em all
-
-- **Measurement protocol**\
+- **Measurement protocol tracking**\
   Enhance data tracked from the website with custom requests made from a server or other sources.
 
 - **Offline data import**\

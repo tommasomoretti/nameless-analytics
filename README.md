@@ -22,16 +22,16 @@ Start from here:
 
 ## Main features
 ### 💾 Data governance
-- **Cloud hosted data**\
-  All data is stored in its raw form in a Google BigQuery dataset, exactly as sent from the browser or via the Measurement Protocol, or inserted through the Data Loader script. No pre-processing is applied.
-
-- **First-party data context**\
+- **First-party data context**
+  
   Cookies are served from GTM Server-side in a first-party context.
 
-- **Respect user rights**\
+- **Respect user rights**
+  
   Easily delete data if a user makes a deletion request.
 
-- **Privacy by design**\
+- **Privacy by design**
+
   Fully integrated with Google Consent Mode with three tracking modes:
   - **Limited Tracking Mode** (with `respect_consent_mode` enabled): Track events only when `analytics_storage` is granted.
   - **Full Tracking Mode** (with `respect_consent_mode` disabled): Track all events regardless of `analytics_storage` value.
@@ -39,38 +39,53 @@ Start from here:
 
   By default, no PII data are tracked.
 
+- **Cloud hosted data**
   
+  All data is stored in its raw form in a Google BigQuery dataset, exactly as sent from the browser, via the Measurement Protocol or inserted through the Data Loader script. No pre-processing is applied.
+  
+- **Reporting**
+  
+  No sampling, no pre processing only raw data that allow to build reports that fit all then needs, without the limit of a pre-build interface.  
+
 
 ### ⚡️ Performances
-
-- **Real-time**\
+- **Real-time**
+  
   Data ingestion into Google BigQuery is nearly instantaneous, and events are available within a couple of seconds.
 
-- **Lightweight and fast**\
+- **Lightweight and fast**
+  
   The main JavaScript library only weighs a few kB and is served via CloudFlare CDN. All hits are sent via HTTP POST requests.
 
 
-### ⚙ Event tracking
+### ⚙️ Event tracking
 
-- **Client-side tracking**\
+- **Client-side tracking**
+  
   Highly customizable Client-Side Tracker Tag that supports various field types (string, integer, double, and JSON) and accepts custom acquisition URL parameters (it's not mandatory to use UTM parameters). Easily track single-page application page views by customizing the tracker settings.
 
-- **Server-side tracking**\
+- **Server-side tracking**
+  
   All data are written directly to Google BigQuery by the Server-Side Client Tag, which processes requests from the Client-Side Tracker Tag, enriches the content, and stores browser cookies.
 
-- **E-commerce event tracking**\
+- **E-commerce event tracking**
+  
   Flexible e-commerce data structure that supports GA4 standards or custom objects.
 
-- **Cross-domain tracking** (🚧 beta feature)\
+- **Cross-domain tracking** (🚧 beta feature)
+  
   Track users and sessions across multiple websites.
 
-- **Measurement protocol tracking**\
+- **Measurement protocol tracking**
+  
   Enhance data tracked from the website with custom requests made from a server or other sources.
 
-- **Offline data import**\
+- **Offline data import**
+  
   Load data from a structured CSV into the main table effortlessly.
 
-- **Event logging**\
+- **Event logging**
+  
   Simplified debugging with event details from the JavaScript console and from Server-Side Google Tag Manager debug view.
 
 

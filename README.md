@@ -26,10 +26,6 @@ Start from here:
   
   Cookies are served from GTM Server-side in a first-party context.
 
-- **Respect user rights**
-  
-  Easily delete data if a user makes a deletion request.
-
 - **Privacy by design**
 
   Fully integrated with Google Consent Mode with two tracking modes:
@@ -45,10 +41,11 @@ Start from here:
   
   All data is stored in its raw form in a Google BigQuery dataset, exactly as sent from the browser, via the Measurement Protocol or inserted through the Data Loader script. No pre-processing is applied.
   
-- **Reporting**
+- **Raw data**
   
-  No sampling, no pre processing only raw data that allow to build reports that fit all then needs, without the limit of a pre-build interface.  
-
+  No sampling or pre processing, only raw data. Use standard tables or make custom tables that fit all then needs in Google BigQuery, without limits.
+  No pre-built interface, use any BI tool that connects with BigQuery, like Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Mode Analytics, ecc...
+  
 
 ### ⚡️ Performances
 - **Real-time**

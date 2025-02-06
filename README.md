@@ -32,10 +32,12 @@ Start from here:
 
 - **Privacy by design**
 
-  Fully integrated with Google Consent Mode with three tracking modes:
-  - **Limited Tracking Mode** (with `respect_consent_mode` enabled): Track events only when `analytics_storage` is granted.
-  - **Full Tracking Mode** (with `respect_consent_mode` disabled): Track all events regardless of `analytics_storage` value.
-  - **Anonymous Tracking Mode** (with `respect_consent_mode` disabled): Track all events with redacted `user_id`, `client_id`, and `session_id` when `analytics_storage` is denied.
+  Fully integrated with Google Consent Mode with two tracking modes:
+  - Respect user consents:
+    - **Limited Tracking Mode** (with `respect_consent_mode` enabled): Track events only when `analytics_storage` is granted.
+  - Do not respect user consents:
+    - **Full Tracking Mode** (with `respect_consent_mode` disabled): Track all events regardless of `analytics_storage` value.
+    - **Anonymous Tracking Mode** (with `respect_consent_mode` disabled): Track all events with redacted `user_id`, `client_id`, and `session_id` when `analytics_storage` is denied.
 
   By default, no PII data are tracked.
 

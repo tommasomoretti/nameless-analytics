@@ -29,7 +29,7 @@ Start from here:
   
   No sampling or pre processing, only raw data. Use standard tables or make custom tables in Google BigQuery, without any limitations.
 
-  No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Mode Analytics, etc... to create reports that truly fit the needs.
+  No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
 
   
 - **First-party data context**

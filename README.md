@@ -21,6 +21,17 @@ Start from here:
 
 ## Main features
 ### 💾 Data governance
+- **Cloud hosted data**
+  
+  All data is stored in its raw form in a Google BigQuery dataset, exactly as sent from the browser, via the Measurement Protocol or inserted through the Data Loader script.
+  
+- **Raw data**
+  
+  No sampling or pre processing, only raw data. Use standard tables or make custom tables in Google BigQuery, without any limitations.
+
+  No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Mode Analytics, etc... to create reports that truly fit the needs.
+
+  
 - **First-party data context**
   
   Cookies are served from GTM Server-side in a first-party context.
@@ -35,16 +46,6 @@ Start from here:
     - **Anonymous Tracking Mode** (with `respect_consent_mode` disabled): Track all events with redacted `user_id`, `client_id`, and `session_id` when `analytics_storage` is denied.
 
   By default, no PII data are tracked.
-
-- **Cloud hosted data**
-  
-  All data is stored in its raw form in a Google BigQuery dataset, exactly as sent from the browser, via the Measurement Protocol or inserted through the Data Loader script. No pre-processing is applied.
-  
-- **Raw data**
-  
-  No sampling or pre processing, only raw data. Use standard tables or make custom tables that fit all then needs in Google BigQuery, without limits.
-
-  No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Mode Analytics, etc... to create reports that truly fit the needs.
   
 
 ### ⚡️ Performances

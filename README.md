@@ -7,12 +7,12 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 Collect, analyze, and activate your website data with a free[^1] real-time digital analytics suite that respects user privacy.
 
 Start from here:
-- [Main features](#main-features)
+- Main features
   - [Data governance](#-data-governance)
   - [Performances](#%EF%B8%8F-performances)
   - [Event tracking](#%EF%B8%8F-event-tracking)
 - [How it works](#how-it-works)
-- [Get Started](#get-started)
+- Get Started
   - [Basic requirements](#basic-requirements)
   - [How to set up](#how-to-set-up)
   - [Do you want to see a live demo?](#do-you-want-to-see-a-live-demo)

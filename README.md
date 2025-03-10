@@ -108,7 +108,7 @@ Here is a basic schema of how Nameless Analytics works:
 3. [Server-Side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
 4. [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable)
 5. [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag)
-6. [Nameless Analytics main table and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-queries) in Google BigQuery
+6. [Nameless Analytics Main table and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-queries) in Google BigQuery
 8. [Nameless Analytics Measurement Protocol and utility functions](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol-and-utility-functions)
 7. [Nameless Analytics Data loader](https://github.com/tommasomoretti/nameless-analytics-data-loader)
 8. [Nameless Analytics Utility functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions)

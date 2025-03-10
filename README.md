@@ -110,7 +110,8 @@ Here is a basic schema of how Nameless Analytics works:
 5. [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag)
 6. [Nameless Analytics main table and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-queries) in Google BigQuery
 8. [Nameless Analytics Measurement Protocol and utility functions](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol-and-utility-functions)
-7. [Nameless Analytics data loader](https://github.com/tommasomoretti/nameless-analytics-data-loader)
+7. [Nameless Analytics Data loader](https://github.com/tommasomoretti/nameless-analytics-data-loader)
+8. [Nameless Analytics Utility functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions)
 9. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 
 

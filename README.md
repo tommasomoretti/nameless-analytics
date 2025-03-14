@@ -69,7 +69,7 @@ Start from here:
   
   Flexible e-commerce data structure that supports GA4 standards or custom objects.
 
-- **Cross-domain tracking** (🚧 beta feature)
+- **Cross-domain tracking**
   
   Track users and sessions across multiple websites.
 

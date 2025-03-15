@@ -8,9 +8,9 @@ Collect, analyze, and activate your website data with a free real-time digital a
 
 Start from here:
 - Main features
-  - [Data governance](#-data-governance)
-  - [Performances](#%EF%B8%8F-performances)
-  - [Event tracking](#%EF%B8%8F-event-tracking)
+  - [Data governance](#data-governance)
+  - [Performances](#performances)
+  - [Event tracking](#event-tracking)
 - [How it works](#how-it-works)
 - Get Started
   - [Basic requirements](#basic-requirements)
@@ -20,7 +20,7 @@ Start from here:
 
 
 ## Main features
-### 💾 Data governance
+### Data governance
 - **Cloud hosted data**
   
   All data is stored in its raw form in a Google BigQuery dataset, exactly as sent from the browser, via the Measurement Protocol or inserted through the Data Loader script.
@@ -45,7 +45,7 @@ Start from here:
   By default, no PII data are tracked.
   
 
-### ⚡️ Performances
+### Performances
 - **Real-time**
   
   Data ingestion into Google BigQuery is nearly instantaneous, and events are available within a couple of seconds.
@@ -55,7 +55,7 @@ Start from here:
   The main JavaScript library only weighs a few kB and is served via CloudFlare CDN. All hits are sent via HTTP POST requests.
 
 
-### ⚙️ Event tracking
+### Event tracking
 
 - **Client-side tracking**
   

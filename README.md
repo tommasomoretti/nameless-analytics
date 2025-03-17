@@ -92,7 +92,7 @@ Here is a basic schema of how Nameless Analytics works:
 
 ![schema](https://github.com/user-attachments/assets/1f7b5f1e-e282-43cf-8f30-737554c8e3d9)
 
-N.B.: Nameless Analytics is free, but you have to pay for the Google Cloud resources that you'll use.
+Please note that Nameless Analytics is free, but Google Cloud resources may be paid.
 
 
 ## Get Started

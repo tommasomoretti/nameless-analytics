@@ -95,6 +95,7 @@ Here is a basic schema of how Nameless Analytics works:
 Please note that Nameless Analytics is free, but Google Cloud resources may be paid.
 
 
+
 ## Get Started
 ### Basic requirements
 - Google Consent Mode installed on a website

@@ -90,7 +90,7 @@ Start from here:
 ## How it works
 Here is a basic schema of how Nameless Analytics works:
 
-![schema](https://github.com/user-attachments/assets/1f7b5f1e-e282-43cf-8f30-737554c8e3d9)
+<img width="1383" alt="Screenshot 2025-04-21 alle 10 52 59" src="https://github.com/user-attachments/assets/46624132-83c6-4efd-86d3-c3a24d691604" />
 
 Please note that Nameless Analytics is free, but Google Cloud resources may be paid.
 

@@ -101,7 +101,8 @@ Please note that Nameless Analytics is free, but Google Cloud resources may be p
 - Google Consent Mode installed on a website
 - A Client-Side Google Tag Manager container installed on a website
 - A Server-Side Google Tag Manager container hosted on App Engine or Cloud Run mapped to a custom domain name
-- A Google BigQuery project
+- A Google BigQuery dataset
+- A Google Firestore database
 
 
 ### How to set up

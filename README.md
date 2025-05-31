@@ -59,19 +59,17 @@ Start from here:
 
 - **Client-side tracking**
   
-  Highly customizable Client-Side Tracker Tag that supports various field types (string, integer, double, and JSON) and accepts custom acquisition URL parameters (it's not mandatory to use UTM parameters). Easily track single-page application page views by customizing the tracker settings.
+  Highly customizable Client-Side Tracker Tag that supports various field types (string, integer, double, and JSON).
+  
+  - **E-commerce event tracking**: Flexible e-commerce data structure that supports GA4 standards or custom objects.
+  - **Cross-domain tracking** Track users and sessions across multiple websites.
+  - **Single Page Application**:  Easily track Single Page Application page views.
+  - **Acquisition parameters**:  Set custom acquisition URL parameters. There's no need to use UTM parameters exclusively.
+  - **Libraries**: Load libraries from cdnjs or from a custom location.
 
 - **Server-side tracking**
   
   All data are written directly to Google BigQuery by the Server-Side Client Tag, which processes requests from the Client-Side Tracker Tag, enriches the content, and stores browser cookies.
-
-- **E-commerce event tracking**
-  
-  Flexible e-commerce data structure that supports GA4 standards or custom objects.
-
-- **Cross-domain tracking**
-  
-  Track users and sessions across multiple websites.
 
 - **Measurement protocol tracking**
   

@@ -40,7 +40,7 @@ Start from here:
 
   Fully integrated with Google Consent Mode with two tracking modes:
   - Respect user consents: track events only when `analytics_storage` is granted.
-  - Do not respect user consents: track all events regardless of `analytics_storage` value when `analytics_storage` is denied.
+  - Do not respect user consents: track all events regardless of `analytics_storage` value.
 
   By default, no PII data are tracked.
   

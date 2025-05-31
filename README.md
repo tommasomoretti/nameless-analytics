@@ -59,7 +59,7 @@ Start from here:
 
 - **Client-side tracking**
   
-  Highly customizable Client-Side Tracker Tag that supports various field types (string, integer, double, and JSON). Main features:
+  Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). Main features:
 
   - Single Page Application tracking
   - Flexible e-commerce data structure that supports custom JSON objects or GA4 standards
@@ -68,8 +68,10 @@ Start from here:
   - Load libraries from cdnjs or from a custom location
 
 - **Server-side tracking**
-  
-  All data are written directly to Google BigQuery by the Server-Side Client Tag, which processes requests from the Client-Side Tracker Tag, enriches the content, and stores browser cookies.
+  Highly customizable Client-Side Tracker Tag that claims requests from Client-Side Tracker Tag. Main features:
+  - Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies.
+  - Writes user and session data into Google Firestore
+  - Enriches and writes event data into Google BigQuery
 
 - **Measurement protocol tracking**
   

@@ -59,13 +59,13 @@ Start from here:
 
 - **Client-side tracking**
   
-  Highly customizable Client-Side Tracker Tag that supports various field types (string, integer, double, and JSON).
-  
-  - **E-commerce event tracking**: Flexible e-commerce data structure that supports GA4 standards or custom objects.
-  - **Cross-domain tracking** Track users and sessions across multiple websites.
-  - **Single Page Application**:  Easily track Single Page Application page views.
-  - **Acquisition parameters**:  Set custom acquisition URL parameters. There's no need to use UTM parameters exclusively.
-  - **Libraries**: Load libraries from cdnjs or from a custom location.
+  Highly customizable Client-Side Tracker Tag that supports various field types (string, integer, double, and JSON). Main features:
+
+  - Single Page Application tracking
+  - Flexible e-commerce data structure that supports custom JSON objects or GA4 standards
+  - Cross-domain tracking for stitching users and sessions across multiple websites
+  - Custom acquisition URL parameters, there's no need to use UTM parameters exclusively
+  - Load libraries from cdnjs or from a custom location
 
 - **Server-side tracking**
   

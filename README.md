@@ -8,9 +8,12 @@ Collect, analyze, and activate your website data with a free real-time digital a
 
 Start from here:
 - Main features
-  - [Data governance](#data-governance)
-  - [Performances](#performances)
-  - [Event tracking](#event-tracking)
+  - [Client-side tracking](#client-side-tracking)
+  - [Server-side tracking](#server-side-tracking)
+  - [Measurement protocol](#measurement-protocol)
+  - [Batch data import](#batch-data-import)
+  - [Data vizualization](#data-vizualization)
+
 - [How it works](#how-it-works)
 - Get Started
   - [Basic requirements](#basic-requirements)
@@ -20,70 +23,31 @@ Start from here:
 
 
 ## Main features
-### Data governance
-- **Cloud hosted data**
-  
-  All data is stored in its raw form in a Google BigQuery dataset, exactly as sent from the browser, via the Measurement Protocol or inserted through the Data Loader script.
-  
-- **Raw data**
-  
-  No sampling or pre processing, only raw data. Use standard tables or make custom tables in Google BigQuery, without any limitations.
+### Client-side tracking
+Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). Main features:
+- Fully integrated with Google Consent Mode: track events only when `analytics_storage` is granted or track all events regardless of `analytics_storage` value
+- Single Page Application tracking
+- Flexible e-commerce data structure that supports custom JSON objects or GA4 standards
+- Cross-domain tracking for stitching users and sessions across multiple websites
+- Custom acquisition URL parameters, there's no need to use UTM parameters exclusively
+- Load libraries from CDN or from a custom location
+- Event logging in JavaScript console 
 
-  No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
+### Server-side tracking
+Highly customizable Client-Side Tracker Tag that claims requests from Client-Side Tracker Tag. Main features:
+- Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies
+- Writes user and session data into Google Firestore in real time
+- Enriches and writes event data into Google BigQuery in real time. No sampling or pre processing, only raw data
+- Event logging in debug view
 
-  
-- **First-party data context**
-  
-  Cookies are served from GTM Server-side in a first-party context.
+### Measurement protocol
+Enhance data tracked from the website with custom requests made from a server or other sources
 
-- **Privacy by design**
+### Batch data import
+  Load data effortlessly from a structured CSV into BigQuery main table
 
-  Fully integrated with Google Consent Mode with two tracking modes:
-  - Respect user consents: track events only when `analytics_storage` is granted.
-  - Do not respect user consents: track all events regardless of `analytics_storage` value.
-
-  By default, no PII data are tracked.
-  
-
-### Performances
-- **Real-time**
-  
-  Data ingestion into Google BigQuery is nearly instantaneous, and events are available within a couple of seconds.
-
-- **Lightweight and fast**
-  
-  The main JavaScript library only weighs a few kB and is served via CloudFlare CDN. All hits are sent via HTTP POST requests.
-
-
-### Event tracking
-
-- **Client-side tracking**
-  
-  Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). Main features:
-
-  - Single Page Application tracking
-  - Flexible e-commerce data structure that supports custom JSON objects or GA4 standards
-  - Cross-domain tracking for stitching users and sessions across multiple websites
-  - Custom acquisition URL parameters, there's no need to use UTM parameters exclusively
-  - Load libraries from cdnjs or from a custom location
-
-- **Server-side tracking**
-  Highly customizable Client-Side Tracker Tag that claims requests from Client-Side Tracker Tag. Main features:
-  - Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies.
-  - Writes user and session data into Google Firestore
-  - Enriches and writes event data into Google BigQuery
-
-- **Measurement protocol tracking**
-  
-  Enhance data tracked from the website with custom requests made from a server or other sources.
-
-- **Offline data import**
-  
-  Load data from a structured CSV into the main table effortlessly.
-
-- **Event logging**
-  
-  Simplified debugging with event details from the JavaScript console and from Server-Side Google Tag Manager debug view.
+### Data vizualization
+No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
 
 
 
@@ -101,8 +65,8 @@ Please note that Nameless Analytics is free, but Google Cloud resources may be p
 - Google Consent Mode installed on a website
 - A Client-Side Google Tag Manager container installed on a website
 - A Server-Side Google Tag Manager container hosted on App Engine or Cloud Run mapped to a custom domain name
-- A Google BigQuery dataset
 - A Google Firestore database
+- A Google BigQuery dataset
 
 
 ### How to set up

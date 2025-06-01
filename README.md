@@ -7,7 +7,7 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 Collect, analyze, and activate your website data with a free real-time digital analytics suite that respects user privacy.
 
 Start from here:
-- Main features
+- [Main features](#main-features)
   - [Client-side tracking](#client-side-tracking)
   - [Server-side tracking](#server-side-tracking)
   - [Measurement protocol](#measurement-protocol)
@@ -15,7 +15,7 @@ Start from here:
   - [Data vizualization](#data-vizualization)
 
 - [How it works](#how-it-works)
-- Get Started
+- [Get started](#get-started)
   - [Basic requirements](#basic-requirements)
   - [How to set up](#how-to-set-up)
   - [Do you want to see a live demo?](#do-you-want-to-see-a-live-demo)
@@ -60,7 +60,7 @@ Please note that Nameless Analytics is free, but Google Cloud resources may be p
 
 
 
-## Get Started
+## Get started
 ### Basic requirements
 - Google Consent Mode installed on a website
 - A Client-Side Google Tag Manager container installed on a website

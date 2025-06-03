@@ -32,7 +32,9 @@ Highly customizable Client-Side Tracker Tag that sends requests to Server-Side C
 - Cross-domain tracking for stitching users and sessions across multiple websites
 - Custom acquisition URL parameters, there's no need to use UTM parameters exclusively
 - Load libraries from CDN or from a custom location
-- Event logging in JavaScript console 
+- Event logging in JavaScript console
+
+Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable)
 
 
 ### Server-side tracking
@@ -42,25 +44,37 @@ Highly customizable Client-Side Tracker Tag that claims requests from Client-Sid
 - Enriches and writes event data into Google BigQuery in real time. No sampling or pre processing, only raw data
 - Event logging in debug view
 
+Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag)
+
 
 ### Measurement protocol
 Enhance data tracked from the website with custom requests made from a server or other sources
 
+Read more about [Nameless Analytics Measurement Protocol](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol)
+
 
 ### Batch data import
-  Load data effortlessly from a structured CSV into BigQuery main table
+Load data effortlessly from a structured CSV into BigQuery main table
+
+Read more about [Nameless Analytics Data Loader](https://github.com/tommasomoretti/nameless-analytics-data-loader)
 
 
 ### Data vizualization
 No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
 
+Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
+
 
 ### Reporting queries
 Lorem ipsum
 
+Read more about [Nameless Analytics Main table and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables) in Google BigQuery
+
 
 ### Utility functions
 Lorem ipsum
+
+Read more about[Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions)
 
 
 

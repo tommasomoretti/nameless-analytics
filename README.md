@@ -38,11 +38,11 @@ Read more about [Nameless Analytics Client-side tracker tag](https://github.com/
 
 
 ### Server-side tracking
-Highly customizable Client-Side Tracker Tag that claims requests from Client-Side Tracker Tag. Main features:
+Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag. Main features:
 - Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies
 - Writes user and session data into Google Firestore in real time
 - Enriches and writes event data into Google BigQuery in real time. No sampling or pre processing, only raw data
-- Event logging in debug view
+- Event logging in Google Tag Manager Server-Side debug view
 
 Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag)
 

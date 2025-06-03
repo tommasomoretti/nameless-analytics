@@ -13,6 +13,7 @@ Start from here:
   - [Measurement protocol](#measurement-protocol)
   - [Batch data import](#batch-data-import)
   - [Data vizualization](#data-vizualization)
+  - [Utility functions](#utility-functions)
 - [How it works](#how-it-works)
 - Get started
   - [Basic requirements](#basic-requirements)
@@ -47,6 +48,9 @@ Enhance data tracked from the website with custom requests made from a server or
 
 ### Data vizualization
 No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
+
+### Utility functions
+Lorem ipsum
 
 
 

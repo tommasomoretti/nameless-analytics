@@ -13,13 +13,14 @@ Start from here:
   - [Measurement protocol](#measurement-protocol)
   - [Batch data import](#batch-data-import)
   - [Data vizualization](#data-vizualization)
+  - [Reporting queries](#reporting-queries)
   - [Utility functions](#utility-functions)
 - [How it works](#how-it-works)
 - Get started
   - [Basic requirements](#basic-requirements)
   - [How to set up](#how-to-set-up)
   - [Do you want to see a live demo?](#do-you-want-to-see-a-live-demo)
- 
+
 
 
 ## Main features
@@ -33,6 +34,7 @@ Highly customizable Client-Side Tracker Tag that sends requests to Server-Side C
 - Load libraries from CDN or from a custom location
 - Event logging in JavaScript console 
 
+
 ### Server-side tracking
 Highly customizable Client-Side Tracker Tag that claims requests from Client-Side Tracker Tag. Main features:
 - Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies
@@ -40,14 +42,22 @@ Highly customizable Client-Side Tracker Tag that claims requests from Client-Sid
 - Enriches and writes event data into Google BigQuery in real time. No sampling or pre processing, only raw data
 - Event logging in debug view
 
+
 ### Measurement protocol
 Enhance data tracked from the website with custom requests made from a server or other sources
+
 
 ### Batch data import
   Load data effortlessly from a structured CSV into BigQuery main table
 
+
 ### Data vizualization
 No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
+
+
+### Reporting queries
+Lorem ipsum
+
 
 ### Utility functions
 Lorem ipsum

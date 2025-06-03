@@ -74,7 +74,7 @@ Read more about [Nameless Analytics Main table and Reporting queries examples](h
 ### Utility functions
 Lorem ipsum
 
-Read more about[Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions)
+Read more about [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions)
 
 
 

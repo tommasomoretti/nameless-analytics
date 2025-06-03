@@ -7,7 +7,7 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 Collect, analyze, and activate your website data with a free real-time digital analytics suite that respects user privacy.
 
 Start from here:
-- [Main features](#main-features)
+- Main features
   - [Client-side tracking](#client-side-tracking)
   - [Server-side tracking](#server-side-tracking)
   - [Measurement protocol](#measurement-protocol)

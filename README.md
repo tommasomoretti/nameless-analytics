@@ -13,9 +13,8 @@ Start from here:
   - [Measurement protocol](#measurement-protocol)
   - [Batch data import](#batch-data-import)
   - [Data vizualization](#data-vizualization)
-
 - [How it works](#how-it-works)
-- [Get started](#get-started)
+- Get started
   - [Basic requirements](#basic-requirements)
   - [How to set up](#how-to-set-up)
   - [Do you want to see a live demo?](#do-you-want-to-see-a-live-demo)

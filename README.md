@@ -77,6 +77,11 @@ Lorem ipsum
 Read more about [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions)
 
 
+### AI helper
+Get help from an expert custom GPTs that knows all about Nameless Analytics.
+
+Ask anything to the [Nameless Analytics helper](https://chatgpt.com/g/g-lI7lqrZx2-nameless-analytics-helper)
+
 
 ## How it works
 Here is a basic schema of how Nameless Analytics works:

@@ -15,6 +15,7 @@ Start from here:
   - [Data vizualization](#data-vizualization)
   - [Reporting queries](#reporting-queries)
   - [Utility functions](#utility-functions)
+  - [AI helper](#ai-helper)
 - [How it works](#how-it-works)
 - Get started
   - [Basic requirements](#basic-requirements)
@@ -78,7 +79,7 @@ Read more about [Nameless Analytics Utility Functions](https://github.com/tommas
 
 
 ### AI helper
-Get help from an expert custom GPTs that knows all about Nameless Analytics.
+Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
 
 Ask anything to [Nameless Analytics helper](https://chatgpt.com/g/g-lI7lqrZx2-nameless-analytics-helper)
 

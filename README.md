@@ -80,7 +80,8 @@ Read more about [Nameless Analytics Utility Functions](https://github.com/tommas
 ### AI helper
 Get help from an expert custom GPTs that knows all about Nameless Analytics.
 
-Ask anything to the [Nameless Analytics helper](https://chatgpt.com/g/g-lI7lqrZx2-nameless-analytics-helper)
+Ask anything to [Nameless Analytics helper](https://chatgpt.com/g/g-lI7lqrZx2-nameless-analytics-helper)
+
 
 
 ## How it works

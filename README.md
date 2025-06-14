@@ -8,6 +8,7 @@ Collect, analyze, and activate your website data with a free real-time digital a
 
 Start from here:
 - [How it works](#how-it-works)
+  - [Standard request payload](#standard-request-payload)
 - Main features
   - [Client-side tracking](#client-side-tracking)
   - [Server-side tracking](#server-side-tracking)
@@ -17,7 +18,6 @@ Start from here:
   - [Reporting queries](#reporting-queries)
   - [Utility functions](#utility-functions)
   - [AI helper](#ai-helper)
-- [Standard request payload](#standard-request-payload)
 - Get started
   - [Basic requirements](#basic-requirements)
   - [How to set up](#how-to-set-up)
@@ -33,69 +33,7 @@ Here is a basic schema of how Nameless Analytics works:
 Please note that Nameless Analytics is free, but Google Cloud resources may be paid.
 
 
-
-## Main features
-### Client-side tracking
-Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). Main features:
-- Fully integrated with Google Consent Mode: track events only when `analytics_storage` is granted or track all events regardless of `analytics_storage` value
-- Single Page Application tracking
-- Flexible e-commerce data structure that supports custom JSON objects or GA4 standards
-- Cross-domain tracking for stitching users and sessions across multiple websites
-- Custom acquisition URL parameters, there's no need to use UTM parameters exclusively
-- Load libraries from CDN or from a custom location
-- Event logging in JavaScript console
-
-Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable)
-
-
-### Server-side tracking
-Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag. Main features:
-- Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies
-- Writes user and session data into Google Firestore in real time
-- Enriches and writes event data into Google BigQuery in real time. No sampling or pre processing, only raw data
-- Event logging in Google Tag Manager Server-Side debug view
-
-Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag)
-
-
-### Measurement protocol
-Enhance data tracked from the website with custom requests made from a server or other sources
-
-Read more about [Nameless Analytics Measurement Protocol](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol)
-
-
-### Batch data import
-Load data effortlessly from a structured CSV into BigQuery main table
-
-Read more about [Nameless Analytics Data Loader](https://github.com/tommasomoretti/nameless-analytics-data-loader)
-
-
-### Data vizualization
-No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
-
-Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
-
-
-### Reporting queries
-Lorem ipsum
-
-Read more about [Nameless Analytics Main table and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables) in Google BigQuery
-
-
-### Utility functions
-Lorem ipsum
-
-Read more about [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions)
-
-
-### AI helper
-Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
-
-Ask anything to [Nameless Analytics helper](https://chatgpt.com/g/g-lI7lqrZx2-nameless-analytics-helper)
-
-
-
-## Standard request payload
+### Standard request payload
 This is the request payload with only standard parameters and no customization at all. 
 
 ```json
@@ -275,6 +213,67 @@ This is the request payload with only standard parameters and no customization a
 |                            | functionality_storage         | String   | CS          | Consenso archiviazione funzionalità      |
 |                            | personalization_storage       | String   | CS          | Consenso archiviazione personalizzazione |
 |                            | security_storage              | String   | CS          | Consenso archiviazione sicurezza         |
+
+
+
+## Main features
+### Client-side tracking
+Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). Main features:
+- Fully integrated with Google Consent Mode: track events only when `analytics_storage` is granted or track all events regardless of `analytics_storage` value
+- Single Page Application tracking
+- Flexible e-commerce data structure that supports custom JSON objects or GA4 standards
+- Cross-domain tracking for stitching users and sessions across multiple websites
+- Custom acquisition URL parameters, there's no need to use UTM parameters exclusively
+- Load libraries from CDN or from a custom location
+- Event logging in JavaScript console
+
+Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable)
+
+
+### Server-side tracking
+Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag. Main features:
+- Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies
+- Writes user and session data into Google Firestore in real time
+- Enriches and writes event data into Google BigQuery in real time. No sampling or pre processing, only raw data
+- Event logging in Google Tag Manager Server-Side debug view
+
+Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag)
+
+
+### Measurement protocol
+Enhance data tracked from the website with custom requests made from a server or other sources
+
+Read more about [Nameless Analytics Measurement Protocol](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol)
+
+
+### Batch data import
+Load data effortlessly from a structured CSV into BigQuery main table
+
+Read more about [Nameless Analytics Data Loader](https://github.com/tommasomoretti/nameless-analytics-data-loader)
+
+
+### Data vizualization
+No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
+
+Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
+
+
+### Reporting queries
+Lorem ipsum
+
+Read more about [Nameless Analytics Main table and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables) in Google BigQuery
+
+
+### Utility functions
+Lorem ipsum
+
+Read more about [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions)
+
+
+### AI helper
+Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
+
+Ask anything to [Nameless Analytics helper](https://chatgpt.com/g/g-lI7lqrZx2-nameless-analytics-helper)
 
 
 

@@ -11,7 +11,7 @@ Start from here:
   - [Client-side tracking](#client-side-tracking)
   - [Server-side tracking](#server-side-tracking)
   - [Streaming protocol](#streaming-protocol)
-  - [Batch data import](#batch-data-import)
+  - [Batch data loader](#batch-data-loader)
   - [Data vizualization](#data-vizualization)
   - [Reporting queries](#reporting-queries)
   - [Utility functions](#utility-functions)
@@ -58,7 +58,7 @@ Read more about [Nameless Analytics Streaming Protocol](https://github.com/tomma
 ### Batch data import
 Load data effortlessly from a structured CSV into BigQuery main table.
 
-Read more about [Nameless Analytics Data Loader](https://github.com/tommasomoretti/nameless-analytics-data-loader)
+Read more about [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader)
 
 
 ### Data vizualization
@@ -295,7 +295,7 @@ This is the request payload with only standard parameters and no customization a
 5. [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag)
 8. [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions)
 8. [Nameless Analytics Streaming Protocol](https://github.com/tommasomoretti/nameless-analytics-streaming-protocol)
-7. [Nameless Analytics Data Loader](https://github.com/tommasomoretti/nameless-analytics-data-loader)
+7. [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader)
 6. [Nameless Analytics Main table and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables) in Google BigQuery
 9. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 

@@ -55,7 +55,7 @@ Enhance data tracked from the website with custom requests made from a server or
 Read more about [Nameless Analytics Streaming Protocol](https://github.com/tommasomoretti/nameless-analytics-streaming-protocol)
 
 
-### Batch data import
+### Batch data loader
 Load data effortlessly from a structured CSV into BigQuery main table.
 
 Read more about [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader)

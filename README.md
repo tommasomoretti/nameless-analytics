@@ -50,13 +50,13 @@ Read more about [Nameless Analytics Server-side client tag](https://github.com/t
 
 
 ### Measurement protocol
-Enhance data tracked from the website with custom requests made from a server or other sources
+Enhance data tracked from the website with custom requests made from a server or other sources.
 
 Read more about [Nameless Analytics Measurement Protocol](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol)
 
 
 ### Batch data import
-Load data effortlessly from a structured CSV into BigQuery main table
+Load data effortlessly from a structured CSV into BigQuery main table.
 
 Read more about [Nameless Analytics Data Loader](https://github.com/tommasomoretti/nameless-analytics-data-loader)
 
@@ -68,7 +68,7 @@ Read more about [Nameless Analytics Google Looker Studio dashboard example](http
 
 
 ### Reporting queries
-Lorem ipsum
+Prebuild reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.
 
 Read more about [Nameless Analytics Main table and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables) in Google BigQuery
 

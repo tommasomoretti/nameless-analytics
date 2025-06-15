@@ -89,7 +89,8 @@ Ask anything to [Nameless Analytics helper](https://chatgpt.com/g/g-lI7lqrZx2-na
 ## How it works
 Here is a basic schema of how Nameless Analytics works:
 
-<img width="2000" alt="Screenshot 2025-06-15 alle 18 26 07" src="https://github.com/user-attachments/assets/840381b1-c330-47ed-9563-06733b5a867a" />
+<img width="2000" alt="Nameless Analytics - Schema" src="https://github.com/user-attachments/assets/06b560f9-8bd8-469f-b2d1-769e0f1b2ec4" />
+
 
 Please note that Nameless Analytics is free, but Google Cloud resources may be paid.
 

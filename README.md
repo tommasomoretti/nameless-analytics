@@ -10,7 +10,7 @@ Start from here:
 - Main features
   - [Client-side tracking](#client-side-tracking)
   - [Server-side tracking](#server-side-tracking)
-  - [Measurement protocol](#measurement-protocol)
+  - [Streaming protocol](#streaming-protocol)
   - [Batch data import](#batch-data-import)
   - [Data vizualization](#data-vizualization)
   - [Reporting queries](#reporting-queries)
@@ -49,10 +49,10 @@ Highly customizable Server-Side Client Tag that claims requests from Client-Side
 Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag)
 
 
-### Measurement protocol
+### Streaming protocol
 Enhance data tracked from the website with custom requests made from a server or other sources.
 
-Read more about [Nameless Analytics Measurement Protocol](https://github.com/tommasomoretti/nameless-analytics-measurement-protocol)
+Read more about [Nameless Analytics Streaming Protocol](https://github.com/tommasomoretti/nameless-analytics-streaming-protocol)
 
 
 ### Batch data import

@@ -101,7 +101,7 @@ Please note that Nameless Analytics is free, but Google Cloud resources may be p
 ### Standard request payload
 This is the request payload with only standard parameters and no customization at all. 
 
-json
+```json
 {
   "event_name": "page_view",
   "event_id": "bm0nQaxTjBSf5Ag_sJ3UilMZloKTSEb-zN0WfbrVyWS5zYN_LHBTER67z2lV3Ac",
@@ -194,7 +194,7 @@ json
     "security_storage": "Denied"
   }
 }
-
+```
 
 | **Parameter name**         | **Sub-parameter**             | **Type** | **Added**   | **Field description**                    |
 |----------------------------|-------------------------------|----------|-------------|------------------------------------------|

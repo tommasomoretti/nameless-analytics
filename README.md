@@ -31,7 +31,7 @@ Start from here:
 ## Main features
 ### Client-side tracking
 Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). Main features:
-- Fully integrated with Google Consent Mode: track events only when `analytics_storage` is granted or track all events regardless of `analytics_storage` value
+- Fully integrated with Google Consent Mode: track events only when analytics_storage is granted or track all events regardless of analytics_storage value
 - Single Page Application tracking
 - Flexible e-commerce data structure that supports custom JSON objects or GA4 standards
 - Cross-domain tracking for stitching users and sessions across multiple websites
@@ -101,7 +101,7 @@ Please note that Nameless Analytics is free, but Google Cloud resources may be p
 ### Standard request payload
 This is the request payload with only standard parameters and no customization at all. 
 
-```json
+json
 {
   "event_name": "page_view",
   "event_id": "bm0nQaxTjBSf5Ag_sJ3UilMZloKTSEb-zN0WfbrVyWS5zYN_LHBTER67z2lV3Ac",
@@ -194,7 +194,7 @@ This is the request payload with only standard parameters and no customization a
     "security_storage": "Denied"
   }
 }
-```
+
 
 | **Parameter name**         | **Sub-parameter**             | **Type** | **Added**   | **Field description**                    |
 |----------------------------|-------------------------------|----------|-------------|------------------------------------------|

@@ -77,7 +77,7 @@ Read more about [Nameless Analytics Main table and Reporting queries examples](h
 
 
 ## Utility functions
-Javascript functions from nameless_analytics.js library that helps to retreive cookie values, get the last Google Consent Mode values, get user agent details, Format timestamp, and calculate channel grouping.
+Javascript functions from nameless_analytics.js library that helps to retrieve cookie values, get the last Google Consent Mode values, get user agent details, Format timestamp, and calculate channel grouping.
 
 Read more about [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions/)
 

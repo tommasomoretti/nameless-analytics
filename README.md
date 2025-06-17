@@ -100,7 +100,7 @@ Event data is written in real time to Google Firestore, providing a low-latency 
 
 Once in BigQuery, the data is immediately available for analysis using any BI tool of choice, including Looker Studio, Power BI, or Tableau. The platform’s modular, open-source design ensures full transparency and control, enabling organizations to tailor every step of their analytics workflow to their technical, privacy, and business requirements.
 
-Please note that Nameless Analytics is free, but Google Cloud resources may be paid.
+Please note: Nameless Analytics is free, but Google Cloud resources may be paid.
 
 
 ### Standard request payload

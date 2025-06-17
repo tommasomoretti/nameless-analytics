@@ -196,7 +196,7 @@ This is the request payload with only standard parameters and no customization a
 }
 ```
 
-| **Parameter name**         | **Sub-parameter**             | **Type** | **Added**   | **Field description**                    |
+| **Parameter name**         | **Sub-parameter**             | **Type** | **Added from**   | **Field description**                    |
 |----------------------------|-------------------------------|----------|-------------|------------------------------------------|
 | event_date                 |                               | Str      | Client-Side | Data dell'evento                         |
 | event_datetime             |                               | Str      | Server-side | Data e ora dell'evento                   |
@@ -208,6 +208,34 @@ This is the request payload with only standard parameters and no customization a
 | processing_event_timestamp |                               | Int      | Server-Side | Timestamp di elaborazione dell’evento    |
 | client_id                  |                               | Str      | Server-Side | Identificativo client                    |
 | session_id                 |                               | Str      | Server-Side | Identificativo sessione                  |
+| user_data                  | user_campaign_id              | Str      | Server-Side | ID campagna utente                       |
+|                            | user_country                  | Str      | Server-Side | Paese dell’utente                        |
+|                            | user_device_type              | Str      | Server-Side | Tipo di dispositivo utente               |
+|                            | user_channel_grouping         | Str      | Server-Side | Raggruppamento canale utente             |
+|                            | user_source                   | Str      | Server-Side | Fonte di traffico utente                 |
+|                            | user_first_session_timestamp  | Str      | Server-Side | Timestamp della prima sessione           |
+|                            | user_date                     | Str      | Server-Side | Data della prima sessione                |
+|                            | user_campaign                 | Str      | Server-Side | Campagna dell’utente                     |
+|                            | user_language                 | Str      | Server-Side | Lingua dell’utente                       |
+|                            | user_last_session_timestamp   | Int      | Server-Side | Timestamp dell’ultima sessione           |
+| session_data               | session_date                  | Str      | Server-Side | Data della sessione                      |
+|                            | session_number                | Str      | Server-Side | Numero progressivo della sessione        |
+|                            | cross_domain_session          | Str      | Server-Side | Indicatore di sessione cross-domain      |
+|                            | session_channel_grouping      | Str      | Server-Side | Raggruppamento canale della sessione     |
+|                            | session_source                | Str      | Server-Side | Fonte della sessione                     |
+|                            | session_campaign              | Str      | Server-Side | Campagna della sessione                  |
+|                            | session_campaign_id           | Str      | Server-Side | ID campagna della sessione               |
+|                            | session_device_type           | Str      | Server-Side | Tipo di dispositivo della sessione       |
+|                            | session_country               | Str      | Server-Side | Paese della sessione                     |
+|                            | session_language              | Str      | Server-Side | Lingua della sessione                    |
+|                            | session_hostname              | Str      | Server-Side | Hostname della sessione                  |
+|                            | session_landing_page_category | Str      | Server-Side | Categoria della pagina di atterraggio    |
+|                            | session_landing_page_location | Str      | Server-Side | Percorso della pagina di atterraggio     |
+|                            | session_landing_page_title    | Str      | Server-Side | Titolo della pagina di atterraggio       |
+|                            | session_exit_page_location    | Str      | Server-Side | Percorso della pagina di uscita          |
+|                            | session_exit_page_title       | Str      | Server-Side | Titolo della pagina di uscita            |
+|                            | session_end_timestamp         | Int      | Server-Side | Timestamp di fine sessione               |
+|                            | session_start_timestamp       | Int      | Server-Side | Timestamp di inizio sessione             |
 | event_data                 | event_type                    | Str      | Client-Side | Tipo di evento                           |
 |                            | channel_grouping              | Str      | Client-Side | Raggruppamento canale                    |
 |                            | source                        | Str      | Client-Side | Fonte di traffico                        |
@@ -241,34 +269,6 @@ This is the request payload with only standard parameters and no customization a
 |                            | city                          | Str      | Server-Side | Città (geo da evento)                    |
 |                            | ss_hostname                   | Str      | Server-Side | Hostname del server-side container       |
 |                            | ss_container_id               | Str      | Server-Side | ID del server-side container             |
-| user_data                  | user_campaign_id              | Str      | Server-Side | ID campagna utente                       |
-|                            | user_country                  | Str      | Server-Side | Paese dell’utente                        |
-|                            | user_device_type              | Str      | Server-Side | Tipo di dispositivo utente               |
-|                            | user_channel_grouping         | Str      | Server-Side | Raggruppamento canale utente             |
-|                            | user_source                   | Str      | Server-Side | Fonte di traffico utente                 |
-|                            | user_first_session_timestamp  | Str      | Server-Side | Timestamp della prima sessione           |
-|                            | user_date                     | Str      | Server-Side | Data della prima sessione                |
-|                            | user_campaign                 | Str      | Server-Side | Campagna dell’utente                     |
-|                            | user_language                 | Str      | Server-Side | Lingua dell’utente                       |
-|                            | user_last_session_timestamp   | Int      | Server-Side | Timestamp dell’ultima sessione           |
-| session_data               | session_date                  | Str      | Server-Side | Data della sessione                      |
-|                            | session_number                | Str      | Server-Side | Numero progressivo della sessione        |
-|                            | cross_domain_session          | Str      | Server-Side | Indicatore di sessione cross-domain      |
-|                            | session_channel_grouping      | Str      | Server-Side | Raggruppamento canale della sessione     |
-|                            | session_source                | Str      | Server-Side | Fonte della sessione                     |
-|                            | session_campaign              | Str      | Server-Side | Campagna della sessione                  |
-|                            | session_campaign_id           | Str      | Server-Side | ID campagna della sessione               |
-|                            | session_device_type           | Str      | Server-Side | Tipo di dispositivo della sessione       |
-|                            | session_country               | Str      | Server-Side | Paese della sessione                     |
-|                            | session_language              | Str      | Server-Side | Lingua della sessione                    |
-|                            | session_hostname              | Str      | Server-Side | Hostname della sessione                  |
-|                            | session_landing_page_category | Str      | Server-Side | Categoria della pagina di atterraggio    |
-|                            | session_landing_page_location | Str      | Server-Side | Percorso della pagina di atterraggio     |
-|                            | session_landing_page_title    | Str      | Server-Side | Titolo della pagina di atterraggio       |
-|                            | session_exit_page_location    | Str      | Server-Side | Percorso della pagina di uscita          |
-|                            | session_exit_page_title       | Str      | Server-Side | Titolo della pagina di uscita            |
-|                            | session_end_timestamp         | Int      | Server-Side | Timestamp di fine sessione               |
-|                            | session_start_timestamp       | Int      | Server-Side | Timestamp di inizio sessione             |
 | consent_data               | respect_consent_mode          | Str      | Client-Side | Rispetto della modalità di consenso      |
 |                            | consent_type                  | Str      | Client-Side | Tipo di consenso                         |
 |                            | ad_user_data                  | Str      | Client-Side | Consenso dati utente per annunci         |

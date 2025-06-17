@@ -94,6 +94,11 @@ Here is a basic schema of how Nameless Analytics works:
 
 <img width="2000" alt="Nameless Analytics - Schema" src="https://github.com/user-attachments/assets/06b560f9-8bd8-469f-b2d1-769e0f1b2ec4" />
 
+Tracking begins on the client side, where a configurable GTM tag sends event data to a server-side GTM container. A custom client tag processes these requests, generates user and session identifiers, manages secure HttpOnly cookies, and logs all activity within GTM’s native debugging tools.
+
+Event data is written in real time to Google Firestore, providing a low-latency persistence layer. From there, a streaming protocol enriches the data with additional context (such as user agent parsing, channel grouping, or geolocation) before replicating it into BigQuery. This pipeline guarantees full data fidelity without sampling or pre-aggregation. Additionally, historical data imports can be handled via a batch loader that supports structured CSV uploads directly into BigQuery.
+
+Once in BigQuery, the data is immediately available for analysis using any BI tool of choice, including Looker Studio, Power BI, or Tableau. The platform’s modular, open-source design ensures full transparency and control, enabling organizations to tailor every step of their analytics workflow to their technical, privacy, and business requirements.
 
 Please note that Nameless Analytics is free, but Google Cloud resources may be paid.
 

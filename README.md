@@ -28,8 +28,8 @@ Start from here:
 
 
 
-## Main features
-### Client-side tracking
+# Main features
+## Client-side tracking
 Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). Main features:
 - Fully integrated with Google Consent Mode: track events only when analytics_storage is granted or track all events regardless of analytics_storage value
 - Single Page Application tracking
@@ -42,7 +42,7 @@ Highly customizable Client-Side Tracker Tag that sends requests to Server-Side C
 Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable/)
 
 
-### Server-side tracking
+## Server-side tracking
 Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag. Main features:
 - Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies
 - Writes user and session data into Google Firestore in real time
@@ -52,44 +52,44 @@ Highly customizable Server-Side Client Tag that claims requests from Client-Side
 Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 
 
-### Streaming protocol
+## Streaming protocol
 Enhance data tracked from the website with custom requests made from a server or other sources.
 
 Read more about [Nameless Analytics Streaming Protocol](https://github.com/tommasomoretti/nameless-analytics-streaming-protocol/)
 
 
-### Batch data loader
+## Batch data loader
 Load data effortlessly from a structured CSV into BigQuery main table.
 
 Read more about [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader/)
 
 
-### Data vizualization
+## Data vizualization
 No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
 
 Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 
 
-### Reporting queries
+## Reporting queries
 Prebuild reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.
 
 Read more about [Nameless Analytics Main table and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables/) in Google BigQuery
 
 
-### Utility functions
-Lorem ipsum
+## Utility functions
+Javascript functions from nameless_analytics.js library that helps to retreive cookie values, get the last Google Consent Mode values, get user agent details, Format timestamp, and calculate channel grouping.
 
 Read more about [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions/)
 
 
-### AI helper
+## AI helper
 Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
 
 Ask anything to [Nameless Analytics helper](https://chatgpt.com/g/g-lI7lqrZx2-nameless-analytics-helper/)
 
 
 
-## How it works
+# How it works
 Here is a basic schema of how Nameless Analytics works:
 
 <img width="2000" alt="Nameless Analytics - Schema" src="https://github.com/user-attachments/assets/06b560f9-8bd8-469f-b2d1-769e0f1b2ec4" />
@@ -103,7 +103,7 @@ Once in BigQuery, the data is immediately available for analysis using any BI to
 Please note: Nameless Analytics is free, but Google Cloud resources may be paid.
 
 
-### Standard request payload
+## Standard request payload
 This is the request payload with only standard parameters and no customization at all. 
 
 ```json
@@ -286,8 +286,8 @@ This is the request payload with only standard parameters and no customization a
 
 
 
-## Get started
-### Basic requirements
+# Get started
+## Basic requirements
 - Google Consent Mode installed on a website
 - A Client-Side Google Tag Manager container installed on a website
 - A Server-Side Google Tag Manager container hosted on App Engine or Cloud Run mapped to a custom domain name
@@ -295,7 +295,7 @@ This is the request payload with only standard parameters and no customization a
 - A Google BigQuery dataset
 
 
-### How to set up
+## How to set up
 1. [Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
 2. [Client-Side Google Tag Manager](https://support.google.com/tagmanager/answer/14842164)
 3. [Server-Side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
@@ -309,7 +309,7 @@ This is the request payload with only standard parameters and no customization a
 11. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 
 
-### Do you want to see a live demo?
+## Do you want to see a live demo?
 
 Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com) and open the developer console.
 

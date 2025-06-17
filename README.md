@@ -103,8 +103,6 @@ This is the request payload with only standard parameters and no customization a
 
 ```json
 {
-  "event_name": "page_view",
-  "event_id": "bm0nQaxTjBSf5Ag_sJ3UilMZloKTSEb-zN0WfbrVyWS5zYN_LHBTER67z2lV3Ac",
   "event_date": "2025-06-12",
   "event_datetime": "2025-06-12T13:26:05.138000",
   "event_timestamp": 1749734765138,
@@ -146,6 +144,8 @@ This is the request payload with only standard parameters and no customization a
     "session_end_timestamp": 1749734765138,
     "session_start_timestamp": 1749734755749
   },
+  "event_name": "page_view",
+  "event_id": "bm0nQaxTjBSf5Ag_sJ3UilMZloKTSEb-zN0WfbrVyWS5zYN_LHBTER67z2lV3Ac",
   "event_data": {
     "event_type": "page_view",
     "channel_grouping": "direct",
@@ -198,8 +198,6 @@ This is the request payload with only standard parameters and no customization a
 
 | **Parameter name**         | **Sub-parameter**             | **Type** | **Added from**   | **Field description**                    |
 |----------------------------|-------------------------------|----------|-------------|------------------------------------------|
-| event_name                 |                               | String   | Client-Side | Nome dell’evento                         |
-| event_id                   |                               | String   | Client-Side | Identificativo univoco dell’evento       |
 | event_date                 |                               | String   | Client-Side | Data dell'evento                         |
 | event_datetime             |                               | String   | Server-side | Data e ora dell'evento                   |
 | event_timestamp            |                               | Integer  | Client-Side | Timestamp dell'evento                    |
@@ -236,6 +234,8 @@ This is the request payload with only standard parameters and no customization a
 |                            | session_exit_page_title       | String   | Server-Side | Titolo della pagina di uscita            |
 |                            | session_end_timestamp         | Integer  | Server-Side | Timestamp di fine sessione               |
 |                            | session_start_timestamp       | Integer  | Server-Side | Timestamp di inizio sessione             |
+| event_name                 |                               | String   | Client-Side | Nome dell’evento                         |
+| event_id                   |                               | String   | Client-Side | Identificativo univoco dell’evento       |
 | event_data                 | event_type                    | String   | Client-Side | Tipo di evento                           |
 |                            | channel_grouping              | String   | Client-Side | Raggruppamento canale                    |
 |                            | source                        | String   | Client-Side | Fonte di traffico                        |

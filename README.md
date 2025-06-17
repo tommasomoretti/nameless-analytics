@@ -198,16 +198,15 @@ This is the request payload with only standard parameters and no customization a
 
 | **Parameter name**         | **Sub-parameter**             | **Type** | **Added from**   | **Field description**                    |
 |----------------------------|-------------------------------|----------|-------------|------------------------------------------|
+| event_name                 |                               | Str      | Client-Side | Nome dell’evento                         |
+| event_id                   |                               | Str      | Client-Side | Identificativo univoco dell’evento       |
 | event_date                 |                               | Str      | Client-Side | Data dell'evento                         |
 | event_datetime             |                               | Str      | Server-side | Data e ora dell'evento                   |
 | event_timestamp            |                               | Int      | Client-Side | Timestamp dell'evento                    |
 | event_origin               |                               | Str      | Client-Side | Origine dell'evento                      |
-| content_length             |                               | Int      | Client-Side | Lunghezza del contenuto                  |
-| event_id                   |                               | Str      | Client-Side | Identificativo univoco dell’evento       |
-| event_name                 |                               | Str      | Client-Side | Nome dell’evento                         |
 | processing_event_timestamp |                               | Int      | Server-Side | Timestamp di elaborazione dell’evento    |
+| content_length             |                               | Int      | Client-Side | Lunghezza del contenuto                  |
 | client_id                  |                               | Str      | Server-Side | Identificativo client                    |
-| session_id                 |                               | Str      | Server-Side | Identificativo sessione                  |
 | user_data                  | user_campaign_id              | Str      | Server-Side | ID campagna utente                       |
 |                            | user_country                  | Str      | Server-Side | Paese dell’utente                        |
 |                            | user_device_type              | Str      | Server-Side | Tipo di dispositivo utente               |
@@ -218,6 +217,7 @@ This is the request payload with only standard parameters and no customization a
 |                            | user_campaign                 | Str      | Server-Side | Campagna dell’utente                     |
 |                            | user_language                 | Str      | Server-Side | Lingua dell’utente                       |
 |                            | user_last_session_timestamp   | Int      | Server-Side | Timestamp dell’ultima sessione           |
+| session_id                 |                               | Str      | Server-Side | Identificativo sessione                  |
 | session_data               | session_date                  | Str      | Server-Side | Data della sessione                      |
 |                            | session_number                | Str      | Server-Side | Numero progressivo della sessione        |
 |                            | cross_domain_session          | Str      | Server-Side | Indicatore di sessione cross-domain      |

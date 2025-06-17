@@ -15,7 +15,7 @@ Start from here:
   - [Server-side tracking](#server-side-tracking)
   - [Streaming protocol](#streaming-protocol)
   - [Batch data loader](#batch-data-loader)
-  - [Data vizualization](#data-vizualization)
+  - [Data visualization](#data-visualization)
   - [Reporting queries](#reporting-queries)
   - [Utility functions](#utility-functions)
   - [AI helper](#ai-helper)

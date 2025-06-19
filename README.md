@@ -209,7 +209,7 @@ This is the request payload with only standard parameters and no customization a
 | event_origin               |                               | String   | Client-Side    | Event origin                    |
 | processing_event_timestamp |                               | Integer  | Server-Side    | Event processing timestamp      |
 | content_length             |                               | Integer  | Client-Side    | Content length                  |
-| client_id                  |                               | String   | Server-Side    | Client identifier               |
+| client_id                  |                               | String   | Server-Side    | Unique client identifier        |
 | user_data                  | user_campaign_id              | String   | Server-Side    | User campaign ID                |
 |                            | user_country                  | String   | Server-Side    | User country                    |
 |                            | user_device_type              | String   | Server-Side    | User device type                |
@@ -220,7 +220,7 @@ This is the request payload with only standard parameters and no customization a
 |                            | user_campaign                 | String   | Server-Side    | User campaign                   |
 |                            | user_language                 | String   | Server-Side    | User language                   |
 |                            | user_last_session_timestamp   | Integer  | Server-Side    | User last session timestamp     |
-| session_id                 |                               | String   | Server-Side    | Session identifier              |
+| session_id                 |                               | String   | Server-Side    | Unique session identifier       |
 | session_data               | session_date                  | String   | Server-Side    | Session date                    |
 |                            | session_number                | String   | Server-Side    | Session sequence number         |
 |                            | cross_domain_session          | String   | Server-Side    | Cross-domain session indicator  |
@@ -248,7 +248,7 @@ This is the request payload with only standard parameters and no customization a
 |                            | campaign_id                   | String   | Client-Side    | Campaign ID                     |
 |                            | campaign_term                 | String   | Client-Side    | Campaign term                   |
 |                            | campaign_content              | String   | Client-Side    | Campaign content                |
-|                            | page_id                       | String   | Client-Side    | Page unique identifier          |
+|                            | page_id                       | String   | Client-Side    | Unique page identifier          |
 |                            | page_title                    | String   | Client-Side    | Page title                      |
 |                            | page_hostname_protocol        | String   | Client-Side    | Page hostname protocol          |
 |                            | page_hostname                 | String   | Client-Side    | Page hostname                   |

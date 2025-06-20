@@ -64,7 +64,7 @@ Load data effortlessly from a structured CSV into BigQuery main table.
 Read more about [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader/)
 
 
-## Data vizualization
+## Data visualization
 No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
 
 Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)

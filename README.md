@@ -24,7 +24,7 @@ Table of contents:
 - Get started
   - [Basic requirements](#basic-requirements)
   - [How to set up](#how-to-set-up)
-  - [Do you want to see a live demo?](#do-you-want-to-see-a-live-demo)
+  - [Want to see a live demo?](#want-to-see-a-live-demo)
 
 
 
@@ -71,7 +71,7 @@ Read more about [Nameless Analytics Google Looker Studio dashboard example](http
 
 
 ## Reporting queries
-Prebuild reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.
+prebuilt reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.
 
 Read more about [Nameless Analytics Main table and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables/) in Google BigQuery
 
@@ -309,7 +309,7 @@ This is the request payload with only standard parameters and no customization a
 11. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 
 
-## Do you want to see a live demo?
+## Want to see a live demo?
 
 Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com) and open the developer console.
 

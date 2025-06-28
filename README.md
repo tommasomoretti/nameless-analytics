@@ -90,7 +90,7 @@ Ask anything to [Nameless Analytics helper](https://chatgpt.com/g/g-lI7lqrZx2-na
 # How it works
 Here is a basic schema of how Nameless Analytics works:
 
-<img width="2000" alt="Nameless Analytics schema" src="https://github.com/user-attachments/assets/bd851ce9-b51b-4995-b14a-3c093d84f64b" />
+<img width="2000" alt="Nameless Analytics schema" src="https://github.com/user-attachments/assets/f86bf59c-350c-4ec4-85cf-8a17a3d1304b" />
 
 Tracking begins on the client side, where a configurable GTM tag sends event data to a server-side GTM container. A custom client tag processes these requests, generates user and session identifiers, manages secure HttpOnly cookies, and logs all activity within GTM’s native debugging tools.
 

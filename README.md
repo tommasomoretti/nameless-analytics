@@ -14,7 +14,7 @@ Table of contents:
   - [Streaming protocol](#streaming-protocol)
   - [Batch data loader](#batch-data-loader)
   - [Data visualization](#data-visualization)
-  - [Reporting queries](#reporting-queries)
+  - [First party data storage and reporting queries](#first-party-data-storage-and-reporting-queries)
   - [Utility functions](#utility-functions)
   - [AI helper](#ai-helper)
 - [How it works](#how-it-works)
@@ -98,11 +98,22 @@ Here is a basic schema of how Nameless Analytics works:
 
 <img width="2000" alt="Nameless Analytics schema" src="https://github.com/user-attachments/assets/f86bf59c-350c-4ec4-85cf-8a17a3d1304b" />
 
-Tracking begins on the client side, where a configurable GTM tag sends event data to a server-side GTM container. A custom client tag processes these requests, generates user and session identifiers, manages secure HttpOnly cookies, and logs all activity within GTM’s native debugging tools.
+Here’s a clear overview of how Nameless Analytics works:
 
-Event data is written in real time to Google Firestore, providing a low-latency persistence layer. From there, a streaming protocol enriches the data with additional context (such as user agent parsing, channel grouping, or geolocation) before replicating it into BigQuery. This pipeline guarantees full data fidelity without sampling or pre-aggregation. Additionally, historical data imports can be handled via a batch loader that supports structured CSV uploads directly into BigQuery.
+### Client-side tracking:
+A customizable GTM Client-side tracker tag runs on the website, capturing events such as page views, clicks, ecommerce interactions, etc. This tag respects Google Consent Mode and supports cross-domain tracking. It sends structured event data to a server-side GTM container.
 
-Once in BigQuery, the data is immediately available for analysis using any BI tool of choice, including Looker Studio, Power BI, or Tableau. The platform’s modular, open-source design ensures full transparency and control, enabling organizations to tailor every step of their analytics workflow to their technical, privacy, and business requirements.
+### Server-side tracking:
+The GTM Server-side client tag receives the events from the client side. It manages user and session identifiers by setting secure, HttpOnly cookies, enriches the data with additional user and session context, and writes user/session data to Firestore and event data to BigQuery in real time.
+
+### Streaming protocol & batch data loader:
+Besides client-server event flow, Nameless Analytics supports sending custom event data directly from servers via a Streaming protocol, and also loading historical or bulk data via a batch loader script that imports CSV files into BigQuery.
+
+### Data storage and enrichment:
+Firestore acts as a real-time, low-latency storage for user and session states while BigQuery stores raw event data with full granularity.
+
+### Analysis and reporting:
+Data in BigQuery can be queried via prebuilt table functions (for users, sessions, events, ecommerce, consents, etc.) and connected to any BI tool (e.g., Google Looker Studio, Power BI) for fully customizable reporting.
 
 Please note: Nameless Analytics is free, but Google Cloud resources may be paid.
 

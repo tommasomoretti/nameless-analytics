@@ -96,11 +96,10 @@ Ask anything to [Nameless Analytics helper](https://chatgpt.com/g/g-lI7lqrZx2-na
 
 
 # How it works
-Here is a basic schema of how Nameless Analytics works:
+Here’s an overview of how Nameless Analytics works:
 
 <img width="2000" alt="Nameless Analytics schema" src="https://github.com/user-attachments/assets/f86bf59c-350c-4ec4-85cf-8a17a3d1304b" />
 
-Here’s an overview of how Nameless Analytics works:
 
 Nameless Analytics is an open-source, privacy-focused web analytics platform built on Google Tag Manager (GTM), Google Firestore, and Google BigQuery. It starts tracking on the client side with a customizable GTM Client-side tracker tag that captures user interactions and sends event data securely to a GTM Server-side container. This server-side tag manages user and session IDs via secure cookies and logs all event data in real time.
 

@@ -66,23 +66,22 @@ Event data can be loaded in batch effortlessly from a structured CSV into BigQue
 Read more about [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader/)
 
 
-## First party data storage
-keeping data that a company collects directly from its customers within its own systems and infrastructure
+## First party data storage and reporting queries
+Data are stored in Google Cloud Platform using Google Firestore database and Google BigQuery dataset. No preprocessing or sampling is applied, only raw data.
+
+Prebuilt reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.
+
+Read more about 8. [Nameless Analytics tables and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables/) in Google BigQuery
+
 
 ## Data visualization
-No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
+Use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
 
 Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 
 
-## Reporting queries
-prebuilt reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.
-
-Read more about [Nameless Analytics Main table and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables/) in Google BigQuery
-
-
 ## Utility functions
-Javascript functions from nameless_analytics.js library that helps to retrieve cookie values, get the last Google Consent Mode values, get user agent details, Format timestamp, and calculate channel grouping.
+The nameless_analytics.js library provides JavaScript functions that help retrieve cookie values, get the latest Google Consent Mode values, obtain user agent details, format timestamps, and calculate channel grouping.
 
 Read more about [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions/)
 

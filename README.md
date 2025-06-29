@@ -28,24 +28,28 @@ Table of contents:
 
 # Main features
 ## Client-side tracking
-Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). Main features:
-- Fully integrated with Google Consent Mode: track events only when analytics_storage is granted or track all events regardless of analytics_storage value
+Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). 
+
+Main features:
+- Fully integrated with Google Consent Mode: tracks events only when analytics_storage is granted or tracks all events regardless of analytics_storage value
 - Single Page Application tracking
-- Flexible e-commerce data structure that supports custom JSON objects or GA4 standards
+- JSON e-commerce data structure that supports custom objects or complies with GA4 standards.
 - Cross-domain tracking for stitching users and sessions across multiple websites
 - Custom acquisition URL parameters, there's no need to use UTM parameters exclusively
-- Load libraries from CDN or from a custom location
-- Event logging in JavaScript console
+- Libraries ca be loaded from CDN or from custom location
+- Events are fully logged in JavaScript console
 
 Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable/)
 
 
 ## Server-side tracking
-Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag. Main features:
+Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag.
+
+Main features:
 - Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies
-- Writes user and session data into Google Firestore in real time
-- Enriches and writes event data into Google BigQuery in real time. No sampling or pre processing, only raw data
-- Event logging in Google Tag Manager Server-Side debug view
+- User and session data are write into Google Firestore in real time
+- Event data are enriched and written into Google BigQuery in real time
+- Events are fully logged in Google Tag Manager Server-Side preview mode
 
 Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 
@@ -57,7 +61,7 @@ Read more about [Nameless Analytics Streaming Protocol](https://github.com/tomma
 
 
 ## Batch data loader
-Load data effortlessly from a structured CSV into BigQuery main table.
+Load data in batch effortlessly from a structured CSV into BigQuery event raw table.
 
 Read more about [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader/)
 

@@ -102,15 +102,11 @@ Here is a basic schema of how Nameless Analytics works:
 
 Here’s an overview of how Nameless Analytics works:
 
-A customizable GTM Client-side tracker tag runs on the website, capturing events such as page views, clicks, ecommerce interactions, etc. This tag respects Google Consent Mode and supports cross-domain tracking. It sends structured event data to a server-side GTM container.
+Nameless Analytics is an open-source, privacy-focused web analytics platform built on Google Tag Manager (GTM), Google Firestore, and Google BigQuery. It starts tracking on the client side with a customizable GTM Client-side tracker tag that captures user interactions and sends event data securely to a GTM Server-side container. This server-side tag manages user and session IDs via secure cookies and logs all event data in real time.
 
-The GTM Server-side client tag receives the events from the client side. It manages user and session identifiers by setting secure, HttpOnly cookies, enriches the data with additional user and session context and writes user/session data to Firestore and event data to BigQuery in real time.
+The collected data is stored and enriched through a multi-layer pipeline: user and session data are saved in Firestore for low-latency access, while detailed event data is streamed into BigQuery without any sampling or pre-aggregation. Nameless Analytics also supports additional data input via a streaming protocol for server-side events and a batch loader for importing historical data from CSV files.
 
-Besides client-server event flow, Nameless Analytics supports sending custom event data directly from servers via a Streaming protocol and also loading historical or bulk data via a batch loader script that imports CSV files into BigQuery.
-
-Firestore acts as a real-time, low-latency storage for user and session states while BigQuery stores raw event data with full granularity.
-
-Data in BigQuery can be queried via prebuilt table functions (for users, sessions, events, ecommerce, consents, etc.) and connected to any BI tool (e.g., Google Looker Studio, Power BI) for fully customizable reporting.
+Once stored in BigQuery, the raw, high-fidelity data can be queried with prebuilt table functions for users, sessions, ecommerce, consents, and more. This data is accessible from any BI tool like Looker Studio or Power BI, allowing complete customization of reports and analysis. The platform provides utility functions and full control over data collection, ensuring transparency and respect for user privacy.
 
 Please note: Nameless Analytics is free, but Google Cloud resources may be paid.
 

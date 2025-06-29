@@ -13,8 +13,9 @@ Table of contents:
   - [Server-side tracking](#server-side-tracking)
   - [Streaming protocol](#streaming-protocol)
   - [Batch data loader](#batch-data-loader)
+  - [First party data storage](#first-party-data-storage)
+  - [Reporting queries](#reporting-queries)
   - [Data visualization](#data-visualization)
-  - [First party data storage and reporting queries](#first-party-data-storage-and-reporting-queries)
   - [Utility functions](#utility-functions)
   - [AI helper](#ai-helper)
 - [How it works](#how-it-works)
@@ -66,12 +67,13 @@ Event data can be loaded in batch effortlessly from a structured CSV into BigQue
 Read more about [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader/)
 
 
-## First party data storage and reporting queries
+## First party data storage
 Data are stored in Google Cloud Platform using Google Firestore database and Google BigQuery dataset. No preprocessing or sampling is applied, only raw data.
 
-Prebuilt reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.
 
-Read more about 8. [Nameless Analytics tables and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables/) in Google BigQuery
+## Reporting queries
+Prebuilt reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.
+Read more about [Nameless Analytics tables and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables/) in Google BigQuery
 
 
 ## Data visualization

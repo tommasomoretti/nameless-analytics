@@ -55,16 +55,19 @@ Read more about [Nameless Analytics Server-side client tag](https://github.com/t
 
 
 ## Streaming protocol
-Enhance data tracked from the website with custom requests made from a server or other sources.
+Event data can be streamed in real time with custom requests made by a server or other sources.
 
 Read more about [Nameless Analytics Streaming Protocol](https://github.com/tommasomoretti/nameless-analytics-streaming-protocol/)
 
 
 ## Batch data loader
-Load data in batch effortlessly from a structured CSV into BigQuery event raw table.
+Event data can be loaded in batch effortlessly from a structured CSV into BigQuery event raw table.
 
 Read more about [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader/)
 
+
+## First party data storage
+keeping data that a company collects directly from its customers within its own systems and infrastructure
 
 ## Data visualization
 No pre-built interface, use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.

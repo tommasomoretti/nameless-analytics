@@ -19,7 +19,7 @@ Table of contents:
   - [Utility functions](#utility-functions)
   - [AI helper](#ai-helper)
 - [How it works](#how-it-works)
-  - [Standard request payload](#standard-request-payload)
+- [Standard request payload](#standard-request-payload)
 - Get started
   - [Basic requirements](#basic-requirements)
   - [How to set up](#how-to-set-up)

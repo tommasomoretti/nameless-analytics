@@ -320,7 +320,7 @@ This is the request payload with only standard parameters and no customization a
 5. [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 6. [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader/)
 7. [Nameless Analytics Streaming Protocol](https://github.com/tommasomoretti/nameless-analytics-streaming-protocol/)
-8. [Nameless Analytics tables and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables/) in Google BigQuery
+8. [Nameless Analytics Tables and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables/) in Google BigQuery
 9. [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions/)
 10. [Nameless Analytics AI helper](https://chatgpt.com/g/g-lI7lqrZx2-nameless-analytics-helper/)
 11. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)

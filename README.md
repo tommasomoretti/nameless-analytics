@@ -34,7 +34,7 @@ Highly customizable Client-Side Tracker Tag that sends requests to Server-Side C
 Main features:
 - Fully integrated with Google Consent Mode: tracks events only when analytics_storage is granted or tracks all events regardless of analytics_storage value
 - Single Page Application tracking
-- JSON e-commerce data structure that supports custom objects or complies with GA4 standards.
+- JSON e-commerce data structure that supports custom objects or complies with GA4 standards
 - Cross-domain tracking for stitching users and sessions across multiple websites
 - Custom acquisition URL parameters, there's no need to use UTM parameters exclusively
 - Libraries ca be loaded from CDN or from custom location
@@ -73,6 +73,7 @@ Data are stored in Google Cloud Platform using Google Firestore database and Goo
 
 ## Reporting queries
 Prebuilt reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.
+
 Read more about [Nameless Analytics tables and reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-tables/) in Google BigQuery
 
 

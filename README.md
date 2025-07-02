@@ -90,9 +90,9 @@ Read more about [Nameless Analytics Utility Functions](https://github.com/tommas
 
 
 ## AI helper
-Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
+Get help from Nameles Analytics QnA, a custom OpenAI GPT that knows everything about Nameless Analytics.
 
-Ask anything to [Nameless Analytics helper](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
+Ask anything to [Nameless Analytics helper](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-qna)
 
 
 

@@ -2,7 +2,7 @@
 
 
 <img src="https://namelessanalytics.com/img/Logotipo%20black.svg#gh-light-mode-only" alt="Light Mode" />
-<img src="https://namelessanalytics.com/img/Logo%20white.svg#gh-dark-mode-only" alt="Dark Mode" />
+<img src="https://namelessanalytics.com/img/Logotipo%20white.svg#gh-dark-mode-only" alt="Dark Mode" />
 
 ---
 

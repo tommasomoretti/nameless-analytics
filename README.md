@@ -1,8 +1,5 @@
-
-
-
-<img src="https://namelessanalytics.com/img/Logotipo%20black.svg#gh-light-mode-only" alt="Light Mode" />
-<img src="https://namelessanalytics.com/img/Logotipo%20white.svg#gh-dark-mode-only" alt="Dark Mode" />
+<img src="https://github.com/user-attachments/assets/93640f49-d8fb-45cf-925e-6b7075f83927#gh-light-mode-only" alt="Light Mode" />
+<img src="https://github.com/user-attachments/assets/71380a65-3419-41f4-ba29-2b74c7e6a66b#gh-dark-mode-only" alt="Dark Mode" />
 
 ---
 

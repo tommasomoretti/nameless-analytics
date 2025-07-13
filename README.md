@@ -12,7 +12,6 @@ Table of contents:
   - [Client-side tracking](#client-side-tracking)
   - [Server-side tracking](#server-side-tracking)
   - [Streaming protocol](#streaming-protocol)
-  - [Batch data loader](#batch-data-loader)
   - [First party data storage](#first-party-data-storage)
   - [Reporting queries](#reporting-queries)
   - [Data visualization](#data-visualization)
@@ -61,12 +60,6 @@ Event data can be streamed in real time with custom requests made by a server or
 Read more about [Nameless Analytics Streaming Protocol](https://github.com/tommasomoretti/nameless-analytics-streaming-protocol/)
 
 
-## Batch data loader
-Event data can be loaded in batch effortlessly from a structured CSV into BigQuery event raw table.
-
-Read more about [Nameless Analytics Batch Data Loader](https://github.com/tommasomoretti/nameless-analytics-batch-data-loader/)
-
-
 ## First party data storage
 Data are stored in Google Cloud Platform using Google Firestore database and Google BigQuery dataset. No preprocessing or sampling is applied, only raw data.
 
@@ -104,7 +97,7 @@ Here’s an overview of how Nameless Analytics works:
 
 Nameless Analytics is an open-source, privacy-focused web analytics platform built on Google Tag Manager (GTM), Google Firestore, and Google BigQuery. It starts tracking on the client side with a customizable GTM Client-side tracker tag that captures user interactions and sends event data securely to a GTM Server-side container. This server-side tag manages user and session IDs via secure cookies and logs all event data in real time.
 
-The collected data is stored and enriched through a multi-layer pipeline: user and session data are saved in Firestore for low-latency access, while detailed event data is streamed into BigQuery without any sampling or pre-aggregation. Nameless Analytics also supports additional data input via a streaming protocol for server-side events and a batch loader for importing historical data from CSV files.
+The collected data is stored and enriched through a multi-layer pipeline: user and session data are saved in Firestore for low-latency access, while detailed event data is streamed into BigQuery without any sampling or pre-aggregation. Nameless Analytics also supports additional data input via a streaming protocol.
 
 Once stored in BigQuery, the raw, high-fidelity data can be queried with prebuilt table functions for users, sessions, ecommerce, consents, and more. This data is accessible from any BI tool like Looker Studio or Power BI, allowing complete customization of reports and analysis. The platform provides utility functions and full control over data collection, ensuring transparency and respect for user privacy.
 

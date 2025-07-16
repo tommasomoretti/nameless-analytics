@@ -90,16 +90,18 @@ Ask anything to [Nameless Analytics QnA](https://chatgpt.com/g/g-6860ef949f94819
 
 
 # How it works
-Here’s an overview of how Nameless Analytics works:
+The system mainly consists of a highly customizable client-side tracker that captures user interactions and sends event data to a server-side GTM container, where user and session IDs are managed using secure cookies (HttpOnly, Secure, SameSite=Strict). The data is enriched and stored in Firestore (for user and session data) and in BigQuery (for detailed events), without sampling or preprocessing.
 
-<img width="2000" alt="Nameless Analytics schema" src="https://github.com/user-attachments/assets/f86bf59c-350c-4ec4-85cf-8a17a3d1304b" />
+[Nameless Analytics QnA](https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd)
 
+### Technical Architecture and Data Flow:
+The data flow in Nameless Analytics starts from the GTM Client-Side Tracker Tag, which detects standard events like page_view as well as custom ones, with support for Single Page Applications, ecommerce data in JSON format, and cross-domain tracking. These events are sent to the GTM Server-Side Client Tag, which manages user and session identification and saves data in real-time to Firestore and BigQuery. The data structure is organized to store user, session, and event parameters separately but related, allowing sophisticated queries and comprehensive reporting. Additionally, Nameless Analytics supports a streaming protocol to send events from other server-side sources.
 
-Nameless Analytics is an open-source, privacy-focused web analytics platform built on Google Tag Manager (GTM), Google Firestore, and Google BigQuery. It starts tracking on the client side with a customizable GTM Client-side tracker tag that captures user interactions and sends event data securely to a GTM Server-side container. This server-side tag manages user and session IDs via secure cookies and logs all event data in real time.
+### Data Management and Storage:
+Data is stored across two Google Cloud systems: Firestore holds user and session data with real-time updates, while BigQuery hosts detailed event data, including custom parameters and ecommerce information. Tables are organized and indexed to enable fast and complex analyses. Nameless Analytics provides predefined SQL functions to facilitate queries on users, sessions, pages, ecommerce transactions, consents, and GTM performance, promoting integration with BI tools such as Google Looker Studio or Power BI for customized visualizations and reports.
 
-The collected data is stored and enriched through a multi-layer pipeline: user and session data are saved in Firestore for low-latency access, while detailed event data is streamed into BigQuery without any sampling or pre-aggregation. Nameless Analytics also supports additional data input via a streaming protocol.
-
-Once stored in BigQuery, the raw, high-fidelity data can be queried with prebuilt table functions for users, sessions, ecommerce, consents, and more. This data is accessible from any BI tool like Looker Studio or Power BI, allowing complete customization of reports and analysis. The platform provides utility functions and full control over data collection, ensuring transparency and respect for user privacy.
+### Additional Features and Privacy Compliance:
+Beyond basic tracking, Nameless Analytics integrates with Google Consent Mode, ensuring data is collected only if analytical consent has been granted. It allows customization of user, session, and event parameters both on the client and server sides to enrich the collected data. The platform offers JavaScript utilities to retrieve cookies, browser details, consent status, and to format timestamps. Finally, being open-source and based on Google Cloud solutions, it provides full transparency and control, without dependencies on external third parties.
 
 Please note: Nameless Analytics is free, but Google Cloud resources may be paid.
 

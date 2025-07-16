@@ -63,6 +63,7 @@ Read more about [Nameless Analytics Streaming Protocol](https://github.com/tomma
 ## First party data storage
 Data are stored in Google Cloud Platform using Google Firestore database and Google BigQuery dataset. No preprocessing or sampling is applied, only raw data.
 
+Read more about [](https://github.com/tommasomoretti/nameless-analytics-tables/#tables-1)
 
 ## Reporting queries
 Prebuilt reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.

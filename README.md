@@ -18,7 +18,8 @@ Table of contents:
   - [Utility functions](#utility-functions)
   - [AI helper](#ai-helper)
 - [How it works](#how-it-works)
-- [Standard request payload](#standard-request-payload)
+  - [Technical Architecture and Data Flow](#technical-architecture-and-data-flow)
+  - [Standard request payload](#standard-request-payload)
 - Get started
   - [Basic requirements](#basic-requirements)
   - [How to set up](#how-to-set-up)
@@ -95,34 +96,21 @@ The system mainly consists of a highly customizable client-side tracker that cap
 ![Nameless Analytics QnA](https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd)
 
 
-### Technical Architecture and Data Flow:
-The data flow in Nameless Analytics starts from the GTM Client-Side Tracker Tag, which detects standard events like page_view as well as custom ones, with support for Single Page Applications, ecommerce data in JSON format, and cross-domain tracking. 
+## Technical Architecture and Data Flow
+The data flow in Nameless Analytics starts from the GTM Client-Side Tracker Tag, which can be configured to track all hits or only those where consent has been granted. It can send standard events like page_view as well as custom events, supporting Single Page Applications, ecommerce data in JSON format and cross-domain tracking.
 
-These events are sent to the GTM Server-Side Client Tag, which manages user and session identification and saves data in real-time to Firestore and BigQuery. 
+Events are sent to the GTM Server-Side Client Tag, which handles user and session identification, enriches the data and saves it in real-time to both Firestore and BigQuery.
 
-The data structure is organized to store user, session, and event parameters separately but related, allowing sophisticated queries and comprehensive reporting. 
+Data is stored across two Google Cloud systems: Firestore holds user and session data with real-time updates, while BigQuery stores detailed event data and ecommerce information. Tables are organized and indexed to enable fast and complex analyses.
 
-Additionally, Nameless Analytics supports a streaming protocol to send events from other server-side sources.
+Nameless Analytics provides predefined SQL functions to simplify queries on users, sessions, pages, ecommerce transactions, consents, and GTM performance, facilitating integration with BI tools such as Google Looker Studio or Power BI for customized visualizations and reports.
 
-### Data Management and Storage:
-Data is stored across two Google Cloud systems: Firestore holds user and session data with real-time updates, while BigQuery hosts detailed event data, including custom parameters and ecommerce information. Tables are organized and indexed to enable fast and complex analyses. 
+Additionally, Nameless Analytics supports a streaming protocol that allows sending events from other server-side sources to the Nameless Analytics Server-Side Client Tag.
 
-Nameless Analytics provides predefined SQL functions to facilitate queries on users, sessions, pages, ecommerce transactions, consents, and GTM performance, promoting integration with BI tools such as Google Looker Studio or Power BI for customized visualizations and reports.
-
-### Additional Features and Privacy Compliance:
-Beyond basic tracking, Nameless Analytics integrates with Google Consent Mode, ensuring data is collected only if analytical consent has been granted. 
-
-It allows customization of user, session, and event parameters both on the client and server sides to enrich the collected data. 
-
-The platform offers JavaScript utilities to retrieve cookies, browser details, consent status, and to format timestamps. 
-
-Finally, being open-source and based on Google Cloud solutions, it provides full transparency and control, without dependencies on external third parties.
-
-Please note: Nameless Analytics is free, but Google Cloud resources may be paid.
+The platform also offers JavaScript utilities to retrieve cookies, browser details, consent status, and to format timestamps.
 
 
-
-# Standard request payload
+## Standard request payload
 This is the request payload with only standard parameters and no customization at all. 
 
 ```json

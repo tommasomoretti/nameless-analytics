@@ -93,7 +93,7 @@ Ask anything to [Nameless Analytics QnA](https://chatgpt.com/g/g-6860ef949f94819
 # How it works
 The system mainly consists of a highly customizable client-side tracker that captures user interactions and sends event data to a server-side GTM container, where user and session IDs are managed using secure cookies (HttpOnly, Secure, SameSite=Strict). The data is enriched and stored in Firestore (for user and session data) and in BigQuery (for detailed events), without sampling or preprocessing.
 
-![Nameless Analytics QnA](https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd)
+<img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
 
 
 ## Technical Architecture and Data Flow

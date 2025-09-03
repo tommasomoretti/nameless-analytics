@@ -23,7 +23,7 @@ Table of contents:
 - Get started
   - [Basic requirements](#basic-requirements)
   - [How to set up](#how-to-set-up)
-  - [Want to see a live demo?](#want-to-see-a-live-demo)
+  - [Want to see a live demo?](#want-to-see-a-live-demo) 
 
 
 

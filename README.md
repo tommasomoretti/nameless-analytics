@@ -16,7 +16,7 @@ Table of contents:
   - [Reporting queries](#reporting-queries)
   - [Data visualization](#data-visualization)
   - [Utility functions](#utility-functions)
-  - [AI helper](#ai-helper)
+  - [AI Q&A](#ai_qna)
 - [Technical Architecture and Data Flow](#technical-architecture-and-data-flow)
 - Get started
   - [Basic requirements](#basic-requirements)
@@ -81,7 +81,7 @@ The nameless_analytics.js library provides JavaScript functions that help retrie
 Read more about [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions/)
 
 
-## AI helper
+## AI Q&A
 Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
 
 Ask anything to [Nameless Analytics QnA](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-qna)
@@ -126,7 +126,7 @@ The platform also offers JavaScript utilities to retrieve cookies, browser detai
 7. [Nameless Analytics Tables and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-reporting-tables) in Google BigQuery
 8. [Nameless Analytics ML queries examples](https://github.com/tommasomoretti/nameless-analytics-ml-queries) in Google BigQuery
 9. [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions/)
-10. [Nameless Analytics AI helper](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
+10. [Nameless Analytics AI Q&A](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
 11. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)
 
 

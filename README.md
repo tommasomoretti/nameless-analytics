@@ -22,6 +22,10 @@ Table of contents:
   - [How to set up](#how-to-set-up)
   - [Want to see a live demo?](#want-to-see-a-live-demo) 
 
+</br>
+</br>
+</br>
+
 
 
 # Main features
@@ -39,6 +43,7 @@ Main features:
 
 Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable/)
 
+</br>
 
 ## Server-side tracking
 Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag or other servers.
@@ -51,6 +56,7 @@ Main features:
 
 Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 
+</br>
 
 ## First party data storage
 Data are stored in Google Cloud Platform using Google Firestore database and Google BigQuery dataset. No preprocessing or sampling is applied, only raw data.
@@ -61,30 +67,41 @@ Prebuilt reporting Google BigQuery table functions for users, sessions, pages, t
 
 Read more about [Nameless Analytics reporting table functions](https://github.com/tommasomoretti/nameless-analytics-reporting-tables/#table-functions) in Google BigQuery
 
+</br>
 
 ## Data visualization
 Use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
 
 Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 
+</br>
 
 ## Utility functions
 The nameless_analytics.js library provides JavaScript functions that help retrieve cookie values, get the latest Google Consent Mode values, obtain user agent details, format timestamps, and calculate channel grouping.
 
 Read more about [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions/)
 
+</br>
 
 ## AI Q&A
 Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
 
 Ask anything to [Nameless Analytics QnA](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-qna)
 
+</br>
 
+#
+
+</br>
+</br>
+</br>
 
 # Technical architecture and data flow
 The system mainly consists of a highly customizable client-side tracker that captures user interactions and sends event data to a server-side GTM container, where user and session IDs are managed using secure cookies (HttpOnly, Secure, SameSite=Strict). The data is enriched and stored in Firestore (for user and session data) and in BigQuery (for detailed events), without sampling or preprocessing.
 
 <img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
+
+</br>
 
 The data flow in Nameless Analytics starts from the GTM Client-Side Tracker Tag, which can be configured to track all hits or only those where consent has been granted. It can send standard events like page_view as well as custom events, supporting Single Page Applications, ecommerce data in JSON format and cross-domain tracking.
 
@@ -98,7 +115,9 @@ Additionally, the Nameless Analytics Server-Side Client Tag supports requests fr
 
 The platform also offers JavaScript utilities to retrieve cookies, browser details, consent status, and to format timestamps.
 
-
+</br>
+</br>
+</br>
 
 # Get started
 ## Basic requirements
@@ -108,6 +127,7 @@ The platform also offers JavaScript utilities to retrieve cookies, browser detai
 - A Google Firestore database
 - A Google BigQuery dataset
 
+</br>
 
 ## How to set up
 1. [Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
@@ -121,12 +141,15 @@ The platform also offers JavaScript utilities to retrieve cookies, browser detai
 9. [Nameless Analytics AI Q&A](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
 10. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)
 
+</br>
 
 ## Want to see a live demo?
 
 Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com) and open the developer console.
 
----
+</br>
+
+#
 
 
 **Reach me at:** [Email](mailto:hello@tommasomoretti.com) | [Website](https://tommasomoretti.com/?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) | [Twitter](https://twitter.com/tommoretti88) | [LinkedIn](https://www.linkedin.com/in/tommasomoretti/)

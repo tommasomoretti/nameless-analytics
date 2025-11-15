@@ -11,7 +11,6 @@ Table of contents:
 - Main features
   - [Client-side tracking](#client-side-tracking)
   - [Server-side tracking](#server-side-tracking)
-  - [Streaming protocol](#streaming-protocol)
   - [First party data storage](#first-party-data-storage)
   - [Reporting queries](#reporting-queries)
   - [Data visualization](#data-visualization)
@@ -42,7 +41,7 @@ Read more about [Nameless Analytics Client-side tracker tag](https://github.com/
 
 
 ## Server-side tracking
-Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag.
+Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag or other servers.
 
 Main features:
 - Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies
@@ -51,12 +50,6 @@ Main features:
 - Events are fully logged in Google Tag Manager Server-Side preview mode
 
 Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
-
-
-## Streaming protocol
-Event data can be streamed in real time with custom requests made by a server or other sources.
-
-Read more about [Nameless Analytics Streaming Protocol](https://github.com/tommasomoretti/nameless-analytics-streaming-protocol/)
 
 
 ## First party data storage
@@ -122,12 +115,11 @@ The platform also offers JavaScript utilities to retrieve cookies, browser detai
 3. [Server-Side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
 4. [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side tracker configuration variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/)
 5. [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
-6. [Nameless Analytics Streaming Protocol](https://github.com/tommasomoretti/nameless-analytics-streaming-protocol/)
-7. [Nameless Analytics Tables and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-reporting-tables) in Google BigQuery
-8. [Nameless Analytics ML queries examples](https://github.com/tommasomoretti/nameless-analytics-ml-queries) in Google BigQuery
-9. [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions/)
-10. [Nameless Analytics AI Q&A](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
-11. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)
+6. [Nameless Analytics Tables and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-reporting-tables) in Google BigQuery
+7. [Nameless Analytics ML queries examples](https://github.com/tommasomoretti/nameless-analytics-ml-queries) in Google BigQuery
+8. [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions/)
+9. [Nameless Analytics AI Q&A](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
+10. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)
 
 
 ## Want to see a live demo?

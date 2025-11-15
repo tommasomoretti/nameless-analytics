@@ -22,7 +22,7 @@ Table of contents:
   - [How to set up](#how-to-set-up)
   - [Want to see a live demo?](#want-to-see-a-live-demo) 
 
-
+</br>
 
 # Main features
 ## Client-side tracking
@@ -79,14 +79,14 @@ Get help from a custom OpenAI GPT that knows everything about Nameless Analytics
 
 Ask anything to [Nameless Analytics QnA](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-qna)
 
-
+</br>
 
 # Technical architecture and data flow
 The system mainly consists of a highly customizable client-side tracker that captures user interactions and sends event data to a server-side GTM container, where user and session IDs are managed using secure cookies (HttpOnly, Secure, SameSite=Strict). The data is enriched and stored in Firestore (for user and session data) and in BigQuery (for detailed events), without sampling or preprocessing.
 
 <img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
 
-
+</br>
 
 The data flow in Nameless Analytics starts from the GTM Client-Side Tracker Tag, which can be configured to track all hits or only those where consent has been granted. It can send standard events like page_view as well as custom events, supporting Single Page Applications, ecommerce data in JSON format and cross-domain tracking.
 
@@ -100,9 +100,7 @@ Additionally, the Nameless Analytics Server-Side Client Tag supports requests fr
 
 The platform also offers JavaScript utilities to retrieve cookies, browser details, consent status, and to format timestamps.
 
-
-
-
+</br>
 
 # Get started
 ## Basic requirements

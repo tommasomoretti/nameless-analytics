@@ -68,12 +68,6 @@ Use any BI tool that connects with BigQuery such as Google Looker, Google Looker
 Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 
 
-## Utility functions
-The nameless_analytics.js library provides JavaScript functions that help retrieve cookie values, get the latest Google Consent Mode values, obtain user agent details, format timestamps, and calculate channel grouping.
-
-Read more about [Nameless Analytics Utility Functions](https://github.com/tommasomoretti/nameless-analytics-utility-functions/)
-
-
 ## AI Q&A
 Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
 

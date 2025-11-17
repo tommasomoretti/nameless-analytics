@@ -12,7 +12,7 @@ Table of contents:
   - [Client-side tracking](#client-side-tracking)
   - [Server-side tracking](#server-side-tracking)
   - [First party data storage](#first-party-data-storage)
-  - [Reporting queries](#reporting-queries)
+  - [Reporting tables](#reporting-tables)
   - [Data visualization](#data-visualization)
   - [AI Q&A](#ai_qna)
 - [Technical Architecture and Data Flow](#technical-architecture-and-data-flow)
@@ -52,11 +52,13 @@ Read more about [Nameless Analytics Server-side client tag](https://github.com/t
 
 
 ## First party data storage
-Data are stored in Google Cloud Platform using Google Firestore database and Google BigQuery dataset. No preprocessing or sampling is applied, only raw data.
+Data are stored in Google Cloud Platform using Google Firestore database and Google BigQuery dataset. No preprocessing or sampling is applied, raw data only.
 
-Read more about [Nameless Analytics tables](https://github.com/tommasomoretti/nameless-analytics-reporting-tables/#tables)
+Read more about [Nameless Analytics default tables](https://github.com/tommasomoretti/nameless-analytics-reporting-tables/#tables)
 
-Prebuilt reporting Google BigQuery table functions for users, sessions, pages, transactions and products, shopping behaviour, consents and GTM performances.
+
+## Reporting tables
+Prebuilt Google BigQuery reporting table functions for users, sessions, pages, events, transactions and products, shopping behaviour, user consents and GTM performances.
 
 Read more about [Nameless Analytics reporting table functions](https://github.com/tommasomoretti/nameless-analytics-reporting-tables/#table-functions) in Google BigQuery
 

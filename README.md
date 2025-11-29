@@ -3,7 +3,8 @@
 
 ---
 
-# Nameless Analytics
+<h1 style="color:#D84343;">Nameless Analytics</h1>
+
 An open-source web analytics platform for power users, based on [Google Tag Manager](https://marketingplatform.google.com/intl/it/about/tag-manager/), [Google Firestore](https://cloud.google.com/firestore) and [Google BigQuery](https://cloud.google.com/bigquery).
 
 Collect, analyze, and activate your website data with a free real-time digital analytics suite that respects user privacy.
@@ -22,10 +23,11 @@ Table of contents:
   - [How to set up](#how-to-set-up)
   - [Want to see a live demo?](#want-to-see-a-live-demo) 
 
-</br>
 
-## Main features
-### Client-side tracking
+
+<h2 id="Main features" style="color:#D84343;">Main features</h2>
+<h3 id='client-side-tracking' style="color:#D84343;">Client-side tracking</h3>
+
 Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). 
 
 Main features:
@@ -40,7 +42,8 @@ Main features:
 Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable/)
 
 
-### Server-side tracking
+<h3 id= style="server-side-tracking" "color:#D84343;">Server-side tracking</h3>
+
 Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag or other servers.
 
 Main features:
@@ -52,32 +55,37 @@ Main features:
 Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 
 
-### First party data storage
+<h3 id="first-party-data-storage" style="color:#D84343;">First party data storage</h3>
+
 Data are stored in Google Cloud Platform using Google Firestore database and Google BigQuery dataset. No preprocessing or sampling is applied, raw data only.
 
 Read more about [Nameless Analytics default tables](https://github.com/tommasomoretti/nameless-analytics-reporting-tables/#tables)
 
 
-### Reporting tables
+<h3 id="reporting-tables" style="color:#D84343;">Reporting tables</h3>
+
 Prebuilt Google BigQuery reporting table functions for users, sessions, pages, events, transactions and products, shopping behaviour, user consents and GTM performances.
 
 Read more about [Nameless Analytics reporting table functions](https://github.com/tommasomoretti/nameless-analytics-reporting-tables/#table-functions) in Google BigQuery
 
 
-### Data visualization
+<h3 id="data-visualization" style="color:#D84343;">Data visualization</h3>
+
 Use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
 
 Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
 
 
-### AI Q&A
+<h3 id="ai-q&a" style="color:#D84343;">AI Q&A</h3>
+
 Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
 
 Ask anything to [Nameless Analytics QnA](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-qna)
 
-</br>
 
-## Technical architecture and data flow
+
+<h2 id="technical-architecture-and-data-flow" style="color:#D84343;">Technical architecture and data flow</h2>
+
 The system mainly consists of a highly customizable client-side tracker that captures user interactions and sends event data to a server-side GTM container, where user and session IDs are managed using secure cookies (HttpOnly, Secure, SameSite=Strict). The data is enriched and stored in Firestore (for user and session data) and in BigQuery (for detailed events), without sampling or preprocessing.
 
 <img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
@@ -96,10 +104,11 @@ Additionally, the Nameless Analytics Server-Side Client Tag supports requests fr
 
 The platform also offers JavaScript utilities to retrieve cookies, browser details, consent status, and to format timestamps.
 
-</br>
 
-## Get started
-### Basic requirements
+
+<h2 id="get_started" style="color:#D84343;">Get started</h2>
+<h3 id="basic_requirements" style="color:#D84343;">Basic requirements</h3>
+
 - Google Consent Mode installed on a website
 - A Client-Side Google Tag Manager container installed on a website
 - A Server-Side Google Tag Manager container hosted on App Engine or Cloud Run mapped to a custom domain name
@@ -107,7 +116,8 @@ The platform also offers JavaScript utilities to retrieve cookies, browser detai
 - A Google BigQuery dataset
 
 
-### How to set up
+<h3 id="how-to-set-up" style="color:#D84343;">How to set up</h3>
+
 1. [Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
 2. [Client-Side Google Tag Manager](https://support.google.com/tagmanager/answer/14842164)
 3. [Server-Side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
@@ -118,11 +128,10 @@ The platform also offers JavaScript utilities to retrieve cookies, browser detai
 8. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)
 
 
-### Want to see a live demo?
+<h3 id="want-to-see-a-live-demo" style="color:#D84343;">Want to see a live demo?</h3>
 
 Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com) and open the developer console.
 
+---
 
-#
-
-**Reach me at:** [Email](mailto:hello@tommasomoretti.com) | [Website](https://tommasomoretti.com/?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) | [Twitter](https://twitter.com/tommoretti88) | [LinkedIn](https://www.linkedin.com/in/tommasomoretti/)
+Reach me at: [Email](mailto:hello@tommasomoretti.com) | [Website](https://tommasomoretti.com/?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) | [Twitter](https://twitter.com/tommoretti88) | [LinkedIn](https://www.linkedin.com/in/tommasomoretti/)

@@ -23,6 +23,8 @@ Table of contents:
   - [How to set up](#how-to-set-up)
   - [Want to see a live demo?](#want-to-see-a-live-demo) 
 
+</br>
+
 
 
 ## Main features
@@ -82,6 +84,8 @@ Get help from a custom OpenAI GPT that knows everything about Nameless Analytics
 
 Ask anything to [Nameless Analytics QnA](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-qna)
 
+</br>
+
 
 
 ## Technical architecture and data flow
@@ -103,6 +107,8 @@ Nameless Analytics provides predefined SQL functions to simplify queries on user
 Additionally, the Nameless Analytics Server-Side Client Tag supports requests from other server-side sources.
 
 The platform also offers JavaScript utilities to retrieve cookies, browser details, consent status, and to format timestamps.
+
+</br>
 
 
 

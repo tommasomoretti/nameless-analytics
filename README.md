@@ -9,19 +9,22 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 
 Collect, analyze, and activate your website data with a free real-time digital analytics suite that respects user privacy.
 
-Table of contents:
-- Main features
-  - [Client-side tracking](#client-side-tracking)
-  - [Server-side tracking](#server-side-tracking)
-  - [First party data storage](#first-party-data-storage)
-  - [Reporting tables](#reporting-tables)
-  - [Data visualization](#data-visualization)
-  - [AI Q&A](#ai_qna)
-- [Technical Architecture and Data Flow](#technical-architecture-and-data-flow)
-- Get started
-  - [Basic requirements](#basic-requirements)
-  - [How to set up](#how-to-set-up)
-  - [Want to see a live demo?](#want-to-see-a-live-demo) 
+Main features:
+* [Client-side tracking](#client-side-tracking)
+* [Server-side tracking](#server-side-tracking)
+* [First party data storage](#first-party-data-storage)
+* [Reporting tables](#reporting-tables)
+* [Data visualization](#data-visualization)
+* [AI Q&A](#ai_qna)
+
+Technical Architecture
+* [Data Flow](#technical-architecture-and-data-flow)
+* [Cookies and IDs]()
+
+Get started: 
+* [Basic requirements](#basic-requirements)
+* [How to set up](#how-to-set-up)
+* [Want to see a live demo?](#want-to-see-a-live-demo) 
 
 </br>
 

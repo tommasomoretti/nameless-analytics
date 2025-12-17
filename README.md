@@ -19,6 +19,7 @@ Main features:
 
 Technical Architecture
 * [Data Flow](#technical-architecture-and-data-flow)
+  * [Libraries](#libraries)
   * [Cookies and IDs](#cookies)
 
 Get started: 
@@ -110,6 +111,13 @@ Nameless Analytics provides predefined SQL functions to simplify queries on user
 Additionally, the Nameless Analytics Server-Side Client Tag supports requests from other server-side sources.
 
 The platform also offers JavaScript utilities to retrieve cookies, browser details, consent status, and to format timestamps.
+
+
+### JavaScript libraries 
+
+Nameless Analytics uses two libraries:
+* [Nameless Analytics](https://cdn.jsdelivr.net/gh/tommasomoretti/nameless-analytics-client-side-tracker-tag@main/nameless-analytics.min.js): used to send queued requests, calculate channel grouping based on source and campaign name, set up cross-domain tracking, read consent from Google Consent Mode, and read cookie values
+* [UA parser](https://cdn.jsdelivr.net/npm/ua-parser-js/src/ua-parser.min.js): used as a dependency to parse user agent information
 
 
 ### Cookies

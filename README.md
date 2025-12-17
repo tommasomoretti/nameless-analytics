@@ -114,7 +114,7 @@ The platform also offers JavaScript utilities to retrieve cookies, browser detai
 
 ### Cookies
 
-The cookies used by Nameless Analytics to manage users and sessions are configured with specific security attributes that ensure their proper functioning and privacy protection:
+Nameless Analytics uses cookies to manage users and sessions. They are sets or updates with every request response and configured with specific security attributes that ensure their proper functioning and privacy protection:
 
 - HttpOnly: This attribute prevents cookies from being accessed via JavaScript in the browser. This reduces the risk of malicious scripts reading or modifying cookies, protecting sensitive data such as user and session identifiers.
 - Secure: The cookie is sent only over secure HTTPS connections. This prevents interception of cookies on unsecured networks or man-in-the-middle attacks, enhancing the security of data transmission.

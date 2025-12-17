@@ -127,7 +127,7 @@ Nameless Analytics uses cookies to manage users and sessions. They are sets or u
 Together, these three attributes ensure that cookies are used securely, respecting user privacy and limiting misuse or unauthorized use of identifiers. 
 
 
-<details><summary>See how cookies are set</summary>
+<details><summary>How cookies are set</summary>
 
 </br>
 

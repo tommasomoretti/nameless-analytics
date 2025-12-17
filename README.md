@@ -108,10 +108,6 @@ Data is stored across two Google Cloud systems: Firestore holds user and session
 
 Nameless Analytics provides predefined SQL functions to simplify queries on users, sessions, pages, ecommerce transactions, consents, and GTM performance, facilitating integration with BI tools such as Google Looker Studio or Power BI for customized visualizations and reports.
 
-Additionally, the Nameless Analytics Server-Side Client Tag supports requests from other server-side sources.
-
-The platform also offers JavaScript utilities to retrieve cookies, browser details, consent status, and to format timestamps.
-
 
 ### JavaScript libraries 
 

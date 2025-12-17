@@ -19,7 +19,7 @@ Main features:
 
 Technical Architecture
 * [Data Flow](#technical-architecture-and-data-flow)
-* [Cookies and IDs]()
+  * [Cookies and IDs](#cookies)
 
 Get started: 
 * [Basic requirements](#basic-requirements)
@@ -110,6 +110,42 @@ Nameless Analytics provides predefined SQL functions to simplify queries on user
 Additionally, the Nameless Analytics Server-Side Client Tag supports requests from other server-side sources.
 
 The platform also offers JavaScript utilities to retrieve cookies, browser details, consent status, and to format timestamps.
+
+
+### Cookies
+
+The cookies used by Nameless Analytics to manage users and sessions are configured with specific security attributes that ensure their proper functioning and privacy protection:
+
+- HttpOnly: This attribute prevents cookies from being accessed via JavaScript in the browser. This reduces the risk of malicious scripts reading or modifying cookies, protecting sensitive data such as user and session identifiers.
+- Secure: The cookie is sent only over secure HTTPS connections. This prevents interception of cookies on unsecured networks or man-in-the-middle attacks, enhancing the security of data transmission.
+- SameSite=Strict: This attribute restricts the cookie to be sent only with requests originating from the same domain. Essentially, it prevents the cookie from being sent in cross-site contexts, blocking tracking attempts or attacks based on third-party requests (CSRF).
+
+Together, these three attributes ensure that cookies are used securely, respecting user privacy and limiting misuse or unauthorized use of identifiers. 
+
+
+<details><summary>See how cookies are set</summary>
+
+</br>
+
+When the server-side Google Tag Manager Client Tag receives the request, it checks if any cookies in there.
+- If user and session cookies are missing in the request, Nameless Analytics Server-side client tag creates a user cookie and a session cookie.
+- If user cookie is present but session cookie is not, Nameless Analytics Server-side client tag extends user cookie expiration and create a new session cookie.
+- If the client and session cookies already exist, Nameless Analytics Server-side client tag extends user and session cookies expiration.
+
+
+#### Standard cookie values
+
+| Default cookie name        | Example value                                   | Default exp. | Description                                                        |
+|----------------------------|-------------------------------------------------|--------------|--------------------------------------------------------------------|
+| nameless_analytics_user    | Lxt3Tvvy28gGcbp                                 | 400 days     | 15 chars random string                                             |
+| nameless_analytics_session | Lxt3Tvvy28gGcbp_vpdXoWImLJZCoba-Np15ZLKO7SAk1WF | 30 minutes   | nameless_analytics_user + 15 chars random string + current page_id |
+
+Cookie names and session default expiration can be customized in Nameless Analytics Server-Side client tag [advanced settings section](#advanced-settings).
+
+Please note: 
+  - the user cookie contains the client_id.
+  - the session cookie contains the client_id, the session_id and the page_id of the last event. The actual session_id is the cookie value without the page_id.
+</details>
 
 </br>
 

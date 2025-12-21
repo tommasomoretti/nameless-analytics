@@ -37,13 +37,13 @@ Get started:
 Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). 
 
 Main features:
-- Fully integrated with Google Consent Mode: tracks events only when analytics_storage is granted or tracks all events regardless of analytics_storage value
-- Single Page Application tracking
-- JSON e-commerce data structure that supports custom objects or complies with GA4 standards
-- Cross-domain tracking for stitching users and sessions across multiple websites
-- Custom acquisition URL parameters, there's no need to use UTM parameters exclusively
-- Libraries can be loaded from CDN or from custom location
-- Events are fully logged in JavaScript console
+- Fully integrated with Google Consent Mode: tracks events only when analytics_storage is granted, or tracks all events regardless of the analytics_storage value.
+- Single Page Application tracking.
+- JSON e-commerce data structure that supports custom objects or complies with GA4 standards.
+- Cross-domain tracking for stitching users and sessions across multiple websites.
+- Custom acquisition URL parameters; there's no need to use UTM parameters exclusively.
+- Libraries can be loaded from a CDN or a custom location.
+- Events are fully logged in the JavaScript console.
 
 Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable/)
 
@@ -53,10 +53,10 @@ Read more about [Nameless Analytics Client-side tracker tag](https://github.com/
 Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag or other servers.
 
 Main features:
-- Creates users and sessions id and stores HttpOnly, Secure and SameSite = Strict cookies
-- User and session data are written into Google Firestore in real time
-- Event data are enriched and written into Google BigQuery in real time
-- Events are fully logged in Google Tag Manager Server-Side preview mode
+- Creates user and session IDs and stores HttpOnly, Secure, and SameSite=Strict cookies.
+- User and session data are written into Google Firestore in real time.
+- Event data are enriched and written into Google BigQuery in real time.
+- Events are fully logged in Google Tag Manager Server-Side preview mode.
 
 Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 
@@ -70,7 +70,7 @@ Read more about [Nameless Analytics default tables](https://github.com/tommasomo
 
 ### Reporting tables
 
-Prebuilt Google BigQuery reporting table functions for users, sessions, pages, events, transactions and products, shopping behaviour, user consents and GTM performances.
+Prebuilt Google BigQuery reporting table functions for users, sessions, pages, events, transactions/products, shopping behavior, user consents, and GTM performance.
 
 Read more about [Nameless Analytics reporting table functions](https://github.com/tommasomoretti/nameless-analytics-reporting-tables/#table-functions) in Google BigQuery
 
@@ -131,18 +131,18 @@ Together, these three attributes ensure that cookies are used securely, respecti
 
 </br>
 
-When the server-side Google Tag Manager Client Tag receives the request, it checks if any cookies in there.
-- If user and session cookies are missing in the request, Nameless Analytics Server-side client tag creates a user cookie and a session cookie.
-- If user cookie is present but session cookie is not, Nameless Analytics Server-side client tag extends user cookie expiration and creates a new session cookie.
-- If the client and session cookies already exist, Nameless Analytics Server-side client tag extends user and session cookies expiration.
+When the server-side Google Tag Manager Client Tag receives a request, it checks for existing cookies.
+- If user and session cookies are missing from the request, the Nameless Analytics Server-side client tag creates a user cookie and a session cookie.
+- If the user cookie is present but the session cookie is not, the Nameless Analytics Server-side client tag extends the user cookie expiration and creates a new session cookie.
+- If the client and session cookies already exist, the Nameless Analytics Server-side client tag extends the expiration for both cookies.
 
 
 #### Standard cookie values
 
 | Default cookie name        | Example value                                   | Default exp. | Description                                                        |
 |----------------------------|-------------------------------------------------|--------------|--------------------------------------------------------------------|
-| nameless_analytics_user    | Lxt3Tvvy28gGcbp                                 | 400 days     | 15 chars random string                                             |
-| nameless_analytics_session | Lxt3Tvvy28gGcbp_vpdXoWImLJZCoba-Np15ZLKO7SAk1WF | 30 minutes   | nameless_analytics_user + 15 chars random string + current page_id |
+| nameless_analytics_user    | Lxt3Tvvy28gGcbp                                 | 400 days     | 15-character random string                                         |
+| nameless_analytics_session | Lxt3Tvvy28gGcbp_vpdXoWImLJZCoba-Np15ZLKO7SAk1WF | 30 minutes   | nameless_analytics_user + 15-character random string + current page_id |
 
 Cookie names and session default expiration can be customized in Nameless Analytics Server-Side client tag [advanced settings section](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/#advanced-settings).
 
@@ -180,18 +180,6 @@ Please note:
 ### Want to see a live demo?
 
 Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com) and open the developer console.
-
-
-### License
-
-Nameless Analytics is open source software licensed under the [MIT license](https://choosealicense.com/licenses/mit/).
-
-
-## Contributing
-
-Contributions are welcome! If you have suggestions or want to report a bug, please open an issue or a pull request.
-
-
 
 ---
 

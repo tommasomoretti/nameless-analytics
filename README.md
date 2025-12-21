@@ -19,8 +19,8 @@ Main features:
 
 Technical Architecture
 * [Data Flow](#technical-architecture-and-data-flow)
-  * [Libraries](#libraries)
-  * [Cookies and IDs](#cookies)
+  * [JavaScript libraries](#javascript-libraries)
+  * [Cookies](#cookies)
 
 Get started: 
 * [Basic requirements](#basic-requirements)
@@ -45,7 +45,7 @@ Main features:
 - Libraries can be loaded from a CDN or a custom location.
 - Events are fully logged in the JavaScript console.
 
-Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side config variable](https://github.com/tommasomoretti/nameless-analytics-client-side-config-variable/)
+Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side tracker configuration variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/)
 
 
 ### Server-side tracking

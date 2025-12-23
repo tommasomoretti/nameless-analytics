@@ -158,6 +158,13 @@ Please note:
 
 The user ID is a unique identifier for a user, set at session level. It can be a random alphanumeric string or a number.
 
+
+### Bot Detection and User-Agent filtering
+The Nameless Analytics Server-side Client Tag automatically protects data quality by rejecting requests from bots, scrapers, or automation tools. Requests are denied with a **403 Forbidden** error if:
+* The `User-Agent` header is empty.
+* The `User-Agent` contains known crawling or automation strings, such as: `curl`, `wget`, `python-requests`, `bot`, `crawler`, `headless`, `selenium`, `puppeteer`, `playwright`.
+
+
 </br>
 
 

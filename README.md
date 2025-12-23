@@ -88,7 +88,7 @@ Read more about [Nameless Analytics Google Looker Studio dashboard example](http
 
 Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
 
-Ask anything to [Nameless Analytics QnA](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-qna)
+Ask anything to [Nameless Analytics Q&A](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
 
 </br>
 
@@ -138,7 +138,7 @@ When the server-side Google Tag Manager Client Tag receives a request, it checks
 - If the user cookie is present but the session cookie is not, the Nameless Analytics Server-side Client Tag extends the user cookie expiration and creates a new session cookie.
 - If the client and session cookies already exist, the Nameless Analytics Server-side Client Tag extends the expiration for both cookies.
 
-
+  
 #### Standard cookie values
 
 | Default cookie name        | Example value                                   | Default exp. | Description                                                        |

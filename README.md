@@ -26,6 +26,8 @@ Get started:
 * [Basic requirements](#basic-requirements)
 * [How to set up](#how-to-set-up)
 * [Want to see a live demo?](#want-to-see-a-live-demo) 
+* [Contributing](#contributing)
+* [License](#license) 
 
 </br>
 
@@ -39,7 +41,7 @@ Highly customizable Client-Side Tracker Tag that sends requests to Server-Side C
 Main features:
 - Fully integrated with Google Consent Mode: tracks events only when analytics_storage is granted, or tracks all events regardless of the analytics_storage value.
 - Single Page Application tracking.
-- JSON e-commerce data structure that supports custom objects or complies with GA4 standards.
+- JSON ecommerce data structure that supports custom objects or complies with GA4 standards.
 - Cross-domain tracking for stitching users and sessions across multiple websites.
 - Custom acquisition URL parameters; there's no need to use UTM parameters exclusively.
 - Libraries can be loaded from a CDN or a custom location.
@@ -180,6 +182,16 @@ Please note:
 ### Want to see a live demo?
 
 Visit [namelessanalytics.com](https://namelessanalytics.com?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) or [tommasomoretti.com](https://tommasomoretti.com) and open the developer console.
+
+
+### Contributing
+
+Contributions are welcome! Whether it's reporting a bug, suggesting a feature, or submitting a pull request, your help is appreciated. Please feel free to open an issue or reach out directly.
+
+
+### License
+
+This project is licensed under the MIT License. See the LICENSE file for details (coming soon).
 
 ---
 

@@ -153,6 +153,11 @@ Please note:
   - the session cookie contains the client_id, the session_id and the page_id of the last event. The actual session_id is the cookie value without the page_id.
 </details>
 
+
+### User ID
+
+The user ID is a unique identifier for a user, set at session level. It can be a random alphanumeric string or a number.
+
 </br>
 
 

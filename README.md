@@ -36,7 +36,7 @@ Get started:
 ## Main features
 ### Client-side tracking
 
-Highly customizable Client-Side Tracker Tag that sends requests to Server-Side Client Tag and supports various field types (string, integer, double, and JSON). 
+Highly customizable Client-side Tracker Tag that sends requests to Nameless Analytics Server-side Client Tag and supports various field types (string, integer, double, and JSON). 
 
 Main features:
 - Fully integrated with Google Consent Mode: tracks events only when analytics_storage is granted, or tracks all events regardless of the analytics_storage value.
@@ -47,12 +47,12 @@ Main features:
 - Libraries can be loaded from a CDN or a custom location.
 - Events are fully logged in the JavaScript console.
 
-Read more about [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side tracker configuration variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/)
+Read more about [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side Tracker Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/)
 
 
 ### Server-side tracking
 
-Highly customizable Server-Side Client Tag that claims requests from Client-Side Tracker Tag or other servers.
+Highly customizable Server-side Client Tag that claims requests from Nameless Analytics Client-side Tracker Tag or other servers.
 
 Main features:
 - Creates user and session IDs and stores HttpOnly, Secure, and SameSite=Strict cookies.
@@ -60,7 +60,7 @@ Main features:
 - Event data are enriched and written into Google BigQuery in real time.
 - Events are fully logged in Google Tag Manager Server-Side preview mode.
 
-Read more about [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
+Read more about [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 
 
 ### First party data storage
@@ -102,9 +102,9 @@ The system mainly consists of a highly customizable client-side tracker that cap
 
 </br>
 
-The data flow in Nameless Analytics starts from the GTM Client-Side Tracker Tag, which can be configured to track all hits or only those where consent has been granted. It can send standard events like page_view as well as custom events, supporting Single Page Applications, ecommerce data in JSON format and cross-domain tracking.
+The data flow in Nameless Analytics starts from the Nameless Analytics Client-side Tracker Tag, which can be configured to track all hits or only those where consent has been granted. It can send standard events like page_view as well as custom events, supporting Single Page Applications, ecommerce data in JSON format and cross-domain tracking.
 
-Events are sent to the GTM Server-Side Client Tag, which handles user and session identification, enriches the data and saves it in real-time to both Firestore and BigQuery.
+Events are sent to the Nameless Analytics Server-side Client Tag, which handles user and session identification, enriches the data and saves it in real-time to both Firestore and BigQuery.
 
 Data is stored across two Google Cloud systems: Firestore holds user and session data with real-time updates, while BigQuery stores detailed event data and ecommerce information. Tables are organized and indexed to enable fast and complex analyses.
 
@@ -134,9 +134,9 @@ Together, these three attributes ensure that cookies are used securely, respecti
 </br>
 
 When the server-side Google Tag Manager Client Tag receives a request, it checks for existing cookies.
-- If user and session cookies are missing from the request, the Nameless Analytics Server-side client tag creates a user cookie and a session cookie.
-- If the user cookie is present but the session cookie is not, the Nameless Analytics Server-side client tag extends the user cookie expiration and creates a new session cookie.
-- If the client and session cookies already exist, the Nameless Analytics Server-side client tag extends the expiration for both cookies.
+- If user and session cookies are missing from the request, the Nameless Analytics Server-side Client Tag creates a user cookie and a session cookie.
+- If the user cookie is present but the session cookie is not, the Nameless Analytics Server-side Client Tag extends the user cookie expiration and creates a new session cookie.
+- If the client and session cookies already exist, the Nameless Analytics Server-side Client Tag extends the expiration for both cookies.
 
 
 #### Standard cookie values
@@ -146,7 +146,7 @@ When the server-side Google Tag Manager Client Tag receives a request, it checks
 | nameless_analytics_user    | Lxt3Tvvy28gGcbp                                 | 400 days     | 15-character random string                                         |
 | nameless_analytics_session | Lxt3Tvvy28gGcbp_vpdXoWImLJZCoba-Np15ZLKO7SAk1WF | 30 minutes   | nameless_analytics_user + 15-character random string + current page_id |
 
-Cookie names and session default expiration can be customized in Nameless Analytics Server-Side client tag [advanced settings section](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/#advanced-settings).
+Cookie names and session default expiration can be customized in Nameless Analytics Server-side Client Tag [advanced settings section](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/#advanced-settings).
 
 Please note: 
   - the user cookie contains the client_id.
@@ -172,8 +172,8 @@ Please note:
 1. [Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
 2. [Client-Side Google Tag Manager](https://support.google.com/tagmanager/answer/14842164)
 3. [Server-Side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
-4. [Nameless Analytics Client-side tracker tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side tracker configuration variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/)
-5. [Nameless Analytics Server-side client tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
+4. [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side Tracker Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/)
+5. [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 6. [Nameless Analytics Tables and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-reporting-tables) in Google BigQuery
 7. [Nameless Analytics AI Q&A](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
 8. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)

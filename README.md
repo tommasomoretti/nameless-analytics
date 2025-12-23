@@ -17,10 +17,12 @@ Main features:
 * [Data visualization](#data-visualization)
 * [AI QnA](#ai-qna)
 
-Technical Architecture
-* [Data Flow](#technical-architecture-and-data-flow)
-  * [JavaScript libraries](#javascript-libraries)
-  * [Cookies](#cookies)
+Technical Architecture:
+* [Data Flow](#data-flow)
+* [JavaScript libraries](#javascript-libraries)
+* [Cookies](#cookies)
+* [User ID](#user-id)
+* [Bot Detection and User-Agent filtering](#bot-detection-and-user-agent-filtering)
 
 Get started: 
 * [Basic requirements](#basic-requirements)
@@ -94,7 +96,8 @@ Ask anything to [Nameless Analytics Q&A](https://chatgpt.com/g/g-6860ef949f94819
 
 
 
-## Technical architecture and data flow
+## Technical architecture 
+### Data flow
 
 The system mainly consists of a highly customizable client-side tracker that captures user interactions and sends event data to a server-side GTM container, where user and session IDs are managed using secure cookies (HttpOnly, Secure, SameSite=Strict). The data is enriched and stored in Firestore (for user and session data) and in BigQuery (for detailed events), without sampling or preprocessing.
 
@@ -102,7 +105,7 @@ The system mainly consists of a highly customizable client-side tracker that cap
 
 </br>
 
-The data flow in Nameless Analytics starts from the Nameless Analytics Client-side Tracker Tag, which can be configured to track all hits or only those where consent has been granted. It can send standard events like page_view as well as custom events, supporting Single Page Applications, ecommerce data in JSON format and cross-domain tracking.
+The data flow in Nameless Analytics starts from the Nameless Analytics Client-side Tracker Tag, which can be configured to track all events or only those where consent has been granted. It can send standard events like page views (or virtual page views) as well as custom events, supporting Single Page Applications, ecommerce data in pure JSON format and cross-domain tracking.
 
 Events are sent to the Nameless Analytics Server-side Client Tag, which handles user and session identification, enriches the data and saves it in real-time to both Firestore and BigQuery.
 
@@ -141,9 +144,9 @@ When the server-side Google Tag Manager Client Tag receives a request, it checks
   
 #### Standard cookie values
 
-| Default cookie name        | Example value                                   | Default exp. | Description                                                        |
-|----------------------------|-------------------------------------------------|--------------|--------------------------------------------------------------------|
-| nameless_analytics_user    | Lxt3Tvvy28gGcbp                                 | 400 days     | 15-character random string                                         |
+| Default cookie name        | Example value                                   | Default exp. | Description                                                            |
+|----------------------------|-------------------------------------------------|--------------|------------------------------------------------------------------------|
+| nameless_analytics_user    | Lxt3Tvvy28gGcbp                                 | 400 days     | 15-character random string                                             |
 | nameless_analytics_session | Lxt3Tvvy28gGcbp_vpdXoWImLJZCoba-Np15ZLKO7SAk1WF | 30 minutes   | nameless_analytics_user + 15-character random string + current page_id |
 
 Cookie names and session default expiration can be customized in Nameless Analytics Server-side Client Tag [advanced settings section](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/#advanced-settings).
@@ -152,11 +155,6 @@ Please note:
   - the user cookie contains the client_id.
   - the session cookie contains the client_id, the session_id and the page_id of the last event. The actual session_id is the cookie value without the page_id.
 </details>
-
-
-### User ID
-
-The user ID is a unique identifier for a user, set at session level. It can be a random alphanumeric string or a number.
 
 
 ### Bot Detection and User-Agent filtering

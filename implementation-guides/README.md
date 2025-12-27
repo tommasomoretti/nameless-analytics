@@ -1,55 +1,58 @@
-# Nameless Analytics | GTM Technical Specification & Implementation
-
-This repository is the central hub for implementing Nameless Analytics via Google Tag Manager (Web and Server-side). It contains the official container templates, technical specifications, and practical configuration examples.
-
----
-
-## 🚀 Getting Started with Templates
-
-To jumpstart your implementation, download and import these official container templates:
-
-### 1. [GTM Web] Client-side Container
-Contains the Configuration Variable, the Tracker Tag, and base triggers.
-👉 **[Download Template (JSON)](gtm-client-side-container-template.json)**
-
-### 2. [GTM Server] Server-side Container
-Contains the SS Client Tag configured for Firestore and BigQuery streaming.
-👉 **[Download Template (JSON)](gtm-server-side-container-template.json)**
+<img src="https://github.com/user-attachments/assets/93640f49-d8fb-45cf-925e-6b7075f83927#gh-light-mode-only" alt="Light Mode" />
+<img src="https://github.com/user-attachments/assets/71380a65-3419-41f4-ba29-2b74c7e6a66b#gh-dark-mode-only" alt="Dark Mode" />
 
 ---
 
-## 📚 Documentation
+# Implementation & Technical Specification
 
-Detailed documentation is divided into two main sections:
-
-### 🏗️ [Technical Specification & Logic](IMPLEMENTATION.md)
-*Deep dive into the architecture and expert features:*
-- Data Flow & Logic
-- Cookie Security (`HttpOnly`, `SameSite`)
-- Bot Protection & Security
-- Orphan Event Prevention
-- Cross-domain Tracking Architecture
-
-### 🛠️ [Implementation Examples](EXAMPLES.md)
-*Practical "how-to" for setting up tags and triggers:*
-- Standard & Virtual Page Views
-- Event Tracking (Performance & Quality)
-- Full E-commerce Implementation
-- Custom Interaction Tracking
+Official GTM container templates and detailed technical documentation for Nameless Analytics.
 
 ---
 
-## 🔗 Project Ecosystem
-
-Nameless Analytics is a modular system. This repo works in tandem with:
-- **[Client-side Tracker Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/)**: The configuration UI.
-- **[Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/)**: The data packaging engine.
-- **[Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)**: The ingestion and security gateway.
-- **[Reporting Tables (BigQuery)](../reporting-tables/)**: Data transformation and SQL functions.
+## 🚀 Container Templates
+To jumpstart your implementation, download and import these pre-configured templates:
+- **[Client-side GTM Container](gtm-client-side-container-template.json)**: Includes the Configuration Variable, Tracker Tag, and base triggers.
+- **[Server-side GTM Container](gtm-server-side-container-template.json)**: Pre-configured for Firestore persistence and BigQuery streaming.
 
 ---
 
-### Support & Community
-Reach me at: [Email](mailto:hello@tommasomoretti.com) | [Website](https://tommasomoretti.com/?utm_source=github.com&utm_medium=referral&utm_campaign=nameless_analytics) | [Twitter](https://twitter.com/tommoretti88) | [LinkedIn](https://www.linkedin.com/in/tommasomoretti/)
+## 🏗️ Technical Architecture & Logic
 
-License: [MIT](LICENSE)
+### The Configuration Variable
+The `{{Nameless Analytics - Tracker configuration variable}}` is the central brain of the client-side implementation:
+- **Endpoint**: All requests are routed to your GTM Server-side URL (must be HTTPS and single-origin for cookie security).
+- **Consent Mode**: Automated delay until `analytics_storage='granted'` before firing.
+- **Cookie Security**: Identifiers (`na_u`, `na_s`) are managed by the server with `HttpOnly`, `Secure`, and `SameSite` attributes to prevent XSS.
+
+### Expert Features
+- **🛡️ Bot Protection**: The Server-side Tag automatically rejects requests (403) from known automation tools (Puppeteer, Selenium, etc.) via User-Agent inspection.
+- **🧩 Orphan Event Prevention**: To maintain data integrity, a `page_view` *must* be the first hit of any session. The server rejects events triggered before state initialization.
+- **🔄 Data Transformation**: Strict priority (Server Overrides > Tag Metadata > Config Variable > dataLayer).
+
+### Cross-domain Tracking
+Stitching users across top-level domains without third-party cookies:
+1. Tracker makes a pre-flight `get_user_data` request to the server.
+2. Server returns IDs; tracker appends the `na_id` parameter to the destination URL.
+3. Destination site captures the parameter and hydrates the session state.
+
+---
+
+## 🛠️ Implementation Recipes
+
+### Standard & Virtual Page Views
+- **Event Name**: `page_view` (Standard)
+- **Trigger**: `Initialization - All Pages`. 
+- **For SPAs**: Use `History Change` or a `virtual_pageview` custom event.
+
+### E-commerce
+Fully compatible with the standard GA4 DataLayer schema.
+- **Event Name**: `{{Event}}`
+- **Setting**: Enable **"Add ecommerce data from dataLayer"**.
+- **Trigger**: Custom Event (Regex) matching all standard GA4 ecommerce events (`purchase`, `add_to_cart`, etc.).
+
+### Advanced Tracking
+- **JS Errors**: Use the built-in `JavaScript Error` trigger with custom event name `javascript_errors`.
+- **Core Web Vitals**: Map performance metrics (LCP, FID, CLS) to custom event parameters.
+
+---
+[← Back to Overview](../)

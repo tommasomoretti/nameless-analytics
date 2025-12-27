@@ -92,7 +92,7 @@ Read more about [Nameless Analytics Google Looker Studio dashboard example](http
 
 Get expert help for implementation, technical documentation, and advanced SQL queries.
 
-- **[Implementation guides](implementation-guides/)**: Step-by-step guides and technical specifications.
+- **[Implementation Guides](implementation-guides/)**: Official container templates, architecture logic, and practical recipes.
 - **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)**: A specialized GPT trained on Nameless Analytics documentation.
 - **Gemini Gem**: *Coming soon*
 

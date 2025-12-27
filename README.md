@@ -12,11 +12,10 @@ Collect, analyze, and activate your website data with a free real-time digital a
 Main features:
 * [Client-side tracking](#client-side-tracking)
 * [Server-side tracking](#server-side-tracking)
-* [GTM Implementation Hub](#gtm-implementation-hub)
 * [First party data storage](#first-party-data-storage)
 * [Reporting tables](#reporting-tables)
 * [Data visualization](#data-visualization)
-* [AI Support](#ai-support)
+* [Support & Resources](#support--resources)
 
 Technical Architecture:
 * [Data Flow](#data-flow)
@@ -65,15 +64,7 @@ Main features:
 Read more about [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 
 
-### GTM Implementation Hub
 
-A specialized folder containing Google Tag Manager container templates (Web and Server-side), technical specifications, and practical tracking examples.
-
-- Pre-configured GTM Web & Server-side containers.
-- Step-by-step implementation for Ecommerce, SPAs, and custom events.
-- Deep dive into security (Bot protection, cookie attributes).
-
-Read more about [Nameless Analytics | GTM Technical Specification & Implementation](gtm-implementation/)
 
 
 ### First party data storage
@@ -97,11 +88,12 @@ Use any BI tool that connects with BigQuery such as Google Looker, Google Looker
 Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)
 
 
-### AI Support
+### Support & Resources
 
-Get expert help for implementation, technical documentation, and advanced SQL queries from our AI assistants.
+Get expert help for implementation, technical documentation, and advanced SQL queries.
 
-- **OpenAI GPT**: Ask anything to [Nameless Analytics GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
+- **[Implementation guides](implementation-guides/)**: Step-by-step guides and technical specifications.
+- **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)**: A specialized GPT trained on Nameless Analytics documentation.
 - **Gemini Gem**: *Coming soon*
 
 </br>

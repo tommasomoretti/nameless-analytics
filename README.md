@@ -12,6 +12,7 @@ Collect, analyze, and activate your website data with a free real-time digital a
 Main features:
 * [Client-side tracking](#client-side-tracking)
 * [Server-side tracking](#server-side-tracking)
+* [GTM Implementation Hub](#gtm-implementation-hub)
 * [First party data storage](#first-party-data-storage)
 * [Reporting tables](#reporting-tables)
 * [Data visualization](#data-visualization)
@@ -64,6 +65,17 @@ Main features:
 Read more about [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 
 
+### GTM Implementation Hub
+
+A specialized repository containing Google Tag Manager container templates (Web and Server-side), technical specifications, and practical tracking examples.
+
+- Pre-configured GTM Web & Server-side containers.
+- Step-by-step implementation for Ecommerce, SPAs, and custom events.
+- Deep dive into security (Bot protection, cookie attributes).
+
+Read more about [Nameless Analytics | GTM Technical Specification & Implementation](https://github.com/tommasomoretti/nameless-analytics-gtm-examples/)
+
+
 ### First party data storage
 
 Data are stored in Google Cloud Platform using Google Firestore database and Google BigQuery dataset. No preprocessing or sampling is applied, raw data only.
@@ -82,7 +94,7 @@ Read more about [Nameless Analytics reporting table functions](https://github.co
 
 Use any BI tool that connects with BigQuery such as Google Looker, Google Looker Studio, Microsoft Power BI, Tableau, Apache Superset, Grafana, Redash, Retool, Mode Analytics, etc... to create reports that truly fit the needs.
 
-Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/HPxxD)
+Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)
 
 
 ### AI QnA
@@ -116,7 +128,7 @@ Nameless Analytics provides predefined SQL functions to simplify queries on user
 ### JavaScript libraries 
 
 Nameless Analytics uses two libraries:
-* [Nameless Analytics](https://cdn.jsdelivr.net/gh/tommasomoretti/nameless-analytics-client-side-tracker-tag@main/nameless-analytics.min.js): used to send queued requests, calculate channel grouping based on source and campaign name, set up cross-domain tracking, read consent from Google Consent Mode, and read cookie values
+* [Nameless Analytics](https://cdn.jsdelivr.net/gh/tommasomoretti/nameless-analytics-client-side-tracker-tag@main/nameless-analytics.js): used to send queued requests, calculate channel grouping based on source and campaign name, set up cross-domain tracking, read consent from Google Consent Mode, and read cookie values
 * [UA parser](https://cdn.jsdelivr.net/npm/ua-parser-js/src/ua-parser.min.js): used as a dependency to parse user agent information
 
 
@@ -154,6 +166,13 @@ Please note:
   - the user cookie contains the client_id.
   - the session cookie contains the client_id, the session_id and the page_id of the last event. The actual session_id is the cookie value without the page_id.
 </details>
+ 
+ 
+### User ID
+ 
+Nameless Analytics supports both anonymous tracking (via `client_id` stored in `HttpOnly` cookies) and identified tracking (via `user_id`). 
+- **Anonymous**: Every unique browser gets a random 15-character ID.
+- **Identified**: You can pass a custom internal ID (e.g. from your CRM) to the `user_id` field. This ID is then persisted across sessions and devices in Firestore, allowing for cross-device user stitching in BigQuery.
 
 
 ### Bot Detection and User-Agent filtering
@@ -188,12 +207,14 @@ Before starting, ensure you have:
 1. **Container Setup**: Ensure your GTM Server-Side container is mapped to your [custom domain](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide#custom-domain).
 2. **Client Tag**: Install the [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/).
 3. **Settings**: Enter your GCP Project ID, BigQuery Dataset ID, and the raw events table name (`events_raw` by default).
+4. **Container Import**: You can download a pre-configured [sS Container Template here](https://github.com/tommasomoretti/nameless-analytics-gtm-examples/).
 
 ### 4. Client-Side Configuration (GTM Web)
 1. **Configuration Variable**: Create a [Nameless Analytics Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) and enter your GTM sS endpoint.
 2. **Tracker Tag**: Install the [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/).
 3. **Triggering**: Set up a `page_view` tag to fire on all pages. 
    - *Crucial*: A `page_view` must always be the first event sent to initialize the `page_id`.
+4. **Container Import**: You can download a pre-configured [Web Container Template here](https://github.com/tommasomoretti/nameless-analytics-gtm-examples/).
 
 ### 5. Reporting & Activation
 1. **Tables & Functions**: Deploy the [BigQuery Table Functions](https://github.com/tommasomoretti/nameless-analytics-reporting-tables) to transform raw data into analytical views (Users, Sessions, e-commerce, etc.).

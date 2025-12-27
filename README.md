@@ -94,7 +94,7 @@ Get expert help for implementation, technical documentation, and advanced SQL qu
 
 - **[Implementation guides](implementation-guides/)**: Step-by-step guides and technical specifications.
 - **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)**: A specialized GPT trained on Nameless Analytics documentation.
-- **Gemini Gem**: *Coming soon*
+- **[Gemini Gem]()**: *Coming soon*
 
 </br>
 

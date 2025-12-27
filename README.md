@@ -203,7 +203,7 @@ Before starting, ensure you have:
 4. **Container Import**: You can download a pre-configured [Server-side GTM container template here](gtm-implementation/).
 
 ### 4. Client-Side Configuration (GTM Client-side)
-1. **Configuration Variable**: Create a [Nameless Analytics Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) and enter your GTM sS endpoint.
+1. **Configuration Variable**: Create a [Nameless Analytics Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) and enter your GTM Server-side endpoint.
 2. **Tracker Tag**: Install the [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/).
 3. **Triggering**: Set up a `page_view` tag to fire on all pages. 
    - *Crucial*: A `page_view` must always be the first event sent to initialize the `page_id`.

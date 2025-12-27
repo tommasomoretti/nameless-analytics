@@ -16,7 +16,7 @@ Main features:
 * [First party data storage](#first-party-data-storage)
 * [Reporting tables](#reporting-tables)
 * [Data visualization](#data-visualization)
-* [AI QnA](#ai-qna)
+* [AI Support](#ai-support)
 
 Technical Architecture:
 * [Data Flow](#data-flow)
@@ -97,11 +97,12 @@ Use any BI tool that connects with BigQuery such as Google Looker, Google Looker
 Read more about [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)
 
 
-### AI QnA
+### AI Support
 
-Get help from a custom OpenAI GPT that knows everything about Nameless Analytics.
+Get expert help for implementation, technical documentation, and advanced SQL queries from our AI assistants.
 
-Ask anything to [Nameless Analytics Q&A](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
+- **OpenAI GPT**: Ask anything to [Nameless Analytics GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
+- **Gemini Gem**: *Coming soon*
 
 </br>
 
@@ -203,23 +204,23 @@ Before starting, ensure you have:
    - `BigQuery Job User` (to run queries)
    - `Cloud Datastore User` (to access Firestore)
 
-### 3. Server-Side Configuration (GTM sS)
+### 3. Server-Side Configuration (GTM Server-side)
 1. **Container Setup**: Ensure your GTM Server-Side container is mapped to your [custom domain](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide#custom-domain).
 2. **Client Tag**: Install the [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/).
 3. **Settings**: Enter your GCP Project ID, BigQuery Dataset ID, and the raw events table name (`events_raw` by default).
-4. **Container Import**: You can download a pre-configured [sS Container Template here](gtm-implementation/).
+4. **Container Import**: You can download a pre-configured [Server-side GTM container template here](gtm-implementation/).
 
-### 4. Client-Side Configuration (GTM Web)
+### 4. Client-Side Configuration (GTM Client-side)
 1. **Configuration Variable**: Create a [Nameless Analytics Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) and enter your GTM sS endpoint.
 2. **Tracker Tag**: Install the [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/).
 3. **Triggering**: Set up a `page_view` tag to fire on all pages. 
    - *Crucial*: A `page_view` must always be the first event sent to initialize the `page_id`.
-4. **Container Import**: You can download a pre-configured [Web Container Template here](gtm-implementation/).
+4. **Container Import**: You can download a pre-configured [Client-side GTM container template here](gtm-implementation/).
 
 ### 5. Reporting & Activation
 1. **Tables & Functions**: Deploy the [BigQuery Table Functions](reporting-tables/) to transform raw data into analytical views (Users, Sessions, e-commerce, etc.).
 2. **Visualization**: Use the [Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd) or connect any BI tool to BigQuery.
-3. **AI Support**: Use the [Nameless Analytics AI Q&A](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a) for advanced query help.
+3. **AI Support**: Use the [Nameless Analytics AI](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a) for help with documentation, implementation, or advanced SQL queries.
 
 
 ### Want to see a live demo?

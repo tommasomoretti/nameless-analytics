@@ -377,7 +377,7 @@ Get expert help for implementation, technical documentation, and advanced SQL qu
 
 ## External Resources
 - [Live Demo](https://namelessanalytics.com) (Open the dev console).
-- [Contributing Guidelines](#contributing)
+- [Contributing Guidelines](CONTRIBUTING.md)
 - [MIT License](LICENSE)
 
 ---

@@ -12,9 +12,6 @@ Collect, analyze, and activate your website data with a free real-time digital a
 ### Navigation
 - [Quick Start](#quick-start)
 - [Core Capabilities & Logic](#core-capabilities--logic)
-- [Container Templates](#container-templates)
-- [Reporting & Visualization](#reporting--visualization)
-- [Support & AI](#support--ai)
 - [External Resources](#external-resources)
 
 </br>

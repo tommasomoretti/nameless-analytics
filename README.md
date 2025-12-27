@@ -41,18 +41,18 @@ Collect, analyze, and activate your website data with a free real-time digital a
 
 ## Core Capabilities & Logic
 
-### Strategic Value
+### Data Flow
+The system consists of a highly customizable client-side tracker that captures interactions and sends event data to a server-side GTM container. User and session IDs are managed via server-side cookies. Data is stored in **Firestore** (user and sessions data) and **BigQuery** (events data) in real-time.
+
+<img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
+
+#### Strategic Value
 - **Data Ownership**: 100% of the data resides within your own Google Cloud project. You maintain full control over data residency, access logs, and retention policies with no third-party access to raw data.
 - **Accuracy & Reliability**: By operating in a strict first-party context, tracking is less susceptible to client-side restrictions and ad-blockers. Requests are indistinguishable from first-party traffic, ensuring higher data quality.
 - **Stateful Persistence**: Uses Google Firestore to maintain long-term user profiles and session history (first/last touch attribution, user-level parameters) directly on the server, ensuring continuity across sessions.
 - **Unsampled Granularity**: No artificial sampling or cardinality limits. Capture every event and parameter with full precision directly into BigQuery for advanced modeling.
 - **Real-Time Activation**: Forward identical event payloads to any custom HTTP endpoint. Trigger immediate business actions (CRM updates, custom webhooks, real-time alerts) the moment an interaction occurs.
 - **Integrity & Security**: Built-in automatic geolocation (Country/City), bot protection, and session validation to prevent "orphan events," ensuring your analytical tables remain clean and professional.
-
-### Data Flow
-The system consists of a highly customizable client-side tracker that captures interactions and sends event data to a server-side GTM container. User and session IDs are managed via server-side cookies. Data is stored in **Firestore** (user and sessions data) and **BigQuery** (events data) in real-time.
-
-<img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
 
 ### 1. Client-Side Tracking
 The [Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) act as the system's brain in the browser.

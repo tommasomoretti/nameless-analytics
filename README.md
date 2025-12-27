@@ -10,27 +10,9 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 Collect, analyze, and activate your website data with a free real-time digital analytics suite that respects user privacy.
 
 ### Start from here
-- [Quick Start](#quick-start)
 - [Core Capabilities & Logic](#core-capabilities--logic)
+- [Quick Start](#quick-start)
 - [External Resources](#external-resources)
-
-</br>
-
-
-
-## Quick Start
-
-### 1. Setup Infrastructure (GCP)
-1. **BigQuery**: Create tables and table functions in BigQuery using the provided [SQL scripts](reporting-tables/).
-2. **Firestore**: Enable in **Native Mode**.
-3. **IAM**: Grant your GTM SS Service Account `BigQuery Data Editor`, `BigQuery Job User`, and `Cloud Datastore User`.
-
-### 2. Server-Side (GTM Server)
-1. **GTM server side instance**: Setup a GTM server side instance.
-2. **Import**: [Server-side GTM Template](gtm-containers/gtm-server-side-container-template.json).
-
-### 3. Client-Side (GTM Web)
-1. **Import**: [Client-side GTM Template](gtm-containers/gtm-client-side-container-template.json).
 
 </br>
 
@@ -367,6 +349,24 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 Get expert help for implementation, technical documentation, and advanced SQL queries.
 - **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)**: Specialized GPT trained on the platform docs.
 - **Gemini Gem**: *Coming soon*
+
+</br>
+
+
+
+## Quick Start
+
+### 1. Setup Infrastructure (GCP)
+1. **BigQuery**: Create tables and table functions in BigQuery using the provided [SQL scripts](reporting-tables/).
+2. **Firestore**: Enable in **Native Mode**.
+3. **IAM**: Grant your GTM SS Service Account `BigQuery Data Editor`, `BigQuery Job User`, and `Cloud Datastore User`.
+
+### 2. Server-Side (GTM Server)
+1. **GTM server side instance**: Setup a GTM server side instance.
+2. **Import**: [Server-side GTM Template](gtm-containers/gtm-server-side-container-template.json).
+
+### 3. Client-Side (GTM Web)
+1. **Import**: [Client-side GTM Template](gtm-containers/gtm-client-side-container-template.json).
 
 </br>
 

@@ -48,8 +48,8 @@ The system consists of a highly customizable client-side tracker that captures i
 
 ### 1. Client-Side Tracking
 The [Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) act as the system's brain in the browser.
-- **Google Consent Mode**: Fully integrated. Tracks events only when `analytics_storage` is granted, or all events regardless user consents.
-- **Technical Logic**: Automated delay until consent, Single Page Application (SPA) support, and custom acquisition parameter handling and many more.
+- **Google Consent Mode**: Fully integrated. Tracks events only when `analytics_storage` is granted, or all events regardless of user consent.
+- **Technical Logic**: Automated delay until consent, Single Page Application (SPA) support, custom acquisition parameter handling, and more.
 - **Cross-domain Tracking**: Stitch users across domains using a pre-flight ID request and URL decoration (`na_id`).
 
 #### Request payload data
@@ -335,13 +335,13 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 ### 3. Cookies
 **Cookie Security**: The Server-side Client Tag automatically creates and manages cookies with `HttpOnly`, `Secure`, and `SameSite=Strict` attributes. This ensures identifiers are inaccessible to client-side scripts, protecting against XSS and CSRF.
 
-| Default cookie name        | Default exp. | Description                                                                       |
-|----------------------------|--------------|-----------------------------------------------------------------------------------|
-| nameless_analytics_user    | 400 days     | Persistent ID for user-level analysis. 15-character random string (persistent ID) |
-| nameless_analytics_session | 30 minutes   | Combined ID for session and hit-level tracking. User ID + Session ID + Page ID    |
+| Default cookie name | Default exp. | Description |
+| :--- | :--- | :--- |
+| **nameless_analytics_user** | 400 days | Persistent ID for user-level analysis (15-character random string). |
+| **nameless_analytics_session** | 30 minutes | Combined ID for session and hit-level tracking (User ID + Session ID + Page ID). |
 
 ### 4. User identity & PII
-- **No PII**: No PII will automatically tracked.
+- **No PII**: No PII is automatically tracked.
 - **User ID**: Supports random `client_id` (anonymous) and custom `user_id` (CRM-based) for cross-device stitching.
 
 
@@ -358,7 +358,7 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 
 
 
-#### 5. Support & AI
+### 6. Support & AI
 Get expert help for implementation, technical documentation, and advanced SQL queries.
 - **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)**: Specialized GPT trained on the platform docs.
 - **Gemini Gem**: *Coming soon*

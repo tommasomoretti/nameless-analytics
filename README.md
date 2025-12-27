@@ -25,8 +25,7 @@ Technical Architecture:
 * [Bot Detection and User-Agent filtering](#bot-detection-and-user-agent-filtering)
 
 Get started: 
-* [Basic requirements](#basic-requirements)
-* [How to set up](#how-to-set-up)
+* [Quick Start (Master Guide)](#quick-start-master-guide)
 * [Want to see a live demo?](#want-to-see-a-live-demo) 
 * [Contributing](#contributing)
 * [License](#license) 
@@ -167,26 +166,39 @@ The Nameless Analytics Server-side Client Tag automatically protects data qualit
 
 
 
-## Get started
-### Basic requirements
+## Quick Start (Master Guide)
 
-- Google Consent Mode installed on a website
-- A Client-Side Google Tag Manager container installed on a website
-- A Server-Side Google Tag Manager container hosted on App Engine or Cloud Run mapped to a custom domain name
-- A Google Firestore database
-- A Google BigQuery dataset
+Follow this step-by-step guide to deploy Nameless Analytics in the correct order.
 
+### 1. Basic Requirements
+Before starting, ensure you have:
+- A **Google Cloud Project** with billing enabled.
+- A **first-party domain** (or subdomain) for your Server-Side GTM.
+- **Google Consent Mode** implementation ready on your website.
 
-### How to set up
+### 2. Setup Infrastructure (GCP)
+1. **BigQuery**: Create a new dataset (e.g., `nameless_analytics`) in your project.
+2. **Firestore**: Enable Firestore in **Native Mode**. This is used for real-time session management.
+3. **IAM Permissions**: The Service Account running your GTM Server-Side must have the following roles:
+   - `BigQuery Data Editor` (to write events)
+   - `BigQuery Job User` (to run queries)
+   - `Cloud Datastore User` (to access Firestore)
 
-1. [Google Consent Mode](https://developers.google.com/tag-platform/security/guides/consent?hl=en&consentmode=advanced)
-2. [Client-Side Google Tag Manager](https://support.google.com/tagmanager/answer/14842164)
-3. [Server-Side Google Tag Manager](https://developers.google.com/tag-platform/tag-manager/server-side) with [Google App Engine](https://developers.google.com/tag-platform/tag-manager/server-side/app-engine-setup) or [Google Cloud Run](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide)
-4. [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Nameless Analytics Client-side Tracker Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/)
-5. [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
-6. [Nameless Analytics Tables and Reporting queries examples](https://github.com/tommasomoretti/nameless-analytics-reporting-tables) in Google BigQuery
-7. [Nameless Analytics AI Q&A](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)
-8. [Nameless Analytics Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd)
+### 3. Server-Side Configuration (GTM sS)
+1. **Container Setup**: Ensure your GTM Server-Side container is mapped to your [custom domain](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide#custom-domain).
+2. **Client Tag**: Install the [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/).
+3. **Settings**: Enter your GCP Project ID, BigQuery Dataset ID, and the raw events table name (`events_raw` by default).
+
+### 4. Client-Side Configuration (GTM Web)
+1. **Configuration Variable**: Create a [Nameless Analytics Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) and enter your GTM sS endpoint.
+2. **Tracker Tag**: Install the [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/).
+3. **Triggering**: Set up a `page_view` tag to fire on all pages. 
+   - *Crucial*: A `page_view` must always be the first event sent to initialize the `page_id`.
+
+### 5. Reporting & Activation
+1. **Tables & Functions**: Deploy the [BigQuery Table Functions](https://github.com/tommasomoretti/nameless-analytics-reporting-tables) to transform raw data into analytical views (Users, Sessions, e-commerce, etc.).
+2. **Visualization**: Use the [Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd) or connect any BI tool to BigQuery.
+3. **AI Support**: Use the [Nameless Analytics AI Q&A](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a) for advanced query help.
 
 
 ### Want to see a live demo?
@@ -201,7 +213,7 @@ Contributions are welcome! Whether it's reporting a bug, suggesting a feature, o
 
 ### License
 
-This project is licensed under the MIT License. See the LICENSE file for details (coming soon).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 

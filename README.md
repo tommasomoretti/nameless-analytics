@@ -19,13 +19,20 @@ Main features:
 
 Technical Architecture:
 * [Data Flow](#data-flow)
+* [The Configuration Variable](#the-configuration-variable)
+* [Expert Features](#expert-features)
+* [Cross-domain Tracking](#cross-domain-tracking)
 * [JavaScript libraries](#javascript-libraries)
 * [Cookies](#cookies)
 * [User ID](#user-id)
 * [Bot Detection and User-Agent filtering](#bot-detection-and-user-agent-filtering)
 
+Implementation:
+* [Container Templates](#container-templates)
+* [Implementation Recipes](#implementation-recipes)
+
 Get started: 
-* [Quick Start (Master Guide)](#quick-start-master-guide)
+* [Quick Start](#quick-start)
 * [Want to see a live demo?](#want-to-see-a-live-demo) 
 * [Contributing](#contributing)
 * [License](#license) 
@@ -64,9 +71,6 @@ Main features:
 Read more about [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/)
 
 
-
-
-
 ### First party data storage
 
 Data are stored in Google Cloud Platform using Google Firestore database and Google BigQuery dataset. No preprocessing or sampling is applied, raw data only.
@@ -92,7 +96,6 @@ Read more about [Nameless Analytics Google Looker Studio dashboard example](http
 
 Get expert help for implementation, technical documentation, and advanced SQL queries.
 
-- **[Implementation Guides](implementation-guides/)**: Official container templates, architecture logic, and practical recipes.
 - **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)**: A specialized GPT trained on Nameless Analytics documentation.
 - **[Gemini Gem]()**: *Coming soon*
 
@@ -116,6 +119,26 @@ Events are sent to the Nameless Analytics Server-side Client Tag, which handles 
 Data is stored across two Google Cloud systems: Firestore holds user and session data with real-time updates, while BigQuery stores detailed event data and ecommerce information. Tables are organized and indexed to enable fast and complex analyses.
 
 Nameless Analytics provides predefined SQL functions to simplify queries on users, sessions, pages, ecommerce transactions, consents, and GTM performance, facilitating integration with BI tools such as Google Looker Studio or Power BI for customized visualizations and reports.
+
+
+### The Configuration Variable
+The `{{Nameless Analytics - Tracker configuration variable}}` is the central brain of the client-side implementation:
+- **Endpoint**: All requests are routed to your GTM Server-side URL (must be HTTPS and single-origin for cookie security).
+- **Consent Mode**: Automated delay until `analytics_storage='granted'` before firing.
+- **Cookie Security**: Identifiers (`na_u`, `na_s`) are managed by the server with `HttpOnly`, `Secure`, and `SameSite` attributes to prevent XSS.
+
+
+### Expert Features
+- **🛡️ Bot Protection**: The Server-side Tag automatically rejects requests (403) from known automation tools (Puppeteer, Selenium, etc.) via User-Agent inspection.
+- **🧩 Orphan Event Prevention**: To maintain data integrity, a `page_view` *must* be the first hit of any session. The server rejects events triggered before state initialization.
+- **🔄 Data Transformation**: Strict priority (Server Overrides > Tag Metadata > Config Variable > dataLayer).
+
+
+### Cross-domain Tracking
+Stitching users across top-level domains without third-party cookies:
+1. Tracker makes a pre-flight `get_user_data` request to the server.
+2. Server returns IDs; tracker appends the `na_id` parameter to the destination URL.
+3. Destination site captures the parameter and hydrates the session state.
 
 
 ### JavaScript libraries 
@@ -178,7 +201,7 @@ The Nameless Analytics Server-side Client Tag automatically protects data qualit
 
 
 
-## Quick Start (Master Guide)
+## Quick Start
 
 Follow this step-by-step guide to deploy Nameless Analytics in the correct order.
 
@@ -200,17 +223,17 @@ Before starting, ensure you have:
 1. **Container Setup**: Ensure your GTM Server-Side container is mapped to your [custom domain](https://developers.google.com/tag-platform/tag-manager/server-side/cloud-run-setup-guide#custom-domain).
 2. **Client Tag**: Install the [Nameless Analytics Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/).
 3. **Settings**: Enter your GCP Project ID, BigQuery Dataset ID, and the raw events table name (`events_raw` by default).
-4. **Container Import**: You can download a pre-configured [Server-side GTM container template here](gtm-implementation/).
+4. **Container Import**: You can download a pre-configured [Server-side GTM container template here](gtm-containers/gtm-server-side-container-template.json).
 
 ### 4. Client-Side Configuration (GTM Client-side)
 1. **Configuration Variable**: Create a [Nameless Analytics Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) and enter your GTM Server-side endpoint.
 2. **Tracker Tag**: Install the [Nameless Analytics Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/).
 3. **Triggering**: Set up a `page_view` tag to fire on all pages. 
    - *Crucial*: A `page_view` must always be the first event sent to initialize the `page_id`.
-4. **Container Import**: You can download a pre-configured [Client-side GTM container template here](gtm-implementation/).
+4. **Container Import**: You can download a pre-configured [Client-side GTM container template here](gtm-containers/gtm-client-side-container-template.json).
 
 ### 5. Reporting & Activation
-1. **Tables & Functions**: Deploy the [BigQuery Table Functions](reporting-tables/) to transform raw data into analytical views (Users, Sessions, e-commerce, etc.).
+1. **Tables & Functions**: Deploy the [BigQuery Table Functions](reporting-tables/readme.md/) to transform raw data into analytical views (Users, Sessions, e-commerce, etc.).
 2. **Visualization**: Use the [Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd) or connect any BI tool to BigQuery.
 3. **AI Support**: Use the [Nameless Analytics AI](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a) for help with documentation, implementation, or advanced SQL queries.
 

@@ -9,12 +9,13 @@ Nameless Analytics reporting tables are a set of tables in BigQuery where user, 
 
 For an overview of how Nameless Analytics works [start from here](../).
 
-Table of contents:
-* [Create tables and table functions](#create-tables-and-table-functions)
+Tables and table functions:
 * Tables
+  * [Create tables](#create-tables)
   * [Events raw table](#events-raw-table)
   * [Dates table](#dates-table)
 * Table functions
+  * [Create table functions](#create-table-functions)
   * [Events](#events)
   * [Users](#users)
   * [Sessions](#sessions)
@@ -31,92 +32,7 @@ Table of contents:
 
 
 ## Tables
-### Events raw table
-This main table is partitioned by `event_date` and clustered by `client_id`, `session_id`, and `event_name`.
-
-| Field name                 | Type     | Mode     | Description                                                                                                                                                   |
-|----------------------------|----------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| event_date                 | DATE     | REQUIRED | Date of the request.                                                                                                                                          |
-| event_datetime             | DATETIME | NULLABLE | Datetime of the request.                                                                                                                                      |
-| event_timestamp            | INTEGER  | REQUIRED | Insertion timestamp of the event.                                                                                                                             |
-| processing_event_timestamp | INTEGER  | NULLABLE | Timestamp when the Nameless Analytics Server-side Client Tag received the event, applicable for hits sent from a website or via a Streaming Protocol request. |
-| event_origin               | STRING   | REQUIRED | "Streaming Protocol" if the hit comes from the streaming protocol, "Website" if the hit comes from a browser.                                                 |
-| job_id                     | STRING   | NULLABLE | Job ID for Streaming Protocol hits.                                                                                                                           |
-| content_length             | INTEGER  | NULLABLE | Size of the message body in bytes.                                                                                                                            |
-| client_id                  | STRING   | REQUIRED | Client ID.                                                                                                                                                    |
-| user_data                  | RECORD   | REPEATED | User data.                                                                                                                                                    |
-| session_id                 | STRING   | REQUIRED | Session ID.                                                                                                                                                   |
-| session_data               | RECORD   | REPEATED | Session data.                                                                                                                                                 |
-| event_id                   | STRING   | REQUIRED | Event ID.                                                                                                                                                     |
-| event_name                 | STRING   | REQUIRED | Event name.                                                                                                                                                   |
-| event_data                 | RECORD   | REPEATED | Event data.                                                                                                                                                   |
-| ecommerce                  | JSON     | NULLABLE | Ecommerce object.                                                                                                                                             |
-| datalayer                  | JSON     | NULLABLE | Current `dataLayer` value.                                                                                                                                    |
-| consent_data               | RECORD   | REPEATED | Consent data.                                                                                                                                                 |
-
- 
-### Dates table
-This table is partitioned by `date` and clustered by `month_name` and `day_name`.
-
-| Field name         | Type    | Mode     | Description                                                     |
-|--------------------|---------|----------|---------------------------------------------------------------- |
-| date               | DATE    | REQUIRED | The date value.                                                 |
-| year               | INTEGER | NULLABLE | Year extracted from the date.                                   |
-| quarter            | INTEGER | NULLABLE | Quarter of the year (1-4) extracted from the date.              |
-| month_number       | INTEGER | NULLABLE | Month number of the year (1-12) extracted from the date.        |
-| month_name         | STRING  | NULLABLE | Full name of the month (e.g., January) extracted from the date. |
-| week_number_sunday | INTEGER | NULLABLE | Week number of the year, starting on Sunday.                    |
-| week_number_monday | INTEGER | NULLABLE | Week number of the year, starting on Monday.                    |
-| day_number         | INTEGER | NULLABLE | Day number of the month (1-31).                                 |
-| day_name           | STRING  | NULLABLE | Full name of the day of the week (e.g., Monday).                |
-| day_of_week_number | INTEGER | NULLABLE | Day of the week number (1 for Monday, 7 for Sunday).            |
-| is_weekend         | BOOLEAN | NULLABLE | True if the day is a Saturday or Sunday.                        |
-
-</br>
-
-
-
-## Table functions
-Table functions are predefined SQL queries that simplify data analysis by transforming raw event data into structured, easy-to-use formats for common reporting needs.
-
-#### "Single Source of Truth" analysis logic
-Unlike other systems, Nameless Analytics reporting functions are designed to work directly on the `events_raw` table as the single source of truth. By leveraging BigQuery **Window Functions**. This approach ensures that reports always reflect the most up-to-date state of the data without the need for complex ETL processes or intermediate staging tables.
-
-### Events
-Flattens raw event data and extracts custom parameters, making it easier to analyze specific interaction metrics.
-
-### Users
-Aggregates data at the user level, calculating lifecycle metrics like total sessions, first/last seen dates, and lifetime values.
-
-### Sessions
-Groups events into individual sessions, calculating duration, bounce rates, and landing/exit pages.
-
-### Pages
-Focuses on page-level performance, aggregating views, time on page, and navigation paths.
-
-### Transactions
-Extracts and structures ecommerce transaction data, including revenue, tax, and shipping details.
-
-### Products
-Provides a granular view of product performance, including views, add-to-carts, and purchases per SKU.
-
-### Shopping stages open funnel
-Calculates drop-off rates across the entire shopping journey, regardless of where the user started.
-
-### Shopping stages closed funnel
-Analyzes the shopping journey for users who follow a specific, linear sequence of steps.
-
-### GTM performances
-Provides metrics on GTM container execution times and tag performance to help optimize site speed.
-
-### Consents
-Tracks changes in user consent status over time, ensuring compliance and data transparency.
-
-</br>
-
-
-
-## Create tables and table functions
+### Create tables
 <details><summary>To create the tables use this DML statement.</summary>
   
 ```sql
@@ -318,12 +234,104 @@ execute immediate dates_table_sql;
 ```
 </details>
 
+
+### Events raw table
+This main table is partitioned by `event_date` and clustered by `client_id`, `session_id`, and `event_name`.
+
+| Field name                 | Type     | Mode     | Description                                                                                                                                                   |
+|----------------------------|----------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| event_date                 | DATE     | REQUIRED | Date of the request.                                                                                                                                          |
+| event_datetime             | DATETIME | NULLABLE | Datetime of the request.                                                                                                                                      |
+| event_timestamp            | INTEGER  | REQUIRED | Insertion timestamp of the event.                                                                                                                             |
+| processing_event_timestamp | INTEGER  | NULLABLE | Timestamp when the Nameless Analytics Server-side Client Tag received the event, applicable for hits sent from a website or via a Streaming Protocol request. |
+| event_origin               | STRING   | REQUIRED | "Streaming Protocol" if the hit comes from the streaming protocol, "Website" if the hit comes from a browser.                                                 |
+| job_id                     | STRING   | NULLABLE | Job ID for Streaming Protocol hits.                                                                                                                           |
+| content_length             | INTEGER  | NULLABLE | Size of the message body in bytes.                                                                                                                            |
+| client_id                  | STRING   | REQUIRED | Client ID.                                                                                                                                                    |
+| user_data                  | RECORD   | REPEATED | User data.                                                                                                                                                    |
+| session_id                 | STRING   | REQUIRED | Session ID.                                                                                                                                                   |
+| session_data               | RECORD   | REPEATED | Session data.                                                                                                                                                 |
+| event_id                   | STRING   | REQUIRED | Event ID.                                                                                                                                                     |
+| event_name                 | STRING   | REQUIRED | Event name.                                                                                                                                                   |
+| event_data                 | RECORD   | REPEATED | Event data.                                                                                                                                                   |
+| ecommerce                  | JSON     | NULLABLE | Ecommerce object.                                                                                                                                             |
+| datalayer                  | JSON     | NULLABLE | Current `dataLayer` value.                                                                                                                                    |
+| consent_data               | RECORD   | REPEATED | Consent data.                                                                                                                                                 |
+
+ 
+### Dates table
+This table is partitioned by `date` and clustered by `month_name` and `day_name`.
+
+| Field name         | Type    | Mode     | Description                                                     |
+|--------------------|---------|----------|---------------------------------------------------------------- |
+| date               | DATE    | REQUIRED | The date value.                                                 |
+| year               | INTEGER | NULLABLE | Year extracted from the date.                                   |
+| quarter            | INTEGER | NULLABLE | Quarter of the year (1-4) extracted from the date.              |
+| month_number       | INTEGER | NULLABLE | Month number of the year (1-12) extracted from the date.        |
+| month_name         | STRING  | NULLABLE | Full name of the month (e.g., January) extracted from the date. |
+| week_number_sunday | INTEGER | NULLABLE | Week number of the year, starting on Sunday.                    |
+| week_number_monday | INTEGER | NULLABLE | Week number of the year, starting on Monday.                    |
+| day_number         | INTEGER | NULLABLE | Day number of the month (1-31).                                 |
+| day_name           | STRING  | NULLABLE | Full name of the day of the week (e.g., Monday).                |
+| day_of_week_number | INTEGER | NULLABLE | Day of the week number (1 for Monday, 7 for Sunday).            |
+| is_weekend         | BOOLEAN | NULLABLE | True if the day is a Saturday or Sunday.                        |
+
+</br>
+
+
+
+## Table functions
+Table functions are predefined SQL queries that simplify data analysis by transforming raw event data into structured, easy-to-use formats for common reporting needs.
+
+Unlike other systems, Nameless Analytics reporting functions are designed to work directly on the `events_raw` table as the single source of truth. By leveraging BigQuery **Window Functions**. This approach ensures that reports always reflect the most up-to-date state of the data without the need for complex ETL processes or intermediate staging tables.
+
+### Create table functions
 <details><summary>To create the table functions use this DML statement.</summary>
   
 ```sql
 
 ```
 </details>
+
+
+### Events
+Flattens raw event data and extracts custom parameters, making it easier to analyze specific interaction metrics.
+
+
+### Users
+Aggregates data at the user level, calculating lifecycle metrics like total sessions, first/last seen dates, and lifetime values.
+
+
+### Sessions
+Groups events into individual sessions, calculating duration, bounce rates, and landing/exit pages.
+
+
+### Pages
+Focuses on page-level performance, aggregating views, time on page, and navigation paths.
+
+
+### Transactions
+Extracts and structures ecommerce transaction data, including revenue, tax, and shipping details.
+
+
+### Products
+Provides a granular view of product performance, including views, add-to-carts, and purchases per SKU.
+
+
+### Shopping stages open funnel
+Calculates drop-off rates across the entire shopping journey, regardless of where the user started.
+
+
+### Shopping stages closed funnel
+Analyzes the shopping journey for users who follow a specific, linear sequence of steps.
+
+
+### GTM performances
+Provides metrics on GTM container execution times and tag performance to help optimize site speed.
+
+
+### Consents
+Tracks changes in user consent status over time, ensuring compliance and data transparency.
 
 ---
 

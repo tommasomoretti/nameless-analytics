@@ -1,7 +1,7 @@
 # Nameless Analytics Documentation - TO DO List
 
 1. [x] **Master Guide / Quick Start**: Add a "Quick Start" section to the `nameless-analytics` repo, likely under "Get started". This will serve as the Master Guide for the entire project.
-2. [x] **GTM Technical Specification & Implementation**: Evolved the GTM examples repository into a comprehensive technical hub with container templates and split documentation (Logic vs. Examples).
+2. [x] **Monorepo Consolidation**: Merged GTM examples and SQL reporting tables into the main `nameless-analytics` repository for better maintainability (Opzione C).
 3. [x] **License Setup**: Create LICENSE files for all repositories and update READMEs.
 4. [ ] **Error/Edge Case Management**: Rethink the management of errors and edge cases from scratch (currently in `nameless-analytics-client-side-tracker-tag`). (IN PROGRESS)
 

@@ -7,20 +7,13 @@ Collect, analyze, and activate your website data with a free real-time digital a
 ## Start from here
 - [What is Nameless Analytics](#what-is-nameless-analytics)
 - [Technical Architecture](#technical-architecture)
-  - [Data Collection (Client-side)](#data-collection-client-side)
-  - [Ingestion & Processing (Server-side)](#ingestion--processing-server-side)
-  - [Stateful Layer (Firestore)](#stateful-layer-firestore)
-  - [Storage & Activation (BigQuery & Webhooks)](#storage--activation-bigquery--webhooks)
-- [Core Logic Details](#core-logic-details)
-  - [Data flow](#data-flow)
-  - [1. Client-Side Tracking](#1-client-side-tracking)
-  - [2. Server-Side Processing](#2-server-side-processing)
-  - [3. Cookies](#3-cookies)
-  - [4. User identity & PII](#4-user-identity--pii)
-  - [5. Reporting & Visualization](#5-reporting--visualization)
-  - [6. Support & AI](#6-support--ai)
+  - [1. High-Level Data Flow](#1-high-level-data-flow)
+  - [2. Client-Side Collection](#2-client-side-collection)
+  - [3. Server-Side Processing & State](#3-server-side-processing--state)
+  - [4. Storage & Reporting](#4-storage--reporting)
+- [Support & AI](#support--ai)
 - [Quick Start](#quick-start)
-  - [Repositories structure](#repositories-structure)
+  - [Repository structure](#repository-structure)
   - [Project configuration](#project-configuration)
 - [External Resources](#external-resources)
 
@@ -29,14 +22,13 @@ Collect, analyze, and activate your website data with a free real-time digital a
 
 
 ## What is Nameless Analytics
-Nameless Analytics provides a premium alternative to commercial suites by prioritizing data ownership and precision.
+Nameless Analytics is an open-source, first-party data collection infrastructure designed for organizations that demand complete control over their digital analytics. It replaces the "black box" of traditional SaaS tools with a transparent pipeline built entirely on your own Google Cloud Platform environment.
 
-- **Data Ownership**: 100% of the data resides within your own Google Cloud project. You maintain full control over data residency, access logs, and retention policies with no third-party access to raw data.
-- **Accuracy & Reliability**: By operating in a strict first-party context, tracking is less susceptible to client-side restrictions and ad-blockers. Requests are indistinguishable from first-party traffic, ensuring higher data quality.
-- **Stateful Persistence**: Uses Google Firestore to maintain long-term user profiles and session history (first/last touch attribution, user-level parameters) directly on the server, ensuring continuity across sessions.
-- **Unsampled Granularity**: No artificial sampling or cardinality limits. Capture every event and parameter with full precision directly into BigQuery for advanced modeling.
-- **Real-Time Activation**: Forward identical event payloads to any custom HTTP endpoint. Trigger immediate business actions (CRM updates, custom webhooks, real-time alerts) the moment an interaction occurs.
-- **Integrity & Security**: Built-in automatic geolocation (Country/City), bot protection, and session validation to prevent "orphan events," ensuring your analytical tables remain clean and professional.
+At a high level, the platform solves three critical challenges in modern analytics:
+
+1.  **Total Data Ownership**: Unlike commercial tools where data resides on third-party servers, Nameless Analytics pipelines every interaction directly to your BigQuery warehouse. You own the raw data, the retention policies and the reporting.
+2.  **Data Quality**: By leveraging a server-side, first-party architecture, the platform bypasses common client-side restrictions (such as ad blockers and ITP), ensuring granular, unsampled data collection that is far more accurate than standard client-side tags.
+3.  **Real-Time Activation**: Stream identical event payloads to external APIs, CRMs, or marketing automation tools the instant an event occurs, enabling true real-time personalization.
 
 </br>
 
@@ -45,41 +37,23 @@ Nameless Analytics provides a premium alternative to commercial suites by priori
 ## Technical Architecture
 The platform is built on a modern, decoupled architecture that separates data capture, processing, and storage to ensure maximum flexibility and performance.
 
-### Data Collection (Client-side)
-The **Client-Side Tracker** (GTM Web) captures user interactions and metadata. It manages a sequential execution queue and respects Google Consent Mode states before dispatching event payloads via secure POST requests to the server-side endpoint.
+### High-Level Data Flow
+The following diagram illustrates the real-time data flow from the user's browser, through the server-side processing layer, to the final storage and visualization destinations:
 
-### Ingestion & Processing (Server-side)
-The **Server-Side Client Tag** acts as the central gateway. It performs:
-- **Security Validation**: Checks request origins, authorized domains, and identifies/rejects automated bots.
-- **Identity Orchestration**: Manages `HttpOnly` server-side cookies for User and Session IDs, preventing client-side script interference.
-- **Enrichment**: Adds server-side metadata.
-
-### Stateful Layer (Firestore)
-Unlike traditional stateless trackers, Nameless Analytics uses **Google Firestore** as a real-time state machine. It stores the latest user profiles and session states, allowing the server to retrieve previous session data even if the client's local state is cleared.
-
-### Storage & Activation (BigQuery & Webhooks)
-- **BigQuery**: Every event is streamed in real-time into the `events_raw` table for immediate analysis.
-- **Real-time Forwarding**: Allows forwarding identical payloads to custom endpoints for external business automation.
+<img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
 
 </br>
 
 
+### Client-Side Collection
+The **Client-Side Tracker** (GTM Web) acts as the system's brain in the browser. It manages a sequential execution queue to ensure data integrity even during rapid interactions.
 
-## Core Logic Details
-### Data flow
-The following diagram illustrates the real-time data flow from the user's browser to the final storage and visualization layers:
-
-<img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
-
-### 1. Client-Side Tracking
-The [Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) act as the system's brain in the browser.
-- **Google Consent Mode**: Fully integrated. Tracks events only when `analytics_storage` is granted, or all events regardless of user consent.
-- **Technical Logic**: Automated delay until consent, Single Page Application (SPA) support, custom acquisition parameter handling, and more.
-- **Cross-domain Tracking**: Stitch users across domains using a pre-flight ID request and URL decoration (`na_id`).
+**Key Features:**
+- **Google Consent Mode Integration**: Tracks events only when `analytics_storage` is granted (or configured behavior). Respects user privacy by design.
+- **Advanced Logic**: Built-in support for Single Page Applications (SPA), custom acquisition parameter handling, and data cleaning.
+- **Cross-domain Tracking**: Seamlessly stitches sessions across domains using a pre-flight ID request and URL decoration (`na_id`).
 
 #### Request payload data
-The request data is sent via a POST request in JSON format.
-
 Data is structured into:
 * User data: data related to users.
 * Session data: data related to sessions.
@@ -343,44 +317,45 @@ When "Enable cross-domain tracking" in the Nameless Analytics Client-side Tracke
 
 </br>
 
-To ensure data integrity, the Nameless Analytics Client-side Tracker Tag uses a sequential execution queue. Even if multiple events are triggered simultaneously (e.g., rapid clicks), requests are sent one at a time in the correct chronological order.
 
+### Server-Side Processing & State
+The **Server-Side Client Tag** acts as the central gateway and security layer.
 
-### 2. Server-Side Processing
-The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/) acts as the ingestion gateway.
-- **Security & Privacy**: The system reduces XSS risks by managing IDs via server-side cookies (no client-side JavaScript access).
-- **Bot Protection**: Automatically rejects requests (403) from known automation tools (Puppeteer, Selenium, headless browsers).
-- **Integrity**: Prevents "orphan events" by ensuring a `page_view` is always the first event in a session.
-- **Priority**: Strict parameter hierarchy (Server Overrides > Tag Metadata > Config Variable > dataLayer data).
+**Core Functions:**
+- **Security Validation**: Checks request origins and authorized domains.
+- **Bot Protection**: Automatically identifies and rejects automated bots (Puppeteer, Selenium, etc.) returning a 403 error.
+- **Identity Orchestration**: Manages `HttpOnly` server-side cookies, preventing client-side script interference (XSS protection).
 
+**Stateful Layer (Firestore)**
+Unlike traditional stateless trackers, Nameless Analytics uses **Google Firestore** as a real-time state machine. It stores the latest user profiles and session states, allowing the server to maintain context (e.g., Session Number, First Source) even if the client's local storage is wiped.
 
-#### Cookies
-**Cookie Security**: The Server-side Client Tag automatically creates and manages cookies with `HttpOnly`, `Secure`, and `SameSite=Strict` attributes. This ensures identifiers are inaccessible to client-side scripts, protecting against XSS and CSRF.
+#### Cookie Management
 
-| Default cookie name | Default exp. | Description |
+Cookies are set securely on the server side:
+
+| Cookie Name | Expiry | Description |
 | :--- | :--- | :--- |
-| **nameless_analytics_user** | 400 days | Persistent ID for user-level analysis (15-character random string). |
-| **nameless_analytics_session** | 30 minutes | Combined ID for session and hit-level tracking (User ID + Session ID + Page ID). |
+| **nameless_analytics_user** | 400 days | Persistent ID for user-level analysis. |
+| **nameless_analytics_session** | 30 minutes | Session state identifier (Refreshed on activity). |
 
-#### User identity & PII
-- **No PII**: No PII is automatically tracked.
-- **User ID**: Supports random `client_id` (anonymous) and custom `user_id` (CRM-based) for cross-device stitching.
+</br>
 
 
-### 5. Reporting & Visualization
-- **Raw Table**: Store raw events in BigQuery for flexible analysis and reporting in `events_raw` table.
-- **Reporting Tables**: Deploy prebuilt [BigQuery table functions](reporting-tables/README.md) to transform raw events into analytical views for:
+### 4. Storage & Reporting
+- **BigQuery (Raw)**: Every event is streamed in real-time into the `events_raw` table.
+- **BigQuery (Modeled)**: Pre-built [SQL functions](reporting-tables/) transform raw data into analytical tables:
     - [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), and [Events](reporting-tables/events.sql).
-    - [Ecommerce Transactions](reporting-tables/ec_transactions.sql) and [Products](reporting-tables/ec_products.sql).
-    - [GTM Performance](reporting-tables/gtm_performances.sql) and [Consents](reporting-tables/consents.sql).
+    - [Ecommerce](reporting-tables/ec_transactions.sql) and [Consents](reporting-tables/consents.sql).
+- **Visualization**: Connect directly to Looker Studio, PowerBI, or Tableau. [View Dashboard Example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd).
 
-- **Data Visualization**: Connect any BI tool (Tableau, Power BI, Superset) to BigQuery or use our [Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd).
+
+</br>
 
 
 ### 6. Support & AI
 Get expert help for implementation, technical documentation, and advanced SQL queries.
 - **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)**: Specialized GPT trained on the platform docs.
-- **Gemini Gem**: *Coming soon*
+- **[Gemini Gem]()**: *Coming soon*
 
 </br>
 

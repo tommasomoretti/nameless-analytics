@@ -55,7 +55,7 @@ The **Client-Side Tracker** (GTM Web) captures user interactions and metadata. I
 The **Server-Side Client Tag** acts as the central gateway. It performs:
 - **Security Validation**: Checks request origins, authorized domains, and identifies/rejects automated bots.
 - **Identity Orchestration**: Manages `HttpOnly` server-side cookies for User and Session IDs, preventing client-side script interference.
-- **Enrichment**: Adds server-side metadata such as IP-based geolocation.
+- **Enrichment**: Adds server-side metadata.
 
 ### Stateful Layer (Firestore)
 Unlike traditional stateless trackers, Nameless Analytics uses **Google Firestore** as a real-time state machine. It stores the latest user profiles and session states, allowing the server to retrieve previous session data even if the client's local state is cleared.

@@ -7,11 +7,11 @@ Collect, analyze, and activate your website data with a free real-time digital a
 ## Start from here
 - [What is Nameless Analytics](#what-is-nameless-analytics)
 - [Technical Architecture](#technical-architecture)
-  - [1. High-Level Data Flow](#1-high-level-data-flow)
-  - [2. Client-Side Collection](#2-client-side-collection)
-  - [3. Server-Side Processing & State](#3-server-side-processing--state)
-  - [4. Storage & Reporting](#4-storage--reporting)
-- [Support & AI](#support--ai)
+  - [High-Level Data Flow](#high-level-data-flow)
+  - [Client-Side Collection](#client-side-collection)
+  - [Server-Side Processing & State](#server-side-processing--state)
+  - [Storage & Reporting](#storage--reporting)
+  - [Support & AI](#support--ai)
 - [Quick Start](#quick-start)
   - [Repository structure](#repository-structure)
   - [Project configuration](#project-configuration)
@@ -341,7 +341,7 @@ Cookies are set securely on the server side:
 </br>
 
 
-### 4. Storage & Reporting
+### Storage & Reporting
 - **BigQuery (Raw)**: Every event is streamed in real-time into the `events_raw` table.
 - **BigQuery (Modeled)**: Pre-built [SQL functions](reporting-tables/) transform raw data into analytical tables:
     - [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), and [Events](reporting-tables/events.sql).
@@ -352,7 +352,7 @@ Cookies are set securely on the server side:
 </br>
 
 
-### 6. Support & AI
+### Support & AI
 Get expert help for implementation, technical documentation, and advanced SQL queries.
 - **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)**: Specialized GPT trained on the platform docs.
 - **[Gemini Gem]()**: *Coming soon*

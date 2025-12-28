@@ -12,8 +12,21 @@ Collect, analyze, and activate your website data with a free real-time digital a
 ### Start from here
 - [Strategic Value](#strategic-value)
 - [Technical Architecture](#technical-architecture)
+  - [Data Collection (Client-side)](#data-collection-client-side)
+  - [Ingestion & Processing (Server-side)](#ingestion--processing-server-side)
+  - [Stateful Layer (Firestore)](#stateful-layer-firestore)
+  - [Storage & Activation (BigQuery & Webhooks)](#storage--activation-bigquery--webhooks)
 - [Core Logic Details](#core-logic-details)
+  - [Data flow](#data-flow)
+  - [1. Client-Side Tracking](#1-client-side-tracking)
+  - [2. Server-Side Processing](#2-server-side-processing)
+  - [3. Cookies](#3-cookies)
+  - [4. User identity & PII](#4-user-identity--pii)
+  - [5. Reporting & Visualization](#5-reporting--visualization)
+  - [6. Support & AI](#6-support--ai)
 - [Quick Start](#quick-start)
+  - [Repositories structure](#repositories-structure)
+  - [Project configuration](#project-configuration)
 - [External Resources](#external-resources)
 
 </br>
@@ -35,29 +48,29 @@ Nameless Analytics provides a premium alternative to commercial suites by priori
 ## Technical Architecture
 The platform is built on a modern, decoupled architecture that separates data capture, processing, and storage to ensure maximum flexibility and performance.
 
-### Data Flow
-The following diagram illustrates the real-time data flow from the user's browser to the final storage and visualization layers:
-
-<img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
-
-#### 1. Data Collection (Client-side)
+### Data Collection (Client-side)
 The **Client-Side Tracker** (GTM Web) captures user interactions and metadata. It manages a sequential execution queue and respects Google Consent Mode states before dispatching event payloads via secure POST requests to the server-side endpoint.
 
-#### 2. Ingestion & Processing (Server-side)
+### Ingestion & Processing (Server-side)
 The **Server-Side Client Tag** acts as the central gateway. It performs:
 - **Security Validation**: Checks request origins, authorized domains, and identifies/rejects automated bots.
 - **Identity Orchestration**: Manages `HttpOnly` server-side cookies for User and Session IDs, preventing client-side script interference.
 - **Enrichment**: Adds server-side metadata such as IP-based geolocation.
 
-#### 3. Stateful Layer (Firestore)
+### Stateful Layer (Firestore)
 Unlike traditional stateless trackers, Nameless Analytics uses **Google Firestore** as a real-time state machine. It stores the latest user profiles and session states, allowing the server to retrieve previous session data even if the client's local state is cleared.
 
-#### 4. Storage & Activation (BigQuery & Webhooks)
+### Storage & Activation (BigQuery & Webhooks)
 - **BigQuery**: Every event is streamed in real-time into the `events_raw` table for immediate analysis.
 - **Real-time Forwarding**: Allows forwarding identical payloads to custom endpoints for external business automation.
 
 
 ## Core Logic Details
+### Data flow
+The following diagram illustrates the real-time data flow from the user's browser to the final storage and visualization layers:
+
+<img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
+
 ### 1. Client-Side Tracking
 The [Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) act as the system's brain in the browser.
 - **Google Consent Mode**: Fully integrated. Tracks events only when `analytics_storage` is granted, or all events regardless of user consent.
@@ -381,13 +394,13 @@ Get expert help for implementation, technical documentation, and advanced SQL qu
 
 ## Quick Start
 
-### Repository structure
-- Main repository: [nameless-analytics](nameless-analytics/)
-- Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](nameless-analytics-client-side-tracker-tag/)
-- Client-side tracker configuration variable: [nameless-analytics-client-side-tracker-configuration-variable](nameless-analytics-client-side-tracker-configuration-variable/)
-- Server-side client tag: [nameless-analytics-server-side-client-tag](nameless-analytics-server-side-client-tag/)
-- Reporting tables: [reporting-tables](reporting-tables/)
-- GTM default containers: [gtm-containers](gtm-containers/)
+### Repositories structure
+- Main repository: [nameless-analytics](#nameless-analytics)
+- Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](#1-client-side-tracking)
+- Client-side tracker configuration variable: [nameless-analytics-client-side-tracker-configuration-variable](#1-client-side-tracking)
+- Server-side client tag: [nameless-analytics-server-side-client-tag](#2-server-side-processing)
+- Reporting tables: [reporting-tables](#5-reporting--visualization)
+- GTM default containers: [gtm-containers](#project-configuration)
 
 
 ### Project configuration

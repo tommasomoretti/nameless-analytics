@@ -10,7 +10,7 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 Collect, analyze, and activate your website data with a free real-time digital analytics suite that respects user privacy.
 
 ### Start from here
-- [Strategic Value](#strategic-value)
+- [What is Nameless Analytics](#what-is-nameless-analytics)
 - [Technical Architecture](#technical-architecture)
   - [Data Collection (Client-side)](#data-collection-client-side)
   - [Ingestion & Processing (Server-side)](#ingestion--processing-server-side)
@@ -33,7 +33,7 @@ Collect, analyze, and activate your website data with a free real-time digital a
 
 
 
-## Strategic Value
+## What is Nameless Analytics
 Nameless Analytics provides a premium alternative to commercial suites by prioritizing data ownership and precision.
 
 - **Data Ownership**: 100% of the data resides within your own Google Cloud project. You maintain full control over data residency, access logs, and retention policies with no third-party access to raw data.
@@ -64,6 +64,7 @@ Unlike traditional stateless trackers, Nameless Analytics uses **Google Firestor
 - **BigQuery**: Every event is streamed in real-time into the `events_raw` table for immediate analysis.
 - **Real-time Forwarding**: Allows forwarding identical payloads to custom endpoints for external business automation.
 
+</br>
 
 ## Core Logic Details
 ### Data flow
@@ -357,7 +358,7 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 - **Priority**: Strict parameter hierarchy (Server Overrides > Tag Metadata > Config Variable > dataLayer data).
 
 
-### 3. Cookies
+#### Cookies
 **Cookie Security**: The Server-side Client Tag automatically creates and manages cookies with `HttpOnly`, `Secure`, and `SameSite=Strict` attributes. This ensures identifiers are inaccessible to client-side scripts, protecting against XSS and CSRF.
 
 | Default cookie name | Default exp. | Description |
@@ -365,7 +366,7 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 | **nameless_analytics_user** | 400 days | Persistent ID for user-level analysis (15-character random string). |
 | **nameless_analytics_session** | 30 minutes | Combined ID for session and hit-level tracking (User ID + Session ID + Page ID). |
 
-### 4. User identity & PII
+#### User identity & PII
 - **No PII**: No PII is automatically tracked.
 - **User ID**: Supports random `client_id` (anonymous) and custom `user_id` (CRM-based) for cross-device stitching.
 
@@ -378,9 +379,6 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
     - [GTM Performance](reporting-tables/gtm_performances.sql) and [Consents](reporting-tables/consents.sql).
 
 - **Data Visualization**: Connect any BI tool (Tableau, Power BI, Superset) to BigQuery or use our [Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd).
-
-</br>
-
 
 
 ### 6. Support & AI

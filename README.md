@@ -10,7 +10,8 @@ Collect, analyze, and activate your website data with a free real-time digital a
   - [High-Level Data Flow](#high-level-data-flow)
   - [Client-Side Collection](#client-side-collection)
   - [Server-Side Processing](#server-side-processing)
-  - [Storage & Reporting](#storage--reporting)
+  - [Storage](#storage)
+  - [Reporting](#reporting)
   - [Support & AI](#support--ai)
 - [Quick Start](#quick-start)
   - [Repository structure](#repository-structure)
@@ -349,7 +350,7 @@ Nameless Analytics replaces client-side storage dependency with a server-side **
 **BigQuery**
 Nameless Analytics provides a scalable **Analytical Data Warehouse** built on Google BigQuery for high-volume event storage and automated data modeling.
 - **Raw Streaming**: Every valid event is streamed in real-time to the `events_raw` table.
-- **Reporting tables**: A suite of SQL Table Functions transforms raw data into business-ready views for [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), and [Ecommerce](reporting-tables/ec_transactions.sql).
+- **Reporting tables**: A suite of SQL Table Functions transforms raw data into business-ready views for [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), [Events](reporting-tables/events.sql), [Consents](reporting-tables/consents.sql), [GTM Performance](reporting-tables/gtm_performances.sql), and specialized Ecommerce views like [Transactions](reporting-tables/ec_transactions.sql), [Products](reporting-tables/ec_products.sql), and Funnels ([Open](reporting-tables/ec_shopping_stages_open_funnel.sql) / [Closed](reporting-tables/ec_shopping_stages_closed_funnel.sql)).
 
 
 ### Reporting
@@ -361,28 +362,28 @@ The final output is a comprehensive **Looker Studio Dashboard** connected direct
 - [**Executive Summary**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd): High-level KPIs including total users, sessions, revenue, and conversion rates, along with sparkline trends for immediate health checks.
 
 **2. Acquisition**
-- [**Traffic Sources**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_rmpwib9hod): Breakdown of traffic by source, medium, and channel grouping to identify best-performing acquisition channels.
-- [**Device Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_cmywmb9hod): Analysis of user volume and revenue split across Desktop, Mobile, and Tablet devices.
+- [**Traffic Sources**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_rmpwib9hod): Breakdown of traffic by source, medium, and channel grouping. Powered by [sessions.sql](reporting-tables/sessions.sql).
+- [**Device Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_cmywmb9hod): Analysis of user volume and revenue split across devices. Logic defined in [sessions.sql](reporting-tables/sessions.sql).
 - [**Geographic Distribution**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_enanrb9hod): Map and table views showing user sessions and revenue by Country (using server-side enrichment).
 
 **3. Behaviour**
-- [**Page Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_oqvpz41sgd): Detailed metrics for individual pages (Views, Entrances, Engagement Time) to identify top content.
-- [**Landing Pages**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_it3ayf1hod): Analysis of entry points effectiveness in retaining users and driving conversions.
-- [**Exit Pages**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ep50zf1hod): Identification of high-drop-off pages to pinpoint potential UX issues.
-- [**Event Tracking**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_y779jg1hod): Granular view of all tracked custom interaction events (clicks, scrolls, form submits).
+- [**Page Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_oqvpz41sgd): Detailed metrics for individual pages. Powered by [pages.sql](reporting-tables/pages.sql).
+- [**Landing Pages**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_it3ayf1hod): Effectiveness of entry points. Logic in [sessions.sql](reporting-tables/sessions.sql).
+- [**Exit Pages**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ep50zf1hod): Identification of high-drop-off pages. Logic in [sessions.sql](reporting-tables/sessions.sql).
+- [**Event Tracking**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_y779jg1hod): Granular view of tracked interaction events. Powered by [events.sql](reporting-tables/events.sql).
 
 **4. Ecommerce**
-- [**Customer Analysis**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_jc2z2lhwgd): Insights into customer base growth, loyalty, and purchasing frequency.
-- [**Sales Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_zlu0hdkugd): Revenue trends over time, segmented by critical dimensions.
-- [**Product Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_x89r79gvgd): Item-level reporting showing Views, Add-to-Carts, and Purchases per product.
-- [**Shopping Funnel**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_o8lq2jfvgd): Visual funnel from `view_item` to `purchase` to analyze conversion leaks.
+- [**Customer Analysis**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_jc2z2lhwgd): Customer loyalty and frequency. Based on [users.sql](reporting-tables/users.sql).
+- [**Sales Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_zlu0hdkugd): Revenue trends over time. Powered by [ec_transactions.sql](reporting-tables/ec_transactions.sql).
+- [**Product Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_x89r79gvgd): Item-level reporting. Powered by [ec_products.sql](reporting-tables/ec_products.sql).
+- [**Shopping Funnel**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_o8lq2jfvgd): Conversion funnel analysis. Based on [Open](reporting-tables/ec_shopping_stages_open_funnel.sql) and [Closed](reporting-tables/ec_shopping_stages_closed_funnel.sql) funnel logic.
 
 **5. Compliance (Consent)**
-- [**Consent Overview**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_sba934crpd): High-level stats on user consent interactions and opt-in rates.
-- [**Consent Details**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_nn21ghetpd): Deep dive into specific consent types (Analytics vs Ad Storage) granted/denied over time.
+- [**Consent Overview**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_sba934crpd): Stats on opt-in rates. Powered by [consents.sql](reporting-tables/consents.sql).
+- [**Consent Details**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_nn21ghetpd): Granular consent types over time. Logic in [consents.sql](reporting-tables/consents.sql).
 
 **6. Debugging & Tech**
-- [**Web Hits Latency**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_zlobch0knd): Monitoring of pipeline latency and hit volume ingestion integrity.
+- [**Web Hits Latency**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_zlobch0knd): Pipeline latency monitoring. Using [gtm_performances.sql](reporting-tables/gtm_performances.sql).
 - [**Server-to-Server Hits**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_yiouuvwgod): Dedicated view for non-browser events sent via Measurement Protocol.
 - [**Raw Data Inspector**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_unnkswttkd): Full table view of individual raw events for granular troubleshooting and verification.
 
@@ -398,12 +399,12 @@ Get expert help for implementation, technical documentation, and advanced SQL qu
 
 ## Quick Start
 
-### Repositories structure
+### Repository structure
 - Main repository: [nameless-analytics](#nameless-analytics)
-- Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](#1-client-side-tracking)
-- Client-side tracker configuration variable: [nameless-analytics-client-side-tracker-configuration-variable](#1-client-side-tracking)
-- Server-side client tag: [nameless-analytics-server-side-client-tag](#2-server-side-processing)
-- Reporting tables: [reporting-tables](#5-reporting--visualization)
+- Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](#client-side-collection)
+- Client-side tracker configuration variable: [nameless-analytics-client-side-tracker-configuration-variable](#client-side-collection)
+- Server-side client tag: [nameless-analytics-server-side-client-tag](#server-side-processing)
+- Reporting tables: [reporting-tables](#reporting)
 - GTM default containers: [gtm-containers](#project-configuration)
 
 

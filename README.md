@@ -4,7 +4,7 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 
 Collect, analyze, and activate your website data with a free real-time digital analytics suite that respects user privacy.
 
-### Start from here
+## Start from here
 - [What is Nameless Analytics](#what-is-nameless-analytics)
 - [Technical Architecture](#technical-architecture)
   - [Data Collection (Client-side)](#data-collection-client-side)
@@ -40,6 +40,8 @@ Nameless Analytics provides a premium alternative to commercial suites by priori
 
 </br>
 
+
+
 ## Technical Architecture
 The platform is built on a modern, decoupled architecture that separates data capture, processing, and storage to ensure maximum flexibility and performance.
 
@@ -60,6 +62,8 @@ Unlike traditional stateless trackers, Nameless Analytics uses **Google Firestor
 - **Real-time Forwarding**: Allows forwarding identical payloads to custom endpoints for external business automation.
 
 </br>
+
+
 
 ## Core Logic Details
 ### Data flow
@@ -358,11 +362,7 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 | **nameless_analytics_user** | 400 days | Persistent ID for user-level analysis (15-character random string). |
 | **nameless_analytics_session** | 30 minutes | Combined ID for session and hit-level tracking (User ID + Session ID + Page ID). |
 
-<<<<<<< HEAD
 #### User identity & PII
-=======
-
-### 4. User identity & PII
 - **No PII**: No PII is automatically tracked.
 - **User ID**: Supports random `client_id` (anonymous) and custom `user_id` (CRM-based) for cross-device stitching.
 
@@ -411,9 +411,6 @@ Before starting the setup, ensure you have:
 #### Google Tag Manager Setup
 1. Import: [Client-side GTM Template](gtm-containers/gtm-client-side-container-template.json)
 2. Import: [Server-side GTM Template](gtm-containers/gtm-server-side-container-template.json)
-
-#### Data analysis and visualization
-
 
 </br>
 

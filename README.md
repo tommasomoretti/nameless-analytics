@@ -356,17 +356,30 @@ Get expert help for implementation, technical documentation, and advanced SQL qu
 
 ## Quick Start
 
-### 1. Setup Infrastructure (GCP)
-1. **BigQuery**: Create tables and table functions in BigQuery using the provided [SQL scripts](reporting-tables/).
-2. **Firestore**: Enable in **Native Mode**.
-3. **IAM**: Grant your GTM SS Service Account `BigQuery Data Editor`, `BigQuery Job User`, and `Cloud Datastore User`.
+### Repository structure
+- Main repository: [nameless-analytics](nameless-analytics/)
+- Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](nameless-analytics-client-side-tracker-tag/)
+- Client-side tracker configuration variable: [nameless-analytics-client-side-tracker-configuration-variable](nameless-analytics-client-side-tracker-configuration-variable/)
+- Server-side client tag: [nameless-analytics-server-side-client-tag](nameless-analytics-server-side-client-tag/)
+- Reporting tables: [reporting-tables](reporting-tables/)
+- GTM default containers: [gtm-containers](gtm-containers/)
 
-### 2. Server-Side (GTM Server)
-1. **GTM server side instance**: Setup a GTM server side instance.
-2. **Import**: [Server-side GTM Template](gtm-containers/gtm-server-side-container-template.json).
 
-### 3. Client-Side (GTM Web)
-1. **Import**: [Client-side GTM Template](gtm-containers/gtm-client-side-container-template.json).
+### Project configuration
+Before starting the setup, ensure you have:
+- A Google Cloud Project with an active billing account.
+- A Google Tag Manager (Web) container.
+- A Google Tag Manager (Server-side) container.
+
+
+#### 1. Google Cloud Setup
+1. Google Cloud BigQuery: Create tables and table functions in BigQuery using the provided [SQL scripts](reporting-tables/)
+2. Google Cloud Firestore: Enable in **Native Mode**
+3. Google Cloud IAM: Grant your GTM SS Service Account `BigQuery Data Editor`, `BigQuery Job User`, and `Cloud Datastore User`
+
+#### 2. Google Tag Manager Setup
+1. Import: [Client-side GTM Template](gtm-containers/gtm-client-side-container-template.json)
+2. Import: [Server-side GTM Template](gtm-containers/gtm-server-side-container-template.json)
 
 </br>
 

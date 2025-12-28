@@ -378,7 +378,6 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 - **Data Visualization**: Connect any BI tool (Tableau, Power BI, Superset) to BigQuery or use our [Google Looker Studio dashboard example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd).
 
 
-
 ### 6. Support & AI
 Get expert help for implementation, technical documentation, and advanced SQL queries.
 - **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)**: Specialized GPT trained on the platform docs.

@@ -9,7 +9,7 @@ Collect, analyze, and activate your website data with a free real-time digital a
 - [Technical Architecture](#technical-architecture)
   - [High-Level Data Flow](#high-level-data-flow)
   - [Client-Side Collection](#client-side-collection)
-  - [Server-Side Processing & State](#server-side-processing--state)
+  - [Server-Side Processing](#server-side-processing)
   - [Storage & Reporting](#storage--reporting)
   - [Support & AI](#support--ai)
 - [Quick Start](#quick-start)
@@ -22,7 +22,7 @@ Collect, analyze, and activate your website data with a free real-time digital a
 
 
 ## What is Nameless Analytics
-Nameless Analytics is an open-source, first-party data collection infrastructure designed for organizations that demand complete control over their digital analytics. It replaces the "black box" of traditional SaaS tools with a transparent pipeline built entirely on your own Google Cloud Platform environment.
+Nameless Analytics is an open-source, first-party data collection infrastructure designed for organizations and analysts that demand complete control over their digital analytics. It's built upon a transparent pipeline that is built entirely on your own Google Cloud Platform environment.
 
 At a high level, the platform solves three critical challenges in modern analytics:
 
@@ -46,15 +46,16 @@ The following diagram illustrates the real-time data flow from the user's browse
 
 
 ### Client-Side Collection
-The **Client-Side Tracker** (GTM Web) acts as the system's brain in the browser. It manages a sequential execution queue to ensure data integrity even during rapid interactions.
+The **Client-Side Tracker** (GTM Web) is the system's intelligent agent in the browser. It abstracts complex logic to ensure reliable data capture under any condition.
 
-**Key Features:**
-- **Google Consent Mode Integration**: Tracks events only when `analytics_storage` is granted (or configured behavior). Respects user privacy by design.
-- **Advanced Logic**: Built-in support for Single Page Applications (SPA), custom acquisition parameter handling, and data cleaning.
-- **Cross-domain Tracking**: Seamlessly stitches sessions across domains using a pre-flight ID request and URL decoration (`na_id`).
+**Technical Capabilities:**
+- **Sequential Execution Queue**: Implements specific logic to handle high-frequency events (e.g., rapid clicks), ensuring requests are dispatched in strict FIFO order to preserve the narrative of the session.
+- **Smart Consent Management**: Fully integrated with Google Consent Mode. It can automatically queue events (`analytics_storage` pending) and release them only when consent is granted, preventing data loss.
+- **SPA & History Management**: Native support for Single Page Applications, automatically detecting history changes to trigger virtual page views.
+- **Cross-domain Architecture**: Stitches sessions across different top-level domains using a pre-flight ID request and URL decoration (`na_id`) to pass identifiers securely.
 
 #### Request payload data
-Data is structured into:
+The request data is sent via a POST request in JSON format. It is structured into:
 * User data: data related to users.
 * Session data: data related to sessions.
 * Page data: data related to pages.
@@ -318,38 +319,72 @@ When "Enable cross-domain tracking" in the Nameless Analytics Client-side Tracke
 </br>
 
 
-### Server-Side Processing & State
-The **Server-Side Client Tag** acts as the central gateway and security layer.
+### Server-Side Processing
+The **Server-Side Client Tag** serves as the security gateway and data orchestrator. It sits between the public internet and your cloud infrastructure, sanitizing every request.
 
-**Core Functions:**
-- **Security Validation**: Checks request origins and authorized domains.
-- **Bot Protection**: Automatically identifies and rejects automated bots (Puppeteer, Selenium, etc.) returning a 403 error.
-- **Identity Orchestration**: Manages `HttpOnly` server-side cookies, preventing client-side script interference (XSS protection).
-
-**Stateful Layer (Firestore)**
-Unlike traditional stateless trackers, Nameless Analytics uses **Google Firestore** as a real-time state machine. It stores the latest user profiles and session states, allowing the server to maintain context (e.g., Session Number, First Source) even if the client's local storage is wiped.
+**Technical Capabilities:**
+- **Security & Validation**: Validates request origins and authorized domains (CORS) before processing to prevent unauthorized usage.
+- **Bot Protection**: Actively detects and blocks automated traffic (e.g., Puppeteer, Selenium, headless browsers) returning a `403 Forbidden` status to keep your data clean.
+- **Data Integrity & Priority**: Enforces a strict parameter hierarchy (Server Overrides > Tag Metadata > Config Variable > dataLayer) and prevents "orphan events" by ensuring a session always starts with a `page_view`.
+- **Geolocation Enrichment**: Automatically maps the incoming request IP address to geographic location data (Country, City), allowing for regional analysis without the need to persist the sensitive IP address.
+- **Real-time streaming everywhere**: The system supports **Real-time Forwarding**, allowing you to POST identical event payloads to external HTTP endpoints (webhooks, conversion APIs) immediately after processing.
 
 #### Cookie Management
-
-Cookies are set securely on the server side:
+The server manages identity via secure, server-set cookies, making them inaccessible to client-side scripts (preventing XSS/hijacking).
 
 | Cookie Name | Expiry | Description |
 | :--- | :--- | :--- |
 | **nameless_analytics_user** | 400 days | Persistent ID for user-level analysis. |
 | **nameless_analytics_session** | 30 minutes | Session state identifier (Refreshed on activity). |
 
-</br>
+
+### Storage
+The platform utilizes a dual-storage approach, leveraging **Firestore** for real-time state and **BigQuery** for analytical scale.
+
+**Firestore**
+Nameless Analytics replaces client-side storage dependency with a server-side **Real-Time State Machine** built on Google Firestore.
+- **Persistence**: Stores the latest user profile and session state (e.g., Session Number, First Traffic Source, Attribution details).
+- **Context API**: Allows the server to enrich incoming events with historical context instantly, ensuring continuous tracking even if the user clears browser cookies or uses ITP-restricted browsers.
+
+**BigQuery**
+Nameless Analytics provides a scalable **Analytical Data Warehouse** built on Google BigQuery for high-volume event storage and automated data modeling.
+- **Raw Streaming**: Every valid event is streamed in real-time to the `events_raw` table.
+- **Reporting tables**: A suite of SQL Table Functions transforms raw data into business-ready views for [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), and [Ecommerce](reporting-tables/ec_transactions.sql).
 
 
-### Storage & Reporting
-- **BigQuery (Raw)**: Every event is streamed in real-time into the `events_raw` table.
-- **BigQuery (Modeled)**: Pre-built [SQL functions](reporting-tables/) transform raw data into analytical tables:
-    - [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), and [Events](reporting-tables/events.sql).
-    - [Ecommerce](reporting-tables/ec_transactions.sql) and [Consents](reporting-tables/consents.sql).
-- **Visualization**: Connect directly to Looker Studio, PowerBI, or Tableau. [View Dashboard Example](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd).
+### Reporting
+The final output is a comprehensive **Looker Studio Dashboard** connected directly to your BigQuery data. It demonstrates the platform's potential with a pre-built template covering all key metrics.
 
+#### Example dashboard structure & reports
 
-</br>
+**1. Overview**
+- [**Executive Summary**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ebkun2sknd): High-level KPIs including total users, sessions, revenue, and conversion rates, along with sparkline trends for immediate health checks.
+
+**2. Acquisition**
+- [**Traffic Sources**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_rmpwib9hod): Breakdown of traffic by source, medium, and channel grouping to identify best-performing acquisition channels.
+- [**Device Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_cmywmb9hod): Analysis of user volume and revenue split across Desktop, Mobile, and Tablet devices.
+- [**Geographic Distribution**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_enanrb9hod): Map and table views showing user sessions and revenue by Country (using server-side enrichment).
+
+**3. Behaviour**
+- [**Page Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_oqvpz41sgd): Detailed metrics for individual pages (Views, Entrances, Engagement Time) to identify top content.
+- [**Landing Pages**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_it3ayf1hod): Analysis of entry points effectiveness in retaining users and driving conversions.
+- [**Exit Pages**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_ep50zf1hod): Identification of high-drop-off pages to pinpoint potential UX issues.
+- [**Event Tracking**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_y779jg1hod): Granular view of all tracked custom interaction events (clicks, scrolls, form submits).
+
+**4. Ecommerce**
+- [**Customer Analysis**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_jc2z2lhwgd): Insights into customer base growth, loyalty, and purchasing frequency.
+- [**Sales Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_zlu0hdkugd): Revenue trends over time, segmented by critical dimensions.
+- [**Product Performance**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_x89r79gvgd): Item-level reporting showing Views, Add-to-Carts, and Purchases per product.
+- [**Shopping Funnel**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_o8lq2jfvgd): Visual funnel from `view_item` to `purchase` to analyze conversion leaks.
+
+**5. Compliance (Consent)**
+- [**Consent Overview**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_sba934crpd): High-level stats on user consent interactions and opt-in rates.
+- [**Consent Details**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_nn21ghetpd): Deep dive into specific consent types (Analytics vs Ad Storage) granted/denied over time.
+
+**6. Debugging & Tech**
+- [**Web Hits Latency**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_zlobch0knd): Monitoring of pipeline latency and hit volume ingestion integrity.
+- [**Server-to-Server Hits**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_yiouuvwgod): Dedicated view for non-browser events sent via Measurement Protocol.
+- [**Raw Data Inspector**](https://lookerstudio.google.com/u/0/reporting/d4a86b2c-417d-4d4d-9ac5-281dca9d1abe/page/p_unnkswttkd): Full table view of individual raw events for granular troubleshooting and verification.
 
 
 ### Support & AI

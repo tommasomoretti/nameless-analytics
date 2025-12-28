@@ -346,7 +346,6 @@ When "Enable cross-domain tracking" in the Nameless Analytics Client-side Tracke
 To ensure data integrity, the Nameless Analytics Client-side Tracker Tag uses a sequential execution queue. Even if multiple events are triggered simultaneously (e.g., rapid clicks), requests are sent one at a time in the correct chronological order.
 
 
-
 ### 2. Server-Side Processing
 The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/) acts as the ingestion gateway.
 - **Security & Privacy**: The system reduces XSS risks by managing IDs via server-side cookies (no client-side JavaScript access).
@@ -362,6 +361,7 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 | :--- | :--- | :--- |
 | **nameless_analytics_user** | 400 days | Persistent ID for user-level analysis (15-character random string). |
 | **nameless_analytics_session** | 30 minutes | Combined ID for session and hit-level tracking (User ID + Session ID + Page ID). |
+
 
 ### 4. User identity & PII
 - **No PII**: No PII is automatically tracked.
@@ -406,7 +406,6 @@ Before starting the setup, ensure you have:
 - A Google Cloud Project with an active billing account.
 - A Google Tag Manager (Web) container.
 - A Google Tag Manager (Server-side) container.
-
 
 #### 1. Google Cloud Setup
 1. Google Cloud BigQuery: Create tables and table functions in BigQuery using the provided [SQL scripts](reporting-tables/)

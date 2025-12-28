@@ -334,7 +334,7 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 
 ### 5. Reporting & Visualization
 - **Raw Table**: Store raw events in BigQuery for flexible analysis and reporting in `events_raw` table.
-- **Reporting Tables**: Deploy prebuilt [BigQuery table functions](reporting-tables/readme.md/) to transform raw events into analytical views for:
+- **Reporting Tables**: Deploy prebuilt [BigQuery table functions](reporting-tables/README.md) to transform raw events into analytical views for:
     - [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), and [Events](reporting-tables/events.sql).
     - [Ecommerce Transactions](reporting-tables/ec_transactions.sql) and [Products](reporting-tables/ec_products.sql).
     - [GTM Performance](reporting-tables/gtm_performances.sql) and [Consents](reporting-tables/consents.sql).

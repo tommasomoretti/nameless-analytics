@@ -236,16 +236,15 @@ execute immediate dates_table_sql;
 
 
 ### Events raw table
-This main table is partitioned by `event_date` and clustered by `client_id`, `session_id`, and `event_name`.
+This main table is partitioned by `event_date` and clustered by `user_date`, `session_date`, `page_date`, and `event_name`.
 
 | Field name                 | Type     | Mode     | Description                                                                                                                                                   |
 |----------------------------|----------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | event_date                 | DATE     | REQUIRED | Date of the request.                                                                                                                                          |
 | event_datetime             | DATETIME | NULLABLE | Datetime of the request.                                                                                                                                      |
 | event_timestamp            | INTEGER  | REQUIRED | Insertion timestamp of the event.                                                                                                                             |
-| processing_event_timestamp | INTEGER  | NULLABLE | Timestamp when the Nameless Analytics Server-side Client Tag received the event, applicable for hits sent from a website or via a Streaming Protocol request. |
-| event_origin               | STRING   | REQUIRED | "Streaming Protocol" if the hit comes from the streaming protocol, "Website" if the hit comes from a browser.                                                 |
-| job_id                     | STRING   | NULLABLE | Job ID for Streaming Protocol hits.                                                                                                                           |
+| processing_event_timestamp | INTEGER  | NULLABLE | Timestamp when the Nameless Analytics Server-side Client Tag received the event.                                                                              |
+| event_origin               | STRING   | REQUIRED | "Website" if the hit comes from a browser.                                                                                                                    |
 | content_length             | INTEGER  | NULLABLE | Size of the message body in bytes.                                                                                                                            |
 | client_id                  | STRING   | REQUIRED | Client ID.                                                                                                                                                    |
 | user_data                  | RECORD   | REPEATED | User data.                                                                                                                                                    |
@@ -287,7 +286,7 @@ Unlike other systems, Nameless Analytics reporting functions are designed to wor
 
 ### Create table functions
 <details><summary>To create the table functions use this DML statement.</summary>
-  
+
 ```sql
 
 ```

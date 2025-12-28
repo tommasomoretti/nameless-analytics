@@ -1,8 +1,3 @@
-<img src="https://github.com/user-attachments/assets/93640f49-d8fb-45cf-925e-6b7075f83927#gh-light-mode-only" alt="Light Mode" />
-<img src="https://github.com/user-attachments/assets/71380a65-3419-41f4-ba29-2b74c7e6a66b#gh-dark-mode-only" alt="Dark Mode" />
-
----
-
 # Nameless Analytics
 
 An open-source web analytics platform for power users, based on [Google Tag Manager](https://marketingplatform.google.com/intl/it/about/tag-manager/), [Google Firestore](https://cloud.google.com/firestore) and [Google BigQuery](https://cloud.google.com/bigquery).
@@ -363,8 +358,11 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 | **nameless_analytics_user** | 400 days | Persistent ID for user-level analysis (15-character random string). |
 | **nameless_analytics_session** | 30 minutes | Combined ID for session and hit-level tracking (User ID + Session ID + Page ID). |
 
-
+<<<<<<< HEAD
 #### User identity & PII
+=======
+
+### 4. User identity & PII
 - **No PII**: No PII is automatically tracked.
 - **User ID**: Supports random `client_id` (anonymous) and custom `user_id` (CRM-based) for cross-device stitching.
 

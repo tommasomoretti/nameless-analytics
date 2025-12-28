@@ -10,7 +10,9 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 Collect, analyze, and activate your website data with a free real-time digital analytics suite that respects user privacy.
 
 ### Start from here
-- [Core Capabilities & Logic](#core-capabilities--logic)
+- [Strategic Value](#strategic-value)
+- [Technical Architecture](#technical-architecture)
+- [Core Logic Details](#core-logic-details)
 - [Quick Start](#quick-start)
 - [External Resources](#external-resources)
 
@@ -18,14 +20,9 @@ Collect, analyze, and activate your website data with a free real-time digital a
 
 
 
-## Core Capabilities & Logic
+## Strategic Value
+Nameless Analytics provides a premium alternative to commercial suites by prioritizing data ownership and precision.
 
-### Data Flow
-The system consists of a highly customizable client-side tracker that captures interactions and sends event data to a server-side GTM container. User and session IDs are managed via server-side cookies. Data is stored in **Firestore** (user and sessions data) and **BigQuery** (events data) in real-time.
-
-<img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
-
-#### Strategic Value
 - **Data Ownership**: 100% of the data resides within your own Google Cloud project. You maintain full control over data residency, access logs, and retention policies with no third-party access to raw data.
 - **Accuracy & Reliability**: By operating in a strict first-party context, tracking is less susceptible to client-side restrictions and ad-blockers. Requests are indistinguishable from first-party traffic, ensuring higher data quality.
 - **Stateful Persistence**: Uses Google Firestore to maintain long-term user profiles and session history (first/last touch attribution, user-level parameters) directly on the server, ensuring continuity across sessions.
@@ -33,6 +30,34 @@ The system consists of a highly customizable client-side tracker that captures i
 - **Real-Time Activation**: Forward identical event payloads to any custom HTTP endpoint. Trigger immediate business actions (CRM updates, custom webhooks, real-time alerts) the moment an interaction occurs.
 - **Integrity & Security**: Built-in automatic geolocation (Country/City), bot protection, and session validation to prevent "orphan events," ensuring your analytical tables remain clean and professional.
 
+</br>
+
+## Technical Architecture
+The platform is built on a modern, decoupled architecture that separates data capture, processing, and storage to ensure maximum flexibility and performance.
+
+### Data Flow
+The following diagram illustrates the real-time data flow from the user's browser to the final storage and visualization layers:
+
+<img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
+
+#### 1. Data Collection (Client-side)
+The **Client-Side Tracker** (GTM Web) captures user interactions and metadata. It manages a sequential execution queue and respects Google Consent Mode states before dispatching event payloads via secure POST requests to the server-side endpoint.
+
+#### 2. Ingestion & Processing (Server-side)
+The **Server-Side Client Tag** acts as the central gateway. It performs:
+- **Security Validation**: Checks request origins, authorized domains, and identifies/rejects automated bots.
+- **Identity Orchestration**: Manages `HttpOnly` server-side cookies for User and Session IDs, preventing client-side script interference.
+- **Enrichment**: Adds server-side metadata such as IP-based geolocation.
+
+#### 3. Stateful Layer (Firestore)
+Unlike traditional stateless trackers, Nameless Analytics uses **Google Firestore** as a real-time state machine. It stores the latest user profiles and session states, allowing the server to retrieve previous session data even if the client's local state is cleared.
+
+#### 4. Storage & Activation (BigQuery & Webhooks)
+- **BigQuery**: Every event is streamed in real-time into the `events_raw` table for immediate analysis.
+- **Real-time Forwarding**: Allows forwarding identical payloads to custom endpoints for external business automation.
+
+
+## Core Logic Details
 ### 1. Client-Side Tracking
 The [Client-side Tracker Tag](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-tag/) and [Configuration Variable](https://github.com/tommasomoretti/nameless-analytics-client-side-tracker-configuration-variable/) act as the system's brain in the browser.
 - **Google Consent Mode**: Fully integrated. Tracks events only when `analytics_storage` is granted, or all events regardless of user consent.

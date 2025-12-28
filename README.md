@@ -55,7 +55,7 @@ The **Client-Side Tracker** (GTM Web) captures user interactions and metadata. I
 The **Server-Side Client Tag** acts as the central gateway. It performs:
 - **Security Validation**: Checks request origins, authorized domains, and identifies/rejects automated bots.
 - **Identity Orchestration**: Manages `HttpOnly` server-side cookies for User and Session IDs, preventing client-side script interference.
-- **Enrichment**: Adds server-side metadata such as IP-based geolocation.
+- **Enrichment**: Adds server-side metadata.
 
 ### Stateful Layer (Firestore)
 Unlike traditional stateless trackers, Nameless Analytics uses **Google Firestore** as a real-time state machine. It stores the latest user profiles and session states, allowing the server to retrieve previous session data even if the client's local state is cleared.
@@ -346,9 +346,6 @@ When "Enable cross-domain tracking" in the Nameless Analytics Client-side Tracke
 
 To ensure data integrity, the Nameless Analytics Client-side Tracker Tag uses a sequential execution queue. Even if multiple events are triggered simultaneously (e.g., rapid clicks), requests are sent one at a time in the correct chronological order.
 
-</br>
-
-
 
 ### 2. Server-Side Processing
 The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytics-server-side-client-tag/) acts as the ingestion gateway.
@@ -365,6 +362,7 @@ The [Server-side Client Tag](https://github.com/tommasomoretti/nameless-analytic
 | :--- | :--- | :--- |
 | **nameless_analytics_user** | 400 days | Persistent ID for user-level analysis (15-character random string). |
 | **nameless_analytics_session** | 30 minutes | Combined ID for session and hit-level tracking (User ID + Session ID + Page ID). |
+
 
 #### User identity & PII
 - **No PII**: No PII is automatically tracked.
@@ -407,15 +405,17 @@ Before starting the setup, ensure you have:
 - A Google Tag Manager (Web) container.
 - A Google Tag Manager (Server-side) container.
 
-
-#### 1. Google Cloud Setup
+#### Google Cloud Setup
 1. Google Cloud BigQuery: Create tables and table functions in BigQuery using the provided [SQL scripts](reporting-tables/)
 2. Google Cloud Firestore: Enable in **Native Mode**
 3. Google Cloud IAM: Grant your GTM SS Service Account `BigQuery Data Editor`, `BigQuery Job User`, and `Cloud Datastore User`
 
-#### 2. Google Tag Manager Setup
+#### Google Tag Manager Setup
 1. Import: [Client-side GTM Template](gtm-containers/gtm-client-side-container-template.json)
 2. Import: [Server-side GTM Template](gtm-containers/gtm-server-side-container-template.json)
+
+#### Data analysis and visualization
+
 
 </br>
 

@@ -345,8 +345,6 @@ When "Enable cross-domain tracking" in the Nameless Analytics Client-side Tracke
 
 To ensure data integrity, the Nameless Analytics Client-side Tracker Tag uses a sequential execution queue. Even if multiple events are triggered simultaneously (e.g., rapid clicks), requests are sent one at a time in the correct chronological order.
 
-</br>
-
 
 
 ### 2. Server-Side Processing

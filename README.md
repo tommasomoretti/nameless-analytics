@@ -343,9 +343,68 @@ The server manages identity via secure, server-set cookies, making them inaccess
 The platform utilizes a dual-storage approach, leveraging **Firestore** for real-time state and **BigQuery** for analytical scale.
 
 **Firestore**
-Nameless Analytics replaces client-side storage dependency with a server-side **Real-Time State Machine** built on Google Firestore.
-- **Persistence**: Stores the latest user profile and session state (e.g., Session Number, First Traffic Source, Attribution details).
-- **Context API**: Allows the server to enrich incoming events with historical context instantly, ensuring continuous tracking even if the user clears browser cookies or uses ITP-restricted browsers.
+Nameless Analytics replaces client-side storage dependency with a server-side real-time User and Session data storage built on Google Firestore.
+- **User data**: Stores the latest user profile state, including first/last session timestamps, original acquisition source, and persistent device metadata.
+- **Session data**: Stores the latest session state, including real-time counters (total events, page views), landing/exit page details, and session-specific attribution.
+
+<details><summary>Stateful document structure example (JSON)</summary>
+
+</br>
+
+```json
+{
+  "client_id": "v7iXVMaEageKEvj",
+  "user_date": "2025-12-22",
+  "user_first_session_timestamp": 1766425314173,
+  "user_last_session_timestamp": 1766958410836,
+  "user_source": "direct",
+  "user_tld_source": "direct",
+  "user_channel_grouping": "direct",
+  "user_campaign": null,
+  "user_campaign_id": null,
+  "user_campaign_click_id": null,
+  "user_campaign_term": null,
+  "user_campaign_content": null,
+  "user_country": "IT",
+  "user_language": "it-IT",
+  "user_device_type": "desktop",
+  "sessions": [
+    {
+      "session_id": "v7iXVMaEageKEvj_Unkuq1jNuiSQxjt",
+      "session_number": 1,
+      "session_date": "2025-12-28",
+      "session_start_timestamp": 1766958410836,
+      "session_end_timestamp": 1766958421195,
+      "session_source": "direct",
+      "session_tld_source": "direct",
+      "session_channel_grouping": "direct",
+      "session_country": "SI",
+      "session_language": "it-IT",
+      "session_browser_name": "Chrome",
+      "session_device_type": "desktop",
+      "session_hostname": "tommasomoretti.com",
+      "session_landing_page_category": "Homepage",
+      "session_landing_page_location": "/",
+      "session_landing_page_title": "Tommaso Moretti | Freelance digital data analyst",
+      "session_exit_page_category": "Homepage",
+      "session_exit_page_location": "/",
+      "session_exit_page_title": "Tommaso Moretti | Freelance digital data analyst",
+      "total_events": 4,
+      "total_page_views": 1,
+      "cross_domain_session": "No",
+      "session_campaign": null,
+      "session_campaign_id": null,
+      "session_campaign_click_id": null,
+      "session_campaign_term": null,
+      "session_campaign_content": null,
+      "user_id": null
+    }
+  ]
+}
+```
+</details>
+
+</br>
 
 **BigQuery**
 Nameless Analytics provides a scalable **Analytical Data Warehouse** built on Google BigQuery for high-volume event storage and automated data modeling.

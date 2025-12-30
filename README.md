@@ -43,7 +43,6 @@ The following diagram illustrates the real-time data flow from the user's browse
 
 <img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
 
-</br>
 
 
 ### Client-Side Collection

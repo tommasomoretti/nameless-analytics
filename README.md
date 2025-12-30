@@ -352,57 +352,8 @@ Nameless Analytics replaces client-side storage dependency with a server-side re
 
 </br>
 
-```json
-{
-  "client_id": "v7iXVMaEageKEvj",
-  "user_date": "2025-12-22",
-  "user_first_session_timestamp": 1766425314173,
-  "user_last_session_timestamp": 1766958410836,
-  "user_source": "direct",
-  "user_tld_source": "direct",
-  "user_channel_grouping": "direct",
-  "user_campaign": null,
-  "user_campaign_id": null,
-  "user_campaign_click_id": null,
-  "user_campaign_term": null,
-  "user_campaign_content": null,
-  "user_country": "IT",
-  "user_language": "it-IT",
-  "user_device_type": "desktop",
-  "sessions": [
-    {
-      "session_id": "v7iXVMaEageKEvj_Unkuq1jNuiSQxjt",
-      "session_number": 1,
-      "session_date": "2025-12-28",
-      "session_start_timestamp": 1766958410836,
-      "session_end_timestamp": 1766958421195,
-      "session_source": "direct",
-      "session_tld_source": "direct",
-      "session_channel_grouping": "direct",
-      "session_country": "SI",
-      "session_language": "it-IT",
-      "session_browser_name": "Chrome",
-      "session_device_type": "desktop",
-      "session_hostname": "tommasomoretti.com",
-      "session_landing_page_category": "Homepage",
-      "session_landing_page_location": "/",
-      "session_landing_page_title": "Tommaso Moretti | Freelance digital data analyst",
-      "session_exit_page_category": "Homepage",
-      "session_exit_page_location": "/",
-      "session_exit_page_title": "Tommaso Moretti | Freelance digital data analyst",
-      "total_events": 4,
-      "total_page_views": 1,
-      "cross_domain_session": "No",
-      "session_campaign": null,
-      "session_campaign_id": null,
-      "session_campaign_click_id": null,
-      "session_campaign_term": null,
-      "session_campaign_content": null,
-      "user_id": null
-    }
-  ]
-}
-```
+<img alt="Nameless Analytics - Firestore collection schema" src="https://github.com/user-attachments/assets/7193c73d-6717-439b-91e0-e0157fa53770" />
+
 </details>
 
 </br>
@@ -424,7 +375,7 @@ Nameless Analytics provides a scalable **Analytical Data Warehouse** built on Go
 
 </br>
 
-<img width="3388" alt="Nameless Analytics - BigQuery event_raw schema" src="https://github.com/user-attachments/assets/d23e3959-ab7a-453c-88db-a4bc2c7b32f4" />
+<img alt="Nameless Analytics - BigQuery event_raw schema" src="https://github.com/user-attachments/assets/d23e3959-ab7a-453c-88db-a4bc2c7b32f4" />
 
 
 </details>

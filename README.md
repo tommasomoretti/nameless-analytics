@@ -420,12 +420,11 @@ Nameless Analytics provides a scalable **Analytical Data Warehouse** built on Go
 - **Consent data**: Stores the current consent state at event occurs, including consent status, timestamp, and consent-specific attributes.
 - **GTM Performance data**: Stores the current GTM performance state at event occurs, including GTM performance metrics, timestamp, and GTM performance-specific attributes.
 
-<details><summary>BigQuery row example</summary>
+<details><summary>BigQuery schema example</summary>
 
 </br>
 
-```json
-```
+
 </details>
 
 

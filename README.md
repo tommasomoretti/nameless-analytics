@@ -423,8 +423,8 @@ SQL Table Functions can be used as sources for dashboards, such as this one, whi
 
 ### Support & AI
 Get expert help for implementation, technical documentation, and advanced SQL queries.
-- **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-q-a)**: Specialized GPT trained on the platform docs.
-- **[Gemini Gem]()**: *Coming soon*
+- **[OpenAI GPT](https://chatgpt.com/g/g-6860ef949f94819194c3bc2c08e2f395-nameless-analytics-qna)**: Specialized GPTs trained on the platform docs.
+- **[Gemini Gem](https://gemini.google.com/gem/12aygokOBFvZrvu0kU8YD4nxbvaipcPuI)**: Specialized Gem trained on the platform docs
 
 </br>
 

@@ -343,11 +343,12 @@ The server manages identity via secure, server-set cookies, making them inaccess
 The platform utilizes a dual-storage approach, leveraging **Firestore** for real-time state and **BigQuery** for analytical scale.
 
 **Firestore**
+
 Nameless Analytics replaces client-side storage dependency with a server-side real-time User and Session data storage built on Google Firestore.
 - **User data**: Stores the latest user profile state, including first/last session timestamps, original acquisition source, and persistent device metadata.
 - **Session data**: Stores the latest session state, including real-time counters (total events, page views), landing/exit page details, and session-specific attribution.
 
-<details><summary>Stateful document structure example (JSON)</summary>
+<details><summary>Firestore document structure example</summary>
 
 </br>
 
@@ -407,12 +408,31 @@ Nameless Analytics replaces client-side storage dependency with a server-side re
 </br>
 
 **BigQuery**
-Nameless Analytics provides a scalable **Analytical Data Warehouse** built on Google BigQuery for high-volume event storage and automated data modeling.
-- **Raw Streaming**: Every valid event is streamed in real-time to the `events_raw` table.
-- **Reporting tables**: A suite of SQL Table Functions transforms raw data into business-ready views for [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), [Events](reporting-tables/events.sql), [Consents](reporting-tables/consents.sql), [GTM Performance](reporting-tables/gtm_performances.sql), and specialized Ecommerce views like [Transactions](reporting-tables/ec_transactions.sql), [Products](reporting-tables/ec_products.sql), and Funnels ([Open](reporting-tables/ec_shopping_stages_open_funnel.sql) / [Closed](reporting-tables/ec_shopping_stages_closed_funnel.sql)).
+
+Nameless Analytics provides a scalable **Analytical Data Warehouse** built on Google BigQuery for high-volume event storage and automated data modeling. Every valid event is streamed in real-time to the `events_raw` table.
+
+- **User data**: Stores the current user profile state at event occurs, including first/last session timestamps, original acquisition source, and persistent device metadata.
+- **Session data**: Stores the current session state at event occurs, including real-time counters (total events, page views), landing/exit page details, and session-specific attribution.
+- **Page data**: Stores the current page state at event occurs, including page name, timestamp, and page-specific attributes.
+- **Event data**: Stores the current event state at event occurs, including event name, timestamp, and event-specific attributes.
+- **dataLayer data**: Stores the current dataLayer state at event occurs, including dataLayer name, timestamp, and dataLayer-specific attributes.
+- **Ecommerce data**: Stores the current ecommerce state at event occurs, including ecommerce metrics, timestamp, and ecommerce-specific attributes.
+- **Consent data**: Stores the current consent state at event occurs, including consent status, timestamp, and consent-specific attributes.
+- **GTM Performance data**: Stores the current GTM performance state at event occurs, including GTM performance metrics, timestamp, and GTM performance-specific attributes.
+
+<details><summary>BigQuery row example</summary>
+
+</br>
+
+```json
+```
+</details>
 
 
 ### Reporting
+
+A suite of SQL Table Functions transforms raw data into business-ready views for [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), [Events](reporting-tables/events.sql), [Consents](reporting-tables/consents.sql), [GTM Performance](reporting-tables/gtm_performances.sql), and specialized Ecommerce views like [Transactions](reporting-tables/ec_transactions.sql), [Products](reporting-tables/ec_products.sql), and Funnels ([Open](reporting-tables/ec_shopping_stages_open_funnel.sql) / [Closed](reporting-tables/ec_shopping_stages_closed_funnel.sql)).
+
 The final output is a comprehensive **Looker Studio Dashboard** connected directly to your BigQuery data. It demonstrates the platform's potential with a pre-built template covering all key metrics.
 
 #### Example dashboard structure & reports

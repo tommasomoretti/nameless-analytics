@@ -182,9 +182,6 @@ The request data is sent via a POST request in JSON format. It is structured int
   }
 }
 ```
-</details>
-
-<details><summary>Standard payload details</summary>
 
 </br>
 
@@ -312,7 +309,7 @@ When "Enable cross-domain tracking" in the Nameless Analytics Client-side Tracke
 
 | **Parameter name** | **Sub-parameter**       | **Type** | **Added**   | **Field description**   |
 |--------------------|-------------------------|----------|-------------|-------------------------|
-| event_data         | cross_domain_id         | JSON     | Client-Side | Cross domain id         |
+| event_data         | cross_domain_id         | String   | Client-Side | Cross domain id         |
 | session_data       | is_cross_domain_session | String   | Server-Side | Is cross domain session |
 </details>
 
@@ -329,13 +326,13 @@ The **Server-Side Client Tag** serves as the security gateway and data orchestra
 - **Geolocation Enrichment**: Automatically maps the incoming request IP address to geographic location data (Country, City), allowing for regional analysis without the need to persist the sensitive IP address.
 - **Real-time streaming everywhere**: The system supports **Real-time Forwarding**, allowing you to POST identical event payloads to external HTTP endpoints (webhooks, conversion APIs) immediately after processing.
 
-#### Cookie Management
+#### Cookies
 The server manages identity via secure, server-set cookies, making them inaccessible to client-side scripts (preventing XSS/hijacking).
 
-| Cookie Name | Expiry | Description |
-| :--- | :--- | :--- |
-| **nameless_analytics_user** | 400 days | Persistent ID for user-level analysis. |
-| **nameless_analytics_session** | 30 minutes | Session state identifier (Refreshed on activity). |
+| Cookie Name                    | Expiry         | Example values                                 | Description                            |
+|--------------------------------|----------------|------------------------------------------------|----------------------------------------|
+| **nameless_analytics_user**    | 400 days       | lZc919IBsqlhHks                                | Client ID                              |
+| **nameless_analytics_session** | 30 minutes     | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y | Client ID _ Session ID - Last Page ID  |
 
 
 ### Storage
@@ -370,19 +367,18 @@ Nameless Analytics provides a scalable **Analytical Data Warehouse** built on Go
 - **Consent data**: Stores the current consent state at event occurs, including consent status, timestamp, and consent-specific attributes.
 - **GTM Performance data**: Stores the current GTM performance state at event occurs, including GTM performance metrics, timestamp, and GTM performance-specific attributes.
 
+A suite of SQL Table Functions transforms raw data into business-ready views for [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), [Events](reporting-tables/events.sql), [Consents](reporting-tables/consents.sql), [GTM Performance](reporting-tables/gtm_performances.sql), and specialized Ecommerce views like [Transactions](reporting-tables/ec_transactions.sql), [Products](reporting-tables/ec_products.sql), and Funnels ([Open](reporting-tables/ec_shopping_stages_open_funnel.sql) / [Closed](reporting-tables/ec_shopping_stages_closed_funnel.sql)).
+
 <details><summary>BigQuery schema example</summary>
 
 </br>
 
 <img alt="Nameless Analytics - BigQuery event_raw schema" src="https://github.com/user-attachments/assets/d23e3959-ab7a-453c-88db-a4bc2c7b32f4" />
 
-
 </details>
 
 
 ### Reporting
-
-A suite of SQL Table Functions transforms raw data into business-ready views for [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), [Events](reporting-tables/events.sql), [Consents](reporting-tables/consents.sql), [GTM Performance](reporting-tables/gtm_performances.sql), and specialized Ecommerce views like [Transactions](reporting-tables/ec_transactions.sql), [Products](reporting-tables/ec_products.sql), and Funnels ([Open](reporting-tables/ec_shopping_stages_open_funnel.sql) / [Closed](reporting-tables/ec_shopping_stages_closed_funnel.sql)).
 
 The final output is a comprehensive **Looker Studio Dashboard** connected directly to your BigQuery data. It demonstrates the platform's potential with a pre-built template covering all key metrics.
 

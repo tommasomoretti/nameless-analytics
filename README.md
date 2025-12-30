@@ -424,6 +424,8 @@ Nameless Analytics provides a scalable **Analytical Data Warehouse** built on Go
 
 </br>
 
+<img width="3388" height="3064" alt="Nameless Analytics - BigQuery event_raw schema" src="https://github.com/user-attachments/assets/d23e3959-ab7a-453c-88db-a4bc2c7b32f4" />
+
 
 </details>
 

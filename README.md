@@ -350,9 +350,13 @@ The server manages identity via secure, server-set cookies, making them inaccess
 ### Storage
 The platform utilizes a dual-storage approach, leveraging **Firestore** for real-time state and **BigQuery** for analytical scale.
 
-**Firestore**
+#### The Duality of Storage: Snapshot vs. Timeline
+Nameless Analytics employs a complementary storage strategy to balance real-time intelligence with deep historical analysis:
+- **Firestore (Real-time Snapshot)**: It mantains **the latest available state** for every user and session. For example, the current user_level.
+- **BigQuery (Historical Timeline)**: It mantains **every single state transition** for every user and session. For example, the user_level transition history.
 
-Nameless Analytics replaces client-side storage dependency with a server-side real-time User and Session data storage built on Google Firestore.
+
+**Firestore**
 - **User data**: Stores the latest user profile state, including first/last session timestamps, original acquisition source, and persistent device metadata.
 - **Session data**: Stores the latest session state, including real-time counters (total events, page views), landing/exit page details, and session-specific attribution.
 
@@ -379,9 +383,6 @@ Firestore ensures data integrity by managing how parameters are updated across h
 </br>
 
 **BigQuery**
-
-Nameless Analytics provides a scalable **Analytical Data Warehouse** built on Google BigQuery for high-volume event storage and automated data modeling. Every valid event is streamed in real-time to the `events_raw` table.
-
 - **User data**: Stores the current user profile state at event occurs, including first/last session timestamps, original acquisition source, and persistent device metadata.
 - **Session data**: Stores the current session state at event occurs, including real-time counters (total events, page views), landing/exit page details, and session-specific attribution.
 - **Page data**: Stores the current page state at event occurs, including page name, timestamp, and page-specific attributes.

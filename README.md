@@ -348,9 +348,6 @@ The server manages identity via secure, server-set cookies, making them inaccess
 
 
 ### Storage
-The platform utilizes a dual-storage approach, leveraging **Firestore** for real-time state and **BigQuery** for analytical scale.
-
-#### The Duality of Storage: Snapshot vs. Timeline
 Nameless Analytics employs a complementary storage strategy to balance real-time intelligence with deep historical analysis:
 - **Firestore (Real-time Snapshot)**: It mantains **the latest available state** for every user and session. For example, the current user_level.
 - **BigQuery (Historical Timeline)**: It mantains **every single state transition** for every user and session. For example, the user_level transition history.

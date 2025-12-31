@@ -65,6 +65,13 @@ The **Client-Side Tracker** (GTM Web) is the system's intelligent agent in the b
 - **Smart Consent Management**: Fully integrated with Google Consent Mode. It can track every event or automatically queue events (`analytics_storage` pending) and release them only when consent is granted, preventing data loss.
 - **SPA & History Management**: Native support for Single Page Applications, automatically detecting history changes to trigger virtual page views.
 - **Cross-domain Architecture**: Implements a robust "handshake" protocol to stitch sessions across different top-level domains. The client performs a pre-flight request (`get_user_data`) to the server to retrieve identifiers stored in `HttpOnly` cookies (otherwise invisible to JavaScript) and then uses these values to decorate outbound links with the `na_id` parameter.
+- **Debugging & Visibility**: Real-time tracker logs and errors are sent to the **Browser Console**, ensuring immediate feedback during implementation.
+- **ID Management**: The tracker automatically generates and manages unique identifiers for pages, and events.
+
+  | Cookie Name  | Renewed            | Example values                                                 | Description                                      |
+  |--------------|--------------------|----------------------------------------------------------------|--------------------------------------------------|
+  | **page_id**  | at every page_view | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y                 | Client ID _ Session ID - Last Page ID            |
+  | **event_id** | at every event     | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y_XIkjlUOkXKn99IV | Client ID _ Session ID - Last Page ID _ Event ID |
 
 #### Request payload data
 The request data is sent via a POST request in JSON format. It is structured into:
@@ -341,12 +348,20 @@ The **Server-Side Client Tag** serves as the security gateway and data orchestra
 - **Geolocation & Privacy by Design** \*: Automatically maps the incoming request IP to geographic data (Country, City) for regional analysis. The system is designed to **never persist the raw IP address** in BigQuery, ensuring native compliance with strict privacy regulations.
 - **Real-time Forwarding**: Supports instantaneous data streaming to external HTTP endpoints immediately after processing. The system allows for **custom HTTP headers** injection, enabling secure authentication with third-party services endpoints directly from the server.
 - **Self-Monitoring & Performance**: The system transparently tracks pipeline health by measuring **ingestion latency** (the exact millisecond delay between the client hit and server processing) and **payload size** (`content_length`). This data allows for high-resolution monitoring of the real-time data flow directly within BigQuery.
+- **Debugging & Visibility**: Developers can monitor the server-side logic in real-time through **GTM Server Preview Mode**.
+- **ID Management**: The tracker automatically generates and manages unique identifiers for pages, and events.
+
+  | Cookie Name    | Renewed                       | Example values                 | Description |
+  |----------------|-------------------------------|--------------------------------|-------------|
+  | **client_id**  | when `na_u` cookie is created | lZc919IBsqlhHks                | Client ID   |
+  | **session_id** | when `na_s` cookie is created | lZc919IBsqlhHks_1KMIqneQ7dsDJU | Session ID  |
+
 - **Cookies**: All cookies are issued with `HttpOnly`, `Secure`, and `SameSite=Strict` flags. This multi-layered approach prevents client-side access (XSS protection) and Cross-Site Request Forgery (CSRF). The platform automatically calculates the appropriate cookie domain by extracting the **Effective TLD+1** from the request origin. This ensures seamless identity persistence across subdomains without manual configuration. Cookies are created or updated on every event to track the user's session and identity across the entire journey.
 
-  | Cookie Name                    | Expiry         | Example values                                 | Description                            |
-  |--------------------------------|----------------|------------------------------------------------|----------------------------------------|
-  | **nameless_analytics_user**    | 400 days       | lZc919IBsqlhHks                                | Client ID                              |
-  | **nameless_analytics_session** | 30 minutes     | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y | Client ID _ Session ID - Last Page ID  |
+  | Cookie Name | Default expiration | Example values                                 | Description                           |
+  |----------------------------------|------------------------------------------------|---------------------------------------|
+  | **na_u**    | 400 days           | lZc919IBsqlhHks                                | Client ID                             |
+  | **na_s**    | 30 minutes         | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y | Client ID _ Session ID - Last Page ID |
 
 </br>
 

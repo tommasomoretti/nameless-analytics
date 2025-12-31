@@ -469,18 +469,20 @@ Get expert help for implementation, technical documentation, and advanced SQL qu
 
 ### Project configuration
 Before starting the setup, ensure you have:
-- A Google Cloud Project with an active billing account.
-- A Google Tag Manager (Web) container.
-- A Google Tag Manager (Server-side) container.
+- A Google Cloud Project with an active billing account
+- A Google BigQuery project
+- A Google Firestore database
+- A Google Tag Manager (Web) container
+- A Google Tag Manager (Server-side) container with [App Engine](https://www.simoahava.com/analytics/provision-server-side-tagging-application-manually/) or [Cloud run](https://www.simoahava.com/analytics/cloud-run-server-side-tagging-google-tag-manager/)
 
 #### Google Cloud Setup
-1. Google Cloud BigQuery: Create tables and table functions in BigQuery using the provided [SQL scripts](reporting-tables/)
-2. Google Cloud Firestore: Enable in **Native Mode**
-3. Google Cloud IAM: Grant your GTM SS Service Account `BigQuery Data Editor`, `BigQuery Job User`, and `Cloud Datastore User`
+- Google Cloud BigQuery: Create tables and table functions in BigQuery using the provided [SQL scripts](reporting-tables/)
+- Google Cloud Firestore: Enable in **Native Mode**
+- Google Cloud IAM: Grant your GTM SS Service Account `BigQuery Data Editor`, `BigQuery Job User`, and `Cloud Datastore User`
 
 #### Google Tag Manager Setup
-1. Import: [Client-side GTM Template](gtm-containers/gtm-client-side-container-template.json)
-2. Import: [Server-side GTM Template](gtm-containers/gtm-server-side-container-template.json)
+- Import: [Client-side GTM Template](gtm-containers/gtm-client-side-container-template.json)
+- Import: [Server-side GTM Template](gtm-containers/gtm-server-side-container-template.json)
 
 </br>
 

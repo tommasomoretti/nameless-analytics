@@ -331,18 +331,19 @@ The **Server-Side Client Tag** serves as the security gateway and data orchestra
 - **Security & Validation**: Validates request origins and authorized domains (CORS) before processing to prevent unauthorized usage.
 - **Bot Protection**: Actively detects and blocks automated traffic returning a `403 Forbidden` status. The system filters requests based on a predefined blacklist of over 20 User-Agents, including `HeadlessChrome`, `Puppeteer`, `Selenium`, `Playwright`, as well as common HTTP libraries like `Axios`, `Go-http-client`, `Python-requests`, `Java/OkHttp`, `Curl`, and `Wget`.
 - **Data Integrity & Priority**: Enforces a strict parameter hierarchy (Server Overrides > Tag Metadata > Config Variable > dataLayer) and **prevents "orphan events"**. The server will reject any interaction (e.g., click, scroll) with a `403 Forbidden` status if it hasn't been preceded by a valid `page_view` event for that session. This ensures every session in BigQuery has a clear starting point and reliable attribution.
-- **Geolocation Enrichment**: Automatically maps the incoming request IP address to geographic location data (Country, City), allowing for regional analysis without the need to persist the sensitive IP address.
-  - *Hosting Note*: To enable this feature, your server must be configured to forward geolocation headers. The platform natively supports **Google App Engine** (via `X-Appengine` headers) and **Google Cloud Run** (via `X-Gclb` headers). For Cloud Run, ensure the Load Balancer is [properly configured](https://www.simoahava.com/analytics/cloud-run-server-side-tagging-google-tag-manager/#add-geolocation-headers-to-the-traffic).
+- **Geolocation Enrichment** \*: Automatically maps the incoming request IP address to geographic location data (Country, City), allowing for regional analysis without the need to persist the sensitive IP address.
 - **Real-time streaming everywhere**: The system supports Real-time Forwarding, allowing you to POST identical event payloads to external HTTP endpoints (webhooks, conversion APIs) immediately after processing.
+- **Self-Monitoring & Performance**: The system transparently tracks pipeline health by measuring **ingestion latency** (the exact millisecond delay between the client hit and server processing) and **payload size** (`content_length`). This data allows for high-resolution monitoring of the real-time data flow directly within BigQuery.
+- **Cookies**: All cookies are issued with `HttpOnly`, `Secure`, and `SameSite=Strict` flags. This multi-layered approach prevents client-side access (XSS protection) and Cross-Site Request Forgery (CSRF). The platform automatically calculates the appropriate cookie domain by extracting the **Effective TLD+1** from the request origin. This ensures seamless identity persistence across subdomains without manual configuration. Cookies are created or updated on every event to track the user's session and identity across the entire journey.
 
-#### Cookies
-The server manages identity via secure, server-set cookies, making them inaccessible to client-side scripts (preventing XSS/hijacking). These cookies are created or updated on every event to track the user's session and identity.
+  | Cookie Name                    | Expiry         | Example values                                 | Description                            |
+  |--------------------------------|----------------|------------------------------------------------|----------------------------------------|
+  | **nameless_analytics_user**    | 400 days       | lZc919IBsqlhHks                                | Client ID                              |
+  | **nameless_analytics_session** | 30 minutes     | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y | Client ID _ Session ID - Last Page ID  |
 
-| Cookie Name                    | Expiry         | Example values                                 | Description                            |
-|--------------------------------|----------------|------------------------------------------------|----------------------------------------|
-| **nameless_analytics_user**    | 400 days       | lZc919IBsqlhHks                                | Client ID                              |
-| **nameless_analytics_session** | 30 minutes     | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y | Client ID _ Session ID - Last Page ID  |
+</br>
 
+\* Hosting Note: To enable this feature, your server must be configured to forward geolocation headers. The platform natively supports **Google App Engine** (via `X-Appengine` headers) and **Google Cloud Run** (via `X-Gclb` headers). For Cloud Run, ensure the Load Balancer is [properly configured](https://www.simoahava.com/analytics/cloud-run-server-side-tagging-google-tag-manager/#add-geolocation-headers-to-the-traffic).
 
 </br>
 

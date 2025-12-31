@@ -78,7 +78,7 @@ Real-time tracker logs and errors are sent to the **Browser Console**, ensuring 
 #### ID Management
 The tracker automatically generates and manages unique identifiers for pages, and events.
 
-| Cookie Name  | Renewed            | Example values                                                 | Description                                      |
+| Cookie Name  | Renewed            | Example values                                                 | Value composition                                |
 |--------------|--------------------|----------------------------------------------------------------|--------------------------------------------------|
 | **page_id**  | at every page_view | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y                 | Client ID _ Session ID - Last Page ID            |
 | **event_id** | at every event     | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y_XIkjlUOkXKn99IV | Client ID _ Session ID - Last Page ID _ Event ID |
@@ -378,15 +378,15 @@ Developers can monitor the server-side logic in real-time through **GTM Server P
 #### ID Management
 The tracker automatically generates and manages unique identifiers for users and sessions.
 
-| Cookie Name    | Renewed                       | Example values                 | Description |
-|----------------|-------------------------------|--------------------------------|-------------|
-| **client_id**  | when `na_u` cookie is created | lZc919IBsqlhHks                | Client ID   |
-| **session_id** | when `na_s` cookie is created | lZc919IBsqlhHks_1KMIqneQ7dsDJU | Session ID  |
+| Cookie Name    | Renewed                       | Example values                 | Value composition |
+|----------------|-------------------------------|--------------------------------|-------------------|
+| **client_id**  | when `na_u` cookie is created | lZc919IBsqlhHks                | Client ID         |
+| **session_id** | when `na_s` cookie is created | lZc919IBsqlhHks_1KMIqneQ7dsDJU | Session ID        |
 
 #### Cookies
 All cookies are issued with `HttpOnly`, `Secure`, and `SameSite=Strict` flags. This multi-layered approach prevents client-side access (XSS protection) and Cross-Site Request Forgery (CSRF).
 
-| Cookie Name | Default expiration | Example values                                 | Description                           |
+| Cookie Name | Default expiration | Example values                                 | Value composition                     |
 |-------------|--------------------|------------------------------------------------|---------------------------------------|
 | **na_u**    | 400 days           | lZc919IBsqlhHks                                | Client ID                             |
 | **na_s**    | 30 minutes         | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y | Client ID _ Session ID - Last Page ID |
@@ -427,8 +427,6 @@ Firestore ensures data integrity by managing how parameters are updated across h
 
 </details>
 
-</br>
-
 #### BigQuery as Historical Timeline
 It mantains **every single state transition** for every user and session. For example, all different user_level values through time.
 
@@ -447,11 +445,11 @@ It mantains **every single state transition** for every user and session. For ex
 
 <img alt="Nameless Analytics - BigQuery event_raw schema" src="https://github.com/user-attachments/assets/d23e3959-ab7a-453c-88db-a4bc2c7b32f4" />
 
-</details>
-
 </br>
 
 A suite of SQL Table Functions transforms raw data into business-ready views for [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), [Events](reporting-tables/events.sql), [Consents](reporting-tables/consents.sql), [GTM Performance](reporting-tables/gtm_performances.sql), and specialized Ecommerce views like [Transactions](reporting-tables/ec_transactions.sql), [Products](reporting-tables/ec_products.sql), and Funnels ([Open](reporting-tables/ec_shopping_stages_open_funnel.sql) / [Closed](reporting-tables/ec_shopping_stages_closed_funnel.sql)).
+
+</details>
 
 </br>
 

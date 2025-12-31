@@ -4,6 +4,10 @@ An open-source web analytics platform for power users, based on [Google Tag Mana
 
 Collect, analyze, and activate your website data with a free real-time digital analytics suite that respects user privacy.
 
+</br></br>
+
+
+
 ## Start from here
 - [What is Nameless Analytics](#what-is-nameless-analytics)
 - [Technical Architecture](#technical-architecture)
@@ -18,7 +22,7 @@ Collect, analyze, and activate your website data with a free real-time digital a
   - [Project configuration](#project-configuration)
 - [External Resources](#external-resources)
 
-</br>
+</br></br>
 
 
 
@@ -31,7 +35,7 @@ At a high level, the platform solves three critical challenges in modern analyti
 2.  **Data Quality**: By leveraging a server-side, first-party architecture, the platform bypasses common client-side restrictions (such as ad blockers and ITP), ensuring granular, unsampled data collection that is far more accurate than standard client-side tags.
 3.  **Real-Time Activation**: Stream identical event payloads to external APIs, CRMs, or marketing automation tools the instant an event occurs, enabling true real-time personalization.
 
-</br>
+</br></br>
 
 
 
@@ -44,7 +48,6 @@ The following diagram illustrates the real-time data flow from the user's browse
 <img src="https://github.com/user-attachments/assets/ea15a5f1-b456-4d85-a116-42e54c4073cd" alt="Nameless Analytics schema"/>
 
 </br>
-
 
 
 ### Client-Side Collection
@@ -323,9 +326,10 @@ The **Server-Side Client Tag** serves as the security gateway and data orchestra
 
 **Technical Capabilities:**
 - **Security & Validation**: Validates request origins and authorized domains (CORS) before processing to prevent unauthorized usage.
-- **Bot Protection**: Actively detects and blocks automated traffic (e.g., Puppeteer, Selenium, headless browsers) returning a `403 Forbidden` status to keep your data clean.
+- **Bot Protection**: Actively detects and blocks automated traffic returning a `403 Forbidden` status. The system filters requests based on a predefined blacklist of over 20 User-Agents, including `HeadlessChrome`, `Puppeteer`, `Selenium`, `Playwright`, as well as common HTTP libraries like `Axios`, `Go-http-client`, `Python-requests`, `Java/OkHttp`, `Curl`, and `Wget`.
 - **Data Integrity & Priority**: Enforces a strict parameter hierarchy (Server Overrides > Tag Metadata > Config Variable > dataLayer) and prevents "orphan events" by ensuring a session always starts with a `page_view`.
 - **Geolocation Enrichment**: Automatically maps the incoming request IP address to geographic location data (Country, City), allowing for regional analysis without the need to persist the sensitive IP address.
+  - *Hosting Note*: To enable this feature, your server must be configured to forward geolocation headers. The platform natively supports **Google App Engine** (via `X-Appengine` headers) and **Google Cloud Run** (via `X-Gclb` headers). For Cloud Run, ensure the Load Balancer is [properly configured](https://www.simoahava.com/analytics/cloud-run-server-side-tagging-google-tag-manager/#add-geolocation-headers-to-the-traffic).
 - **Real-time streaming everywhere**: The system supports Real-time Forwarding, allowing you to POST identical event payloads to external HTTP endpoints (webhooks, conversion APIs) immediately after processing.
 
 #### Cookies
@@ -354,6 +358,18 @@ Nameless Analytics replaces client-side storage dependency with a server-side re
 </br>
 
 <img alt="Nameless Analytics - Firestore collection schema" src="https://github.com/user-attachments/assets/d27c3ca6-f039-4702-853e-81e71ed033c2" />
+
+</br>
+
+Firestore ensures data integrity by managing how parameters are updated across hits:
+
+| Scope | Type | Parameters | Logic |
+| :--- | :--- | :--- | :--- |
+| **User** | **First-Touch** | `user_date`, `user_source`, `user_campaign`, `user_channel_grouping`, `user_device_type`, `user_country`, `user_language`, `user_first_session_timestamp` | Recorded at first visit, **never overwritten**. |
+| **User** | **Last-Touch** | `user_last_session_timestamp` | Updated at the start of every new session. |
+| **Session** | **First-Touch** | `session_date`, `session_number`, `session_source`, `session_campaign`, `session_landing_page_*`, `session_start_timestamp`, `user_id` | Set at session start, persists throughout the session. |
+| **Session** | **Last-Touch** | `session_exit_page_*`, `session_end_timestamp`, `total_events`, `total_page_views` | **Updated on every hit** to reflect the latest state. |
+| **Session** | **Progressive** | `cross_domain_session` | Flags as 'Yes' if any hit in the session is cross-domain. |
 
 </details>
 
@@ -431,7 +447,6 @@ Get expert help for implementation, technical documentation, and advanced SQL qu
 
 
 ## Quick Start
-
 ### Repository structure
 - Main repository: [nameless-analytics](#nameless-analytics)
 - Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](#client-side-collection)

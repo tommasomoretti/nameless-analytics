@@ -78,10 +78,10 @@ Real-time tracker logs and errors are sent to the **Browser Console**, ensuring 
 #### ID Management
 The tracker automatically generates and manages unique identifiers for pages, and events.
 
-  | Cookie Name  | Renewed            | Example values                                                 | Description                                      |
-  |--------------|--------------------|----------------------------------------------------------------|--------------------------------------------------|
-  | **page_id**  | at every page_view | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y                 | Client ID _ Session ID - Last Page ID            |
-  | **event_id** | at every event     | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y_XIkjlUOkXKn99IV | Client ID _ Session ID - Last Page ID _ Event ID |
+| Cookie Name  | Renewed            | Example values                                                 | Description                                      |
+|--------------|--------------------|----------------------------------------------------------------|--------------------------------------------------|
+| **page_id**  | at every page_view | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y                 | Client ID _ Session ID - Last Page ID            |
+| **event_id** | at every event     | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y_XIkjlUOkXKn99IV | Client ID _ Session ID - Last Page ID _ Event ID |
 
 #### Request payload data
 The request data is sent via a POST request in JSON format. It is structured into:
@@ -343,6 +343,7 @@ When "Enable cross-domain tracking" in the Nameless Analytics Client-side Tracke
 |--------------------|-------------------------|----------|-------------|-------------------------|
 | event_data         | cross_domain_id         | String   | Client-Side | Cross domain id         |
 | session_data       | is_cross_domain_session | String   | Server-Side | Is cross domain session |
+
 </details>
 
 </br>
@@ -440,7 +441,6 @@ It mantains **every single state transition** for every user and session. For ex
 - **Consent data**: Stores the current consent state at event occurs, including consent status, timestamp, and consent-specific attributes.
 - **GTM Performance data**: Stores the current GTM performance state at event occurs, including GTM performance metrics, timestamp, and GTM performance-specific attributes.
 
-
 <details><summary>BigQuery schema example</summary>
 
 </br>
@@ -519,7 +519,7 @@ Before starting the setup, ensure you have:
 - A Google BigQuery project
 - A Google Firestore database
 - A Google Tag Manager (Web) container
-- A Google Tag Manager (Server-side) container with [App Engine](https://www.simoahava.com/analytics/provision-server-side-tagging-application-manually/) or [Cloud run](https://www.simoahava.com/analytics/cloud-run-server-side-tagging-google-tag-manager/)
+- A Google Tag Manager (Server-side) container running on [App Engine](https://www.simoahava.com/analytics/provision-server-side-tagging-application-manually/) or [Cloud run](https://www.simoahava.com/analytics/cloud-run-server-side-tagging-google-tag-manager/)
 
 #### Google Cloud Setup
 - Google Cloud BigQuery: Create tables and table functions in BigQuery using the provided [SQL scripts](reporting-tables/)

@@ -29,12 +29,12 @@ Collect, analyze, and activate your website data with a free real-time digital a
 ## What is Nameless Analytics
 Nameless Analytics is an open-source, first-party data collection infrastructure designed for organizations and analysts that demand complete control over their digital analytics. It's built upon a transparent pipeline that is built entirely on your own Google Cloud Platform environment.
 
-At a high level, the platform solves three critical challenges in modern analytics:
+At a high level, the platform solves critical challenges in modern analytics:
 
 1.  **Total Data Ownership**: Unlike commercial tools where data resides on third-party servers, Nameless Analytics pipelines every interaction directly to your BigQuery warehouse. You own the raw data, the retention policies and the reporting.
 2.  **Data Quality**: By leveraging a server-side, first-party architecture, the platform bypasses common client-side restrictions (such as ad blockers and ITP), ensuring granular, unsampled data collection that is far more accurate than standard client-side tags.
 3.  **Real-Time Activation**: Stream identical event payloads to external APIs, CRMs, or marketing automation tools the instant an event occurs, enabling true real-time personalization.
-4.  **Cost-Efficiency & Scaling**: Engineered to run from within the **Google Cloud Free Tier** to a pay per use model. 
+4.  **Scaling and Cost-Efficiency**: Engineered to run from within the **Google Cloud Free Tier** to a pay per use model. 
     - **Compute - Cloud Run (Recommended)**: Scales to zero when there's no traffic. The "Always Free" tier includes **2 million requests per month**, making it the most cost-effective choice for modern pipelines.
     - **Compute - App Engine**: 
         - **Standard (Testing Mode)**: Includes **28 free instance-hours per day** (F1 instances), allowing for a 24/7 single-server setup at **zero cost**. It's the ideal choice for low-to-medium traffic sites. 

@@ -373,23 +373,26 @@ The system transparently tracks pipeline health by measuring **ingestion latency
 
 #### Debugging & Visibility
 Developers can monitor the server-side logic in real-time through **GTM Server Preview Mode**.
-- **ID Management**: The tracker automatically generates and manages unique identifiers for users and sessions.
 
-  | Cookie Name    | Renewed                       | Example values                 | Description |
-  |----------------|-------------------------------|--------------------------------|-------------|
-  | **client_id**  | when `na_u` cookie is created | lZc919IBsqlhHks                | Client ID   |
-  | **session_id** | when `na_s` cookie is created | lZc919IBsqlhHks_1KMIqneQ7dsDJU | Session ID  |
+#### ID Management
+The tracker automatically generates and manages unique identifiers for users and sessions.
 
-- **Cookies**: All cookies are issued with `HttpOnly`, `Secure`, and `SameSite=Strict` flags. This multi-layered approach prevents client-side access (XSS protection) and Cross-Site Request Forgery (CSRF).
+| Cookie Name    | Renewed                       | Example values                 | Description |
+|----------------|-------------------------------|--------------------------------|-------------|
+| **client_id**  | when `na_u` cookie is created | lZc919IBsqlhHks                | Client ID   |
+| **session_id** | when `na_s` cookie is created | lZc919IBsqlhHks_1KMIqneQ7dsDJU | Session ID  |
 
-  | Cookie Name | Default expiration | Example values                                 | Description                           |
-  |-------------|--------------------|------------------------------------------------|---------------------------------------|
-  | **na_u**    | 400 days           | lZc919IBsqlhHks                                | Client ID                             |
-  | **na_s**    | 30 minutes         | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y | Client ID _ Session ID - Last Page ID |
+#### Cookies
+All cookies are issued with `HttpOnly`, `Secure`, and `SameSite=Strict` flags. This multi-layered approach prevents client-side access (XSS protection) and Cross-Site Request Forgery (CSRF).
 
-  The platform automatically calculates the appropriate cookie domain by extracting the **Effective TLD+1** from the request origin. This ensures seamless identity persistence across subdomains without manual configuration. 
+| Cookie Name | Default expiration | Example values                                 | Description                           |
+|-------------|--------------------|------------------------------------------------|---------------------------------------|
+| **na_u**    | 400 days           | lZc919IBsqlhHks                                | Client ID                             |
+| **na_s**    | 30 minutes         | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y | Client ID _ Session ID - Last Page ID |
+
+The platform automatically calculates the appropriate cookie domain by extracting the **Effective TLD+1** from the request origin. This ensures seamless identity persistence across subdomains without manual configuration. 
   
-  Cookies are created or updated on every event to track the user's session and identity across the entire journey.
+Cookies are created or updated on every event to track the user's session and identity across the entire journey.
 
 </br>
 

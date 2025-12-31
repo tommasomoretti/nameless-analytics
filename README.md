@@ -353,7 +353,7 @@ Nameless Analytics replaces client-side storage dependency with a server-side re
 
 </br>
 
-<img alt="Nameless Analytics - Firestore collection schema" src="https://github.com/user-attachments/assets/7193c73d-6717-439b-91e0-e0157fa53770" />
+<img alt="Nameless Analytics - Firestore collection schema" src="https://github.com/user-attachments/assets/d27c3ca6-f039-4702-853e-81e71ed033c2" />
 
 </details>
 

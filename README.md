@@ -55,7 +55,7 @@ The **Client-Side Tracker** (GTM Web) is the system's intelligent agent in the b
 
 **Technical Capabilities:**
 - **Sequential Execution Queue**: Implements specific logic to handle high-frequency events (e.g., rapid clicks), ensuring requests are dispatched in strict FIFO order to preserve the narrative of the session.
-- **Smart Consent Management**: Fully integrated with Google Consent Mode. It can automatically queue events (`analytics_storage` pending) and release them only when consent is granted, preventing data loss.
+- **Smart Consent Management**: Fully integrated with Google Consent Mode. It can track every event or automatically queue events (`analytics_storage` pending) and release them only when consent is granted, preventing data loss.
 - **SPA & History Management**: Native support for Single Page Applications, automatically detecting history changes to trigger virtual page views.
 - **Cross-domain Architecture**: Stitches sessions across different top-level domains using a pre-flight ID request and URL decoration (`na_id`) to pass identifiers securely.
 

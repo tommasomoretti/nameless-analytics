@@ -34,6 +34,13 @@ At a high level, the platform solves three critical challenges in modern analyti
 1.  **Total Data Ownership**: Unlike commercial tools where data resides on third-party servers, Nameless Analytics pipelines every interaction directly to your BigQuery warehouse. You own the raw data, the retention policies and the reporting.
 2.  **Data Quality**: By leveraging a server-side, first-party architecture, the platform bypasses common client-side restrictions (such as ad blockers and ITP), ensuring granular, unsampled data collection that is far more accurate than standard client-side tags.
 3.  **Real-Time Activation**: Stream identical event payloads to external APIs, CRMs, or marketing automation tools the instant an event occurs, enabling true real-time personalization.
+4.  **Cost-Efficiency & Scaling**: Engineered to run from within the **Google Cloud Free Tier** to a pay per use model. 
+    - **Compute - Cloud Run (Recommended)**: Scales to zero when there's no traffic. The "Always Free" tier includes **2 million requests per month**, making it the most cost-effective choice for modern pipelines.
+    - **Compute - App Engine**: 
+        - **Standard (Testing Mode)**: Includes **28 free instance-hours per day** (F1 instances), allowing for a 24/7 single-server setup at **zero cost**. It's the ideal choice for low-to-medium traffic sites. 
+        - **Flexible (Production Mode)**: Recommended for mission-critical deployments with high traffic (5-10M+ hits/month) where multi-zone redundancy is required (min. 3 instances). This setup starts at ~$120/month and is suitable for enterprise-scale needs.
+    - **Storage - Firestore**: Manages real-time session data with **50,000 reads and 20,000 writes per day** included for free.
+    - **Storage - BigQuery**: Provides **10 GB of storage** and **1 TB of query processing per month** at no charge.
 
 </br></br>
 

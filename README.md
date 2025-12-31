@@ -60,13 +60,23 @@ The following diagram illustrates the real-time data flow from the user's browse
 ### Client-Side Collection
 The **Client-Side Tracker** (GTM Web) is the system's intelligent agent in the browser. It abstracts complex logic to ensure reliable data capture under any condition.
 
-**Technical Capabilities:**
-- **Sequential Execution Queue**: Implements specific logic to handle high-frequency events (e.g., rapid clicks), ensuring requests are dispatched in strict FIFO order to preserve the narrative of the session.
-- **Smart Consent Management**: Fully integrated with Google Consent Mode. It can track every event or automatically queue events (`analytics_storage` pending) and release them only when consent is granted, preventing data loss.
-- **SPA & History Management**: Native support for Single Page Applications, automatically detecting history changes to trigger virtual page views.
-- **Cross-domain Architecture**: Implements a robust "handshake" protocol to stitch sessions across different top-level domains. The client performs a pre-flight request (`get_user_data`) to the server to retrieve identifiers stored in `HttpOnly` cookies (otherwise invisible to JavaScript) and then uses these values to decorate outbound links with the `na_id` parameter.
-- **Debugging & Visibility**: Real-time tracker logs and errors are sent to the **Browser Console**, ensuring immediate feedback during implementation.
-- **ID Management**: The tracker automatically generates and manages unique identifiers for pages, and events.
+#### Sequential Execution Queue
+Implements specific logic to handle high-frequency events (e.g., rapid clicks), ensuring requests are dispatched in strict FIFO order to preserve the narrative of the session.
+
+#### Smart Consent Management
+Fully integrated with Google Consent Mode. It can track every event or automatically queue events (`analytics_storage` pending) and release them only when consent is granted, preventing data loss.
+
+#### SPA & History Management
+Native support for Single Page Applications, automatically detecting history changes to trigger virtual page views.
+
+#### Cross-domain Architecture
+Implements a robust "handshake" protocol to stitch sessions across different top-level domains. The client performs a pre-flight request (`get_user_data`) to the server to retrieve identifiers stored in `HttpOnly` cookies (otherwise invisible to JavaScript) and then uses these values to decorate outbound links with the `na_id` parameter.
+
+#### Debugging & Visibility
+Real-time tracker logs and errors are sent to the **Browser Console**, ensuring immediate feedback during implementation.
+
+#### ID Management
+The tracker automatically generates and manages unique identifiers for pages, and events.
 
   | Cookie Name  | Renewed            | Example values                                                 | Description                                      |
   |--------------|--------------------|----------------------------------------------------------------|--------------------------------------------------|
@@ -341,42 +351,55 @@ When "Enable cross-domain tracking" in the Nameless Analytics Client-side Tracke
 ### Server-Side Processing
 The **Server-Side Client Tag** serves as the security gateway and data orchestrator. It sits between the public internet and your cloud infrastructure, sanitizing every request.
 
-**Technical Capabilities:**
-- **Security & Validation**: Validates request origins and authorized domains (CORS) before processing to prevent unauthorized usage.
-- **Bot Protection**: Actively detects and blocks automated traffic returning a `403 Forbidden` status. The system filters requests based on a predefined blacklist of over 20 User-Agents, including `HeadlessChrome`, `Puppeteer`, `Selenium`, `Playwright`, as well as common HTTP libraries like `Axios`, `Go-http-client`, `Python-requests`, `Java/OkHttp`, `Curl`, and `Wget`.
-- **Data Integrity & Priority**: Enforces a strict parameter hierarchy (Server Overrides > Tag Metadata > Config Variable > dataLayer) and **prevents "orphan events"**. The server will reject any interaction (e.g., click, scroll) with a `403 Forbidden` status if it hasn't been preceded by a valid `page_view` event for that session. This ensures every session in BigQuery has a clear starting point and reliable attribution.
-- **Geolocation & Privacy by Design** \*: Automatically maps the incoming request IP to geographic data (Country, City) for regional analysis. The system is designed to **never persist the raw IP address** in BigQuery, ensuring native compliance with strict privacy regulations.
-- **Real-time Forwarding**: Supports instantaneous data streaming to external HTTP endpoints immediately after processing. The system allows for **custom HTTP headers** injection, enabling secure authentication with third-party services endpoints directly from the server.
-- **Self-Monitoring & Performance**: The system transparently tracks pipeline health by measuring **ingestion latency** (the exact millisecond delay between the client hit and server processing) and **payload size** (`content_length`). This data allows for high-resolution monitoring of the real-time data flow directly within BigQuery.
-- **Debugging & Visibility**: Developers can monitor the server-side logic in real-time through **GTM Server Preview Mode**.
-- **ID Management**: The tracker automatically generates and manages unique identifiers for pages, and events.
+#### Security & Validation
+Validates request origins and authorized domains (CORS) before processing to prevent unauthorized usage.
+
+#### Bot Protection
+Actively detects and blocks automated traffic returning a `403 Forbidden` status. The system filters requests based on a predefined blacklist of over 20 User-Agents, including `HeadlessChrome`, `Puppeteer`, `Selenium`, `Playwright`, as well as common HTTP libraries like `Axios`, `Go-http-client`, `Python-requests`, `Java/OkHttp`, `Curl`, and `Wget`.
+
+#### Data Integrity & Priority
+Enforces a strict parameter hierarchy (Server Overrides > Tag Metadata > Config Variable > dataLayer) and **prevents "orphan events"**. The server will reject any interaction (e.g., click, scroll) with a `403 Forbidden` status if it hasn't been preceded by a valid `page_view` event for that session. This ensures every session in BigQuery has a clear starting point and reliable attribution.
+
+#### Geolocation & Privacy by Design
+Automatically maps the incoming request IP to geographic data (Country, City) for regional analysis. The system is designed to **never persist the raw IP address** in BigQuery, ensuring native compliance with strict privacy regulations.
+
+To enable this feature, your server must be configured to forward geolocation headers. The platform natively supports **Google App Engine** (via `X-Appengine` headers) and **Google Cloud Run** (via `X-Gclb` headers). For Cloud Run, ensure the Load Balancer is [properly configured](https://www.simoahava.com/analytics/cloud-run-server-side-tagging-google-tag-manager/#add-geolocation-headers-to-the-traffic).
+
+#### Real-time Forwarding
+Supports instantaneous data streaming to external HTTP endpoints immediately after processing. The system allows for **custom HTTP headers** injection, enabling secure authentication with third-party services endpoints directly from the server.
+
+#### Self-Monitoring & Performance
+The system transparently tracks pipeline health by measuring **ingestion latency** (the exact millisecond delay between the client hit and server processing) and **payload size** (`content_length`). This data allows for high-resolution monitoring of the real-time data flow directly within BigQuery.
+
+#### Debugging & Visibility
+Developers can monitor the server-side logic in real-time through **GTM Server Preview Mode**.
+- **ID Management**: The tracker automatically generates and manages unique identifiers for users and sessions.
 
   | Cookie Name    | Renewed                       | Example values                 | Description |
   |----------------|-------------------------------|--------------------------------|-------------|
   | **client_id**  | when `na_u` cookie is created | lZc919IBsqlhHks                | Client ID   |
   | **session_id** | when `na_s` cookie is created | lZc919IBsqlhHks_1KMIqneQ7dsDJU | Session ID  |
 
-- **Cookies**: All cookies are issued with `HttpOnly`, `Secure`, and `SameSite=Strict` flags. This multi-layered approach prevents client-side access (XSS protection) and Cross-Site Request Forgery (CSRF). The platform automatically calculates the appropriate cookie domain by extracting the **Effective TLD+1** from the request origin. This ensures seamless identity persistence across subdomains without manual configuration. Cookies are created or updated on every event to track the user's session and identity across the entire journey.
+- **Cookies**: All cookies are issued with `HttpOnly`, `Secure`, and `SameSite=Strict` flags. This multi-layered approach prevents client-side access (XSS protection) and Cross-Site Request Forgery (CSRF).
 
   | Cookie Name | Default expiration | Example values                                 | Description                           |
-  |----------------------------------|------------------------------------------------|---------------------------------------|
+  |-------------|--------------------|------------------------------------------------|---------------------------------------|
   | **na_u**    | 400 days           | lZc919IBsqlhHks                                | Client ID                             |
   | **na_s**    | 30 minutes         | lZc919IBsqlhHks_1KMIqneQ7dsDJU-WVTWEorF69ZEk3y | Client ID _ Session ID - Last Page ID |
 
-</br>
-
-\* Hosting Note: To enable this feature, your server must be configured to forward geolocation headers. The platform natively supports **Google App Engine** (via `X-Appengine` headers) and **Google Cloud Run** (via `X-Gclb` headers). For Cloud Run, ensure the Load Balancer is [properly configured](https://www.simoahava.com/analytics/cloud-run-server-side-tagging-google-tag-manager/#add-geolocation-headers-to-the-traffic).
+  The platform automatically calculates the appropriate cookie domain by extracting the **Effective TLD+1** from the request origin. This ensures seamless identity persistence across subdomains without manual configuration. 
+  
+  Cookies are created or updated on every event to track the user's session and identity across the entire journey.
 
 </br>
 
 
 ### Storage
 Nameless Analytics employs a complementary storage strategy to balance real-time intelligence with deep historical analysis:
-- **Firestore (Real-time Snapshot)**: It mantains **the latest available state** for every user and session. For example, the current user_level.
-- **BigQuery (Historical Timeline)**: It mantains **every single state transition** for every user and session. For example, the user_level transition history.
 
+#### Firestore as Last updated Snapshot
+It mantains the latest available state for every user and session. For example, the current user_level.
 
-**Firestore**
 - **User data**: Stores the latest user profile state, including first/last session timestamps, original acquisition source, and persistent device metadata.
 - **Session data**: Stores the latest session state, including real-time counters (total events, page views), landing/exit page details, and session-specific attribution.
 
@@ -402,7 +425,9 @@ Firestore ensures data integrity by managing how parameters are updated across h
 
 </br>
 
-**BigQuery**
+#### BigQuery as Historical Timeline
+It mantains **every single state transition** for every user and session. For example, all different user_level values through time.
+
 - **User data**: Stores the current user profile state at event occurs, including first/last session timestamps, original acquisition source, and persistent device metadata.
 - **Session data**: Stores the current session state at event occurs, including real-time counters (total events, page views), landing/exit page details, and session-specific attribution.
 - **Page data**: Stores the current page state at event occurs, including page name, timestamp, and page-specific attributes.
@@ -412,7 +437,6 @@ Firestore ensures data integrity by managing how parameters are updated across h
 - **Consent data**: Stores the current consent state at event occurs, including consent status, timestamp, and consent-specific attributes.
 - **GTM Performance data**: Stores the current GTM performance state at event occurs, including GTM performance metrics, timestamp, and GTM performance-specific attributes.
 
-A suite of SQL Table Functions transforms raw data into business-ready views for [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), [Events](reporting-tables/events.sql), [Consents](reporting-tables/consents.sql), [GTM Performance](reporting-tables/gtm_performances.sql), and specialized Ecommerce views like [Transactions](reporting-tables/ec_transactions.sql), [Products](reporting-tables/ec_products.sql), and Funnels ([Open](reporting-tables/ec_shopping_stages_open_funnel.sql) / [Closed](reporting-tables/ec_shopping_stages_closed_funnel.sql)).
 
 <details><summary>BigQuery schema example</summary>
 
@@ -421,6 +445,10 @@ A suite of SQL Table Functions transforms raw data into business-ready views for
 <img alt="Nameless Analytics - BigQuery event_raw schema" src="https://github.com/user-attachments/assets/d23e3959-ab7a-453c-88db-a4bc2c7b32f4" />
 
 </details>
+
+</br>
+
+A suite of SQL Table Functions transforms raw data into business-ready views for [Users](reporting-tables/users.sql), [Sessions](reporting-tables/sessions.sql), [Pages](reporting-tables/pages.sql), [Events](reporting-tables/events.sql), [Consents](reporting-tables/consents.sql), [GTM Performance](reporting-tables/gtm_performances.sql), and specialized Ecommerce views like [Transactions](reporting-tables/ec_transactions.sql), [Products](reporting-tables/ec_products.sql), and Funnels ([Open](reporting-tables/ec_shopping_stages_open_funnel.sql) / [Closed](reporting-tables/ec_shopping_stages_closed_funnel.sql)).
 
 </br>
 
@@ -476,8 +504,8 @@ Get expert help for implementation, technical documentation, and advanced SQL qu
 - Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](#client-side-collection)
 - Client-side tracker configuration variable: [nameless-analytics-client-side-tracker-configuration-variable](#client-side-collection)
 - Server-side client tag: [nameless-analytics-server-side-client-tag](#server-side-processing)
-- Reporting tables: [reporting-tables](#reporting)
-- GTM default containers: [gtm-containers](#project-configuration)
+- Reporting tables: [reporting-tables](reporting-tables/)
+- GTM default containers: [gtm-containers](gtm-containers/)
 
 </br>
 

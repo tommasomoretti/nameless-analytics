@@ -49,7 +49,7 @@ select
     session_id,
     
     (select value.int from unnest(session_data) where name = 'session_number') as session_number,
-    first_value((select value.string from unnest(session_data) where name = 'cross_domain_session')) over (partition by session_id order by event_timestamp desc) as cross_domain_session,
+    first_value((select value.string from unnest(session_data) where name = 'is_cross_domain_session')) over (partition by session_id order by event_timestamp desc) as is_cross_domain_session,
     
     (select value.int from unnest(session_data) where name = 'session_start_timestamp') as session_start_timestamp,
     first_value((select value.int from unnest(session_data) where name = 'session_end_timestamp')) over (partition by session_id order by event_timestamp desc) as session_end_timestamp,
@@ -85,6 +85,7 @@ select
       
       
     # PAGE DATA
+    page_date,
     page_id,
     (select value.int from unnest(session_data) where name = 'total_page_views') as page_view_number,	
     (select value.int from unnest(page_data) where name = 'page_timestamp') as page_load_timestamp,
@@ -158,6 +159,10 @@ select
     
     # ECOMMERCE DATA
     ecommerce,
+
+
+    # DATALAYER DATA
+    datalayer,
 
 
     # CONSENT DATA

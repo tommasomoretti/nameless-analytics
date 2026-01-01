@@ -238,25 +238,25 @@ execute immediate dates_table_sql;
 ### Events raw table
 This main table is partitioned by `event_date` and clustered by `user_date`, `session_date`, `page_date`, and `event_name`.
 
-| Field name                 | Type     | Mode     | Description                                                                                                                                                   |
-|----------------------------|----------|----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| event_date                 | DATE     | REQUIRED | Date of the request.                                                                                                                                          |
-| event_datetime             | DATETIME | NULLABLE | Datetime of the request.                                                                                                                                      |
-| event_timestamp            | INTEGER  | REQUIRED | Insertion timestamp of the event.                                                                                                                             |
-| processing_event_timestamp | INTEGER  | NULLABLE | Timestamp when the Nameless Analytics Server-side Client Tag received the event.                                                                              |
-| event_origin               | STRING   | REQUIRED | "Website" if the hit comes from a browser.                                                                                                                    |
-| content_length             | INTEGER  | NULLABLE | Size of the message body in bytes.                                                                                                                            |
-| client_id                  | STRING   | REQUIRED | Client ID.                                                                                                                                                    |
-| user_data                  | RECORD   | REPEATED | User data.                                                                                                                                                    |
-| session_id                 | STRING   | REQUIRED | Session ID.                                                                                                                                                   |
-| session_data               | RECORD   | REPEATED | Session data.                                                                                                                                                 |
-| event_id                   | STRING   | REQUIRED | Event ID.                                                                                                                                                     |
-| event_name                 | STRING   | REQUIRED | Event name.                                                                                                                                                   |
-| event_data                 | RECORD   | REPEATED | Event data.                                                                                                                                                   |
-| ecommerce                  | JSON     | NULLABLE | Ecommerce object.                                                                                                                                             |
-| datalayer                  | JSON     | NULLABLE | Current `dataLayer` value.                                                                                                                                    |
-| consent_data               | RECORD   | REPEATED | Consent data.                                                                                                                                                 |
-
+| Field name      | Type     | Mode     | Description                                |
+|-----------------|----------|----------|--------------------------------------------|
+| event_date      | DATE     | REQUIRED | Date of the request.                       |
+| event_datetime  | DATETIME | NULLABLE | Datetime of the request.                   |
+| event_timestamp | INTEGER  | REQUIRED | Insertion timestamp of the event.          |
+| event_origin    | STRING   | REQUIRED | "Website" if the hit comes from a browser. |
+| client_id       | STRING   | REQUIRED | Client ID.                                 |
+| user_data       | RECORD   | REPEATED | User data.                                 |
+| session_id      | STRING   | REQUIRED | Session ID.                                |
+| session_data    | RECORD   | REPEATED | Session data.                              |
+| page_id         | STRING   | REQUIRED | Page ID.                                   |
+| page_date       | DATE     | REQUIRED | Page date.                                 |
+| event_id        | STRING   | REQUIRED | Event ID.                                  |
+| event_name      | STRING   | REQUIRED | Event name.                                |
+| event_data      | RECORD   | REPEATED | Event data.                                |
+| ecommerce       | JSON     | NULLABLE | Ecommerce object.                          |
+| datalayer       | JSON     | NULLABLE | Current `dataLayer` value.                 |
+| consent_data    | RECORD   | REPEATED | Consent data.                              |
+| gtm_data        | RECORD   | REPEATED | GTM performance and execution data.        |
  
 ### Dates table
 This table is partitioned by `date` and clustered by `month_name` and `day_name`.

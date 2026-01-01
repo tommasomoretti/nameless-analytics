@@ -1,5 +1,5 @@
 CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start_date DATE, end_date DATE) AS (
-  with base_events as (
+with base_events as (
     select * from `tom-moretti.nameless_analytics.events`(start_date, end_date, 'session')
   ),
 

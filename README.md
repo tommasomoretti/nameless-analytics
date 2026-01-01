@@ -337,12 +337,12 @@ When "Add ecommerce data" in the Nameless Analytics Client-side Tracker Tag is e
 | ecommerce          |                   | JSON     | Client-Side | Ecommerce data        |
 
 #### Cross-domain data
-When "Enable cross-domain tracking" in the Nameless Analytics Client-side Tracker Configuration Variable is enabled, the `is_cross_domain_session` and `cross_domain_id` parameters will be added to the standard payload:
+When "Enable cross-domain tracking" in the Nameless Analytics Client-side Tracker Configuration Variable is enabled, the `cross_domain_session` and `cross_domain_id` parameters will be added to the standard payload:
 
-| **Parameter name** | **Sub-parameter**       | **Type** | **Added**   | **Field description**   |
-|--------------------|-------------------------|----------|-------------|-------------------------|
-| event_data         | cross_domain_id         | String   | Client-Side | Cross domain id         |
-| session_data       | is_cross_domain_session | String   | Server-Side | Is cross domain session |
+| **Parameter name** | **Sub-parameter**    | **Type** | **Added**   | **Field description**   |
+|--------------------|----------------------|----------|-------------|-------------------------|
+| event_data         | cross_domain_id      | String   | Client-Side | Cross domain id         |
+| session_data       | cross_domain_session | String   | Server-Side | Is cross domain session |
 
 </details>
 

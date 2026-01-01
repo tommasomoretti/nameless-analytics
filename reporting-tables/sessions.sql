@@ -1,225 +1,49 @@
 CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start_date DATE, end_date DATE) AS (
-with event_data as (
-    select 
-      -- USER DATA
-      user_date,
-      client_id,
-      user_id,
-      user_channel_grouping,
-      user_source,
-      user_tld_source,
-      user_campaign,
-      user_device_type,
-      user_country,
-      user_language,
-      user_type,
-      new_user,
-      returning_user,
-
-      -- SESSION DATA
-      session_date,
-      session_number,
-      session_id,
-      session_start_timestamp,
-      session_end_timestamp,
-      session_duration_sec,
-      session_channel_grouping,
-      session_source,
-      session_tld_source,
-      session_campaign,
-      cross_domain_session,  
-      session_landing_page_category,
-      session_landing_page_location,
-      session_landing_page_title,
-      session_exit_page_category,
-      session_exit_page_location,
-      session_exit_page_title,
-      session_hostname,
-      session_device_type,
-      session_country,
-      session_language,
-      session_browser_name,
-
-      -- EVENT DATA
-      event_date,
-      event_name,
-      event_timestamp,
-
-      -- ECOMMERCE DATA
-      case
-        when event_name = 'purchase' then ifnull(cast(json_value(ecommerce.value) as float64), 0.0)
-        else null
-      end as transaction_value,
-      case
-        when event_name = 'purchase' then ifnull(cast(json_value(ecommerce.shipping) as float64), 0.0)
-        else null
-      end as transaction_shipping,
-      case
-        when event_name = 'purchase' then ifnull(cast(json_value(ecommerce.tax) as float64), 0.0)
-        else null
-      end as transaction_tax,
-      case
-        when event_name = 'refund' then - ifnull(cast(json_value(ecommerce.value) as float64), 0.0)
-        else null
-      end as refund_value,
-      case
-        when event_name = 'refund' then - ifnull(cast(json_value(ecommerce.shipping) as float64), 0.0)
-        else null
-      end as refund_shipping,
-      case
-        when event_name = 'refund' then - ifnull(cast(json_value(ecommerce.tax) as float64), 0.0)
-        else null
-      end as refund_tax,
-
-      -- CONSENT DATA
-      consent_type,
-      ad_user_data,
-      ad_personalization,
-      ad_storage,
-      analytics_storage,
-      functionality_storage,
-      personalization_storage,
-      security_storage,
-
-    from `tom-moretti.nameless_analytics.events` (start_date, end_date, 'session')
-    group by all
+  with base_events as (
+    select * from `tom-moretti.nameless_analytics.events`(start_date, end_date, 'session')
   ),
 
-  event_data_def as (
-    select 
-      -- USER DATA
-      user_date,
-      client_id,
-      user_id,
-      user_channel_grouping,
-      split(user_tld_source, '.')[safe_offset(0)] as user_source,
-      user_tld_source,
-      user_campaign,
-      user_device_type,
-      user_country,
-      user_language,
-      user_type,
-      new_user,
-      returning_user,
-
-      -- SESSION DATA
-      session_date,
-      session_number,
-      session_id,
-      session_start_timestamp,
-      session_end_timestamp,
-      session_duration_sec,
-      session_channel_grouping,
-      split(session_tld_source, '.')[safe_offset(0)] as session_source,
-      session_tld_source,
-      session_campaign,
-      cross_domain_session,  
-      session_landing_page_category,
-      session_landing_page_location,
-      session_landing_page_title,
-      session_exit_page_category,
-      session_exit_page_location,
-      session_exit_page_title,
-      session_hostname,
-      session_device_type,
-      session_country,
-      session_language,
-      session_browser_name,
-
-      -- EVENT DATA
-      event_date,
-      event_name,
-
-      -- ECOMMERCE DATA
-      transaction_value,
-      transaction_shipping,
-      transaction_tax,
-      refund_value,
-      refund_shipping,
-      refund_tax,
-
-      -- CONSENT DATA
-      case 
-        when countif(consent_type = 'Update') over (partition by session_id) > 0 then first_value(case when consent_type = 'Update' then event_timestamp end ignore nulls) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-        else first_value(event_timestamp) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-      end as consent_timestamp,
-      case 
-          when countif(consent_type = 'Update') over (partition by session_id) > 0 then 'Yes'
-          when countif(consent_type = 'Default') over (partition by session_id) > 0 then 'No'
-          else consent_type
-      end as consent_expressed,
-      case 
-        when countif(consent_type = 'Update') over (partition by session_id) > 0 then first_value(case when consent_type = 'Update' then ad_user_data end ignore nulls) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-        else first_value(ad_user_data) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-      end as session_ad_user_data,
-      case 
-        when countif(consent_type = 'Update') over (partition by session_id) > 0 then first_value(case when consent_type = 'Update' then ad_personalization end ignore nulls) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-        else first_value(ad_personalization) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-      end as session_ad_personalization,
-      case 
-        when countif(consent_type = 'Update') over (partition by session_id) > 0 then first_value(case when consent_type = 'Update' then ad_storage end ignore nulls) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-        else first_value(ad_storage) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-      end as session_ad_storage,
-      case 
-        when countif(consent_type = 'Update') over (partition by session_id) > 0 then first_value(case when consent_type = 'Update' then analytics_storage end ignore nulls) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-        else first_value(analytics_storage) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-      end as session_analytics_storage,
-      case 
-        when countif(consent_type = 'Update') over (partition by session_id) > 0 then first_value(case when consent_type = 'Update' then functionality_storage end ignore nulls) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-        else first_value(functionality_storage) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-      end as session_functionality_storage,
-      case 
-        when countif(consent_type = 'Update') over (partition by session_id) > 0 then first_value(case when consent_type = 'Update' then personalization_storage end ignore nulls) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-        else first_value(personalization_storage) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-      end as session_personalization_storage,
-      case 
-        when countif(consent_type = 'Update') over (partition by session_id) > 0 then first_value(case when consent_type = 'Update' then security_storage end ignore nulls) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-        else first_value(security_storage) over (partition by session_id order by event_timestamp asc rows between unbounded preceding and unbounded following)
-      end as session_security_storage,
-    from event_data
-  ),
-
-  session_data as (
+  session_logic as (
     select
-      -- USER DATA
-      user_date,
-      client_id,
-      user_id,
-      user_channel_grouping,
-      user_source,
-      user_tld_source,
-      user_campaign,
-      user_device_type,
-      user_country,
-      user_language,
-      user_type,
-      new_user,
+      ## USER DATA
+      user_date, 
+      client_id, 
+      user_id, 
+      user_channel_grouping, 
+      split(user_tld_source, '.')[safe_offset(0)] as user_source,
+      user_tld_source, 
+      user_campaign, 
+      user_device_type, 
+      user_country, 
+      user_language, 
+      user_type, 
+      new_user, 
       returning_user,
 
-      -- SESSION DATA
-      session_date,
-      session_number,
-      session_id,
-      session_start_timestamp,
+      ## SESSION DATA
+      session_date, 
+      session_number, 
+      session_id, 
+      session_start_timestamp, 
       session_duration_sec,
-      session_channel_grouping,
-      session_source,
-      session_tld_source,
-      session_campaign,
-      session_device_type,
-      session_country,
+      session_channel_grouping, 
+      split(session_tld_source, '.')[safe_offset(0)] as session_source,
+      session_tld_source, 
+      session_campaign, 
+      session_device_type, 
+      session_country, 
       session_browser_name,
       session_language,
-      cross_domain_session,
-      session_landing_page_category,
-      session_landing_page_location,
-      session_landing_page_title,
-      session_exit_page_category,
-      session_exit_page_location,
-      session_exit_page_title,
+      cross_domain_session, 
+      session_landing_page_category, 
+      session_landing_page_location, 
+      session_landing_page_title, 
+      session_exit_page_category, 
+      session_exit_page_location, 
+      session_exit_page_title, 
       session_hostname,
 
-      -- ECOMMERCE DATA
+      ## EVENTS
       countif(event_name = 'page_view') as page_view,
       countif(event_name = 'view_item_list') as view_item_list,
       countif(event_name = 'select_item') as select_item,
@@ -233,109 +57,255 @@ with event_data as (
       countif(event_name = 'add_payment_info') as add_payment_info,
       countif(event_name = 'purchase') as purchase,
       countif(event_name = 'refund') as refund,
-      ifnull(sum(transaction_value), 0) as purchase_revenue,
-      ifnull(sum(transaction_shipping), 0) as purchase_shipping,
-      ifnull(sum(transaction_tax), 0) as purchase_tax,
-      ifnull(sum(refund_value), 0) as refund_revenue,
-      ifnull(sum(refund_shipping), 0) as refund_shipping,
-      ifnull(sum(refund_tax), 0) as refund_tax,
 
-      -- CONSENT DATA
-      consent_timestamp,
-      consent_expressed,
-      case when session_ad_user_data = 'Granted' then 1 else 0 end as session_ad_user_data,
-      case when session_ad_personalization = 'Granted' then 1 else 0 end as session_ad_personalization,
-      case when session_ad_storage = 'Granted' then 1 else 0 end as session_ad_storage,
-      case when session_analytics_storage = 'Granted' then 1 else 0 end as session_analytics_storage,
-      case when session_functionality_storage = 'Granted' then 1 else 0 end as session_functionality_storage,
-      case when session_personalization_storage = 'Granted' then 1 else 0 end as session_personalization_storage,
-      case when session_security_storage = 'Granted' then 1 else 0 end as session_security_storage,
-    from event_data_def
+      ## ECOMMERCE DATA
+      ifnull(sum(case when event_name = 'purchase' then safe_cast(json_value(ecommerce, '$.value') as float64) end), 0) as purchase_revenue,
+      ifnull(sum(case when event_name = 'purchase' then safe_cast(json_value(ecommerce, '$.shipping') as float64) end), 0) as purchase_shipping,
+      ifnull(sum(case when event_name = 'purchase' then safe_cast(json_value(ecommerce, '$.tax') as float64) end), 0) as purchase_tax,
+      ifnull(sum(case when event_name = 'refund' then -safe_cast(json_value(ecommerce, '$.value') as float64) end), 0) as refund_revenue,
+      ifnull(sum(case when event_name = 'refund' then -safe_cast(json_value(ecommerce, '$.shipping') as float64) end), 0) as refund_shipping,
+      ifnull(sum(case when event_name = 'refund' then -safe_cast(json_value(ecommerce, '$.tax') as float64) end), 0) as refund_tax,
+
+      ## CONSENT DATA
+      min(event_timestamp) as first_timestamp,
+      min(case when consent_type = 'Update' then event_timestamp end) as update_timestamp,
+      countif(consent_type = 'Update') > 0 as has_update,
+
+      array_agg(case when consent_type = 'Update' then ad_user_data end ignore nulls order by event_timestamp asc limit 1)[safe_offset(0)] as upd_ad_user_data,
+      array_agg(ad_user_data order by event_timestamp asc limit 1)[safe_offset(0)] as def_ad_user_data,
+
+      array_agg(case when consent_type = 'Update' then ad_personalization end ignore nulls order by event_timestamp asc limit 1)[safe_offset(0)] as upd_ad_personalization,
+      array_agg(ad_personalization order by event_timestamp asc limit 1)[safe_offset(0)] as def_ad_personalization,
+
+      array_agg(case when consent_type = 'Update' then ad_storage end ignore nulls order by event_timestamp asc limit 1)[safe_offset(0)] as upd_ad_storage,
+      array_agg(ad_storage order by event_timestamp asc limit 1)[safe_offset(0)] as def_ad_storage,
+
+      array_agg(case when consent_type = 'Update' then analytics_storage end ignore nulls order by event_timestamp asc limit 1)[safe_offset(0)] as upd_analytics_storage,
+      array_agg(analytics_storage order by event_timestamp asc limit 1)[safe_offset(0)] as def_analytics_storage,
+
+      array_agg(case when consent_type = 'Update' then functionality_storage end ignore nulls order by event_timestamp asc limit 1)[safe_offset(0)] as upd_functionality_storage,
+      array_agg(functionality_storage order by event_timestamp asc limit 1)[safe_offset(0)] as def_functionality_storage,
+
+      array_agg(case when consent_type = 'Update' then personalization_storage end ignore nulls order by event_timestamp asc limit 1)[safe_offset(0)] as upd_personalization_storage,
+      array_agg(personalization_storage order by event_timestamp asc limit 1)[safe_offset(0)] as def_personalization_storage,
+
+      array_agg(case when consent_type = 'Update' then security_storage end ignore nulls order by event_timestamp asc limit 1)[safe_offset(0)] as upd_security_storage,
+      array_agg(security_storage order by event_timestamp asc limit 1)[safe_offset(0)] as def_security_storage
+
+    from base_events
     group by all
+  ),
+
+  session_prep as (
+    select
+      ## USER DATA
+      user_date, 
+      client_id, 
+      user_id, 
+      user_channel_grouping, 
+      user_source, 
+      user_tld_source, 
+      user_campaign, 
+      user_device_type, 
+      user_country, 
+      user_language, 
+      user_type, 
+      new_user, 
+      returning_user,
+
+      ## SESSION DATA
+      session_date, 
+      session_number, 
+      session_id, 
+      session_start_timestamp, 
+      session_duration_sec,
+      case when session_number = 1 then 1 else 0 end as new_session,
+      case when session_number > 1 then 1 else 0 end as returning_session,
+      case when page_view >= 2 and (session_duration_sec >= 10 or purchase >= 1) then 1 else 0 end as engaged_session,
+      session_channel_grouping, 
+      session_source, 
+      session_tld_source, 
+      session_campaign, 
+      session_device_type, 
+      session_country, 
+      session_browser_name, 
+      session_language,
+      cross_domain_session, 
+      session_landing_page_category, 
+      session_landing_page_location, 
+      session_landing_page_title, 
+      session_exit_page_category, 
+      session_exit_page_location, 
+      session_exit_page_title, 
+      session_hostname,
+
+      ## EVENTS
+      page_view,
+
+      ## ECOMMERCE DATA
+      view_item_list,
+      select_item,
+      view_item,
+      add_to_wishlist,
+      add_to_cart,
+      remove_from_cart,
+      view_cart,
+      begin_checkout,
+      add_shipping_info,
+      add_payment_info,
+      purchase,
+      refund,
+      purchase_revenue,
+      purchase_shipping,
+      purchase_tax,
+      refund_revenue,
+      refund_shipping,
+      refund_tax,
+
+      ## CONSENT RAW DATA FOR RESOLUTION
+      has_update,
+      update_timestamp,
+      first_timestamp,
+      upd_ad_user_data,
+      def_ad_user_data,
+      upd_ad_personalization,
+      def_ad_personalization,
+      upd_ad_storage,
+      def_ad_storage,
+      upd_analytics_storage,
+      def_analytics_storage,
+      upd_functionality_storage,
+      def_functionality_storage,
+      upd_personalization_storage,
+      def_personalization_storage,
+      upd_security_storage,
+      def_security_storage,
+
+      ## CONSENT RESOLVED DATA (From sessions.sql logic)
+      if(has_update, update_timestamp, first_timestamp) as consent_timestamp,
+      if(has_update, 'Yes', 'No') as consent_expressed,
+      if(if(has_update, upd_ad_user_data, def_ad_user_data) = 'Granted', 1, 0) as session_ad_user_data,
+      if(if(has_update, upd_ad_personalization, def_ad_personalization) = 'Granted', 1, 0) as session_ad_personalization,
+      if(if(has_update, upd_ad_storage, def_ad_storage) = 'Granted', 1, 0) as session_ad_storage,
+      if(if(has_update, upd_analytics_storage, def_analytics_storage) = 'Granted', 1, 0) as session_analytics_storage,
+      if(if(has_update, upd_functionality_storage, def_functionality_storage) = 'Granted', 1, 0) as session_functionality_storage,
+      if(if(has_update, upd_personalization_storage, def_personalization_storage) = 'Granted', 1, 0) as session_personalization_storage,
+      if(if(has_update, upd_security_storage, def_security_storage) = 'Granted', 1, 0) as session_security_storage
+    from session_logic
   )
 
-  select 
-    -- USER DATA
-    user_date,
-    client_id,
-    user_id,
-    user_channel_grouping,
-    user_source,
-    user_tld_source,
-    user_campaign,
-    user_device_type,
-    user_country,
-    user_language,
-    user_type,
-    new_user,
+  select
+    ## USER DATA
+    user_date, 
+    client_id, 
+    user_id, 
+    user_channel_grouping, 
+    user_source, 
+    user_tld_source, 
+    user_campaign, 
+    user_device_type, 
+    user_country, 
+    user_language, 
+    user_type, 
+    new_user, 
+    safe_divide(count(distinct new_user), count(distinct client_id)) as `%_new_users`,
     returning_user,
+    safe_divide(count(distinct returning_user), count(distinct client_id)) as `%_returning_users`,
+    safe_divide(sum(purchase), count(distinct client_id)) as user_conversion_rate,
+    safe_divide(sum(purchase_revenue), count(distinct client_id)) as user_value,
 
-    -- SESSION DATA
-    session_date,
-    session_number,
-    session_id,
-    session_start_timestamp,
+
+    ## SESSION DATA
+    session_date, 
+    session_number, 
+    session_id, 
+    session_start_timestamp, 
     session_duration_sec,
-    case 
-      when session_number = 1 then 1
-      else 0
-    end as first_session,
-    case 
-      when sum(page_view) >= 2 and (avg(session_duration_sec) >= 10 or sum(purchase) >= 1) then 1
-      else 0
-    end as engaged_session,
-    session_channel_grouping,
+    new_session,
+    safe_divide(sum(new_session), count(distinct session_id)) as `%_new_sessions`,
+    returning_session,
+    safe_divide(sum(returning_session), count(distinct session_id)) as `%_returning_sessions`,
+    engaged_session,
+    safe_divide(sum(engaged_session), count(distinct session_id)) as `%_engaged_sessions`,
+    safe_divide(sum(purchase), count(distinct session_id)) as session_conversion_rate,
+    safe_divide(sum(purchase_revenue), count(distinct session_id)) as session_value,
+    safe_divide(count(distinct session_id), count(distinct client_id)) as sessions_per_user,
+    safe_divide(sum(page_view), count(distinct session_id)) as page_view_per_session,
+    session_channel_grouping, 
     session_source, 
-    session_tld_source,
-    session_campaign,
-    session_device_type,
-    session_country,
-    session_browser_name,
+    session_tld_source, 
+    session_campaign, 
+    session_device_type, 
+    session_country, 
+    session_browser_name, 
     session_language,
-    cross_domain_session,
-    session_landing_page_category,
-    session_landing_page_location,
-    session_landing_page_title,
-    session_exit_page_category,
-    session_exit_page_location,
-    session_exit_page_title,
+    cross_domain_session, 
+    session_landing_page_category, 
+    session_landing_page_location, 
+    session_landing_page_title, 
+    session_exit_page_category, 
+    session_exit_page_location, 
+    session_exit_page_title, 
     session_hostname,
 
-    -- ECOMMERCE DATA
-    sum(page_view) as page_view,
-    sum(view_item_list) as view_item_list,
-    sum(select_item) as select_item,
-    sum(view_item) as view_item,
-    sum(add_to_wishlist) as add_to_wishlist,
-    sum(add_to_cart) as add_to_cart,
-    sum(remove_from_cart) as remove_from_cart,
-    sum(view_cart) as view_cart,
-    sum(begin_checkout) as begin_checkout,
-    sum(add_shipping_info) as add_shipping_info,
-    sum(add_payment_info) as add_payment_info,
-    sum(purchase) as purchase,
-    sum(refund) as refund,
-    sum(purchase_revenue) as purchase_revenue,
-    sum(purchase_shipping) as purchase_shipping,
-    sum(purchase_tax) as purchase_tax,
-    sum(refund_revenue) as refund_revenue,
-    sum(refund_shipping) as refund_shipping,
-    sum(refund_tax) as refund_tax,
-    sum(purchase) - sum(refund) as purchase_net_refund,
-    ifnull(sum(purchase_revenue), 0) - ifnull(sum(refund_revenue), 0) as revenue_net_refund,
-    ifnull(sum(purchase_shipping), 0) + ifnull(sum(refund_shipping), 0) as shipping_net_refund,
-    ifnull(sum(purchase_tax), 0) + ifnull(sum(refund_tax), 0) as tax_net_refund,
 
-    -- CONSENT DATA
+    ## EVENTS
+    page_view,
+
+    ## ECOMMERCE DATA
+    view_item_list,
+    select_item,
+    view_item,
+    add_to_wishlist,
+    add_to_cart,
+    remove_from_cart,
+    view_cart,
+    begin_checkout,
+    add_shipping_info,
+    add_payment_info,
+    purchase,
+    refund,
+    purchase_revenue,
+    purchase_shipping,
+    purchase_tax,
+    ifnull(safe_divide(sum(purchase_revenue), sum(purchase)), 0) as avg_order_value,
+    refund_revenue,
+    refund_shipping,
+    refund_tax,
+    purchase - refund as purchase_net_refund,
+    purchase_revenue - refund_revenue as revenue_net_refund,
+    purchase_shipping + refund_shipping as shipping_net_refund,
+    purchase_tax + refund_tax as tax_net_refund,
+
+    ## CONSENT DATA
     consent_timestamp,
     consent_expressed,
+
     session_ad_user_data,
+    safe_divide(sum(session_ad_user_data), count(distinct session_id)) as `%_ad_user_data_accepted`,
+    1 - safe_divide(sum(session_ad_user_data), count(distinct session_id)) as `%_ad_user_data_denied`,
+
     session_ad_personalization,
+    safe_divide(sum(session_ad_personalization), count(distinct session_id)) as `%_ad_personalization_accepted`,
+    1 - safe_divide(sum(session_ad_personalization), count(distinct session_id)) as `%_ad_personalization_denied`,
+    
     session_ad_storage,
+    safe_divide(sum(session_ad_storage), count(distinct session_id)) as `%_ad_storage_accepted`,
+    1 - safe_divide(sum(session_ad_storage), count(distinct session_id)) as `%_ad_storage_denied`,
+
     session_analytics_storage,
+    safe_divide(sum(session_analytics_storage), count(distinct session_id)) as `%_analytics_storage_accepted`,
+    1 - safe_divide(sum(session_analytics_storage), count(distinct session_id)) as `%_analytics_storage_denied`,
+
     session_functionality_storage,
+    safe_divide(sum(session_functionality_storage), count(distinct session_id)) as `%_functionality_storage_accepted`,
+    1 - safe_divide(sum(session_functionality_storage), count(distinct session_id)) as `%_functionality_storage_denied`,
+
     session_personalization_storage,
-    session_security_storage
-  from session_data
+    session_security_storage,
+    safe_divide(sum(session_security_storage), count(distinct session_id)) as `%_security_storage_accepted`,
+    1 - safe_divide(sum(session_security_storage), count(distinct session_id)) as `%_security_storage_denied`,
+
+  from session_prep
   group by all
 );

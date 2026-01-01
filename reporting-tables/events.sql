@@ -49,7 +49,7 @@ select
     session_id,
     
     (select value.int from unnest(session_data) where name = 'session_number') as session_number,
-    first_value((select value.string from unnest(session_data) where name = 'is_cross_domain_session')) over (partition by session_id order by event_timestamp desc) as is_cross_domain_session,
+    first_value((select value.string from unnest(session_data) where name = 'cross_domain_session')) over (partition by session_id order by event_timestamp desc) as cross_domain_session,
     
     (select value.int from unnest(session_data) where name = 'session_start_timestamp') as session_start_timestamp,
     first_value((select value.int from unnest(session_data) where name = 'session_end_timestamp')) over (partition by session_id order by event_timestamp desc) as session_end_timestamp,

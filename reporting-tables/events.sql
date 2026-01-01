@@ -3,6 +3,7 @@ select
     # USER DATA
     user_date,
     first_value((select value.string from unnest(session_data) where name = 'user_id') IGNORE NULLS) over (partition by session_id order by event_timestamp desc) as user_id,
+    first_value((select value.string from unnest(user_data) where name = 'user_level') IGNORE NULLS) over (partition by session_id order by event_timestamp desc) as user_level,
     client_id,
 
     case 

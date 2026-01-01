@@ -56,7 +56,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.pages`(start_da
       page_unload_timestamp,
       timestamp_millis(page_unload_timestamp) as page_unload_datetime,
       
-      -- Performance metrics aggregated using standard MAX() since we group by page_id
+      -- Performance metrics (aggregated at page_id level in next step)
       max(time_to_dom_interactive) as max_time_to_dom_interactive,
       max(page_render_time) as max_page_render_time,
       max(time_to_dom_complete) as max_time_to_dom_complete,
@@ -126,7 +126,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.pages`(start_da
     max_page_status_code as page_status_code,
     
     ## TOTALS
-    sum(page_view) as page_view
+    sum(page_view) as page_view,
   from page_prep
   group by all
 );

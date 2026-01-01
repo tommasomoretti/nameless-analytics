@@ -162,7 +162,7 @@ with base_events as (
       refund_shipping,
       refund_tax,
 
-      ## CONSENT RAW DATA FOR RESOLUTION
+      ## CONSENT DATA
       has_update,
       update_timestamp,
       first_timestamp,
@@ -181,7 +181,7 @@ with base_events as (
       upd_security_storage,
       def_security_storage,
 
-      ## CONSENT RESOLVED DATA (From sessions.sql logic)
+      ## CONSENT DATA
       if(has_update, update_timestamp, first_timestamp) as consent_timestamp,
       if(has_update, 'Yes', 'No') as consent_expressed,
       if(if(has_update, upd_ad_user_data, def_ad_user_data) = 'Granted', 1, 0) as session_ad_user_data,
@@ -213,7 +213,6 @@ with base_events as (
     safe_divide(count(distinct returning_user), count(distinct client_id)) as `%_returning_users`,
     safe_divide(sum(purchase), count(distinct client_id)) as user_conversion_rate,
     safe_divide(sum(purchase_revenue), count(distinct client_id)) as user_value,
-
 
     ## SESSION DATA
     session_date, 
@@ -247,7 +246,6 @@ with base_events as (
     session_exit_page_location, 
     session_exit_page_title, 
     session_hostname,
-
 
     ## EVENTS
     page_view,

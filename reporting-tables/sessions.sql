@@ -1,6 +1,68 @@
 CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start_date DATE, end_date DATE) AS (
-with base_events as (
-    select * from `tom-moretti.nameless_analytics.events`(start_date, end_date, 'session')
+  with base_events as (
+    select 
+      # USER DATA
+      user_date, 
+      user_id,
+      client_id, 
+      user_type, 
+      new_user, 
+      returning_user,
+      user_channel_grouping, 
+      user_source,
+      user_tld_source, 
+      user_campaign, 
+      user_campaign_id,
+      user_campaign_click_id,
+      user_campaign_term,
+      user_campaign_content,
+      user_device_type, 
+      user_country, 
+      user_language, 
+
+      # SESSION DATA
+      session_date, 
+      session_id, 
+      session_number, 
+      cross_domain_session, 
+      session_start_timestamp, 
+      session_end_timestamp,
+      session_duration_sec,
+      new_session,
+      returning_session,
+      session_channel_grouping, 
+      session_source,
+      session_tld_source, 
+      session_campaign,
+      session_campaign_id,
+      session_campaign_click_id,
+      session_campaign_term,
+      session_campaign_content,
+      session_device_type, 
+      session_browser_name,
+      session_country, 
+      session_language,
+      session_hostname,
+      session_landing_page_category, 
+      session_landing_page_location, 
+      session_landing_page_title, 
+      session_exit_page_category, 
+      session_exit_page_location, 
+      session_exit_page_title,
+
+      # EVENT DATA
+      event_timestamp,
+      event_name,
+      ecommerce,
+      consent_type,
+      ad_user_data,
+      ad_personalization,
+      ad_storage,
+      analytics_storage,
+      functionality_storage,
+      personalization_storage,
+      security_storage
+    from `tom-moretti.nameless_analytics.events`(start_date, end_date, 'session')
   ),
 
   session_logic as (

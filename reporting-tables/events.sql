@@ -1,5 +1,5 @@
 CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.events`(start_date DATE, end_date DATE, date_scope STRING) AS (
-select
+  select
     # USER DATA
     user_date,
     first_value((select value.string from unnest(session_data) where name = 'user_id') IGNORE NULLS) over (partition by session_id order by event_timestamp desc) as user_id,
@@ -163,10 +163,8 @@ select
     # ECOMMERCE DATA
     ecommerce,
 
-
     # DATALAYER DATA
     datalayer,
-
 
     # CONSENT DATA
     (select value.string from unnest(consent_data) where name = 'consent_type') as consent_type, 
@@ -178,7 +176,6 @@ select
     (select value.string from unnest(consent_data) where name = 'functionality_storage') as functionality_storage, 
     (select value.string from unnest(consent_data) where name = 'personalization_storage') as personalization_storage, 
     (select value.string from unnest(consent_data) where name = 'security_storage') as security_storage, 
-    
     
     # REQUEST DATA
     event_origin,
@@ -193,7 +190,7 @@ select
     (select value.int from unnest(gtm_data) where name = 'ss_tag_id') as ss_tag_id,
 
     (select value.int from unnest(gtm_data) where name = 'processing_event_timestamp') as processing_event_timestamp,
-    (select value.int from unnest(gtm_data) where name = 'content_length') as content_length,
+    (select value.int from unnest(gtm_data) where name = 'content_length') as content_length
     
   from `tom-moretti.nameless_analytics.events_raw`
   where true
@@ -203,5 +200,4 @@ select
       when date_scope = 'page' then page_date
       when date_scope = 'event' then event_date
     end between start_date and end_date
-  order by event_timestamp desc
 );

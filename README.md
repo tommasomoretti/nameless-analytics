@@ -539,3 +539,5 @@ Before starting the setup, ensure you have:
 
 ---
 Reach me at: [Email](mailto:hello@tommasomoretti.com) | [Website](https://tommasomoretti.com) | [Twitter](https://twitter.com/tommoretti88) | [LinkedIn](https://www.linkedin.com/in/tommasomoretti/)
+
+<!-- connection_test -->

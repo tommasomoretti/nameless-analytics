@@ -3,6 +3,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
     select 
       # USER DATA
       user_date, 
+      user_id,
       client_id, 
       user_type, 
       new_user, 

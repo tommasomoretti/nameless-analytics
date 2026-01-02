@@ -85,12 +85,14 @@ The tracker automatically generates and manages unique identifiers for pages, an
 
 #### Request payload data
 The request data is sent via a POST request in JSON format. It is structured into:
-* User data: data related to users.
-* Session data: data related to sessions.
-* Page data: data related to pages.
-* Event data: data related to events.
-* dataLayer data.
-* Ecommerce data.
+* User data
+* Session data
+* Page data
+* Event data
+* dataLayer data
+* Ecommerce data
+* consent data
+* GTM data
 
 <details><summary>Request payload example with only standard parameters and no customization at all</summary>
 

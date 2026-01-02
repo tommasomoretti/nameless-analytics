@@ -452,34 +452,33 @@ Aggregates data at the user level, calculating lifecycle metrics like total sess
 | **USER DATA** | | |
 | `user_date` | DATE | Date of the user's first visit |
 | `client_id` | STRING | Unique identifier for the user |
-| `user_id` | STRING | Persistent user identifier |
-| `user_type` | STRING | "new_user" or "returning_user" |
-| `new_user` | STRING | Client ID if new user |
-| `returning_user` | STRING | Client ID if returning user |
-| `user_first_session_ts` | TIMESTAMP | Timestamp of the first session |
-| `user_last_session_ts` | TIMESTAMP | Timestamp of the most recent session |
-| `days_from_last_purchase` | INTEGER | Days since the last purchase |
-| `days_from_first_to_last_visit` | INTEGER | Total lifecycle duration in days |
-| **ACQUISITION** | | |
 | `user_channel_grouping` | STRING | Acquisition channel grouping |
 | `user_source` | STRING | Acquisition source |
 | `user_tld_source` | STRING | Acquisition TLD source |
 | `user_campaign` | STRING | Acquisition campaign |
-| `user_campaign_id` | STRING | Acquisition campaign ID |
 | `user_campaign_click_id` | STRING | Acquisition campaign click ID |
 | `user_campaign_term` | STRING | Acquisition campaign term |
 | `user_campaign_content` | STRING | Acquisition campaign content |
 | `user_device_type` | STRING | Device type used |
 | `user_country` | STRING | User's country |
 | `user_language` | STRING | User's language |
+| `user_type` | STRING | "new_user" or "returning_user" |
+| `new_user_client_id` | STRING | Client ID if new user |
+| `returning_user_client_id` | STRING | Client ID if returning user |
+| `days_from_first_to_last_visit` | INTEGER | Total lifecycle duration in days |
+| `days_from_first_visit` | INTEGER | Days since first visit |
+| `days_from_last_visit` | INTEGER | Days since last visit |
 | **ACTIVITY & ECOMMERCE** | | |
-| `customer_type` | STRING | "Not customer", "New Customer", "Returning Customer" |
+| `is_customer` | STRING | "Customer" or "Not customer" |
+| `customer_type` | STRING | "Not customer", "New customer", "Returning customer" |
 | `customers` | INTEGER | 1 if the user is a customer |
 | `new_customers` | INTEGER | 1 if the user became a customer in this period |
 | `returning_customers` | INTEGER | 1 if the user was already a customer |
 | `sessions` | INTEGER | Total number of sessions |
 | `session_duration_sec` | FLOAT | Average session duration |
 | `page_view` | INTEGER | Total page views |
+| `days_from_first_purchase` | INTEGER | Days since first purchase |
+| `days_from_last_purchase` | INTEGER | Days since last purchase |
 | `purchase` | INTEGER | Total purchases count |
 | `refund` | INTEGER | Total refunds count |
 | `item_quantity_purchased` | INTEGER | Total items purchased |

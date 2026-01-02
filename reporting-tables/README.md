@@ -238,6 +238,8 @@ execute immediate dates_table_sql;
 ### Events raw table
 This main table is partitioned by `event_date` and clustered by `user_date`, `session_date`, `page_date`, and `event_name`.
 
+<details><summary>Output Fields Summary</summary>
+
 | Field name      | Type    | Mode     | Description                                |
 |-----------------|---------|----------|--------------------------------------------|
 | client_id       | STRING  | REQUIRED | Client ID.                                 |
@@ -259,9 +261,13 @@ This main table is partitioned by `event_date` and clustered by `user_date`, `se
 | datalayer       | JSON    | NULLABLE | Current `dataLayer` value.                 |
 | consent_data    | RECORD  | REPEATED | Consent data.                              |
 | gtm_data        | RECORD  | REPEATED | GTM performance and execution data.        |
- 
+
+</details>
+
 ### Dates table
 This table is partitioned by `date` and clustered by `month_name` and `day_name`.
+
+<details><summary>Output Fields Summary</summary>
 
 | Field name         | Type    | Mode     | Description                                                     |
 |--------------------|---------|----------|---------------------------------------------------------------- |
@@ -276,6 +282,8 @@ This table is partitioned by `date` and clustered by `month_name` and `day_name`
 | day_name           | STRING  | NULLABLE | Full name of the day of the week (e.g., Monday).                |
 | day_of_week_number | INTEGER | NULLABLE | Day of the week number (1 for Monday, 7 for Sunday).            |
 | is_weekend         | BOOLEAN | NULLABLE | True if the day is a Saturday or Sunday.                        |
+
+</details>
 
 </br>
 

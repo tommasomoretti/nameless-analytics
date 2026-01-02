@@ -536,6 +536,8 @@ Before starting the setup, ensure you have:
 
 ## External Resources
 - [Live Demo](https://namelessanalytics.com) (Open the dev console).
+- [Changelog](CHANGELOG.md)
+- [Roadmap](ROADMAP.md)
 - [Contributing Guidelines](CONTRIBUTING.md)
 - [MIT License](LICENSE)
 

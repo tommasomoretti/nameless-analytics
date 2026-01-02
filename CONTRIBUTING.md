@@ -1,4 +1,4 @@
-# Contributing to Nameless Analytics
+# Nameless Analytics | Contributing
 
 Thank you for your interest in contributing to Nameless Analytics! We welcome contributions from the community to help make this open-source analytics suite even better.
 

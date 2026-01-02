@@ -1,4 +1,4 @@
-# Nameless Analytics - Roadmap
+# Nameless Analytics | Roadmap
 
 This file tracks upcoming features and improvements. For completed work and release history, see [CHANGELOG.md](CHANGELOG.md).
 

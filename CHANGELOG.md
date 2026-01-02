@@ -1,4 +1,4 @@
-# Changelog
+# Nameless Analytics | Changelog
 
 All notable changes to Nameless Analytics will be documented in this file.
 

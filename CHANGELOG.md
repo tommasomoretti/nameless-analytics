@@ -2,18 +2,7 @@
 
 All notable changes to Nameless Analytics will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
----
-
-## [Unreleased]
-
-### Planned
-- **BigQuery Master Script**: Create a single SQL/DML script to initialize all reporting table functions at once.
-- **Error/Edge Case Management**: Rethink the management of errors and edge cases from scratch (currently in `nameless-analytics-client-side-tracker-tag`).
-- **Gemini Gem**: Release the specialized Gemini model for platform Q&A.
-- **Streaming Protocol**: Finalize development of the Python/Server-to-Server ingestion protocol and add to documentation.
+> **Note**: For upcoming features and planned improvements, see the [Roadmap](ROADMAP.md).
 
 ---
 
@@ -79,6 +68,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[Unreleased]: https://github.com/nameless-analytics/nameless-analytics/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/nameless-analytics/nameless-analytics/compare/v0.9.0...v1.0.0
 [0.9.0]: https://github.com/nameless-analytics/nameless-analytics/releases/tag/v0.9.0

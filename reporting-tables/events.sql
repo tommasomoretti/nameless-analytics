@@ -3,7 +3,6 @@ select
     # USER DATA
     user_date,
     first_value((select value.string from unnest(session_data) where name = 'user_id') IGNORE NULLS) over (partition by session_id order by event_timestamp desc) as user_id,
-    first_value((select value.string from unnest(user_data) where name = 'user_level') IGNORE NULLS) over (partition by session_id order by event_timestamp desc) as user_level,
     client_id,
 
     case 
@@ -58,7 +57,10 @@ select
       timestamp_millis(first_value((select value.int from unnest(session_data) where name = 'session_end_timestamp')) over (partition by session_id order by event_timestamp desc)), 
       timestamp_millis((select value.int from unnest(session_data) where name = 'session_start_timestamp'))
     , second) as session_duration_sec, -- Da integrare in firestore?
-      
+
+    case when (select value.int from unnest(session_data) where name = 'session_number') = 1 then 1 else 0 end as new_session,
+    case when (select value.int from unnest(session_data) where name = 'session_number') > 1 then 1 else 0 end as returning_session,
+
     (select value.string from unnest(session_data) where name = 'session_channel_grouping') as session_channel_grouping,
     (select value.string from unnest(session_data) where name = 'session_source') as session_source,
     (select value.string from unnest(session_data) where name = 'session_tld_source') as session_tld_source,

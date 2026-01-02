@@ -286,6 +286,257 @@ Table functions are predefined SQL queries that simplify data analysis by transf
 
 Unlike other systems, Nameless Analytics reporting functions are designed to work directly on the `events_raw` table as the single source of truth. By leveraging BigQuery **Window Functions**. This approach ensures that reports always reflect the most up-to-date state of the data without the need for complex ETL processes or intermediate staging tables.
 
+### Reporting fields
+This table illustrates the fields available across different table functions, allowing you to easily identify common data points and specific metrics for each report.
+
+<details><summary>Output Fields Matrix</summary>
+
+| Field Name | Events | Users | Sessions | Pages | Transactions | Products | Open Funnel | Closed Funnel | GTM Perf | Consents |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `ad_personalization` | X | | | | | | | | | X |
+| `ad_personalization_accepted_percentage` | | | X | | | | | | | |
+| `ad_personalization_denied_percentage` | | | X | | | | | | | |
+| `ad_storage` | X | | | | | | | | | X |
+| `ad_storage_accepted_percentage` | | | X | | | | | | | |
+| `ad_storage_denied_percentage` | | | X | | | | | | | |
+| `ad_user_data` | X | | | | | | | | | X |
+| `ad_user_data_accepted_percentage` | | | X | | | | | | | |
+| `ad_user_data_denied_percentage` | | | X | | | | | | | |
+| `add_payment_info` | | | X | | | X | | | | |
+| `add_shipping_info` | | | X | | | X | | | | |
+| `add_to_cart` | | | X | | | X | | | | |
+| `add_to_wishlist` | | | X | | | X | | | | |
+| `analytics_storage` | X | | | | | | | | | X |
+| `analytics_storage_accepted_percentage` | | | X | | | | | | | |
+| `analytics_storage_denied_percentage` | | | X | | | | | | | |
+| `avg_order_value` | | | X | | | | | | | |
+| `avg_purchase_value` | | X | | | | | | | | |
+| `avg_refund_value` | | X | | | | | | | | |
+| `begin_checkout` | | | X | | | X | | | | |
+| `browser_language` | X | | | | | | | | | |
+| `browser_name` | X | | | | | | | | | |
+| `browser_version` | X | | | | | | | | | |
+| `campaign` | X | | | | | | | | | |
+| `campaign_click_id` | X | | | | | | | | | |
+| `campaign_content` | X | | | | | | | | | |
+| `campaign_id` | X | | | | | | | | | |
+| `campaign_term` | X | | | | | | | | | |
+| `channel_grouping` | X | | | | | | | | | |
+| `city` | X | | | | | | | | | |
+| `client_id` | X | X | X | X | X | X | X | X | X | X |
+| `client_id_next_step` | | | | | | | X | X | | |
+| `consent_expressed` | | | X | | | | | | | |
+| `consent_timestamp` | | | X | | | | | | | |
+| `consent_type` | X | | | | | | | | | X |
+| `content_length` | X | | | | | | | | X | |
+| `country` | X | | | | | | | | | |
+| `creative_name` | | | | | | X | | | | |
+| `creative_slot` | | | | | | X | | | | |
+| `cross_domain_id` | X | | | | | | | | | |
+| `cross_domain_session` | X | | X | X | X | X | X | | X | |
+| `cs_container_id` | X | | | | | | | | X | |
+| `cs_hostname` | X | | | | | | | | X | |
+| `cs_tag_id` | X | | | | | | | | | |
+| `cs_tag_name` | X | | | | | | | | | |
+| `customer_type` | | X | | | | | | | | |
+| `customers` | | X | | | | | | | | |
+| `dataLayer` / `datalayer` | X | | | | | | | | X | |
+| `days_from_first_purchase` | | X | | | | | | | | |
+| `days_from_first_to_last_visit` | X | X | | | | | | | | |
+| `days_from_first_visit` | X | X | | | | | | | | |
+| `days_from_last_purchase` | | X | | | | | | | | |
+| `days_from_last_visit` | X | X | | | | | | | | |
+| `delay_in_milliseconds` | | | | | | | | | X | |
+| `delay_in_seconds` | | | | | | | | | X | |
+| `device_model` | X | | | | | | | | | |
+| `device_type` | X | | | | | | | | | |
+| `device_vendor` | X | | | | | | | | | |
+| `ecommerce` | X | | | | | | | | X | |
+| `engaged_session` | | | X | | | | | | | |
+| `engaged_sessions_percentage` | | | X | | | | | | | |
+| `event_data` | X | | | | | | | | X | |
+| `event_date` | X | | | | X | X | X | | X | X |
+| `event_datetime` | | | | | | | | | X | |
+| `event_id` | X | | | | | | | | X | |
+| `event_name` | X | | | | X | X | | | X | X |
+| `event_number` | X | | | | | | | | | |
+| `event_origin` | X | | | | | | | | X | |
+| `event_timestamp` | X | | | | X | X | | | X | X |
+| `event_type` | X | | | | | | | | | |
+| `first_session` | | | X | | | | | | | |
+| `functionality_storage` | X | | | | | | | | | X |
+| `functionality_storage_accepted_percentage` | | | X | | | | | | | |
+| `functionality_storage_denied_percentage` | | | X | | | | | | | |
+| `gtm_data` | X | | | | | | | | | |
+| `hit_number` | | | | | | | | | X | |
+| `is_customer` | | X | | | | | | | | |
+| `item_affiliation` | | | | | | X | | | | |
+| `item_brand` | | | | | | X | | | | |
+| `item_category` | | | | | | X | | | | |
+| `item_category_2/3/4/5` | | | | | | X | | | | |
+| `item_coupon` | | | | | | X | | | | |
+| `item_discount` | | | | | | X | | | | |
+| `item_id` | | | | | | X | | | | |
+| `item_list_id` | | | | | | X | | | | |
+| `item_list_name` | | | | | | X | | | | |
+| `item_name` | | | | | | X | | | | |
+| `item_purchase_revenue` | | | | | | X | | | | |
+| `item_quantity_added_to_cart` | | | | | | X | | | | |
+| `item_quantity_purchased` | | X | | | | X | | | | |
+| `item_quantity_refunded` | | X | | | | X | | | | |
+| `item_quantity_removed_from_cart` | | | | | | X | | | | |
+| `item_refund_revenue` | | | | | | X | | | | |
+| `item_revenue_net_refund` | | | | | | X | | | | |
+| `item_unique_purchases` | | | | | | X | | | | |
+| `item_variant` | | | | | | X | | | | |
+| `list_id` | | | | | | X | | | | |
+| `list_name` | | | | | | X | | | | |
+| `new_customers` | | X | | | | | | | | |
+| `new_session` | X | | X | X | | | | | | |
+| `new_sessions_percentage` | | | X | | | | | | | |
+| `new_user` | X | | X | X | X | X | X | | X | |
+| `new_user_client_id` | | X | | | | | | | | |
+| `new_users_percentage` | | | X | | | | | | | |
+| `os_name` | X | | | | | | | | | |
+| `os_version` | X | | | | | | | | | |
+| `page_category` | X | | | X | | | | | | |
+| `page_data` | X | | | | | | | | X | |
+| `page_date` | X | | | X | | | | | | |
+| `page_extension` | X | | | | | | | | | |
+| `page_fragment` | X | | | | | | | | | |
+| `page_hostname` | X | | | X | | | | | | |
+| `page_hostname_protocol` | X | | | | | | | | | |
+| `page_id` | X | | | X | | | | | | |
+| `page_language` | X | | | | | | | | | |
+| `page_load_datetime` | | | | X | | | | | | |
+| `page_load_time_sec` | | | | X | | | | | | |
+| `page_load_timestamp` | X | | | | | | | | | |
+| `page_location` | X | | | X | | | | | | |
+| `page_query` | X | | | | | | | | | |
+| `page_referrer` | X | | | | | | | | | |
+| `page_render_time` | X | | | X | | | | | | |
+| `page_status_code` | X | | | X | | | | | | |
+| `page_title` | X | | | X | | | | | | |
+| `page_unload_datetime` | | | | X | | | | | | |
+| `page_unload_timestamp` | X | | | | | | | | | |
+| `page_view` | | X | X | X | | | | | | |
+| `page_view_number` | X | | | X | | | | | | |
+| `page_view_per_session` | | | X | | | | | | | |
+| `personalization_storage` | X | | | | | | | | | X |
+| `processing_event_timestamp` | X | | | | | | | | X | |
+| `promotion_id` | | | | | | X | | | | |
+| `promotion_name` | | | | | | X | | | | |
+| `purchase` | | X | X | | X | | | | | |
+| `purchase_net_refund` | | | X | | X | | | | | |
+| `purchase_revenue` | | X | X | | X | | | | | |
+| `purchase_shipping` | | | X | | X | | | | | |
+| `purchase_tax` | | | X | | X | | | | | |
+| `refund` | | X | X | | X | | | | | |
+| `refund_revenue` | | X | X | | X | | | | | |
+| `refund_shipping` | | | X | | X | | | | | |
+| `refund_tax` | | | X | | X | | | | | |
+| `remove_from_cart` | | | X | | | X | | | | |
+| `respect_consent_mode` | X | | | | | | | | | X |
+| `returning_customers` | | X | | | | | | | | |
+| `returning_session` | X | | X | X | | | | | | |
+| `returning_sessions_percentage` | | | X | | | | | | | |
+| `returning_user` | X | | X | X | X | X | X | | X | |
+| `returning_user_client_id` | | X | | | | | | | | |
+| `returning_users_percentage` | | | X | | | | | | | |
+| `revenue_net_refund` | | X | X | | X | | | | | |
+| `screen_size` | X | | | | | | | | | |
+| `search_term` | X | | | | | | | | | |
+| `security_storage` | X | | | | | | | | | X |
+| `security_storage_accepted_percentage` | | | X | | | | | | | |
+| `security_storage_denied_percentage` | | | X | | | | | | | |
+| `select_item` | | | X | | | X | | | | |
+| `select_promotion` | | | | | | X | | | | |
+| `session_ad_personalization` | | | X | | | | | | | |
+| `session_ad_storage` | | | X | | | | | | | |
+| `session_ad_user_data` | | | X | | | | | | | |
+| `session_analytics_storage` | | | X | | | | | | | |
+| `session_browser_name` | X | | X | X | X | X | X | | X | |
+| `session_campaign` | X | | X | X | X | X | X | | X | |
+| `session_campaign_click_id` | X | | X | X | | | | | | |
+| `session_campaign_content` | X | | X | X | | | | | | |
+| `session_campaign_id` | X | | | | | | | | | |
+| `session_campaign_term` | X | | X | X | | | | | | |
+| `session_channel_grouping` | X | | X | X | X | X | X | X | X | |
+| `session_conversion_rate` | | | X | | | | | | | |
+| `session_country` | X | | X | X | X | X | X | X | X | |
+| `session_data` | X | | | | | | | | | |
+| `session_date` | X | | X | X | | | X | | X | |
+| `session_device_type` | X | | X | X | X | X | X | X | X | |
+| `session_duration_sec` | X | X | X | X | | | X | | X | |
+| `session_end_timestamp` | X | | | | | | X | | X | |
+| `session_exit_page_category` | X | | X | X | | | X | | X | |
+| `session_exit_page_location` | X | | X | X | | | X | | X | |
+| `session_exit_page_title` | X | | X | X | | | X | | X | |
+| `session_functionality_storage` | | | X | | | | | | | |
+| `session_hostname` | X | | X | X | | | X | | X | |
+| `session_id` | X | | X | X | X | X | X | X | X | X |
+| `session_id_next_step` | | | | | | | X | | | |
+| `session_landing_page_category` | X | | X | X | | | X | | X | |
+| `session_landing_page_location` | X | | X | X | | | X | | X | |
+| `session_landing_page_title` | X | | X | X | | | X | | X | |
+| `session_language` | X | | X | X | X | X | X | | X | |
+| `session_number` | X | | X | X | X | X | X | | X | |
+| `session_personalization_storage` | | | X | | | | | | | |
+| `session_security_storage` | | | X | | | | | | | |
+| `session_source` | X | | X | X | X | X | X | X | X | |
+| `session_start_timestamp` | X | | X | X | X | X | X | | X | |
+| `session_tld_source` | X | | X | X | X | X | X | | X | |
+| `session_value` | | | X | | | | | | | |
+| `sessions` | | X | | | | | | | | |
+| `sessions_per_user` | | | X | | | | | | | |
+| `shipping_net_refund` | | | X | | X | | | | | |
+| `source` | X | | | | | | | | | |
+| `ss_container_id` | X | | | | | | | | X | |
+| `ss_hostname` | X | | | | | | | | X | |
+| `ss_tag_id` | X | | | | | | | | | |
+| `ss_tag_name` | X | | | | | | | | | |
+| `step_index` | | | | | | | | X | | |
+| `step_name` | | | | | | | X | X | | |
+| `tax_net_refund` | | | X | | X | | | | | |
+| `time_on_page` | X | | | X | | | | | | |
+| `time_to_dom_complete` | X | | | X | | | | | | |
+| `time_to_dom_interactive` | X | | | X | | | | | | |
+| `tld_source` | X | | | | | | | | | |
+| `total_page_load_time` | X | | | | | | | | | |
+| `transaction_coupon` | | | | | X | | | | | |
+| `transaction_currency` | | | | | X | | | | | |
+| `transaction_id` | | | | | X | X | | | | |
+| `user_agent` | X | | | | | | | | | |
+| `user_campaign` | X | X | X | X | X | X | X | | X | |
+| `user_campaign_click_id` | X | X | X | X | | | | | | |
+| `user_campaign_content` | X | X | X | X | | | | | | |
+| `user_campaign_id` | X | | | | | | | | | |
+| `user_campaign_term` | X | X | X | X | | | | | | |
+| `user_channel_grouping` | X | X | X | X | X | X | X | | X | |
+| `user_conversion_rate` | | | X | | | | | | | |
+| `user_country` | X | X | X | X | X | X | X | | X | |
+| `user_data` | X | | | | | | | | | |
+| `user_date` | X | X | X | X | X | X | X | | X | |
+| `user_device_type` | X | X | X | X | X | X | X | | X | |
+| `user_first_session_timestamp` | X | | | | | | | | | |
+| `user_id` | X | | X | | X | X | X | | X | |
+| `user_id_next_step` | | | | | | | X | | | |
+| `user_language` | X | X | X | X | X | X | X | | X | |
+| `user_last_session_timestamp` | X | | | | | | | | | |
+| `user_source` | X | X | X | X | X | X | X | | X | |
+| `user_tld_source` | X | X | X | X | X | X | X | | X | |
+| `user_type` | X | X | X | X | X | X | X | X | X | |
+| `user_value` | | | X | | | | | | | |
+| `view_cart` | | | X | | | X | | | | |
+| `view_item` | | | X | | | X | | | | |
+| `view_item_list` | | | X | | | X | | | | |
+| `view_promotion` | | | | | | X | | | | |
+| `viewport_size` | X | | | | | | | | | |
+
+</details>
+
+
+
 ### Create table functions
 <details><summary>To create the table functions use this DML statement.</summary>
 
@@ -358,7 +609,7 @@ Flattens raw event data and extracts custom parameters, making it easier to anal
 | **PAGE DATA** | | |
 | `page_date` | DATE | Date of the page view |
 | `page_id` | STRING | Unique page view ID |
-| `page_view_number` | INTEGER | Sequential page view number per session |
+| `page_view_number` | INTEGER | Sequential page view number |
 | `page_load_timestamp` | INTEGER | Timestamp when page loaded |
 | `page_unload_timestamp` | INTEGER | Timestamp when page unloaded |
 | `page_category` | STRING | Page category |
@@ -378,7 +629,7 @@ Flattens raw event data and extracts custom parameters, making it easier to anal
 | `event_timestamp` | INTEGER | Microsecond timestamp |
 | `event_name` | STRING | Event name |
 | `event_id` | STRING | Unique event ID |
-| `event_number` | INTEGER | Sequential event number per session |
+| `event_number` | INTEGER | Sequential event number |
 | `event_type` | STRING | Type of event |
 | `channel_grouping` | STRING | Event channel grouping |
 | `source` | STRING | Event source |
@@ -407,9 +658,11 @@ Flattens raw event data and extracts custom parameters, making it easier to anal
 | `time_to_dom_complete` | INTEGER | Performance metric (ms) |
 | `total_page_load_time` | INTEGER | Performance metric (ms) |
 | `search_term` | STRING | Search query (for search events) |
-| **ECOMMERCE & CONSENT** | | |
+| **ECOMMERCE** | | |
 | `ecommerce` | JSON | Ecommerce object |
+| **DATALAYER DATA** | | |
 | `datalayer` | JSON | DataLayer state |
+| **CONSENT DATA** | | |
 | `consent_type` | STRING | Consent update type |
 | `respect_consent_mode` | STRING | Flag for consent mode respect |
 | `ad_user_data` | STRING | Consent status |
@@ -500,50 +753,111 @@ Groups events into individual sessions, calculating duration, bounce rates, and 
 
 | Field name | Type | Description |
 | :--- | :--- | :--- |
+| **USER DATA** | | |
+| `user_date` | DATE | Date of the user's first visit |
+| `user_id` | STRING | Persistent user identifier |
+| `client_id` | STRING | Unique identifier for the user |
+| `user_type` | STRING | "new_user" or "returning_user" |
+| `new_user` | STRING | Client ID if new user |
+| `new_users_percentage` | FLOAT | Percentage of new users |
+| `returning_user` | STRING | Client ID if returning user |
+| `returning_users_percentage` | FLOAT | Percentage of returning users |
+| `user_channel_grouping` | STRING | Acquisition channel grouping |
+| `user_source` | STRING | Acquisition source |
+| `user_tld_source` | STRING | Acquisition TLD source |
+| `user_campaign` | STRING | Acquisition campaign |
+| `user_campaign_click_id` | STRING | Acquisition campaign click ID |
+| `user_campaign_term` | STRING | Acquisition campaign term |
+| `user_campaign_content` | STRING | Acquisition campaign content |
+| `user_device_type` | STRING | Device type used |
+| `user_country` | STRING | User's country |
+| `user_language` | STRING | User's language |
+| `user_conversion_rate` | FLOAT | User conversion rate |
+| `user_value` | FLOAT | Average user value |
 | **SESSION DATA** | | |
 | `session_date` | DATE | Date of the session |
 | `session_id` | STRING | Unique identifier for the session |
 | `session_number` | INTEGER | Incremental session count for the user |
-| `session_start_timestamp` | TIMESTAMP | Session start timestamp |
-| `session_end_timestamp` | TIMESTAMP | Session end timestamp |
-| `session_duration_sec` | INTEGER | Session duration in seconds |
-| `is_bounced_session` | INTEGER | 1 if session bounced, else 0 |
-| `new_session` | INTEGER | 1 if new session, else 0 |
-| `returning_session` | INTEGER | 1 if returning session, else 0 |
+| `first_session` | STRING | 'true' if it is the first session |
 | `cross_domain_session` | STRING | Flag for cross-domain sessions |
-| **ATTRIBUTION** | | |
+| `session_start_timestamp` | INTEGER | Session start timestamp |
+| `session_duration_sec` | INTEGER | Session duration in seconds |
+| `new_session` | INTEGER | 1 if new session, else 0 |
+| `new_sessions_percentage` | FLOAT | Percentage of new sessions |
+| `returning_session` | INTEGER | 1 if returning session, else 0 |
+| `returning_sessions_percentage` | FLOAT | Percentage of returning sessions |
+| `engaged_session` | INTEGER | 1 if engaged session, else 0 |
+| `engaged_sessions_percentage` | FLOAT | Percentage of engaged sessions |
 | `session_channel_grouping` | STRING | Session channel grouping |
 | `session_source` | STRING | Session source |
 | `session_tld_source` | STRING | Session TLD source |
 | `session_campaign` | STRING | Session campaign name |
-| `session_campaign_id` | STRING | Session campaign ID |
 | `session_campaign_click_id` | STRING | Session campaign click ID |
 | `session_campaign_term` | STRING | Session campaign term |
 | `session_campaign_content` | STRING | Session campaign content |
-| `session_referral_path` | STRING | Referral path |
-| **BEHAVIOR** | | |
+| `session_device_type` | STRING | Session device type |
+| `session_browser_name` | STRING | Browser name |
+| `session_country` | STRING | Session country |
+| `session_language` | STRING | Session language |
 | `session_landing_page_category` | STRING | Landing page category |
 | `session_landing_page_location` | STRING | Landing page URL |
 | `session_landing_page_title` | STRING | Landing page title |
 | `session_exit_page_category` | STRING | Exit page category |
 | `session_exit_page_location` | STRING | Exit page URL |
 | `session_exit_page_title` | STRING | Exit page title |
-| `page_view` | INTEGER | Total pages viewed in session |
-| `events` | INTEGER | Total events in session |
-| **TECH & GEO** | | |
 | `session_hostname` | STRING | Hostname |
-| `session_device_type` | STRING | Device type |
-| `session_country` | STRING | Country |
-| `session_language` | STRING | Language |
-| `session_browser_name` | STRING | Browser name |
-| **ECOMMERCE** | | |
+| `session_conversion_rate` | FLOAT | Session conversion rate |
+| `session_value` | FLOAT | Average session value |
+| `sessions_per_user` | FLOAT | Average sessions per user |
+| `page_view_per_session` | FLOAT | Average page views per session |
+| **EVENTS** | | |
+| `page_view` | INTEGER | Total pages viewed |
+| **ECOMMERCE DATA** | | |
+| `view_item_list` | INTEGER | View item list count |
+| `select_item` | INTEGER | Select item count |
+| `view_item` | INTEGER | View item count |
+| `add_to_wishlist` | INTEGER | Add to wishlist count |
+| `add_to_cart` | INTEGER | Add to cart count |
+| `remove_from_cart` | INTEGER | Remove from cart count |
+| `view_cart` | INTEGER | View cart count |
+| `begin_checkout` | INTEGER | Begin checkout count |
+| `add_shipping_info` | INTEGER | Add shipping info count |
+| `add_payment_info` | INTEGER | Add payment info count |
 | `purchase` | INTEGER | Purchase count |
 | `refund` | INTEGER | Refund count |
-| `item_quantity_purchased` | INTEGER | Item quantity purchased |
-| `item_quantity_refunded` | INTEGER | Item quantity refunded |
-| `session_purchase_revenue` | FLOAT | Revenue from purchases |
-| `session_refund_revenue` | FLOAT | Revenue lost to refunds |
-| `revenue_net_refund` | FLOAT | Net revenue |
+| `purchase_revenue` | FLOAT | Revenue from purchases |
+| `purchase_shipping` | FLOAT | Shipping revenue |
+| `purchase_tax` | FLOAT | Tax revenue |
+| `avg_order_value` | FLOAT | Average Order Value |
+| `refund_revenue` | FLOAT | Total refunded revenue |
+| `refund_shipping` | FLOAT | Refunded shipping |
+| `refund_tax` | FLOAT | Refunded tax |
+| `purchase_net_refund` | INTEGER | Net purchases (minus refunds) |
+| `revenue_net_refund` | FLOAT | Net revenue (minus refunds) |
+| `shipping_net_refund` | FLOAT | Net shipping |
+| `tax_net_refund` | FLOAT | Net tax |
+| **CONSENT DATA** | | |
+| `consent_timestamp` | INTEGER | Timestamp of consent |
+| `consent_expressed` | STRING | Whether consent was expressed |
+| `session_ad_user_data` | INTEGER | Ad user data consent count |
+| `ad_user_data_accepted_percentage` | FLOAT | % Ad user data accepted |
+| `ad_user_data_denied_percentage` | FLOAT | % Ad user data denied |
+| `session_ad_personalization` | INTEGER | Ad personalization consent count |
+| `ad_personalization_accepted_percentage` | FLOAT | % Ad personalization accepted |
+| `ad_personalization_denied_percentage` | FLOAT | % Ad personalization denied |
+| `session_ad_storage` | INTEGER | Ad storage consent count |
+| `ad_storage_accepted_percentage` | FLOAT | % Ad storage accepted |
+| `ad_storage_denied_percentage` | FLOAT | % Ad storage denied |
+| `session_analytics_storage` | INTEGER | Analytics storage consent count |
+| `analytics_storage_accepted_percentage` | FLOAT | % Analytics storage accepted |
+| `analytics_storage_denied_percentage` | FLOAT | % Analytics storage denied |
+| `session_functionality_storage` | INTEGER | Functionality storage consent count |
+| `functionality_storage_accepted_percentage` | FLOAT | % Functionality storage accepted |
+| `functionality_storage_denied_percentage` | FLOAT | % Functionality storage denied |
+| `session_personalization_storage` | INTEGER | Personalization storage consent count |
+| `session_security_storage` | INTEGER | Security storage consent count |
+| `security_storage_accepted_percentage` | FLOAT | % Security storage accepted |
+| `security_storage_denied_percentage` | FLOAT | % Security storage denied |
 
 </details>
 
@@ -556,26 +870,67 @@ Focuses on page-level performance, aggregating views, time on page, and navigati
 
 | Field name | Type | Description |
 | :--- | :--- | :--- |
-| **PAGE INFO** | | |
+| **USER DATA** | | |
+| `user_date` | DATE | Date of the user's first visit |
+| `client_id` | STRING | Unique identifier for the user |
+| `user_type` | STRING | "new_user" or "returning_user" |
+| `new_user` | STRING | Client ID if new user |
+| `returning_user` | STRING | Client ID if returning user |
+| `user_channel_grouping` | STRING | Acquisition channel grouping |
+| `user_source` | STRING | Acquisition source |
+| `user_tld_source` | STRING | Acquisition TLD source |
+| `user_campaign` | STRING | Acquisition campaign |
+| `user_campaign_click_id` | STRING | Acquisition campaign click ID |
+| `user_campaign_term` | STRING | Acquisition campaign term |
+| `user_campaign_content` | STRING | Acquisition campaign content |
+| `user_device_type` | STRING | Device type used |
+| `user_country` | STRING | User's country |
+| `user_language` | STRING | User's language |
+| **SESSION DATA** | | |
+| `session_date` | DATE | Date of the session |
+| `session_id` | STRING | Unique identifier for the session |
+| `session_number` | INTEGER | Incremental session count for the user |
+| `cross_domain_session` | STRING | Flag for cross-domain sessions |
+| `session_start_timestamp` | INTEGER | Session start timestamp |
+| `session_duration_sec` | INTEGER | Session duration in seconds |
+| `new_session` | INTEGER | 1 if new session, else 0 |
+| `returning_session` | INTEGER | 1 if returning session, else 0 |
+| `session_channel_grouping` | STRING | Session channel grouping |
+| `session_source` | STRING | Session source |
+| `session_tld_source` | STRING | Session TLD source |
+| `session_campaign` | STRING | Session campaign name |
+| `session_campaign_click_id` | STRING | Session campaign click ID |
+| `session_campaign_term` | STRING | Session campaign term |
+| `session_campaign_content` | STRING | Session campaign content |
+| `session_device_type` | STRING | Session device type |
+| `session_browser_name` | STRING | Browser name |
+| `session_country` | STRING | Session country |
+| `session_language` | STRING | Session language |
+| `session_landing_page_category` | STRING | Landing page category |
+| `session_landing_page_location` | STRING | Landing page URL |
+| `session_landing_page_title` | STRING | Landing page title |
+| `session_exit_page_category` | STRING | Exit page category |
+| `session_exit_page_location` | STRING | Exit page URL |
+| `session_exit_page_title` | STRING | Exit page title |
+| `session_hostname` | STRING | Hostname |
+| **PAGE DATA** | | |
 | `page_date` | DATE | Date of the page activity |
 | `page_id` | STRING | Unique page view ID |
-| `page_hostname` | STRING | Hostname |
-| `page_category` | STRING | Category of the page |
-| `page_title` | STRING | Title of the page |
+| `page_view_number` | INTEGER | Sequential page number |
 | `page_location` | STRING | Full URL location |
-| **METRICS** | | |
-| `page_views` | INTEGER | Total views |
-| `unique_page_views` | INTEGER | Unique views (1 per session) |
-| `users` | INTEGER | Distinct users who viewed the page |
-| `sessions` | INTEGER | Distinct sessions including this page |
-| `time_on_page_total` | INTEGER | Total time spent on page (seconds) |
-| `time_on_page_avg` | FLOAT | Average time spent on page |
-| `time_on_page_per_session` | FLOAT | Average time on page per session |
-| **FLOW** | | |
-| `entrances` | INTEGER | Count of sessions starting here |
-| `exits` | INTEGER | Count of sessions ending here |
-| `entrance_rate` | FLOAT | % of sessions starting here |
-| `exit_rate` | FLOAT | % of views that were the last in session |
+| `page_hostname` | STRING | Hostname |
+| `page_title` | STRING | Title of the page |
+| `page_category` | STRING | Category of the page |
+| `page_load_datetime` | TIMESTAMP | Datetime of page load |
+| `page_unload_datetime` | TIMESTAMP | Datetime of page unload |
+| `time_on_page` | FLOAT | Time spent on page (seconds) |
+| `time_to_dom_interactive` | FLOAT | Time to DOM interactive (seconds) |
+| `page_render_time` | FLOAT | Page render time (seconds) |
+| `time_to_dom_complete` | FLOAT | Time to DOM complete (seconds) |
+| `page_load_time_sec` | FLOAT | Total load time (seconds) |
+| `page_status_code` | INTEGER | HTTP Status Code |
+| **EVENTS** | | |
+| `page_view` | INTEGER | Total view count (agg) |
 
 </details>
 
@@ -589,52 +944,52 @@ Extracts and structures ecommerce transaction data, including revenue, tax, and 
 | Field name | Type | Description |
 | :--- | :--- | :--- |
 | **USER DATA** | | |
-| `user_date` | DATE | Date of user's first visit |
-| `client_id` | STRING | Unique user identifier |
-| `user_id` | STRING | Persistent user ID |
-| `user_channel_grouping` | STRING | User acquisition channel |
-| `user_source` | STRING | User acquisition source |
-| `user_tld_source` | STRING | User acquisition TLD |
-| `user_campaign` | STRING | User acquisition campaign |
-| `user_device_type` | STRING | User device type |
-| `user_country` | STRING | User country |
-| `user_language` | STRING | User language |
-| `user_type` | STRING | 'new_user' or 'returning_user' |
-| `new_user` | STRING | Client ID if new |
-| `returning_user` | STRING | Client ID if returning |
+| `user_date` | DATE | Date of the user's first visit |
+| `client_id` | STRING | Unique identifier for the user |
+| `user_id` | STRING | Persistent user identifier |
+| `user_channel_grouping` | STRING | Acquisition channel grouping |
+| `user_source` | STRING | Acquisition source |
+| `user_tld_source` | STRING | Acquisition TLD source |
+| `user_campaign` | STRING | Acquisition campaign |
+| `user_device_type` | STRING | Device type used |
+| `user_country` | STRING | User's country |
+| `user_language` | STRING | User's language |
+| `user_type` | STRING | "new_user" or "returning_user" |
+| `new_user` | STRING | Client ID if new user |
+| `returning_user` | STRING | Client ID if returning user |
 | **SESSION DATA** | | |
-| `session_number` | INTEGER | Session sequence number |
-| `session_id` | STRING | Session identifier |
-| `session_start_timestamp` | INTEGER | Session start time |
-| `session_channel_grouping` | STRING | Session channel |
+| `session_number` | INTEGER | Incremental session count for the user |
+| `session_id` | STRING | Unique identifier for the session |
+| `session_start_timestamp` | INTEGER | Session start timestamp |
+| `session_channel_grouping` | STRING | Session channel grouping |
 | `session_source` | STRING | Session source |
-| `session_tld_source` | STRING | Session TLD |
-| `session_campaign` | STRING | Session campaign |
-| `cross_domain_session` | STRING | Cross domain flag |
+| `session_tld_source` | STRING | Session TLD source |
+| `session_campaign` | STRING | Session campaign name |
+| `cross_domain_session` | STRING | Flag for cross-domain sessions |
 | `session_device_type` | STRING | Session device type |
 | `session_country` | STRING | Session country |
 | `session_language` | STRING | Session language |
 | `session_browser_name` | STRING | Browser name |
 | **EVENT DATA** | | |
-| `event_date` | DATE | Date of transaction |
-| `event_name` | STRING | Event name (purchase/refund) |
-| `event_timestamp` | DATETIME | Timestamp of transaction |
+| `event_date` | DATE | Event date |
+| `event_name` | STRING | Event name |
+| `event_timestamp` | TIMESTAMP | Event timestamp |
 | **ECOMMERCE DATA** | | |
 | `transaction_id` | STRING | Unique transaction ID |
-| `purchase` | INTEGER | 1 if purchase event |
-| `refund` | INTEGER | 1 if refund event |
+| `purchase` | INTEGER | Purchase count |
+| `refund` | INTEGER | Refund count |
 | `transaction_currency` | STRING | Currency code |
 | `transaction_coupon` | STRING | Coupon code |
-| `purchase_revenue` | FLOAT | Total revenue (if purchase) |
-| `purchase_shipping` | FLOAT | Shipping cost (if purchase) |
-| `purchase_tax` | FLOAT | Tax amount (if purchase) |
-| `refund_revenue` | FLOAT | Total refunded (if refund) |
-| `refund_shipping` | FLOAT | Shipping refunded |
-| `refund_tax` | FLOAT | Tax refunded |
-| `purchase_net_refund` | INTEGER | Purchase count minus refund count |
-| `revenue_net_refund` | FLOAT | Revenue minus refunds |
-| `shipping_net_refund` | FLOAT | Shipping minus refunds |
-| `tax_net_refund` | FLOAT | Tax minus refunds |
+| `purchase_revenue` | FLOAT | Revenue from purchases |
+| `purchase_shipping` | FLOAT | Shipping revenue |
+| `purchase_tax` | FLOAT | Tax revenue |
+| `refund_revenue` | FLOAT | Total refunded revenue |
+| `refund_shipping` | FLOAT | Refunded shipping |
+| `refund_tax` | FLOAT | Refunded tax |
+| `purchase_net_refund` | INTEGER | Net purchases (minus refunds) |
+| `revenue_net_refund` | FLOAT | Net revenue (minus refunds) |
+| `shipping_net_refund` | FLOAT | Net shipping |
+| `tax_net_refund` | FLOAT | Net tax |
 
 </details>
 
@@ -648,28 +1003,28 @@ Provides a granular view of product performance, including views, add-to-carts, 
 | Field name | Type | Description |
 | :--- | :--- | :--- |
 | **USER DATA** | | |
-| `user_date` | DATE | Date of user's first visit |
-| `client_id` | STRING | Unique user identifier |
-| `user_id` | STRING | Persistent user ID |
-| `user_channel_grouping` | STRING | User acquisition channel |
-| `user_source` | STRING | User acquisition source |
-| `user_tld_source` | STRING | User acquisition TLD |
-| `user_campaign` | STRING | User acquisition campaign |
-| `user_device_type` | STRING | User device type |
-| `user_country` | STRING | User country |
-| `user_language` | STRING | User language |
-| `user_type` | STRING | 'new_user' or 'returning_user' |
-| `new_user` | STRING | Client ID if new |
-| `returning_user` | STRING | Client ID if returning |
+| `user_date` | DATE | Date of the user's first visit |
+| `client_id` | STRING | Unique identifier for the user |
+| `user_id` | STRING | Persistent user identifier |
+| `user_channel_grouping` | STRING | Acquisition channel grouping |
+| `user_source` | STRING | Acquisition source |
+| `user_tld_source` | STRING | Acquisition TLD source |
+| `user_campaign` | STRING | Acquisition campaign |
+| `user_device_type` | STRING | Device type used |
+| `user_country` | STRING | User's country |
+| `user_language` | STRING | User's language |
+| `user_type` | STRING | "new_user" or "returning_user" |
+| `new_user` | STRING | Client ID if new user |
+| `returning_user` | STRING | Client ID if returning user |
 | **SESSION DATA** | | |
-| `session_number` | INTEGER | Session sequence number |
-| `session_id` | STRING | Session identifier |
-| `session_start_timestamp` | INTEGER | Session start time |
-| `session_channel_grouping` | STRING | Session channel |
+| `session_number` | INTEGER | Incremental session count for the user |
+| `session_id` | STRING | Unique identifier for the session |
+| `session_start_timestamp` | INTEGER | Session start timestamp |
+| `session_channel_grouping` | STRING | Session channel grouping |
 | `session_source` | STRING | Session source |
-| `session_tld_source` | STRING | Session TLD |
-| `session_campaign` | STRING | Session campaign |
-| `cross_domain_session` | STRING | Cross domain flag |
+| `session_tld_source` | STRING | Session TLD source |
+| `session_campaign` | STRING | Session campaign name |
+| `cross_domain_session` | STRING | Flag for cross-domain sessions |
 | `session_device_type` | STRING | Session device type |
 | `session_country` | STRING | Session country |
 | `session_language` | STRING | Session language |
@@ -677,29 +1032,49 @@ Provides a granular view of product performance, including views, add-to-carts, 
 | **EVENT DATA** | | |
 | `event_date` | DATE | Event date |
 | `event_name` | STRING | Event name |
-| `event_timestamp` | DATETIME | Event timestamp |
-| **PRODUCT DATA** | | |
-| `item_id` | STRING | Product ID |
-| `item_name` | STRING | Product Name |
-| `item_sku` | STRING | SKU |
-| `item_brand` | STRING | Brand |
-| `item_variant` | STRING | Variant |
-| `item_category` | STRING | Category Level 1 |
-| `item_category2` | STRING | Category Level 2 |
-| `item_category3` | STRING | Category Level 3 |
-| `item_category4` | STRING | Category Level 4 |
-| `item_category5` | STRING | Category Level 5 |
+| `event_timestamp` | TIMESTAMP | Event timestamp |
+| **ECOMMERCE DATA** | | |
+| `transaction_id` | STRING | Transaction ID |
+| `list_id` | STRING | List ID (deprecated?) |
+| `list_name` | STRING | List Name (deprecated?) |
 | `item_list_id` | STRING | List ID |
 | `item_list_name` | STRING | List Name |
-| `item_list_index` | INTEGER | List Position |
-| `item_price` | FLOAT | Item Price |
-| `item_quantity` | INTEGER | Quantity |
-| `item_revenue` | FLOAT | Revenue from item |
-| `view_item` | INTEGER | Count of views |
-| `add_to_cart` | INTEGER | Count of adds |
-| `remove_from_cart` | INTEGER | Count of removals |
-| `purchase` | INTEGER | Count of purchases |
-| `refund` | INTEGER | Count of refunds |
+| `item_affiliation` | STRING | Item affiliation |
+| `item_coupon` | STRING | Item coupon |
+| `item_discount` | FLOAT | Item discount |
+| `creative_name` | STRING | Creative name |
+| `creative_slot` | STRING | Creative slot |
+| `promotion_id` | STRING | Promotion ID |
+| `promotion_name` | STRING | Promotion name |
+| `item_brand` | STRING | Brand |
+| `item_id` | STRING | Product ID |
+| `item_name` | STRING | Product Name |
+| `item_variant` | STRING | Variant |
+| `item_category` | STRING | Category Level 1 |
+| `item_category_2` | STRING | Category Level 2 |
+| `item_category_3` | STRING | Category Level 3 |
+| `item_category_4` | STRING | Category Level 4 |
+| `item_category_5` | STRING | Category Level 5 |
+| `view_promotion` | INTEGER | View promotion count |
+| `select_promotion` | INTEGER | Select promotion count |
+| `view_item_list` | INTEGER | View item list count |
+| `select_item` | INTEGER | Select item count |
+| `view_item` | INTEGER | View item count |
+| `add_to_wishlist` | INTEGER | Add to wishlist count |
+| `add_to_cart` | INTEGER | Add to cart count |
+| `remove_from_cart` | INTEGER | Remove from cart count |
+| `view_cart` | INTEGER | View cart count |
+| `begin_checkout` | INTEGER | Begin checkout count |
+| `add_shipping_info` | INTEGER | Add shipping info count |
+| `add_payment_info` | INTEGER | Add payment info count |
+| `item_quantity_purchased` | INTEGER | Quantity purchased |
+| `item_quantity_refunded` | INTEGER | Quantity refunded |
+| `item_quantity_added_to_cart` | INTEGER | Quantity added to cart |
+| `item_quantity_removed_from_cart` | INTEGER | Quantity removed from cart |
+| `item_purchase_revenue` | FLOAT | Revenue from item |
+| `item_refund_revenue` | FLOAT | Refunded item revenue |
+| `item_unique_purchases` | INTEGER | Unique purchases |
+| `item_revenue_net_refund` | FLOAT | Net revenue |
 
 </details>
 
@@ -712,17 +1087,49 @@ Calculates drop-off rates across the entire shopping journey, regardless of wher
 
 | Field name | Type | Description |
 | :--- | :--- | :--- |
-| `step_name` | STRING | Name of the funnel step |
-| `step_index` | INTEGER | Order index of the step |
-| `status` | STRING | "New funnel entries" or "Continuing funnel entries" |
-| `client_id` | STRING | User identifier at this step |
-| `client_id_next_step` | STRING | Identifier if user reached next step |
-| `session_id` | STRING | Session identifier |
-| `user_type` | STRING | User type |
-| `session_source` | STRING | Session source |
+| **USER DATA** | | |
+| `user_date` | DATE | Date of the user's first visit |
+| `client_id` | STRING | Unique identifier for the user |
+| `user_id` | STRING | Persistent user identifier |
+| `user_channel_grouping` | STRING | Acquisition channel grouping |
+| `user_source` | STRING | Acquisition source |
+| `user_tld_source` | STRING | Acquisition TLD source |
+| `user_campaign` | STRING | Acquisition campaign |
+| `user_device_type` | STRING | Device type used |
+| `user_country` | STRING | User's country |
+| `user_language` | STRING | User's language |
+| `user_type` | STRING | "new_user" or "returning_user" |
+| `new_user` | STRING | Client ID if new user |
+| `returning_user` | STRING | Client ID if returning user |
+| **SESSION DATA** | | |
+| `session_date` | DATE | Date of the session |
+| `session_number` | INTEGER | Incremental session count for the user |
+| `session_id` | STRING | Unique identifier for the session |
+| `session_start_timestamp` | INTEGER | Session start timestamp |
+| `session_end_timestamp` | INTEGER | Session end timestamp |
+| `session_duration_sec` | INTEGER | Session duration in seconds |
 | `session_channel_grouping` | STRING | Session channel grouping |
-| `session_device_type` | STRING | Device type |
-| `session_country` | STRING | Country |
+| `session_source` | STRING | Session source |
+| `session_tld_source` | STRING | Session TLD source |
+| `session_campaign` | STRING | Session campaign name |
+| `cross_domain_session` | STRING | Flag for cross-domain sessions |
+| `session_landing_page_category` | STRING | Landing page category |
+| `session_landing_page_location` | STRING | Landing page URL |
+| `session_landing_page_title` | STRING | Landing page title |
+| `session_exit_page_category` | STRING | Exit page category |
+| `session_exit_page_location` | STRING | Exit page URL |
+| `session_exit_page_title` | STRING | Exit page title |
+| `session_hostname` | STRING | Hostname |
+| `session_device_type` | STRING | Session device type |
+| `session_country` | STRING | Session country |
+| `session_language` | STRING | Session language |
+| `session_browser_name` | STRING | Browser name |
+| **FUNNEL DATA** | | |
+| `event_date` | DATE | Event date |
+| `step_name` | STRING | Name of the funnel step |
+| `client_id_next_step` | STRING | Client ID reaching next step |
+| `user_id_next_step` | STRING | User ID reaching next step |
+| `session_id_next_step` | STRING | Session ID reaching next step |
 
 </details>
 
@@ -757,19 +1164,64 @@ Provides metrics on GTM container execution times and tag performance to help op
 
 | Field name | Type | Description |
 | :--- | :--- | :--- |
+| **USER DATA** | | |
+| `user_date` | DATE | Date of the user's first visit |
+| `client_id` | STRING | Unique identifier for the user |
+| `user_id` | STRING | Persistent user identifier |
+| `user_channel_grouping` | STRING | Acquisition channel grouping |
+| `user_source` | STRING | Acquisition source |
+| `user_tld_source` | STRING | Acquisition TLD source |
+| `user_campaign` | STRING | Acquisition campaign |
+| `user_device_type` | STRING | Device type used |
+| `user_country` | STRING | User's country |
+| `user_language` | STRING | User's language |
+| `user_type` | STRING | "new_user" or "returning_user" |
+| `new_user` | STRING | Client ID if new user |
+| `returning_user` | STRING | Client ID if returning user |
+| **SESSION DATA** | | |
+| `session_date` | DATE | Date of the session |
+| `session_number` | INTEGER | Incremental session count for the user |
+| `session_id` | STRING | Unique identifier for the session |
+| `session_start_timestamp` | INTEGER | Session start timestamp |
+| `session_end_timestamp` | INTEGER | Session end timestamp |
+| `session_duration_sec` | INTEGER | Session duration in seconds |
+| `session_channel_grouping` | STRING | Session channel grouping |
+| `session_source` | STRING | Session source |
+| `session_tld_source` | STRING | Session TLD source |
+| `session_campaign` | STRING | Session campaign name |
+| `cross_domain_session` | STRING | Flag for cross-domain sessions |
+| `session_landing_page_category` | STRING | Landing page category |
+| `session_landing_page_location` | STRING | Landing page URL |
+| `session_landing_page_title` | STRING | Landing page title |
+| `session_exit_page_category` | STRING | Exit page category |
+| `session_exit_page_location` | STRING | Exit page URL |
+| `session_exit_page_title` | STRING | Exit page title |
+| `session_hostname` | STRING | Hostname |
+| `session_device_type` | STRING | Session device type |
+| `session_country` | STRING | Session country |
+| `session_language` | STRING | Session language |
+| `session_browser_name` | STRING | Browser name |
+| **PAGE DATA** | | |
+| `page_data` | ARRAY | Raw page data array |
+| **EVENT DATA** | | |
 | `event_date` | DATE | Event date |
-| `event_timestamp` | INTEGER | Timestamp |
+| `event_datetime` | TIMESTAMP | Event datetime |
+| `event_timestamp` | INTEGER | Event timestamp |
+| `processing_event_timestamp` | INTEGER | Server-side processing timestamp |
+| `delay_in_milliseconds` | INTEGER | Processing delay (ms) |
+| `delay_in_seconds` | FLOAT | Processing delay (seconds) |
+| `event_origin` | STRING | Origin of the event |
+| `content_length` | INTEGER | Request content length |
+| `cs_hostname` | STRING | Client-side hostname |
+| `ss_hostname` | STRING | Server-side hostname |
+| `cs_container_id` | STRING | Client-side container ID |
+| `ss_container_id` | STRING | Server-side container ID |
+| `hit_number` | INTEGER | Sequential hit number |
 | `event_name` | STRING | Event name |
-| `container_id` | STRING | GTM Container ID |
-| `container_version` | STRING | Container Version |
-| `tag_name` | STRING | Tag Name |
-| `tag_id` | STRING | Tag ID |
-| `tag_status` | STRING | Status (success/failure) |
-| `execution_time_ms` | INTEGER | Time taken to execute (ms) |
-| `tag_execution_timestamp_ms` | INTEGER | Execution start time (ms) |
-| `client_id` | STRING | User identifier |
-| `session_id` | STRING | Session identifier |
-| `page_location` | STRING | URL where tag fired |
+| `event_id` | STRING | Event ID |
+| `event_data` | ARRAY | Raw event data array |
+| `ecommerce` | JSON | Ecommerce object (stringified) |
+| `dataLayer` | JSON | DataLayer object (stringified) |
 
 </details>
 

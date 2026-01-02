@@ -4,6 +4,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.users`(start_da
       # USER DATA
       user_date,
       client_id,
+      user_id,
       user_type,
       new_user,
       returning_user,
@@ -83,7 +84,46 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.users`(start_da
 
   user_prep as (
     select
-      *,
+      # USER DATA
+      user_date,
+      client_id,
+      user_channel_grouping,
+      user_source,
+      user_tld_source,
+      user_campaign,
+      user_campaign_click_id,
+      user_campaign_term,
+      user_campaign_content,
+      user_device_type,
+      user_country,
+      user_language,
+      days_from_first_to_last_visit,
+      days_from_first_visit,
+      days_from_last_visit,
+
+      # SESSION DATA
+      session_id,
+      session_duration_sec,
+      session_number,
+      new_user,
+      returning_user,
+
+      # EVENT DATA
+      page_view,
+      purchase,
+      refund,
+
+      # ECOMMERCE DATA
+      session_purchase_revenue,
+      session_refund_revenue,
+      session_purchase_qty,
+      session_refund_qty,
+      session_avg_purchase_value,
+      session_avg_refund_value,
+      session_first_purchase_ts,
+      session_last_purchase_ts,
+
+      # USER AGGREGATIONS
       max(session_number) over (partition by client_id) as total_sessions,
       max(new_user) over (partition by client_id) as new_user_client_id,
       max(returning_user) over (partition by client_id) as returning_user_client_id,

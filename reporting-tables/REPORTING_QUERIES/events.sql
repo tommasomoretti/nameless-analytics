@@ -190,7 +190,14 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.events`(start_d
     (select value.int from unnest(gtm_data) where name = 'ss_tag_id') as ss_tag_id,
 
     (select value.int from unnest(gtm_data) where name = 'processing_event_timestamp') as processing_event_timestamp,
-    (select value.int from unnest(gtm_data) where name = 'content_length') as content_length
+    (select value.int from unnest(gtm_data) where name = 'content_length') as content_length,
+
+    # RAW RECORD ARRAYS (for GTM performances and debugging)
+    user_data,
+    session_data,
+    page_data,
+    event_data,
+    gtm_data
     
   from `tom-moretti.nameless_analytics.events_raw`
   where true

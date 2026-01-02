@@ -3,7 +3,6 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
     select 
       # USER DATA
       user_date, 
-      user_id,
       client_id, 
       user_type, 
       new_user, 
@@ -24,6 +23,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
       session_date, 
       session_id, 
       session_number, 
+      case when session_number = 1 then 1 else 0 end as first_session,
       cross_domain_session, 
       session_start_timestamp, 
       session_end_timestamp,
@@ -67,7 +67,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
 
   session_logic as (
     select
-      ## USER DATA
+      # USER DATA
       user_date, 
       user_id,
       client_id, 
@@ -85,10 +85,11 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
       user_country, 
       user_language, 
 
-      ## SESSION DATA
+      # SESSION DATA
       session_date, 
       session_id, 
       session_number, 
+      first_session,
       cross_domain_session, 
       session_start_timestamp, 
       session_duration_sec,
@@ -113,10 +114,10 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
       session_exit_page_title, 
       session_hostname,
 
-      ## EVENTS
+      # EVENTS
       countif(event_name = 'page_view') as page_view,
 
-      ## ECOMMERCE DATA
+      # ECOMMERCE DATA
       countif(event_name = 'view_item_list') as view_item_list,
       countif(event_name = 'select_item') as select_item,
       countif(event_name = 'view_item') as view_item,
@@ -137,7 +138,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
       ifnull(sum(case when event_name = 'refund' then -safe_cast(json_value(ecommerce, '$.shipping') as float64) end), 0) as refund_shipping,
       ifnull(sum(case when event_name = 'refund' then -safe_cast(json_value(ecommerce, '$.tax') as float64) end), 0) as refund_tax,
 
-      ## CONSENT DATA
+      # CONSENT DATA
       min(event_timestamp) as first_timestamp,
       min(case when consent_type = 'Update' then event_timestamp end) as update_timestamp,
       countif(consent_type = 'Update') > 0 as has_update,
@@ -169,7 +170,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
 
   session_prep as (
     select
-      ## USER DATA
+      # USER DATA
       user_date, 
       user_id,
       client_id, 
@@ -187,16 +188,16 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
       user_country, 
       user_language, 
 
-      ## SESSION DATA
+      # SESSION DATA
       session_date, 
       session_id, 
-      session_number, 
+      session_number,
+      first_session,
       cross_domain_session, 
       session_start_timestamp, 
       session_duration_sec,
       new_session,
       returning_session,
-      case when page_view >= 2 and (session_duration_sec >= 10 or purchase >= 1) then 1 else 0 end as engaged_session,
       session_channel_grouping, 
       session_source,
       session_tld_source, 
@@ -216,10 +217,10 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
       session_exit_page_title, 
       session_hostname,
 
-      ## EVENTS
+      # EVENTS
       page_view,
 
-      ## ECOMMERCE DATA
+      # ECOMMERCE DATA
       view_item_list,
       select_item,
       view_item,
@@ -239,7 +240,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
       refund_shipping,
       refund_tax,
 
-      ## CONSENT DATA
+      # CONSENT DATA
       has_update,
       update_timestamp,
       first_timestamp,
@@ -258,6 +259,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
       upd_security_storage,
       def_security_storage,
 
+      case when page_view >= 2 and (session_duration_sec >= 10 or purchase >= 1) then 1 else 0 end as engaged_session,
       if(has_update, update_timestamp, first_timestamp) as consent_timestamp,
       if(has_update, 'Yes', 'No') as consent_expressed,
       if(if(has_update, upd_ad_user_data, def_ad_user_data) = 'Granted', 1, 0) as session_ad_user_data,
@@ -271,7 +273,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
   )
 
   select
-    ## USER DATA
+    # USER DATA
     user_date, 
     user_id,
     client_id, 
@@ -293,10 +295,11 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
     safe_divide(sum(purchase), count(distinct client_id)) as user_conversion_rate,
     safe_divide(sum(purchase_revenue), count(distinct client_id)) as user_value,
 
-    ## SESSION DATA
+    # SESSION DATA
     session_date, 
     session_id, 
     session_number, 
+    first_session,
     cross_domain_session, 
     session_start_timestamp, 
     session_duration_sec,
@@ -329,10 +332,10 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
     safe_divide(count(distinct session_id), count(distinct client_id)) as sessions_per_user,
     safe_divide(sum(page_view), count(distinct session_id)) as page_view_per_session,
 
-    ## EVENTS
+    # EVENTS
     page_view,
 
-    ## ECOMMERCE DATA
+    # ECOMMERCE DATA
     view_item_list,
     select_item,
     view_item,
@@ -357,7 +360,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.sessions`(start
     purchase_shipping + refund_shipping as shipping_net_refund,
     purchase_tax + refund_tax as tax_net_refund,
 
-    ## CONSENT DATA
+    # CONSENT DATA
     consent_timestamp,
     consent_expressed,
 

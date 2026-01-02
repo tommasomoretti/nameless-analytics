@@ -1,6 +1,7 @@
 CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.consents`(start_date DATE, end_date DATE) AS (
   with session_base as (
     select
+      # USER DATA
       user_date,
       client_id,
       user_id,
@@ -14,6 +15,8 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.consents`(start
       user_type,
       new_user,
       returning_user,
+
+      # SESSION DATA
       session_date,
       session_number,
       session_id,
@@ -37,6 +40,8 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.consents`(start
       session_exit_page_location,
       session_exit_page_title,
       session_hostname,
+
+      # CONSENT DATA
       consent_expressed,
       session_ad_user_data,
       session_ad_personalization,
@@ -49,10 +54,46 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.consents`(start
   ),
 
   event_data as (
-    SELECT
-      # USER & SESSION DATA
-      user_date, client_id, user_id, user_channel_grouping, user_source, user_tld_source, user_campaign, user_device_type, user_country, user_language, user_type, new_user, returning_user,
-      session_date, session_number, session_id, session_start_timestamp, session_duration_sec, first_session, engaged_session, session_channel_grouping, session_source, session_tld_source, session_campaign, session_device_type, session_country, session_browser_name, session_language, cross_domain_session, session_landing_page_category, session_landing_page_location, session_landing_page_title, session_exit_page_category, session_exit_page_location, session_exit_page_title, session_hostname,
+    select
+      # USER DATA
+      user_date, 
+      client_id, 
+      user_id, 
+      user_channel_grouping, 
+      user_source, 
+      user_tld_source, 
+      user_campaign, 
+      user_device_type, 
+      user_country, 
+      user_language, 
+      user_type, 
+      new_user, 
+      returning_user,
+
+      # SESSION DATA
+      session_date, 
+      session_number, 
+      session_id, 
+      session_start_timestamp, 
+      session_duration_sec, 
+      first_session, 
+      engaged_session, 
+      session_channel_grouping, 
+      session_source, 
+      session_tld_source, 
+      session_campaign, 
+      session_device_type, 
+      session_country, 
+      session_browser_name, 
+      session_language, 
+      cross_domain_session, 
+      session_landing_page_category, 
+      session_landing_page_location, 
+      session_landing_page_title, 
+      session_exit_page_category, 
+      session_exit_page_location, 
+      session_exit_page_title, 
+      session_hostname,
 
       # CONSENT DATA
       case 
@@ -62,9 +103,9 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.consents`(start
       end as consent_state,
       consent_name,
       consent_value_int_accepted_raw
-    FROM session_base
-    UNPIVOT (
-      consent_value_int_accepted_raw FOR consent_name IN (
+    from session_base
+    unpivot (
+      consent_value_int_accepted_raw for consent_name in (
         session_ad_user_data, 
         session_ad_personalization, 
         session_ad_storage, 
@@ -77,7 +118,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.consents`(start
   )
 
   select 
-    ## USER DATA
+    # USER DATA
     user_date,
     client_id,
     user_id,
@@ -92,7 +133,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.consents`(start
     new_user,
     returning_user,
   
-    ## SESSION DATA
+    # SESSION DATA
     session_date,
     session_number,
     session_id,
@@ -117,7 +158,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.consents`(start
     session_exit_page_title,
     session_hostname,
 
-    ## CONSENT DATA
+    # CONSENT DATA
     consent_state,    
     case when consent_state = 'Consent expressed' then session_id end as session_id_consent_expressed,
     case when consent_state = 'Consent not expressed' then session_id end as session_id_consent_not_expressed,

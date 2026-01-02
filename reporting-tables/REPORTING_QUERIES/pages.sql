@@ -3,7 +3,6 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.pages`(start_da
     select 
       # USER DATA
       user_date, 
-      user_id,
       client_id, 
       user_type, 
       new_user, 
@@ -75,9 +74,8 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.pages`(start_da
 
   page_logic as (
     select
-      ## USER DATA
+      # USER DATA
       user_date, 
-      user_id,
       client_id, 
       user_type, 
       new_user, 
@@ -93,7 +91,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.pages`(start_da
       user_country, 
       user_language, 
 
-      ## SESSION DATA
+      # SESSION DATA
       session_date, 
       session_id, 
       session_number, 
@@ -121,7 +119,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.pages`(start_da
       session_exit_page_title, 
       session_hostname,
 
-      ## PAGE DATA
+      # PAGE DATA
       page_date,
       page_id,
       page_view_number,
@@ -139,16 +137,15 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.pages`(start_da
       max(total_page_load_time) as max_total_page_load_time,
       max(page_status_code) as max_page_status_code,
 
-      ## EVENT DATA
+      # EVENT DATA
       countif(event_name = 'page_view') as page_view
     from base_events
     group by all
   )
 
   select
-    ## USER DATA
+    # USER DATA
     user_date, 
-    user_id,
     client_id, 
     user_type, 
     new_user, 
@@ -164,7 +161,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.pages`(start_da
     user_country, 
     user_language, 
 
-    ## SESSION DATA
+    # SESSION DATA
     session_date, 
     session_id, 
     session_number, 
@@ -192,7 +189,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.pages`(start_da
     session_exit_page_title, 
     session_hostname,
 
-    ## PAGE DATA
+    # PAGE DATA
     page_date,
     page_id,
     page_view_number,
@@ -209,7 +206,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.pages`(start_da
     max_total_page_load_time / 1000 as page_load_time_sec,
     max_page_status_code as page_status_code,
     
-    ## EVENT DATA
+    # EVENT DATA
     sum(page_view) as page_view
   from page_logic
   group by all

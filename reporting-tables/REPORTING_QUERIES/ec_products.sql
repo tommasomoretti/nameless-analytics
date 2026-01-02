@@ -1,43 +1,53 @@
 CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.ec_products`(start_date DATE, end_date DATE) AS (
   with base_events as (
-    select
-      ## USER DATA
-      user_date,
-      client_id,
+    select 
+      # USER DATA
+      user_date, 
       user_id,
-      user_channel_grouping,
-      user_source,
-      user_tld_source,
-      user_campaign,
-      user_device_type,
-      user_country,
-      user_language,
-      user_type,
-      new_user,
+      client_id, 
+      user_type, 
+      new_user, 
       returning_user,
-  
-      ## SESSION DATA
-      session_date,
-      session_number,
-      session_id,
-      session_start_timestamp,
+      user_channel_grouping, 
+      user_source,
+      user_tld_source, 
+      user_campaign, 
+      user_campaign_id,
+      user_campaign_click_id,
+      user_campaign_term,
+      user_campaign_content,
+      user_device_type, 
+      user_country, 
+      user_language, 
+
+      # SESSION DATA
+      session_date, 
+      session_id, 
+      session_number, 
+      cross_domain_session, 
+      session_start_timestamp, 
+      session_end_timestamp,
       session_duration_sec,
-      session_channel_grouping,
+      new_session,
+      returning_session,
+      session_channel_grouping, 
       session_source,
-      session_tld_source,
+      session_tld_source, 
       session_campaign,
-      cross_domain_session,  
-      session_device_type,
-      session_country,
-      session_language,
+      session_campaign_id,
+      session_campaign_click_id,
+      session_campaign_term,
+      session_campaign_content,
+      session_device_type, 
       session_browser_name,
+      session_country, 
+      session_language,
+      session_hostname,
 
-      ## EVENT DATA
+      # EVENT DATA
       event_date,
-      event_name,
       event_timestamp,
-
-      ## ECOMMERCE DATA
+      event_name,
       ecommerce
     from `tom-moretti.nameless_analytics.events`(start_date, end_date, 'session')
     where regexp_contains(event_name, 'view_promotion|select_promotion|view_item_list|select_item|view_item|add_to_wishlist|add_to_cart|remove_from_cart|view_cart|begin_checkout|add_shipping_info|add_payment_info|purchase|refund')
@@ -45,7 +55,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.ec_products`(st
 
   product_logic as (
     select
-      ## USER DATA
+      # USER DATA
       user_date,
       client_id,
       user_id,
@@ -60,7 +70,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.ec_products`(st
       new_user,
       returning_user,
 
-      ## SESSION DATA
+      # SESSION DATA
       session_number,
       session_id,
       session_start_timestamp,
@@ -74,12 +84,12 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.ec_products`(st
       session_browser_name,
       session_language,
 
-      ## EVENT DATA
+      # EVENT DATA
       event_date,
       event_name,
-      timestamp_millis(event_timestamp) as event_timestamp_ts,
+      timestamp_millis(event_timestamp) as event_datetime,
 
-      ## ECOMMERCE & ITEMS DATA
+      # ECOMMERCE DATA
       json_value(ecommerce, '$.transaction_id') as transaction_id,
       json_value(ecommerce, '$.item_list_id') as list_id,
       json_value(ecommerce, '$.item_list_name') as list_name,
@@ -117,12 +127,65 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.ec_products`(st
     left join unnest(json_extract_array(ecommerce, '$.items')) as items
   ),
 
-  product_aggregation as (
+  product_prep as (
     select
-      user_date, client_id, user_id, user_channel_grouping, user_source_split, user_tld_source, user_campaign, user_device_type, user_country, user_language, user_type, new_user, returning_user,
-      session_number, session_id, session_start_timestamp, session_channel_grouping, session_source_split, session_tld_source, session_campaign, cross_domain_session, session_device_type, session_country, session_browser_name, session_language,
-      event_date, event_name, event_timestamp_ts,
-      transaction_id, list_name, item_list_id, item_list_name, item_affiliation, item_coupon, item_discount, creative_name, creative_slot, promotion_id, promotion_name, item_brand, item_id, item_name, item_variant, item_category, item_category_2, item_category_3, item_category_4, item_category_5,
+      # USER DATA
+      user_date, 
+      client_id, 
+      user_id, 
+      user_channel_grouping, 
+      user_source_split, 
+      user_tld_source, 
+      user_campaign, 
+      user_device_type, 
+      user_country, 
+      user_language, 
+      user_type, 
+      new_user, 
+      returning_user,
+      
+      # SESSION DATA
+      session_number, 
+      session_id, 
+      session_start_timestamp, 
+      session_channel_grouping, 
+      session_source_split, 
+      session_tld_source, 
+      session_campaign, 
+      cross_domain_session, 
+      session_device_type, 
+      session_country, 
+      session_browser_name, 
+      session_language,
+      
+      # EVENT DATA
+      event_date, 
+      event_name, 
+      event_datetime,
+      
+      # ECOMMERCE DATA
+      transaction_id, 
+      list_id, 
+      list_name, 
+      item_list_id, 
+      item_list_name, 
+      item_affiliation, 
+      item_coupon, 
+      item_discount, 
+      creative_name, 
+      creative_slot, 
+      promotion_id, 
+      promotion_name, 
+      item_brand, 
+      item_id, 
+      item_name, 
+      item_variant, 
+      item_category, 
+      item_category_2, 
+      item_category_3, 
+      item_category_4, 
+      item_category_5,
+      
       countif(event_name = "view_promotion") as view_promotion,
       countif(event_name = "select_promotion") as select_promotion,
       countif(event_name = "view_item_list") as view_item_list,
@@ -135,6 +198,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.ec_products`(st
       countif(event_name = "begin_checkout") as begin_checkout,
       countif(event_name = "add_shipping_info") as add_shipping_info,
       countif(event_name = "add_payment_info") as add_payment_info,
+
       sum(item_quantity_purchased) as item_quantity_purchased,
       sum(item_quantity_refunded) as item_quantity_refunded,
       sum(item_quantity_added_to_cart) as item_quantity_added_to_cart,
@@ -147,7 +211,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.ec_products`(st
   )
 
   select
-    ## USER DATA
+    # USER DATA
     user_date,
     client_id,
     user_id,
@@ -162,7 +226,7 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.ec_products`(st
     new_user,
     returning_user,
 
-    ## SESSION DATA
+    # SESSION DATA
     session_number,
     session_id,
     session_start_timestamp,
@@ -173,16 +237,17 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.ec_products`(st
     cross_domain_session,
     session_device_type,
     session_country,
-    session_browser_name,
     session_language,
+    session_browser_name,
     
-    ## EVENT DATA
+    # EVENT DATA
     event_date,
     event_name,
-    event_timestamp_ts as event_timestamp,
+    event_datetime as event_timestamp,
 
-    ## ECOMMERCE DATA
+    # ECOMMERCE DATA
     transaction_id, 
+    list_id,
     list_name,
     item_list_id,
     item_list_name,
@@ -222,5 +287,6 @@ CREATE OR REPLACE TABLE FUNCTION `tom-moretti.nameless_analytics.ec_products`(st
     item_refund_revenue,
     item_unique_purchases,
     ifnull(item_purchase_revenue, 0) + ifnull(item_refund_revenue, 0) as item_revenue_net_refund
-  from product_aggregation
+  from product_prep
+  group by all
 );

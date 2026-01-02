@@ -501,10 +501,10 @@ Get expert help for implementation, technical documentation, and advanced SQL qu
 
 ## Quick Start
 ### Repository structure
-- Main repository: [nameless-analytics](#nameless-analytics)
-- Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](#client-side-collection)
-- Client-side tracker configuration variable: [nameless-analytics-client-side-tracker-configuration-variable](#client-side-collection)
-- Server-side client tag: [nameless-analytics-server-side-client-tag](#server-side-processing)
+- Main repository: [nameless-analytics](https://github.com/nameless-analytics/nameless-analytics)
+- Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](https://github.com/nameless-analytics/nameless-analytics-client-side-tracker-tag)
+- Client-side tracker configuration variable: [nameless-analytics-client-side-tracker-configuration-variable](https://github.com/nameless-analytics/nameless-analytics-client-side-tracker-configuration-variable)
+- Server-side client tag: [nameless-analytics-server-side-client-tag](https://github.com/nameless-analytics/nameless-analytics-server-side-client-tag)
 - Reporting tables: [reporting-tables](reporting-tables/)
 - GTM default containers: [gtm-containers](gtm-containers/)
 

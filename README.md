@@ -47,7 +47,17 @@ At a high level, the platform solves critical challenges in modern analytics:
 
 
 ## Technical Architecture
-The platform is built on a modern, decoupled architecture that separates data capture, processing, and storage to ensure maximum flexibility and performance.
+The platform is built on a modern architecture that separates data capture, processing, and storage to ensure maximum flexibility and performance.
+
+### Components
+- Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](https://github.com/nameless-analytics/nameless-analytics-client-side-tracker-tag)
+- Client-side tracker configuration variable: [nameless-analytics-client-side-tracker-configuration-variable](https://github.com/nameless-analytics/nameless-analytics-client-side-tracker-configuration-variable)
+- Server-side client tag: [nameless-analytics-server-side-client-tag](https://github.com/nameless-analytics/nameless-analytics-server-side-client-tag)
+- Reporting tables: [reporting-tables](reporting-tables/)
+- GTM default containers: [gtm-containers](gtm-containers/)
+
+</br>
+
 
 ### High-Level Data Flow
 The following diagram illustrates the real-time data flow from the user's browser, through the server-side processing layer, to the final storage and visualization destinations:
@@ -502,17 +512,6 @@ Get expert help for implementation, technical documentation, and advanced SQL qu
 
 
 ## Quick Start
-### Repository structure
-- Main repository: [nameless-analytics](https://github.com/nameless-analytics/nameless-analytics)
-- Client-side tracker tag: [nameless-analytics-client-side-tracker-tag](https://github.com/nameless-analytics/nameless-analytics-client-side-tracker-tag)
-- Client-side tracker configuration variable: [nameless-analytics-client-side-tracker-configuration-variable](https://github.com/nameless-analytics/nameless-analytics-client-side-tracker-configuration-variable)
-- Server-side client tag: [nameless-analytics-server-side-client-tag](https://github.com/nameless-analytics/nameless-analytics-server-side-client-tag)
-- Reporting tables: [reporting-tables](reporting-tables/)
-- GTM default containers: [gtm-containers](gtm-containers/)
-
-</br>
-
-
 ### Project configuration
 Before starting the setup, ensure you have:
 - A Google Cloud Project with an active billing account
